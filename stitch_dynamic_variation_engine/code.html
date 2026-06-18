@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>G Mark | The New Standard of Digital Industry</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#93000a",
+                    "surface-container-high": "#282a2b",
+                    "surface-container-low": "#1a1c1c",
+                    "on-tertiary": "#313030",
+                    "on-secondary-fixed": "#021d32",
+                    "on-primary-container": "#5c000a",
+                    "surface-bright": "#38393a",
+                    "primary-fixed-dim": "#ffb3af",
+                    "surface-variant": "#333535",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "on-surface": "#e2e2e2",
+                    "primary": "#ffb3af",
+                    "on-primary": "#68000d",
+                    "secondary-fixed": "#cfe5ff",
+                    "secondary-container": "#344b62",
+                    "on-secondary-fixed-variant": "#324960",
+                    "on-primary-fixed": "#410005",
+                    "on-background": "#e2e2e2",
+                    "on-primary-fixed-variant": "#910819",
+                    "background": "#121414",
+                    "on-error": "#690005",
+                    "on-surface-variant": "#e1bebc",
+                    "outline-variant": "#5a413f",
+                    "inverse-on-surface": "#2f3131",
+                    "error": "#ffb4ab",
+                    "tertiary": "#c8c6c5",
+                    "primary-fixed": "#ffdad7",
+                    "on-secondary": "#1a3248",
+                    "surface-container-lowest": "#0c0f0f",
+                    "surface-container-highest": "#333535",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "tertiary-container": "#929090",
+                    "surface-tint": "#ffb3af",
+                    "surface-dim": "#121414",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "on-secondary-container": "#a3bbd6",
+                    "primary-container": "#f95a5a",
+                    "secondary": "#b1c9e5",
+                    "outline": "#a98987",
+                    "on-tertiary-container": "#2a2a29",
+                    "secondary-fixed-dim": "#b1c9e5",
+                    "surface-container": "#1e2020",
+                    "surface": "#121414",
+                    "inverse-surface": "#e2e2e2",
+                    "inverse-primary": "#b3272d",
+                    "tertiary-fixed": "#e5e2e1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "section-padding": "120px",
+                    "margin-x": "32px",
+                    "stack-md": "16px",
+                    "container-max": "1280px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "stats-lg": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "stats-lg": ["56px", {"lineHeight": "1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .glow-red {
+            box-shadow: 0 0 15px 0 rgba(249, 90, 90, 0.3);
+        }
+
+        .data-gradient {
+            background: radial-gradient(circle at center, rgba(249, 90, 90, 0.15) 0%, transparent 70%);
+        }
+
+        .glass-panel {
+            background: rgba(18, 20, 20, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            background-color: #121414;
+            color: #e2e2e2;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121414;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333535;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f95a5a;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
+<div class="flex justify-between items-center w-full px-margin-x py-6 max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">G Mark</span>
+</div>
+<div class="hidden md:flex items-center gap-stack-lg">
+<a class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Home</a>
+<a class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors" href="#">Support</a>
+<a class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors" href="#">Solutions</a>
+<a class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors" href="#">About G Mark</a>
+<a class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors" href="#">More</a>
+</div>
+<button class="bg-primary-container text-on-primary-fixed px-6 py-2 font-bold transition-transform duration-150 active:scale-95">
+                Get Started
+            </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative min-h-screen flex items-center pt-24 overflow-hidden">
+
+<div class="relative z-10 max-w-container-max mx-auto px-margin-x w-full">
+<div class="max-w-4xl">
+<h1 class="font-display-lg text-display-lg md:text-[88px] leading-[1.1] mb-stack-md animate-fade-in-up">
+                    The New Standard <br/>
+<span class="text-primary-container">of Digital Industry</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-stack-lg opacity-80">
+                    Use Accurate Data to Get a <span class="text-primary-container font-bold">360-Degree</span> View of Your Business. Accelerate decisions with industrial-grade intelligence.
+                </p>
+<div class="flex flex-wrap gap-gutter">
+<button class="bg-primary-container text-on-primary-fixed px-8 py-4 font-bold text-lg hover:brightness-110 transition-all">
+                        Learn More
+                    </button>
+<button class="border border-outline-variant text-on-surface px-8 py-4 font-bold text-lg hover:bg-surface-container transition-all">
+                        View Solutions
+                    </button>
+</div>
+</div>
+</div>
+<!-- Floating HUD Element -->
+<div class="hidden lg:block absolute right-margin-x bottom-margin-x glass-panel p-6 w-80 animate-pulse">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-sm text-label-sm text-primary">SYSTEM STATUS</span>
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+</div>
+<div class="space-y-3">
+<div class="h-1 bg-outline-variant w-full overflow-hidden">
+<div class="h-full bg-primary w-3/4"></div>
+</div>
+<p class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-widest">Efficiency: 98.4%</p>
+<div class="h-1 bg-outline-variant w-full overflow-hidden">
+<div class="h-full bg-primary w-1/2"></div>
+</div>
+<p class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-widest">Connectivity: Optimal</p>
+</div>
+</div>
+</header>
+<!-- Higher Grounds Section (Bento-inspired Grid) -->
+<section class="py-section-padding relative overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-x relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<div class="lg:col-span-5 sticky top-32">
+<h2 class="font-headline-lg text-headline-lg mb-stack-md leading-tight">
+                        Let Your Data Take Your Business to <span class="text-primary-container italic">Higher Grounds</span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg">
+                        We aim to deliver intuitive high-tech platforms that enable industries to effortlessly shift from the physical world to the digital age. Recognizing the obstacles that come with this change, our cutting solutions are crafted to streamline the transition, boost efficiency, and promote growth.
+                    </p>
+<div class="flex items-center gap-4 text-primary">
+<span class="font-bold tracking-tighter text-4xl">G_</span>
+<span class="font-label-sm text-label-sm">TRANSFORMING ASSETS INTO INTELLIGENCE</span>
+</div>
+</div>
+<div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Feature Cards -->
+<div class="glass-panel p-8 space-y-4 hover:border-primary/50 transition-colors group">
+<div class="w-12 h-12 flex items-center justify-center bg-primary-container/10 rounded-sm">
+<span class="material-symbols-outlined text-primary" data-icon="lock" data-weight="fill">lock</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Data Privacy</h3>
+<p class="text-on-surface-variant opacity-70">
+                            At our company, we prioritize data privacy by implementing robust security measures. We use encryption, access controls, and regular audits to ensure your confidential information remains safe and secure at all times.
+                        </p>
+</div>
+<div class="glass-panel p-8 space-y-4 hover:border-primary/50 transition-colors mt-0 md:mt-12 group">
+<div class="w-12 h-12 flex items-center justify-center bg-primary-container/10 rounded-sm">
+<span class="material-symbols-outlined text-primary" data-icon="analytics" data-weight="fill">analytics</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Detailed Insights</h3>
+<p class="text-on-surface-variant opacity-70">
+                            Gain detailed insights into your industry to empower data-driven decisions and minimize errors, ensuring your business stays ahead of curve with real-time telemetry.
+                        </p>
+</div>
+<div class="glass-panel p-8 space-y-4 hover:border-primary/50 transition-colors group">
+<div class="w-12 h-12 flex items-center justify-center bg-primary-container/10 rounded-sm">
+<span class="material-symbols-outlined text-primary" data-icon="grid_view" data-weight="fill">grid_view</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Versatility in Application</h3>
+<p class="text-on-surface-variant opacity-70">
+                            Our platform's allows easy integration with other applications, streamlining processes and enhancing productivity for a more efficient workflow across diverse sectors.
+                        </p>
+</div>
+<div class="glass-panel p-8 space-y-4 hover:border-primary/50 transition-colors mt-0 md:mt-12 group">
+<div class="w-12 h-12 flex items-center justify-center bg-primary-container/10 rounded-sm">
+<span class="material-symbols-outlined text-primary" data-icon="support_agent" data-weight="fill">support_agent</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Full Customer Experience</h3>
+<p class="text-on-surface-variant opacity-70">
+                            Our after-sales support is quick and attentive, guaranteeing a smooth customer experience. Your satisfaction is our top priority, and we're here to assist you through every upgrade cycle.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Unprecedented Velocity Section (Immersive Abstract) -->
+<section class="relative h-[921px] flex items-center justify-center overflow-hidden bg-surface-container-lowest">
+
+<div class="absolute inset-0 bg-linear-to-t from-background via-transparent to-background opacity-80"></div>
+<div class="relative z-10 text-center max-w-4xl px-margin-x">
+<h2 class="font-display-lg text-display-lg mb-stack-lg drop-shadow-2xl">
+                Unprecedented <span class="text-primary-container">Velocity.</span><br/>
+                Impeccable Reliability.
+            </h2>
+<div class="flex flex-col items-center gap-6">
+<p class="font-body-lg text-body-lg text-on-surface max-w-xl opacity-90">
+                    We envision a future where digitalization drives efficiency and innovation. By leveraging advanced data analysis and cutting-edge solutions, we empower businesses to make informed decisions.
+                </p>
+<button class="bg-primary-container text-on-primary-fixed px-10 py-5 font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform">
+                    Discover Our Vision
+                </button>
+</div>
+</div>
+</section>
+<!-- Metrics Row -->
+<section class="py-24 bg-surface-container-low border-y border-outline-variant">
+<div class="max-w-container-max mx-auto px-margin-x">
+<h3 class="text-center font-label-sm text-label-sm text-primary uppercase tracking-[0.3em] mb-16">We Take Pride In Our Numbers</h3>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-gutter text-center">
+<div class="space-y-2">
+<div class="font-stats-lg text-stats-lg text-primary-container">15</div>
+<div class="font-label-sm text-[12px] text-on-surface-variant uppercase">Years of Experience</div>
+</div>
+<div class="space-y-2 border-l border-outline-variant/30">
+<div class="font-stats-lg text-stats-lg text-primary-container">10K</div>
+<div class="font-label-sm text-[12px] text-on-surface-variant uppercase">Business Partners</div>
+</div>
+<div class="space-y-2 border-l border-outline-variant/30">
+<div class="font-stats-lg text-stats-lg text-primary-container">25M</div>
+<div class="font-label-sm text-[12px] text-on-surface-variant uppercase">Products Installed</div>
+</div>
+<div class="space-y-2 border-l border-outline-variant/30">
+<div class="font-stats-lg text-stats-lg text-primary-container">22</div>
+<div class="font-label-sm text-[12px] text-on-surface-variant uppercase">Countries World Wide</div>
+</div>
+<div class="space-y-2 border-l border-outline-variant/30">
+<div class="font-stats-lg text-stats-lg text-primary-container">5</div>
+<div class="font-label-sm text-[12px] text-on-surface-variant uppercase">Industry Awards</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Accelerated CTA -->
+<section class="py-section-padding relative">
+<div class="max-w-container-max mx-auto px-margin-x">
+<div class="glass-panel p-12 lg:p-24 overflow-hidden relative group">
+<!-- Decorative element -->
+<div class="absolute -right-24 -bottom-24 w-96 h-96 bg-primary/20 blur-[100px] rounded-full group-hover:bg-primary/30 transition-colors"></div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-center relative z-10">
+<div>
+<h2 class="font-display-lg text-[48px] md:text-headline-lg leading-tight mb-stack-md">
+                            Are You Ready to <span class="text-primary">Accelerate</span> Your Business?
+                        </h2>
+<div class="w-20 h-1 bg-primary mb-stack-lg"></div>
+</div>
+<div class="space-y-stack-lg">
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                            In our pursuit of industry transformation, we envision a future where digitalization drives efficiency and innovation. By leveraging advanced data analysis, we empower businesses to make informed decisions and unlock new opportunities.
+                        </p>
+<button class="bg-primary-container text-on-primary-fixed px-12 py-5 font-bold text-lg hover:scale-105 transition-all">
+                            Get Started
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-x py-section-padding max-w-container-max mx-auto">
+<div class="space-y-stack-lg">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">G Mark</span>
+<p class="text-on-surface-variant font-body-md">
+                    +91-9657363967<br/>
+                    gmarksoftware@gmail.com<br/>
+                    Moshi, Pune, Maharashtra - 412105
+                </p>
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="public">public</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="share">share</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="contact_support">contact_support</span></a>
+</div>
+</div>
+<div class="space-y-stack-md">
+<h4 class="font-label-sm text-label-sm text-primary uppercase">Solutions</h4>
+<ul class="space-y-stack-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Digital Twins</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Edge Computing</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Predictive AI</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">IIoT Platforms</a></li>
+</ul>
+</div>
+<div class="space-y-stack-md">
+<h4 class="font-label-sm text-label-sm text-primary uppercase">Company</h4>
+<ul class="space-y-stack-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Support</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Vision</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Programs</a></li>
+</ul>
+</div>
+<div class="space-y-stack-md">
+<h4 class="font-label-sm text-label-sm text-primary uppercase">Newsletter</h4>
+<p class="text-on-surface-variant text-sm mb-4">Stay updated with our latest industry insights.</p>
+<div class="flex">
+<input class="bg-surface-container-low border border-outline-variant px-4 py-2 w-full focus:border-primary outline-none text-on-surface" placeholder="Email Address" type="email"/>
+<button class="bg-primary-container px-4 text-on-primary-fixed"><span class="material-symbols-outlined" data-icon="send">send</span></button>
+</div>
+<p class="text-[12px] text-on-surface-variant pt-8">
+                    © 2035 by G Mark Software Pvt. Ltd.
+                </p>
+</div>
+</div>
+</footer>
+<!-- Back to top floating button -->
+<button class="fixed bottom-margin-x right-margin-x bg-surface-container-high p-4 rounded-full border border-outline-variant hover:border-primary transition-colors z-40" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_upward">arrow_upward</span>
+</button>
+<script>
+        // Simple intersection observer for reveal animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-panel').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+    </script>
+</body></html>
