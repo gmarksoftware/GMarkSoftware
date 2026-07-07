@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { WavePath } from '@/components/ui/wave-path';
-import { API_URL } from '@/config';
+import { API_URL, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY } from '@/config';
 
 // Blog View
 function BlogView() {
@@ -89,6 +89,18 @@ function ContactView() {
 
     setIsSubmitting(true);
 
+    const handleSuccess = () => {
+      setSubmitted(true);
+      setFormState({ name: '', email: '', phone: '', message: '' });
+      setIsSubmitting(false);
+
+      // Auto reset success message after 4 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 4000);
+    };
+
+    // Try sending to local backend first
     fetch(`${API_URL}/contact`, {
       method: 'POST',
       headers: {
@@ -109,20 +121,47 @@ function ContactView() {
         return res.json();
       })
       .then((data) => {
-        console.log('SUCCESS!', data);
-        setSubmitted(true);
-        setFormState({ name: '', email: '', phone: '', message: '' });
-        setIsSubmitting(false);
-
-        // Auto reset success message after 4 seconds
-        setTimeout(() => {
-          setSubmitted(false);
-        }, 4000);
+        console.log('SUCCESS! Sent via backend API', data);
+        handleSuccess();
       })
       .catch((err) => {
-        console.error('FAILED...', err);
-        alert('Failed to send message: ' + (err.message || 'Unknown error'));
-        setIsSubmitting(false);
+        console.warn('Backend API submission failed, trying EmailJS client-side fallback...', err);
+
+        // Direct EmailJS REST API fallback
+        fetch('https://api.emailjs.com/api/v1.0/email/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            service_id: EMAILJS_SERVICE_ID,
+            template_id: EMAILJS_TEMPLATE_ID,
+            user_id: EMAILJS_PUBLIC_KEY,
+            template_params: {
+              name: formState.name,
+              from_name: formState.name,
+              email: formState.email,
+              from_email: formState.email,
+              phone: formState.phone || 'N/A',
+              subject: 'Contact Message',
+              message: formState.message
+            }
+          })
+        })
+          .then((res) => {
+            if (!res.ok) {
+              return res.text().then((text) => {
+                throw new Error(text || `EmailJS returned status ${res.status}`);
+              });
+            }
+            console.log('SUCCESS! Sent via client-side EmailJS fallback');
+            handleSuccess();
+          })
+          .catch((emailJsErr) => {
+            console.error('EmailJS fallback failed as well...', emailJsErr);
+            alert('Failed to send message: ' + (emailJsErr.message || 'Unknown error'));
+            setIsSubmitting(false);
+          });
       });
   };
 
