@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  /* Design Tokens Map */
+  --color-bg-primary: #05070D;
+  --color-bg-secondary: #0D111B;
+  --color-bg-tertiary: #141A26;
+  --color-accent-red: #FF5A5F;
+  --color-accent-red-hover: #FF6B70;
+  --color-accent-red-glow: rgba(255, 90, 95, 0.35);
+  --color-accent-blue: #38BDF8;
+  --color-accent-blue-hover: #0EA5E9;
+  --color-accent-blue-glow: rgba(56, 189, 248, 0.35);
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #AAB3C5;
+  --color-text-muted: #8F9BB3;
+  --color-border-color: rgba(255, 255, 255, 0.15);
+  --color-border-hover: rgba(255, 255, 255, 0.25);
+
+  /* Digital Kinetic Mappings */
+  --color-surface: #0D111B;
+  --color-surface-dim: #05070D;
+  --color-surface-bright: #141A26;
+  --color-surface-container-lowest: #05070D;
+  --color-surface-container-low: #0D111B;
+  --color-surface-container: #0D111B;
+  --color-surface-container-high: #141A26;
+  --color-surface-container-highest: #1a2233;
+  --color-on-surface: #FFFFFF;
+  --color-on-surface-variant: #AAB3C5;
+  --color-inverse-surface: #FFFFFF;
+  --color-inverse-on-surface: #05070D;
+  --color-outline: #8F9BB3;
+  --color-outline-variant: #2A354D;
+  --color-surface-tint: #FF6B70;
+  --color-primary: #FF5A5F;
+  --color-on-primary: #FFFFFF;
+  --color-primary-container: #FF5A5F;
+  --color-on-primary-container: #FFFFFF;
+  --color-inverse-primary: #FF5A5F;
+  --color-secondary: #b1c9e5;
+  --color-on-secondary: #1a3248;
+  --color-secondary-container: #344b62;
+  --color-on-secondary-container: #a3bbd6;
+  --color-tertiary: #c8c6c5;
+  --color-on-tertiary: #313030;
+  --color-tertiary-container: #929090;
+  --color-on-tertiary-container: #2a2a29;
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+  --color-primary-fixed: #ffdad7;
+  --color-primary-fixed-dim: #FF6B70;
+  --color-on-primary-fixed: #410005;
+  --color-on-primary-fixed-variant: #910819;
+  --color-secondary-fixed: #cfe5ff;
+  --color-secondary-fixed-dim: #b1c9e5;
+  --color-on-secondary-fixed: #021d32;
+  --color-on-secondary-fixed-variant: #324960;
+  --color-tertiary-fixed: #e5e2e1;
+  --color-tertiary-fixed-dim: #c8c6c5;
+  --color-on-tertiary-fixed: #1c1b1b;
+  --color-on-tertiary-fixed-variant: #474646;
+  --color-background: #05070D;
+  --color-on-background: #FFFFFF;
+  --color-surface-variant: #141A26;
+
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-title: 'Outfit', sans-serif;
+  --font-body-lg: 'Outfit', sans-serif;
+  --font-body-md: 'Outfit', sans-serif;
+  --font-headline-lg: 'Outfit', sans-serif;
+  --font-headline-md: 'Outfit', sans-serif;
+  --font-display-lg: 'Outfit', sans-serif;
+  --font-stats-lg: 'Outfit', sans-serif;
+  --font-label-sm: 'JetBrains Mono', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-typewriter: 'JetBrains Mono', monospace;
+
+  --font-size-xs: 0.82rem;
+  --font-size-sm: 0.94rem;
+  --font-size-base: 1.06rem;
+  --font-size-lg: 1.2rem;
+  --font-size-xl: 1.35rem;
+  --font-size-2xl: 1.62rem;
+  --font-size-3xl: 2.05rem;
+  --font-size-4xl: 2.45rem;
+  --font-size-5xl: 3.25rem;
+  --font-size-6xl: 4.10rem;
+  --font-size-7xl: 4.85rem;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 2s infinite;
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.6;
+      box-shadow: 0 0 10px rgba(255, 90, 95, 0.2);
+    }
+    50% {
+      opacity: 0.9;
+      box-shadow: 0 0 25px rgba(255, 90, 95, 0.4);
+    }
+  }
+}
+
+/* Custom Scrollbar */
+@media (hover: hover) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #05070D;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #141A26;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FF5A5F;
+  }
+}
+
+@media (hover: none) {
+  ::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  
+  html, body, div {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
+
+/* Custom Mesh Gradient Backdrop */
+.mesh-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(255, 90, 95, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 20% 80%, rgba(177, 201, 229, 0.05) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Custom Particles Canvas */
+.hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Global resets for smooth behaviors */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #05070D;
+  color: #FFFFFF;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Premium Styles from DESIGN.md */
+.glow-red {
+  box-shadow: 0 0 15px 0 rgba(255, 90, 95, 0.3);
+}
+
+.data-gradient {
+  background: radial-gradient(circle at center, rgba(255, 90, 95, 0.15) 0%, transparent 70%);
+}
+
+.glass-panel {
+  background: rgba(13, 17, 27, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Text glow */
+.text-shadow-red {
+  text-shadow: 0 0 12px rgba(255, 90, 95, 0.35);
+}
+
+.text-typewriter {
+  font-family: var(--font-mono);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* Custom animations */
+.animate-reverse-spin {
+  animation: reverse-spin 20s linear infinite;
+}
+
+@keyframes reverse-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+/* Logo Styles */
+.logo-container {
+  cursor: pointer;
+}
+
+.logo-container img {
+  display: block;
+}
+
+/* Global Boldness Reduction Override */
+.font-extrabold {
+  font-weight: 500 !important; /* Reduces extrabold (800) to medium (500) */
+}
+.font-bold {
+  font-weight: 400 !important; /* Reduces bold (700) to regular (400) */
+}
+.font-semibold {
+  font-weight: 400 !important; /* Reduces semibold (600) to regular (400) */
+}
+.font-medium {
+  font-weight: 400 !important; /* Maps medium (500) to regular (400) */
+}
+
+/* Base HTML Tag weights */
+h1, h2, h3, h4, h5, h6, strong, b {
+  font-weight: 500 !important; /* Sets headers to clean medium (500) */
+}
+
+/* Custom Hero Heading Override for Ultra-Clean Light Appearance */
+#hero-heading {
+  font-weight: 300 !important; /* Forces light font weight for the giant hero heading */
+}
+
+/* Premium Entrance Animations */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideUpFade {
+  animation: slideUpFade 1.0s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideInFromLeft {
+  animation: slideInFromLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideInFromRight {
+  animation: slideInFromRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+.delay-150 {
+  animation-delay: 150ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+/* Global CSS Scroll Snapping (Desktop Only) */
+@media (hover: hover) {
+  html.snap-container {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  footer.snap-footer {
+    scroll-snap-align: end;
+    scroll-snap-stop: always;
+  }
+}
+
+@media (hover: none) {
+  /* Disable scroll snapping on mobile/touch screens to allow smooth, native inertia scrolling */
+  html.snap-container {
+    scroll-snap-type: none;
+    scroll-behavior: smooth;
+  }
+
+  .snap-section {
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+  }
+
+  footer.snap-footer {
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+  }
+}
