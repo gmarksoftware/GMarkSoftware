@@ -159,7 +159,7 @@ export default function Navbar({ currentView, onViewChange, activeSection, onAct
       />
 
       {/* Mobile Drawer Sidebar */}
-      <aside className={`fixed top-0 right-0 w-[42%] max-w-[170px] h-screen bg-transparent border-l border-transparent py-32 px-3 z-40 md:hidden flex flex-col justify-between transition-transform duration-300 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+      <aside className={`fixed top-0 right-0 w-[42%] max-w-[170px] h-screen bg-transparent border-l border-transparent py-32 px-3 z-40 md:hidden flex flex-col justify-between transition-all duration-300 ${mobileMenuOpen ? 'translate-x-0 opacity-100 visible' : 'translate-x-full opacity-0 invisible'
         }`}>
         <ul className="flex flex-col gap-6 list-none">
           {navItems.map((item) => (
