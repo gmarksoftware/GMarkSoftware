@@ -240,7 +240,7 @@ export default function HeroCarousel({
 
                   <button
                     onClick={() => onCTA('gramunnati')}
-                    className="mt-6 bg-transparent text-accent-red border border-accent-red px-8 py-4 font-bold text-base rounded-xl shadow-lg shadow-accent-red/15 hover:bg-white/10 hover:border-white/50 hover:text-white hover:scale-[1.03] hover:shadow-xl hover:shadow-white/5 transition-all duration-300 cursor-pointer border-solid"
+                    className="mt-6 w-[200px] h-[56px] flex items-center justify-center bg-transparent text-accent-red border border-accent-red font-bold text-base rounded-xl shadow-lg shadow-accent-red/15 hover:bg-white/10 hover:border-white/50 hover:text-white hover:scale-[1.03] hover:shadow-xl hover:shadow-white/5 transition-all duration-300 cursor-pointer border-solid"
                   >
                     Learn More
                   </button>
@@ -269,7 +269,7 @@ export default function HeroCarousel({
 
                   <button
                     onClick={() => onCTA('iot')}
-                    className="mt-6 bg-transparent text-accent-red border border-accent-red px-8 py-4 font-bold text-base rounded-xl shadow-lg shadow-accent-red/15 hover:bg-white/10 hover:border-white/50 hover:text-white hover:scale-[1.03] hover:shadow-xl hover:shadow-white/5 transition-all duration-300 cursor-pointer border-solid"
+                    className="mt-6 w-[200px] h-[56px] flex items-center justify-center bg-transparent text-accent-red border border-accent-red font-bold text-base rounded-xl shadow-lg shadow-accent-red/15 hover:bg-white/10 hover:border-white/50 hover:text-white hover:scale-[1.03] hover:shadow-xl hover:shadow-white/5 transition-all duration-300 cursor-pointer border-solid"
                   >
                     Learn More
                   </button>
@@ -305,7 +305,7 @@ export default function HeroCarousel({
 
                   <button
                     onClick={() => onCTA('cmms')}
-                    className="mt-6 bg-transparent text-accent-red border border-accent-red px-8 py-4 font-bold text-base rounded-xl shadow-lg shadow-accent-red/15 hover:bg-white/10 hover:border-white/50 hover:text-white hover:scale-[1.03] hover:shadow-xl hover:shadow-white/5 transition-all duration-300 cursor-pointer border-solid"
+                    className="mt-6 w-[200px] h-[56px] flex items-center justify-center bg-transparent text-accent-red border border-accent-red font-bold text-base rounded-xl shadow-lg shadow-accent-red/15 hover:bg-white/10 hover:border-white/50 hover:text-white hover:scale-[1.03] hover:shadow-xl hover:shadow-white/5 transition-all duration-300 cursor-pointer border-solid"
                   >
                     Learn More
                   </button>

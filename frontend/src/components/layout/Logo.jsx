@@ -1,8 +1,6 @@
 import gmarkLogo from '@/assets/G Mark.png';
 
 export default function Logo({ className = '', compact = false }) {
-  const imgHeight = compact ? "48px" : "68px";
-
   return (
     <div 
       className={`logo-container ${className}`} 
@@ -15,13 +13,7 @@ export default function Logo({ className = '', compact = false }) {
       <img
         src={gmarkLogo}
         alt="G Mark Logo Mark"
-        style={{
-          height: imgHeight,
-          width: 'auto',
-          display: 'block',
-          objectFit: 'contain',
-          flexShrink: 0
-        }}
+        className="h-[44px] sm:h-[48px] md:h-[68px] w-auto block object-contain shrink-0"
       />
     </div>
   );

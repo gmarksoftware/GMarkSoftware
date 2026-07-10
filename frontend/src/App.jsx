@@ -44,18 +44,26 @@ function App() {
 
   // Dynamically manage desktop scroll snapping class on html element
   useEffect(() => {
-    if (currentView === 'home') {
-      document.documentElement.classList.add('snap-container');
-    } else {
-      document.documentElement.classList.remove('snap-container');
-    }
+    const handleResizeAndSetSnap = () => {
+      const isDesktop = window.innerWidth >= 1024;
+      if (currentView === 'home' && isDesktop) {
+        document.documentElement.classList.add('snap-container');
+      } else {
+        document.documentElement.classList.remove('snap-container');
+      }
+    };
+
+    handleResizeAndSetSnap();
+    window.addEventListener('resize', handleResizeAndSetSnap);
+
     return () => {
       document.documentElement.classList.remove('snap-container');
+      window.removeEventListener('resize', handleResizeAndSetSnap);
     };
   }, [currentView]);
 
   return (
-    <div className="flex flex-col min-h-screen w-full overflow-x-hidden bg-bg-primary text-text-primary selection:bg-accent-red/35 selection:text-text-primary">
+    <div className="flex flex-col min-h-screen bg-bg-primary text-text-primary selection:bg-accent-red/35 selection:text-text-primary">
 
       {/* Sticky Header Navigation */}
       {currentView !== 'gramunnati' && currentView !== 'cmms' && currentView !== 'iot' && (

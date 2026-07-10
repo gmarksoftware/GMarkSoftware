@@ -434,7 +434,7 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
       </section>
 
       {/* Combined CTA and Footer Section */}
-      <section className="min-h-screen flex flex-col justify-between bg-transparent snap-section">
+      <section className="lg:min-h-screen min-h-fit flex flex-col justify-between bg-transparent snap-section">
         {/* Accelerated CTA */}
         <motion.div
           className="flex-1 py-8 md:py-12 relative overflow-hidden flex items-center justify-center"

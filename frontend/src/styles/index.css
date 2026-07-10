@@ -141,9 +141,8 @@
     height: 0;
   }
   
-  html, body, div {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+  html {
+    scroll-behavior: auto !important;
   }
 }
 
@@ -177,19 +176,19 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
 }
 
 body {
   font-family: var(--font-sans);
   background-color: #05070D;
   color: #FFFFFF;
-  overflow-x: hidden;
   line-height: 1.6;
+}
+
+#root {
   width: 100%;
-  max-width: 100%;
+  overflow-x: clip;
+  position: relative;
 }
 
 /* Premium Styles from DESIGN.md */

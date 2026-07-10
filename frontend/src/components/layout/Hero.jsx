@@ -19,7 +19,8 @@ export default function Hero({ onCTA }) {
         <div className="max-w-4xl space-y-8 md:space-y-10">
           <h1 id="hero-heading" className="font-display-lg text-5xl sm:text-6xl md:text-7xl font-light leading-[1.15] text-text-primary tracking-tight animate-slideInFromLeft">
             The New Standard <br/>
-            <span className="text-text-primary">of Digital Industry</span>
+            of Digital <br/>
+            <span className="text-text-primary">Industry</span>
           </h1>
 
           <p className="font-sans text-lg md:text-[1.2rem] text-text-secondary max-w-xl leading-relaxed animate-slideInFromLeft delay-150">
@@ -29,7 +30,7 @@ export default function Hero({ onCTA }) {
           <div className="flex flex-wrap gap-4 pt-2 animate-slideInFromLeft delay-300">
             <button 
               onClick={onCTA}
-              className="bg-transparent text-accent-red border border-accent-red px-8 py-4 font-bold text-base rounded shadow-lg shadow-accent-red/15 hover:bg-white/10 hover:border-white/50 hover:text-white hover:scale-[1.03] hover:shadow-xl hover:shadow-white/5 transition-all duration-300 cursor-pointer"
+              className="w-[200px] h-[56px] flex items-center justify-center bg-transparent text-accent-red border border-accent-red font-bold text-base rounded-xl shadow-lg shadow-accent-red/15 hover:bg-white/10 hover:border-white/50 hover:text-white hover:scale-[1.03] hover:shadow-xl hover:shadow-white/5 transition-all duration-300 cursor-pointer"
             >
               Learn More
             </button>

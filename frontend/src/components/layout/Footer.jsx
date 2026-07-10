@@ -26,7 +26,7 @@ export default function Footer({ onViewChange, currentView, onSelectSolution }) 
   const hideContactCards = currentView === 'support' || currentView === 'contact';
 
   return (
-    <footer className="relative border-t border-border-color bg-transparent backdrop-blur-md py-12 lg:py-16 z-10 snap-footer">
+    <footer className="relative border-t border-border-color bg-transparent backdrop-blur-md pt-12 pb-0 lg:pt-16 lg:pb-0 z-10 snap-footer">
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
 
         {/* Footer Grid */}
@@ -36,15 +36,15 @@ export default function Footer({ onViewChange, currentView, onSelectSolution }) 
           <div className="md:col-span-5 space-y-6">
             <Logo />
             {!hideContactCards && (
-              <div className="space-y-3 max-w-[280px]">
-                <div className="p-4 rounded-xl border border-border-color/10 bg-bg-secondary/15 space-y-1">
+              <div className="space-y-4 max-w-[280px]">
+                <div className="space-y-1">
                   <p className="text-xs text-text-secondary leading-relaxed font-sans">
                     G Mark Software Pvt. Ltd.<br />
                     Moshi, Pune,<br />
                     Maharashtra, India - 412105
                   </p>
                 </div>
-                <div className="p-4 rounded-xl border border-border-color/10 bg-bg-secondary/15 space-y-2">
+                <div className="space-y-2">
                   <h4 className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-accent-red">Direct Contact</h4>
                   <p className="text-xs text-text-secondary leading-relaxed font-sans">
                     <strong>Phone:</strong> +91-9657363967<br />
@@ -168,10 +168,10 @@ export default function Footer({ onViewChange, currentView, onSelectSolution }) 
         </div>
 
         {/* Animated wave separator line */}
-        <WavePath className="mt-12 mb-6 text-accent-red/25 w-full" />
+        <WavePath className="mt-4 mb-2 text-accent-red/25 w-full" />
 
         {/* Copyright section */}
-        <p className="text-[11px] text-text-muted font-sans">
+        <p className="text-[11px] text-text-muted font-sans m-0 pb-2">
           © {new Date().getFullYear()} by G Mark Software Pvt. Ltd. All Rights Reserved.
         </p>
 
