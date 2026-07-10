@@ -55,7 +55,7 @@ function App() {
   }, [currentView]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-bg-primary text-text-primary selection:bg-accent-red/35 selection:text-text-primary">
+    <div className="flex flex-col min-h-screen bg-bg-primary text-text-primary selection:bg-accent-red/35 selection:text-text-primary overflow-x-hidden w-full max-w-full">
 
       {/* Sticky Header Navigation */}
       {currentView !== 'gramunnati' && currentView !== 'cmms' && currentView !== 'iot' && (
