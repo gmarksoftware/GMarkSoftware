@@ -173,13 +173,6 @@
 }
 
 /* Global resets for smooth behaviors */
-html,
-body,
-#root {
-  width: 100%;
-  overflow-x: hidden;
-}
-
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -190,6 +183,7 @@ body {
   font-family: var(--font-sans);
   background-color: #05070D;
   color: #FFFFFF;
+  overflow-x: hidden;
   line-height: 1.6;
 }
 
