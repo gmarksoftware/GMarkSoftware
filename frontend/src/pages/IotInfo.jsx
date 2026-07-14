@@ -1,45 +1,14 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Logo from '@/components/layout/Logo';
 import iot from '@/assets/IOT.webp';
 import iotM from '@/assets/IOT M.webp';
-
-// SVG IoT Logo for the Header
-const IoTLogo = () => (
-  <div className="bg-[#05070D] p-1.5 rounded-xl flex items-center justify-center shadow-lg w-[70px] h-[70px] border border-accent-blue/20 shrink-0 select-none">
-    <svg className="w-full h-full text-accent-blue" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="iotGradInfo" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#38BDF8" />
-          <stop offset="100%" stopColor="#0EA5E9" />
-        </linearGradient>
-      </defs>
-      
-      <g transform="translate(0, -10)">
-        {/* Outer rotating/dashed telemetries */}
-        <circle cx="100" cy="100" r="75" stroke="#38BDF8" strokeWidth="4" strokeDasharray="16 12" opacity="0.3" />
-        <circle cx="100" cy="100" r="55" stroke="#0EA5E9" strokeWidth="3" strokeDasharray="8 6" opacity="0.6" />
-        
-        {/* Central Node */}
-        <circle cx="100" cy="100" r="22" fill="url(#iotGradInfo)" />
-        
-        {/* Core Wifi Waves */}
-        <path d="M 85,90 C 90,85 110,85 115,90" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
-        <path d="M 77,82 C 87,72 113,72 123,82" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
-        <path d="M 69,74 C 84,59 116,59 131,74" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
-
-        {/* Connected outer nodes */}
-        <circle cx="50" cy="65" r="10" fill="#05070D" stroke="url(#iotGradInfo)" strokeWidth="3" />
-        <line x1="100" y1="100" x2="50" y2="65" stroke="url(#iotGradInfo)" strokeWidth="3" opacity="0.7" />
-        
-        <circle cx="150" cy="65" r="10" fill="#05070D" stroke="url(#iotGradInfo)" strokeWidth="3" />
-        <line x1="100" y1="100" x2="150" y2="65" stroke="url(#iotGradInfo)" strokeWidth="3" opacity="0.7" />
-
-        <circle cx="100" cy="155" r="10" fill="#05070D" stroke="url(#iotGradInfo)" strokeWidth="3" />
-        <line x1="100" y1="100" x2="100" y2="155" stroke="url(#iotGradInfo)" strokeWidth="3" opacity="0.7" />
-      </g>
-    </svg>
-  </div>
-);
+import iotMonitoring from '@/assets/iot_monitoring.png';
+import iotDevice from '@/assets/iot_device.png';
+import iotPredictive from '@/assets/iot_predictive.png';
+import iotAnalytics from '@/assets/iot_analytics.png';
+import iotAlerts from '@/assets/iot_alerts.png';
+import iotSecure from '@/assets/iot_secure.png';
 
 export default function IotInfo({ onViewChange }) {
 
@@ -63,32 +32,32 @@ export default function IotInfo({ onViewChange }) {
     {
       title: "Real-Time Monitoring",
       description: "Track machine performance, production status, energy consumption, and equipment health from anywhere.",
-      icon: "sensors"
+      image: iotMonitoring
     },
     {
       title: "Remote Device Management",
       description: "Monitor and control connected assets remotely, reducing downtime and operational costs.",
-      icon: "settings_remote"
+      image: iotDevice
     },
     {
       title: "Predictive Maintenance",
       description: "Detect potential failures before they occur using sensor data and intelligent analytics.",
-      icon: "troubleshoot"
+      image: iotPredictive
     },
     {
       title: "Data Analytics & Insights",
       description: "Transform operational data into actionable insights through dashboards, reports, and performance metrics.",
-      icon: "query_stats"
+      image: iotAnalytics
     },
     {
       title: "Smart Alerts & Notifications",
       description: "Receive instant alerts for equipment faults, abnormal conditions, and critical events.",
-      icon: "notifications_active"
+      image: iotAlerts
     },
     {
       title: "Secure Connectivity",
       description: "Ensure reliable and secure communication between devices, machines, and cloud platforms.",
-      icon: "security"
+      image: iotSecure
     }
   ];
 
@@ -125,31 +94,60 @@ export default function IotInfo({ onViewChange }) {
             className="w-full h-full overflow-hidden shadow-2xl border-b border-white/10 bg-[#05070D] group relative"
           >
             {/* Header Overlay (Positioned absolutely on top of the image) */}
-            <div className="absolute top-0 left-0 right-0 z-30 bg-linear-to-b from-black/80 via-black/30 to-transparent pt-6 sm:pt-10 pb-20 px-6 md:px-8">
-              <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                <div className="flex items-start sm:items-center gap-5 pr-24 sm:pr-0 sm:-ml-8">
-                  <IoTLogo />
-                  <div>
-                    <h1 className="text-xl sm:text-3xl font-extrabold font-title tracking-tight leading-tight sm:leading-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">Smart Industrial IoT Platform</h1>
-                    <p className="text-xs sm:text-xs text-white/90 mt-1.5 uppercase font-mono tracking-wider sm:tracking-widest font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">Connect. Monitor. Optimize.</p>
+            <div className="absolute top-0 left-0 right-0 z-30 bg-linear-to-b from-black/80 via-black/30 to-transparent pt-6 sm:pt-8 pb-20 px-6 md:px-12">
+              <div className="relative flex items-center justify-between w-full">
+                <a
+                  href="#home"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onViewChange('home');
+                  }}
+                  className="no-underline shrink-0 focus:outline-none"
+                >
+                  <Logo />
+                </a>
+
+                {/* Middle: IoT Showcase Badge */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden sm:flex items-center gap-3 bg-white/5 border border-white/10 backdrop-blur-md px-4 py-1.5 rounded-2xl select-none pointer-events-none shadow-lg">
+                  <div className="bg-[#05070D] p-1 rounded-lg flex items-center justify-center shadow-md w-8 h-8 border border-accent-blue/20 shrink-0">
+                    <svg className="w-full h-full text-accent-blue" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="iotGradInfoSmall" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#38BDF8" />
+                          <stop offset="100%" stopColor="#0EA5E9" />
+                        </linearGradient>
+                      </defs>
+                      <g transform="translate(0, -10)">
+                        <circle cx="100" cy="100" r="75" stroke="#38BDF8" strokeWidth="4" strokeDasharray="16 12" opacity="0.3" />
+                        <circle cx="100" cy="100" r="55" stroke="#0EA5E9" strokeWidth="3" strokeDasharray="8 6" opacity="0.6" />
+                        <circle cx="100" cy="100" r="22" fill="url(#iotGradInfoSmall)" />
+                        <path d="M 85,90 C 90,85 110,85 115,90" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
+                        <path d="M 77,82 C 87,72 113,72 123,82" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
+                        <path d="M 69,74 C 84,59 116,59 131,74" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
+                      </g>
+                    </svg>
+                  </div>
+                  <div className="flex flex-col text-left">
+                    <span className="text-white font-bold text-xs sm:text-sm tracking-wide leading-tight">Smart Industrial IoT Platform</span>
+                    <span className="text-[8px] sm:text-[9px] text-white/60 uppercase tracking-widest font-mono font-semibold">Connect. Monitor. Optimize.</span>
                   </div>
                 </div>
+
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent opening the lightbox when clicking the back button
+                    onViewChange('home');
+                    setTimeout(() => {
+                      const el = document.getElementById('systems-spotlight');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
+                  className="flex items-center justify-center gap-1 sm:gap-1.5 border border-white/20 hover:border-white/40 bg-black/40 hover:bg-black/60 backdrop-blur-sm px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-lg sm:rounded-xl text-[11px] sm:text-sm font-semibold transition-all duration-300 w-fit cursor-pointer text-white drop-shadow-md z-40"
+                >
+                  <span className="material-symbols-outlined text-xs sm:text-base">arrow_back</span>
+                  <span>Back to Home</span>
+                </button>
               </div>
-              
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent opening the lightbox when clicking the back button
-                  onViewChange('home');
-                  setTimeout(() => {
-                    const el = document.getElementById('systems-spotlight');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }, 100);
-                }}
-                className="absolute top-6 right-6 sm:top-10 sm:right-8 lg:right-12 flex items-center justify-center gap-1 sm:gap-1.5 border border-white/20 hover:border-white/40 bg-black/40 hover:bg-black/60 backdrop-blur-sm px-2 py-0.5 sm:px-5 sm:py-2.5 rounded-md sm:rounded-xl text-[9px] sm:text-sm font-semibold transition-all duration-300 w-fit cursor-pointer text-white drop-shadow-md z-40"
-              >
-                <span className="material-symbols-outlined text-xs sm:text-base">arrow_back</span>
-                <span className="hidden sm:inline">Back to Home</span>
-              </button>
             </div>
 
             {/* Mobile Showcase Image (Only visible on screens smaller than md) */}
@@ -273,12 +271,12 @@ export default function IotInfo({ onViewChange }) {
             <motion.div 
               key={idx}
               variants={itemVariants} 
-              className="glass-panel p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-300 relative group flex flex-col justify-between"
+              className="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-300 relative group flex flex-col justify-between"
             >
               <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/20 group-hover:bg-accent-red transition-all duration-300" />
               <div>
-                <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6">
-                  <span className="material-symbols-outlined text-2xl">{feature.icon}</span>
+                <div className="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 group-hover:border-accent-red/30 transition-all duration-300">
+                  <img src={feature.image} alt={feature.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <h3 className="text-lg font-bold font-title text-white mb-3">{feature.title}</h3>
                 <p className="text-sm text-text-secondary leading-relaxed font-sans">

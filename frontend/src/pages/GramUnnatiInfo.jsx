@@ -1,14 +1,12 @@
-import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Logo from '@/components/layout/Logo';
 import gramUnnatiLogoImg from '@/assets/gramunnati.png';
-import gramunnati from '@/assets/Gramunnati1.png';
-import gramunnatiM from '@/assets/gramunnati_m.webp';
+import visionImg from '@/assets/gramunnati_vision.png';
+import missionImg from '@/assets/gramunnati_mission.png';
+import aboutImg from '@/assets/gramunnati_about.png';
 
 
 export default function GramUnnatiInfo({ onViewChange }) {
-  const [mobileLoaded, setMobileLoaded] = useState(false);
-  const [desktopLoaded, setDesktopLoaded] = useState(false);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -39,156 +37,218 @@ export default function GramUnnatiInfo({ onViewChange }) {
             className="w-full h-full overflow-hidden shadow-2xl border-b border-white/10 bg-[#05070D] group relative"
           >
             {/* Header Overlay (Positioned absolutely on top of the image) */}
-            <div className="absolute top-0 left-0 right-0 z-30 bg-linear-to-b from-black/80 via-black/30 to-transparent pt-6 sm:pt-10 pb-20 px-6 md:px-8">
-              <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                <div className="flex items-start sm:items-center gap-5 pr-24 sm:pr-0 sm:-ml-8">
-                  <div className="bg-white p-2.5 rounded-2xl flex items-center justify-center shadow-lg w-[70px] h-[70px] shrink-0">
-                    <img src={gramUnnatiLogoImg} alt="GramUnnati Logo" className="w-full h-full object-contain rounded-xl" />
+            <div className="absolute top-0 left-0 right-0 z-30 bg-linear-to-b from-black/80 via-black/30 to-transparent pt-6 sm:pt-8 pb-20 px-6 md:px-12">
+              <div className="relative flex items-center justify-between w-full">
+                <a
+                  href="#home"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onViewChange('home');
+                  }}
+                  className="no-underline shrink-0 focus:outline-none"
+                >
+                  <Logo />
+                </a>
+
+                {/* Middle: GramUnnati Showcase Badge */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden sm:flex items-center gap-3 bg-white/5 border border-white/10 backdrop-blur-md px-4 py-1.5 rounded-2xl select-none pointer-events-none shadow-lg">
+                  <div className="bg-white p-1 rounded-lg flex items-center justify-center shadow-md w-8 h-8 shrink-0">
+                    <img src={gramUnnatiLogoImg} alt="GramUnnati Logo" className="w-full h-full object-contain rounded-md" />
                   </div>
-                  <div>
-                    <h1 className="text-xl sm:text-3xl font-extrabold font-title tracking-tight leading-tight sm:leading-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">GramUnnati</h1>
-                    <p className="text-xs sm:text-xs text-white/90 mt-1.5 uppercase font-mono tracking-wider sm:tracking-widest font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">Empowering Rural India. Enriching Lives.</p>
+                  <div className="flex flex-col text-left">
+                    <span className="text-white font-bold text-xs sm:text-sm tracking-wide leading-tight">GramUnnati</span>
+                    <span className="text-[8px] sm:text-[9px] text-white/60 uppercase tracking-widest font-mono font-semibold">Empowering Rural India. Enriching Lives.</span>
                   </div>
                 </div>
+
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent opening the lightbox when clicking the back button
+                    onViewChange('home');
+                    setTimeout(() => {
+                      const el = document.getElementById('systems-spotlight');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
+                  className="flex items-center justify-center gap-1 sm:gap-1.5 border border-white/20 hover:border-white/40 bg-black/40 hover:bg-black/60 backdrop-blur-sm px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-lg sm:rounded-xl text-[11px] sm:text-sm font-semibold transition-all duration-300 w-fit cursor-pointer text-white drop-shadow-md z-40"
+                >
+                  <span className="material-symbols-outlined text-xs sm:text-base">arrow_back</span>
+                  <span>Back to Home</span>
+                </button>
               </div>
-              
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent opening the lightbox when clicking the back button
-                  onViewChange('home');
-                  setTimeout(() => {
-                    const el = document.getElementById('systems-spotlight');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }, 100);
-                }}
-                className="absolute top-6 right-6 sm:top-10 sm:right-8 lg:right-12 flex items-center justify-center gap-1 sm:gap-1.5 border border-white/20 hover:border-white/40 bg-black/40 hover:bg-black/60 backdrop-blur-sm px-2 py-0.5 sm:px-5 sm:py-2.5 rounded-md sm:rounded-xl text-[9px] sm:text-sm font-semibold transition-all duration-300 w-fit cursor-pointer text-white drop-shadow-md z-40"
+            </div>
+
+
+            {/* Center Content Overlay */}
+            <div className="absolute inset-0 z-25 flex flex-col items-center justify-center text-center px-6">
+              <motion.div 
+                className="max-w-3xl mx-auto flex flex-col items-center justify-center"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <span className="material-symbols-outlined text-xs sm:text-base">arrow_back</span>
-                <span className="hidden sm:inline">Back to Home</span>
-              </button>
+                <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-sm border text-accent-red bg-accent-red/10 border-accent-red/20 mb-6">
+                  LIVE PRECISION DATA
+                </span>
+                
+                <h1 className="font-display-lg text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] text-white tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+                  Smart Agricultural <br/>
+                  <span className="text-accent-red text-shadow-[0_0_12px_rgba(255,90,95,0.35)]">Management System</span>
+                </h1>
+
+                <h2 className="text-xl sm:text-3xl font-extrabold tracking-tight leading-tight mt-6 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                  Gramin Udyog Se Global Bazaar Tak
+                </h2>
+
+                <p className="text-xs sm:text-sm md:text-base text-white/90 leading-relaxed mt-4 max-w-2xl mx-auto font-medium drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
+                  A Digital Marketplace to Empower Rural Women, Farmers, and Rural Entrepreneurs. GramUnnati empowers farmers and businesses to track, manage, and optimize agricultural operations.
+                </p>
+
+                <button
+                  onClick={() => {
+                    const el = document.getElementById('details-content');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="mt-8 flex items-center gap-2 border border-white/20 hover:border-white/50 bg-black/40 hover:bg-black/60 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer text-white shadow-lg backdrop-blur-xs hover:scale-[1.03]"
+                >
+                  <span>Explore Details</span>
+                  <span className="material-symbols-outlined text-sm sm:text-base animate-bounce">arrow_downward</span>
+                </button>
+              </motion.div>
             </div>
-
-
-            {/* Smooth Skeleton / Loading Spinner */}
-            <div className={`absolute inset-0 z-10 bg-[#05070D] flex items-center justify-center transition-opacity duration-700 pointer-events-none ${
-              (mobileLoaded || desktopLoaded) ? 'opacity-0' : 'opacity-100'
-            }`}>
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-14 h-14 rounded-full border-4 border-emerald-500/20 border-t-emerald-500 animate-spin" />
-                <p className="text-emerald-500/80 font-mono text-xs tracking-widest uppercase">Initializing Digital Farm Grid...</p>
-              </div>
-            </div>
-
-            {/* Mobile Showcase Image (Only visible on screens smaller than md) */}
-            <img 
-              src={gramunnatiM} 
-              alt="GramUnnati Platform Showcase Mobile" 
-              decoding="async"
-              onLoad={() => setMobileLoaded(true)}
-              className={`block md:hidden w-full h-full object-cover object-center mx-auto transition-all duration-700 group-hover:scale-[1.005] ${
-                mobileLoaded ? 'opacity-100' : 'opacity-0 scale-[1.02]'
-              }`} 
-            />
-
-            {/* Desktop Showcase Image (Visible on md and larger screens) */}
-            <img 
-              src={gramunnati} 
-              alt="GramUnnati Platform Showcase Desktop" 
-              decoding="async"
-              onLoad={() => setDesktopLoaded(true)}
-              className={`hidden md:block w-full h-full object-cover object-center mx-auto transition-all duration-[1.2s] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.015] ${
-                desktopLoaded ? 'opacity-100' : 'opacity-0 scale-[1.02]'
-              }`} 
-            />
 
             {/* Custom Telemetry and HUD Animations */}
             <style dangerouslySetInnerHTML={{__html: `
               @keyframes scanline {
                 0% { top: -10%; opacity: 0; }
-                5% { opacity: 0.4; }
-                95% { opacity: 0.4; }
+                5% { opacity: 0.3; }
+                95% { opacity: 0.3; }
                 100% { top: 110%; opacity: 0; }
               }
-              @keyframes floatUp {
-                0% { transform: translateY(40px); opacity: 0; }
-                15% { opacity: 0.8; }
-                85% { opacity: 0.8; }
-                100% { transform: translateY(-80px); opacity: 0; }
-              }
-              @keyframes pulseSlow {
-                0%, 100% { transform: scale(1); opacity: 0.3; }
-                50% { transform: scale(1.15); opacity: 0.7; }
-              }
-              @keyframes spinClockwise {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
-              }
-              @keyframes spinCounterClockwise {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(-360deg); }
+              @keyframes floatGently {
+                0%, 100% { transform: translateY(0px) rotate(0deg); }
+                50% { transform: translateY(-12px) rotate(1.5deg); }
               }
               .animate-scanline {
-                animation: scanline 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+                animation: scanline 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
               }
-              .animate-float-1 { animation: floatUp 8s ease-in-out infinite; }
-              .animate-float-2 { animation: floatUp 10s ease-in-out infinite 2s; }
-              .animate-float-3 { animation: floatUp 9s ease-in-out infinite 4.5s; }
-              .animate-float-4 { animation: floatUp 11s ease-in-out infinite 1s; }
-              .animate-float-5 { animation: floatUp 9.5s ease-in-out infinite 3.5s; }
-              
-              .animate-spin-slow {
-                animation: spinClockwise 45s linear infinite;
+              .animate-float-gently-1 { animation: floatGently 6s ease-in-out infinite; }
+              .animate-float-gently-2 { animation: floatGently 8s ease-in-out infinite 1.5s; }
+              .animate-float-gently-3 { animation: floatGently 7s ease-in-out infinite 3s; }
+              .animate-float-gently-4 { animation: floatGently 9s ease-in-out infinite 0.5s; }
+              .animate-float-gently-5 { animation: floatGently 7.5s ease-in-out infinite 2s; }
+              .animate-float-gently-6 { animation: floatGently 8.5s ease-in-out infinite 4s; }
+
+              .float-card {
+                will-change: transform;
+                backdrop-filter: none !important;
+                background-color: rgba(5, 7, 13, 0.9) !important;
+                box-shadow: none !important;
               }
-              .animate-spin-reverse {
-                animation: spinCounterClockwise 30s linear infinite;
+              @media (min-width: 768px) {
+                .float-card {
+                  backdrop-filter: blur(4px) !important;
+                  background-color: rgba(5, 7, 13, 0.65) !important;
+                  box-shadow: 0 0 20px rgba(16, 185, 129, 0.15) !important;
+                }
               }
             `}} />
 
-            {/* Ambient Agricultural Grid & Telemetry Overlay */}
-            <div className={`absolute inset-0 z-20 pointer-events-none overflow-hidden transition-opacity duration-1000 ${
-              (mobileLoaded || desktopLoaded) ? 'opacity-100' : 'opacity-0'
-            }`}>
+            {/* Ambient High-Tech Telemetry Overlay (GramUnnati Theme) */}
+            <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
               {/* Scanline Sweep */}
               <div className="absolute left-0 right-0 h-[2px] bg-linear-to-r from-transparent via-emerald-500/20 to-transparent shadow-[0_0_10px_rgba(16,185,129,0.3)] animate-scanline" />
 
-              {/* Glowing Concentric Farm Drone Radar (Weather/Soil mapping scanner overlaying the rural landscape) */}
-              <div className="hidden md:flex absolute left-[8%] md:left-[16%] top-[30%] md:top-[38%] -translate-y-1/2 items-center justify-center w-48 h-48 md:w-72 md:h-72">
-                <div className="absolute w-full h-full border border-emerald-500/10 rounded-full animate-spin-slow" style={{ borderStyle: 'dashed' }} />
-                <div className="absolute w-[80%] h-[80%] border border-emerald-500/15 rounded-full animate-spin-reverse" style={{ borderStyle: 'dotted' }} />
-                <div className="absolute w-[60%] h-[60%] border border-emerald-500/20 rounded-full animate-ping [animation-duration:6s]" />
-                <div className="absolute w-[30%] h-[30%] bg-emerald-500/5 rounded-full border border-emerald-500/30 animate-pulse" />
+              {/* Floating Glowing Greenish Icon Cards in Left and Right Blank Spaces */}
+              
+              {/* Card 1: Robotic Arm (Machine) - Left */}
+              <div className="float-card absolute left-[34%] md:left-[8%] top-[47%] md:top-[41%] flex flex-col items-center justify-center p-2.5 md:p-4 rounded-2xl border border-emerald-500/20 animate-float-gently-1 w-20 h-20 md:w-32 md:h-32">
+                <svg viewBox="0 0 100 100" className="w-10 h-10 md:w-16 md:h-16 text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.7)]" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M 20,80 L 80,80 M 35,80 L 35,70 L 65,70 L 65,80" />
+                  <path d="M 50,70 L 40,45" />
+                  <circle cx="50" cy="70" r="3.5" fill="currentColor" />
+                  <circle cx="40" cy="45" r="3.5" fill="currentColor" />
+                  <path d="M 40,45 L 65,30" />
+                  <circle cx="65" cy="30" r="3" fill="currentColor" />
+                  <path d="M 65,30 L 75,30" />
+                  <path d="M 75,22 C 78,25 78,35 75,38" />
+                </svg>
+                <span className="text-[8px] md:text-[10px] text-emerald-400/80 font-mono tracking-widest uppercase mt-1.5 md:mt-2">Machine</span>
               </div>
 
-              {/* Glowing Concentric Cargo Logistics Radar (on the right road) */}
-              <div className="hidden md:flex absolute right-[5%] md:right-[15%] top-[55%] md:top-[60%] -translate-y-1/2 items-center justify-center w-40 h-40 md:w-64 md:h-64">
-                <div className="absolute w-full h-full border border-amber-500/10 rounded-full animate-spin-slow" style={{ borderStyle: 'dashed' }} />
-                <div className="absolute w-[80%] h-[80%] border border-amber-500/15 rounded-full animate-spin-reverse" style={{ borderStyle: 'dotted' }} />
-                <div className="absolute w-[50%] h-[50%] border border-amber-500/20 rounded-full animate-ping [animation-duration:4s]" />
+              {/* Card 7: Connected Worker (Man) - Right */}
+              <div className="float-card absolute right-[6%] md:right-[12%] top-[27%] md:top-[19%] flex flex-col items-center justify-center p-2.5 md:p-4 rounded-2xl border border-emerald-500/20 animate-float-gently-3 w-20 h-20 md:w-32 md:h-32">
+                <svg viewBox="0 0 100 100" className="w-10 h-10 md:w-16 md:h-16 text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.7)]" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="50" cy="35" r="12" />
+                  <path d="M 25,75 C 25,58 35,52 50,52 C 65,52 75,58 75,75" />
+                  <circle cx="28" cy="68" r="2.5" fill="currentColor" />
+                  <circle cx="72" cy="68" r="2.5" fill="currentColor" />
+                  <line x1="50" y1="35" x2="28" y2="68" opacity="0.4" />
+                  <line x1="50" y1="35" x2="72" y2="68" opacity="0.4" />
+                </svg>
+                <span className="text-[8px] md:text-[10px] text-emerald-400/80 font-mono tracking-widest uppercase mt-1.5 md:mt-2">Man</span>
               </div>
 
+              {/* Card 2: AI Chip (Method) - Right */}
+              <div className="float-card absolute right-[10%] md:right-[8%] top-[49%] md:top-[44%] flex flex-col items-center justify-center p-2.5 md:p-4 rounded-2xl border border-emerald-500/20 animate-float-gently-2 w-20 h-20 md:w-32 md:h-32">
+                <svg viewBox="0 0 100 100" className="w-10 h-10 md:w-16 md:h-16 text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.7)]" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="30" y="30" width="40" height="40" rx="4" />
+                  <path d="M 20,40 L 30,40 M 20,50 L 30,50 M 20,60 L 30,60" />
+                  <path d="M 70,40 L 80,40 M 70,50 L 80,50 M 70,60 L 80,60" />
+                  <path d="M 40,20 L 40,30 M 50,20 L 50,30 M 60,20 L 60,30" />
+                  <path d="M 40,70 L 40,80 M 50,70 L 50,80 M 60,70 L 60,80" />
+                  <text x="50" y="57" textAnchor="middle" fill="currentColor" stroke="none" fontFamily="sans-serif" fontSize="16" fontWeight="bold">AI</text>
+                </svg>
+                <span className="text-[8px] md:text-[10px] text-emerald-400/80 font-mono tracking-widest uppercase mt-1.5 md:mt-2">Method</span>
+              </div>
 
+              {/* Card 3: 4.0 Gear (CMMS 4.0) - Left */}
+              <div className="float-card absolute left-[8%] md:left-[6%] top-[75%] md:top-[68%] flex flex-col items-center justify-center p-2.5 md:p-4 rounded-2xl border border-emerald-500/20 animate-float-gently-3 w-20 h-20 md:w-32 md:h-32">
+                <svg viewBox="0 0 100 100" className="w-10 h-10 md:w-16 md:h-16 text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.7)]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="50" cy="50" r="28" />
+                  <path d="M 50,15 L 50,22 M 50,78 L 50,85 M 15,50 L 22,50 M 78,50 L 85,50" />
+                  <path d="M 25,25 L 30,30 M 70,70 L 75,75 M 25,75 L 30,70 M 70,25 L 75,30" />
+                  <path d="M 38,18 L 41,24 M 62,18 L 59,24 M 38,82 L 41,76 M 62,82 L 59,76" />
+                  <path d="M 18,38 L 24,41 M 18,62 L 24,59 M 82,38 L 76,41 M 82,62 L 76,59" />
+                  <circle cx="50" cy="50" r="16" fill="black" opacity="0.3" />
+                  <text x="50" y="56" textAnchor="middle" fill="currentColor" stroke="none" fontFamily="sans-serif" fontSize="12" fontWeight="extrabold">4.0</text>
+                </svg>
+                <span className="text-[8px] md:text-[10px] text-emerald-400/80 font-mono tracking-widest uppercase mt-1.5 md:mt-2">CMMS 4.0</span>
+              </div>
 
-              {/* Pulsing Hotspot Nodes over critical farm/vehicle coordinates */}
-              {/* Tractor Node */}
-              <div className="absolute left-[9%] md:left-[11%] top-[62%] md:top-[65%] w-1.5 md:w-3.5 h-1.5 md:h-3.5 bg-emerald-400 rounded-full shadow-[0_0_12px_rgba(52,211,153,0.9)]">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+              {/* Card 4: Cloud Data Sync (Material) - Right */}
+              <div className="float-card absolute right-[8%] md:right-[6%] top-[72%] md:top-[66%] flex flex-col items-center justify-center p-2.5 md:p-4 rounded-2xl border border-emerald-500/20 animate-float-gently-4 w-20 h-20 md:w-32 md:h-32">
+                <svg viewBox="0 0 100 100" className="w-10 h-10 md:w-16 md:h-16 text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.7)]" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M 25,65 A 15,15 0 0 1 35,38 A 20,20 0 0 1 70,42 A 15,15 0 0 1 75,65 Z" />
+                  <path d="M 45,48 L 45,68 M 45,48 L 41,53 M 45,48 L 49,53" />
+                  <path d="M 55,68 L 55,48 M 55,68 L 51,63 M 55,68 L 59,63" />
+                </svg>
+                <span className="text-[8px] md:text-[10px] text-emerald-400/80 font-mono tracking-widest uppercase mt-1.5 md:mt-2">Material</span>
               </div>
-              {/* Rural House Node */}
-              <div className="absolute left-[26%] md:left-[30.5%] top-[56%] md:top-[59%] w-1 md:w-2.5 h-1 md:h-2.5 bg-amber-400 rounded-full shadow-[0_0_8px_rgba(251,191,36,0.8)]">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75 animate-ping [animation-duration:2.5s]" />
+
+              {/* Card 5: Shield with Lock (Security) - Left */}
+              <div className="float-card absolute left-[30%] md:left-[16%] top-[32%] md:top-[24%] flex flex-col items-center justify-center p-2 md:p-3 rounded-xl border border-emerald-500/10 animate-float-gently-5 w-[76px] h-[76px] md:w-28 md:h-28">
+                <svg viewBox="0 0 100 100" className="w-9 h-9 md:w-14 md:h-14 text-emerald-400 drop-shadow-[0_0_6px_rgba(52,211,153,0.6)]" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M 50,15 C 65,15 78,22 78,35 C 78,60 62,75 50,85 Z" />
+                  <rect x="40" y="46" width="20" height="14" rx="2" fill="currentColor" opacity="0.3" />
+                  <path d="M 45,46 L 45,40 C 45,35 55,35 55,40 L 55,46" />
+                </svg>
+                <span className="text-[7px] md:text-[9px] text-emerald-400/60 font-mono tracking-widest uppercase mt-1 md:mt-1.5">Security</span>
               </div>
-              {/* Grains Basket Node */}
-              <div className="absolute left-[44%] md:left-[45.5%] top-[76%] md:top-[80%] w-1 md:w-2.5 h-1 md:h-2.5 bg-emerald-400 rounded-full shadow-[0_0_8px_rgba(52,211,153,0.8)]">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping [animation-duration:3s]" />
+
+              {/* Card 6: Analytics Chart - Left */}
+              <div className="float-card absolute left-[4%] md:left-[16%] top-[56%] md:top-[56%] flex flex-col items-center justify-center p-2 md:p-3 rounded-xl border border-emerald-500/10 animate-float-gently-6 w-[76px] h-[76px] md:w-28 md:h-28">
+                <svg viewBox="0 0 100 100" className="w-9 h-9 md:w-14 md:h-14 text-emerald-400 drop-shadow-[0_0_6px_rgba(52,211,153,0.6)]" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="25" y="55" width="8" height="25" rx="1" fill="currentColor" opacity="0.3" />
+                  <rect x="40" y="45" width="8" height="35" rx="1" fill="currentColor" opacity="0.3" />
+                  <rect x="55" y="35" width="8" height="45" rx="1" fill="currentColor" opacity="0.3" />
+                  <rect x="70" y="25" width="8" height="55" rx="1" fill="currentColor" opacity="0.3" />
+                  <path d="M 20,65 L 35,55 L 50,42 L 65,48 L 80,28" strokeWidth="3" />
+                  <circle cx="80" cy="28" r="4" fill="currentColor" />
+                </svg>
+                <span className="text-[7px] md:text-[9px] text-emerald-400/60 font-mono tracking-widest uppercase mt-1 md:mt-1.5">Analytics</span>
               </div>
-              {/* Milk Can Node */}
-              <div className="absolute left-[59%] md:left-[62.8%] top-[73%] md:top-[77%] w-1 md:w-2.5 h-1 md:h-2.5 bg-cyan-400 rounded-full shadow-[0_0_8px_rgba(34,211,238,0.8)]">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75 animate-ping [animation-duration:2.8s]" />
-              </div>
-              {/* Logistics Truck Node */}
-              <div className="absolute right-[14%] md:right-[18.2%] top-[65%] md:top-[68%] w-1.5 md:w-3.5 h-1.5 md:h-3.5 bg-amber-400 rounded-full shadow-[0_0_12px_rgba(251,191,36,0.9)]">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75 animate-ping" />
-              </div>
+
             </div>
 
           </motion.div>
@@ -239,11 +299,11 @@ export default function GramUnnatiInfo({ onViewChange }) {
             animate="visible"
           >
           {/* Panel 1: Our Vision */}
-          <motion.div variants={itemVariants} className="glass-panel p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-300 relative group flex flex-col justify-between">
+          <motion.div variants={itemVariants} className="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-300 relative group flex flex-col justify-between">
             <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/20 group-hover:bg-accent-red transition-all duration-300" />
             <div>
-              <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6">
-                <span className="material-symbols-outlined text-2xl">visibility</span>
+              <div className="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 group-hover:border-accent-red/30 transition-all duration-300">
+                <img src={visionImg} alt="Our Vision" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
               <h3 className="text-xl font-bold font-title text-white mb-4">Our Vision</h3>
               <p className="text-sm text-text-secondary leading-relaxed font-sans">
@@ -253,11 +313,11 @@ export default function GramUnnatiInfo({ onViewChange }) {
           </motion.div>
 
           {/* Panel 2: Our Mission */}
-          <motion.div variants={itemVariants} className="glass-panel p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-300 relative group flex flex-col justify-between">
+          <motion.div variants={itemVariants} className="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-300 relative group flex flex-col justify-between">
             <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/20 group-hover:bg-accent-red transition-all duration-300" />
             <div>
-              <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6">
-                <span className="material-symbols-outlined text-2xl">track_changes</span>
+              <div className="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 group-hover:border-accent-red/30 transition-all duration-300">
+                <img src={missionImg} alt="Our Mission" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
               <h3 className="text-xl font-bold font-title text-white mb-4">Our Mission</h3>
               <p className="text-sm text-text-secondary leading-relaxed font-sans">
@@ -267,28 +327,40 @@ export default function GramUnnatiInfo({ onViewChange }) {
           </motion.div>
 
           {/* Panel 3: About Us */}
-          <motion.div variants={itemVariants} className="glass-panel p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-300 relative group flex flex-col justify-between">
+          <motion.div variants={itemVariants} className="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-300 relative group flex flex-col justify-between">
             <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/20 group-hover:bg-accent-red transition-all duration-300" />
             <div>
-              <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6">
-                <span className="material-symbols-outlined text-2xl">info</span>
+              <div className="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 group-hover:border-accent-red/30 transition-all duration-300">
+                <img src={aboutImg} alt="About Us" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
               <h3 className="text-xl font-bold font-title text-white mb-4">About Us</h3>
               <ul className="space-y-3.5 text-sm text-text-secondary font-sans list-none p-0">
                 <li className="flex items-start gap-2.5">
-                  <span className="material-symbols-outlined text-accent-red text-base mt-0.5">check_circle</span>
+                  <svg className="w-5 h-5 text-accent-red mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="m9 12.5 2.5 2.5 5-5" />
+                  </svg>
                   <span>E-commerce marketplace for SHG and rural products.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="material-symbols-outlined text-accent-red text-base mt-0.5">check_circle</span>
+                  <svg className="w-5 h-5 text-accent-red mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="m9 12.5 2.5 2.5 5-5" />
+                  </svg>
                   <span>Provide logistics, branding, and digital promotion support.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="material-symbols-outlined text-accent-red text-base mt-0.5">check_circle</span>
+                  <svg className="w-5 h-5 text-accent-red mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="m9 12.5 2.5 2.5 5-5" />
+                  </svg>
                   <span>Training on quality, pricing, and packaging.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="material-symbols-outlined text-accent-red text-base mt-0.5">check_circle</span>
+                  <svg className="w-5 h-5 text-accent-red mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="m9 12.5 2.5 2.5 5-5" />
+                  </svg>
                   <span>Direct payment and transparent system with higher profits.</span>
                 </li>
               </ul>

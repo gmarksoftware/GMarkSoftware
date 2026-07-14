@@ -4,7 +4,7 @@ export default function Support() {
   return (
     <section id="support" className="relative pt-32 pb-24 bg-transparent overflow-hidden min-h-[80vh] flex items-center border-b border-border-color">
       <div className="mesh-bg" />
-      <div className="max-w-7xl mx-auto px-6 md:px-8 w-full relative z-10 border-x border-border-color">
+      <div className="w-full px-6 md:px-8 relative z-10">
         <div className="flex flex-col gap-8 max-w-2xl text-left">
           
           <div>

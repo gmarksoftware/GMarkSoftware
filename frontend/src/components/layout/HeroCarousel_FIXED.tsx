@@ -14,7 +14,7 @@ const GramUnnatiLogo = () => (
     </div>
     <svg className="w-[72px] h-[72px]" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       {/* Right Leaf (Light Green) */}
-      <path 
+      <path
         d="M 94,52 
            C 120,30 155,65 155,95 
            C 155,125 130,148 105,148 
@@ -23,11 +23,11 @@ const GramUnnatiLogo = () => (
            C 88,118 95,126 105,126 
            C 118,126 132,118 132,95 
            C 132,78 115,62 94,52 
-           Z" 
-        fill="#9CCC3C" 
+           Z"
+        fill="#9CCC3C"
       />
       {/* Left Leaf / G (Dark Green) */}
-      <path 
+      <path
         d="M 106,52 
            C 80,30 45,65 45,95 
            C 45,125 70,148 95,148 
@@ -36,8 +36,8 @@ const GramUnnatiLogo = () => (
            C 112,118 105,126 95,126 
            C 82,126 68,118 68,95 
            C 68,78 85,62 106,52 
-           Z" 
-        fill="#0F4626" 
+           Z"
+        fill="#0F4626"
       />
     </svg>
     <span className="text-[18px] font-extrabold text-[#111827] tracking-tight leading-none mt-3">GramUnnati</span>
@@ -201,7 +201,7 @@ const MaintenanceRightMockup = () => (
     <div className="relative w-full">
       <div className="rounded-2xl border-[6px] border-text-secondary/40 bg-transparent p-6 overflow-hidden aspect-16/10 flex items-center justify-center relative">
         <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at center, rgba(255,90,95,0.04), transparent 70%)' }} />
-        
+
         {/* Dashboard Screen Content */}
         <div className="grid grid-cols-3 gap-4 items-center justify-items-center w-full">
           {/* Line/Bar Chart Outline */}
@@ -239,7 +239,7 @@ const MaintenanceRightMockup = () => (
           </div>
         </div>
       </div>
-      
+
       {/* Monitor Stand */}
       <div className="w-20 h-10 border-x-[5px] border-b-[5px] border-text-secondary/40 mx-auto mt-[-5px]" />
       {/* Monitor Base */}
@@ -336,7 +336,7 @@ export default function HeroCarousel({ onCTA }: { onCTA: () => void }) {
   };
 
   return (
-    <motion.section 
+    <motion.section
       id="systems-spotlight"
       className="relative py-20 lg:py-28 overflow-hidden bg-transparent w-full border-t border-b border-border-color"
       initial={{ opacity: 0, y: 120 }}
@@ -353,15 +353,14 @@ export default function HeroCarousel({ onCTA }: { onCTA: () => void }) {
         <div className="relative w-full min-h-[500px] lg:min-h-[420px]">
           {slides.map((slide, index) => {
             const isActive = index === currentSlide;
-            
+
             return (
               <div
                 key={slide.id}
-                className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center w-full px-6 sm:px-10 lg:px-16 transition-all duration-1200 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                  isActive
-                    ? 'opacity-100 translate-x-0 scale-100 relative z-10'
-                    : 'opacity-0 translate-x-16 scale-95 absolute inset-0 pointer-events-none z-0'
-                }`}
+                className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center w-full px-6 sm:px-10 lg:px-16 transition-all duration-1200 ease-[cubic-bezier(0.16,1,0.3,1)] ${isActive
+                  ? 'opacity-100 translate-x-0 scale-100 relative z-10'
+                  : 'opacity-0 translate-x-16 scale-95 absolute inset-0 pointer-events-none z-0'
+                  }`}
               >
                 {/* Left Column: Phone Mockup */}
                 <div className="lg:col-span-4 flex justify-center items-center lg:border-r lg:border-border-color lg:px-6">
@@ -460,83 +459,75 @@ export default function HeroCarousel({ onCTA }: { onCTA: () => void }) {
                             <div className="flex items-center justify-between bg-white/5 border border-white/10 rounded-lg p-2.5 relative overflow-hidden w-full">
                               {/* Transporter Box */}
                               <div className="flex flex-col items-center justify-center">
-                                <div className={`w-8 h-8 flex items-center justify-center rounded-lg border transition-all duration-300 ${
-                                  activeLogisticsStep === 0 
-                                    ? 'bg-accent-red/20 border-accent-red text-accent-red scale-110 shadow-[0_0_8px_rgba(255,90,95,0.35)]'
-                                    : activeLogisticsStep > 0
+                                <div className={`w-8 h-8 flex items-center justify-center rounded-lg border transition-all duration-300 ${activeLogisticsStep === 0
+                                  ? 'bg-accent-red/20 border-accent-red text-accent-red scale-110 shadow-[0_0_8px_rgba(255,90,95,0.35)]'
+                                  : activeLogisticsStep > 0
                                     ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-500'
                                     : 'bg-white/5 border-white/10 text-text-secondary'
-                                }`}>
+                                  }`}>
                                   <span className={`material-symbols-outlined text-[14px] ${activeLogisticsStep === 0 ? 'animate-pulse' : ''}`}>local_shipping</span>
                                 </div>
                                 <span className="text-[8px] font-bold text-text-primary mt-1 uppercase tracking-wide">Transporter</span>
-                                <span className={`text-[6.5px] font-mono mt-0.5 ${
-                                  activeLogisticsStep === 0 
-                                    ? 'text-accent-red animate-pulse font-bold' 
-                                    : activeLogisticsStep > 0 
-                                    ? 'text-emerald-500 font-bold' 
+                                <span className={`text-[6.5px] font-mono mt-0.5 ${activeLogisticsStep === 0
+                                  ? 'text-accent-red animate-pulse font-bold'
+                                  : activeLogisticsStep > 0
+                                    ? 'text-emerald-500 font-bold'
                                     : 'text-text-muted'
-                                }`}>
+                                  }`}>
                                   {activeLogisticsStep === 0 ? 'IN TRANSIT' : activeLogisticsStep > 0 ? 'DEPARTED' : 'PENDING'}
                                 </span>
                               </div>
-                              
+
                               {/* Animated Arrow 1 */}
-                              <div className={`flex items-center justify-center transition-all duration-300 ${
-                                activeLogisticsStep === 0 
-                                  ? 'text-accent-red animate-pulse scale-110' 
-                                  : 'text-white/20'
-                              }`}>
+                              <div className={`flex items-center justify-center transition-all duration-300 ${activeLogisticsStep === 0
+                                ? 'text-accent-red animate-pulse scale-110'
+                                : 'text-white/20'
+                                }`}>
                                 <span className="material-symbols-outlined text-[12px]">double_arrow</span>
                               </div>
 
                               {/* GMU Hub Box */}
                               <div className="flex flex-col items-center justify-center">
-                                <div className={`w-8 h-8 flex items-center justify-center rounded-lg border transition-all duration-300 ${
-                                  activeLogisticsStep === 1 
-                                    ? 'bg-accent-red/20 border-accent-red text-accent-red scale-110 shadow-[0_0_8px_rgba(255,90,95,0.35)]'
-                                    : activeLogisticsStep > 1
+                                <div className={`w-8 h-8 flex items-center justify-center rounded-lg border transition-all duration-300 ${activeLogisticsStep === 1
+                                  ? 'bg-accent-red/20 border-accent-red text-accent-red scale-110 shadow-[0_0_8px_rgba(255,90,95,0.35)]'
+                                  : activeLogisticsStep > 1
                                     ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-500'
                                     : 'bg-white/5 border-white/10 text-text-secondary'
-                                }`}>
+                                  }`}>
                                   <span className={`material-symbols-outlined text-[14px] ${activeLogisticsStep === 1 ? 'animate-pulse' : ''}`}>warehouse</span>
                                 </div>
                                 <span className="text-[8px] font-bold text-text-primary mt-1 uppercase tracking-wide">GMU Hub</span>
-                                <span className={`text-[6.5px] font-mono mt-0.5 ${
-                                  activeLogisticsStep === 1 
-                                    ? 'text-accent-red animate-pulse font-bold' 
-                                    : activeLogisticsStep > 1 
-                                    ? 'text-emerald-500 font-bold' 
+                                <span className={`text-[6.5px] font-mono mt-0.5 ${activeLogisticsStep === 1
+                                  ? 'text-accent-red animate-pulse font-bold'
+                                  : activeLogisticsStep > 1
+                                    ? 'text-emerald-500 font-bold'
                                     : 'text-text-muted'
-                                }`}>
+                                  }`}>
                                   {activeLogisticsStep === 1 ? 'PROCESSING' : activeLogisticsStep > 1 ? 'SORTED' : 'AWAITING'}
                                 </span>
                               </div>
 
                               {/* Animated Arrow 2 */}
-                              <div className={`flex items-center justify-center transition-all duration-300 ${
-                                activeLogisticsStep === 1 
-                                  ? 'text-accent-red animate-pulse scale-110' 
-                                  : 'text-white/20'
-                              }`}>
+                              <div className={`flex items-center justify-center transition-all duration-300 ${activeLogisticsStep === 1
+                                ? 'text-accent-red animate-pulse scale-110'
+                                : 'text-white/20'
+                                }`}>
                                 <span className="material-symbols-outlined text-[12px]">double_arrow</span>
                               </div>
 
                               {/* Delivery Box */}
                               <div className="flex flex-col items-center justify-center">
-                                <div className={`w-8 h-8 flex items-center justify-center rounded-lg border transition-all duration-300 ${
-                                  activeLogisticsStep === 2 
-                                    ? 'bg-emerald-500/20 border-emerald-500 text-emerald-500 scale-110 shadow-[0_0_8px_rgba(16,185,129,0.35)]'
-                                    : 'bg-white/5 border-white/10 text-text-secondary'
-                                }`}>
+                                <div className={`w-8 h-8 flex items-center justify-center rounded-lg border transition-all duration-300 ${activeLogisticsStep === 2
+                                  ? 'bg-emerald-500/20 border-emerald-500 text-emerald-500 scale-110 shadow-[0_0_8px_rgba(16,185,129,0.35)]'
+                                  : 'bg-white/5 border-white/10 text-text-secondary'
+                                  }`}>
                                   <span className={`material-symbols-outlined text-[14px] ${activeLogisticsStep === 2 ? 'animate-pulse' : ''}`}>check_circle</span>
                                 </div>
                                 <span className="text-[8px] font-bold text-text-primary mt-1 uppercase tracking-wide">Delivery</span>
-                                <span className={`text-[6.5px] font-mono mt-0.5 ${
-                                  activeLogisticsStep === 2 
-                                    ? 'text-emerald-500 animate-pulse font-bold' 
-                                    : 'text-text-muted'
-                                }`}>
+                                <span className={`text-[6.5px] font-mono mt-0.5 ${activeLogisticsStep === 2
+                                  ? 'text-emerald-500 animate-pulse font-bold'
+                                  : 'text-text-muted'
+                                  }`}>
                                   {activeLogisticsStep === 2 ? 'ARRIVED' : 'SHIPPED'}
                                 </span>
                               </div>
@@ -554,17 +545,16 @@ export default function HeroCarousel({ onCTA }: { onCTA: () => void }) {
                 {/* Center Column: Text Content & Actions */}
                 <div className="lg:col-span-4 flex flex-col gap-6 select-text text-left lg:border-r lg:border-border-color lg:px-6">
                   {slide.badge && (
-                    <span className={`text-[10px] font-mono font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-sm self-start border ${
-                      slide.type === 'maintenance' 
-                        ? 'text-accent-red bg-accent-red/10 border-accent-red/20' 
-                        : 'text-accent-red bg-accent-red/10 border-accent-red/20'
-                    }`}>
+                    <span className={`text-[10px] font-mono font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-sm self-start border ${slide.type === 'maintenance'
+                      ? 'text-accent-red bg-accent-red/10 border-accent-red/20'
+                      : 'text-accent-red bg-accent-red/10 border-accent-red/20'
+                      }`}>
                       {slide.badge}
                     </span>
                   )}
 
                   <h1 className="font-display-lg text-4xl sm:text-5xl font-extrabold leading-[1.1] text-text-primary tracking-tight">
-                    {slide.titleFirstLine} <br/>
+                    {slide.titleFirstLine} <br />
                     <span className={slide.accentClass}>{slide.titleAccentLine}</span>
                   </h1>
 
@@ -573,14 +563,14 @@ export default function HeroCarousel({ onCTA }: { onCTA: () => void }) {
                   </p>
 
                   <div className="flex flex-wrap gap-4 pt-2">
-                    <button 
+                    <button
                       onClick={onCTA}
                       className={`px-8 py-3.5 font-bold text-sm uppercase tracking-wider rounded shadow-lg transition-all duration-300 cursor-pointer ${slide.btnClass}`}
                     >
                       {slide.primaryBtnText}
                     </button>
                     {slide.secondaryBtnText && (
-                      <button 
+                      <button
                         onClick={onCTA}
                         className="border border-white/30 text-white hover:bg-white/10 px-8 py-3.5 font-bold text-sm uppercase tracking-wider rounded transition-all duration-300 cursor-pointer"
                       >
@@ -638,11 +628,10 @@ export default function HeroCarousel({ onCTA }: { onCTA: () => void }) {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-              index === currentSlide 
-                ? 'w-8 bg-accent-red' 
-                : 'w-2 bg-text-muted/40 hover:bg-text-muted/70'
-            }`}
+            className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${index === currentSlide
+              ? 'w-8 bg-accent-red'
+              : 'w-2 bg-text-muted/40 hover:bg-text-muted/70'
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

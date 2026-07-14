@@ -3,23 +3,23 @@ import { cn } from "@/utils/utils";
 export const Component = ({ className = "" }) => {
   return (
     <div
-      className={`relative w-full h-full overflow-hidden rounded-xl p-6 md:p-8 border border-border-color bg-linear-to-b from-bg-secondary/40 to-bg-secondary/20 hover:from-bg-tertiary/60 hover:to-bg-secondary/50 backdrop-blur-md hover:border-accent-red/60 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5),0_0_25px_rgba(255,90,95,0.25)] transition-all duration-300 flex flex-col justify-between text-text-primary ${className}`}
+      className={`relative w-full h-full overflow-hidden rounded-xl p-6 md:p-8 lg:p-4 xl:p-8 border border-border-color bg-linear-to-b from-bg-secondary/40 to-bg-secondary/20 hover:from-bg-tertiary/60 hover:to-bg-secondary/50 backdrop-blur-md hover:border-accent-red/60 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5),0_0_25px_rgba(255,90,95,0.25)] transition-all duration-300 flex flex-col justify-between text-text-primary ${className}`}
     >
       {/* Ambient glow */}
       <div className="pointer-events-none absolute -top-32 -right-24 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-40 -left-32 h-80 w-80 rounded-full bg-indigo-500/10 blur-3xl" />
 
       <div className="relative flex flex-col items-center text-center">
-        <h3 className="text-xl font-bold text-text-primary mb-3">
+        <h3 className="text-xl lg:text-lg xl:text-xl font-bold text-text-primary mb-3 lg:mb-1.5 xl:mb-3">
           Top-level performance
         </h3>
-        <p className="text-sm text-text-secondary leading-relaxed">
+        <p className="text-sm lg:text-xs xl:text-sm text-text-secondary leading-relaxed">
           Made for static sites while avoiding heavy assets, your website will
           feel snappy and load instantly.
         </p>
 
         {/* Globe illustration */}
-        <div className="mt-6 h-64 w-64 md:h-80 md:w-80 overflow-hidden">
+        <div className="mt-6 h-64 w-64 md:h-80 md:w-80 lg:h-52 lg:w-52 xl:h-80 xl:w-80 overflow-hidden">
           <svg
             viewBox="0 0 300 300"
             className="h-full w-full"

@@ -26,14 +26,14 @@ export default function Footer({ onViewChange, currentView, onSelectSolution }) 
   const hideContactCards = currentView === 'support' || currentView === 'contact';
 
   return (
-    <footer className="relative border-t border-border-color bg-transparent backdrop-blur-md pt-12 pb-0 lg:pt-16 lg:pb-0 z-10 snap-footer">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+    <footer className="relative border-t border-border-color bg-transparent backdrop-blur-md pt-12 pb-0 lg:pt-16 lg:pb-0 z-10 snap-footer overflow-hidden">
+      <div className="w-full px-6 md:px-8 relative z-10">
 
         {/* Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-y-12 gap-x-6 md:gap-12">
 
           {/* Column 1: Logo & Contact Info */}
-          <div className="md:col-span-5 space-y-6">
+          <div className="col-span-2 md:col-span-5 space-y-6">
             <Logo />
             {!hideContactCards && (
               <div className="space-y-4 max-w-[280px]">
@@ -76,7 +76,7 @@ export default function Footer({ onViewChange, currentView, onSelectSolution }) 
           </div>
 
           {/* Column 2: Solutions */}
-          <div className="md:col-span-3 md:col-start-7 space-y-6">
+          <div className="col-span-1 md:col-span-3 md:col-start-7 space-y-6">
             <h4 className="text-xs font-mono font-bold text-accent-red uppercase tracking-[0.2em]">Solutions</h4>
             <ul className="flex flex-col gap-3 text-sm text-text-secondary font-sans list-none p-0">
               <li>
@@ -131,7 +131,7 @@ export default function Footer({ onViewChange, currentView, onSelectSolution }) 
           </div>
 
           {/* Column 3: Company */}
-          <div className="md:col-span-3 md:col-start-10 space-y-6">
+          <div className="col-span-1 md:col-span-3 md:col-start-10 space-y-6">
             <h4 className="text-xs font-mono font-bold text-accent-red uppercase tracking-[0.25em]">Company</h4>
             <ul className="flex flex-col gap-3 text-sm text-text-secondary font-sans list-none p-0">
               <li>

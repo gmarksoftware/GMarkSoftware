@@ -459,7 +459,7 @@ export default function MoreLayout({ activeTab, onTabChange }) {
       {/* Background radial spotlight */}
       <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,90,95,0.03),transparent_70%)]" />
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-8 relative z-10">
+      <div className="w-full px-6 md:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
 
           {/* Left Side: Active Tab Content */}

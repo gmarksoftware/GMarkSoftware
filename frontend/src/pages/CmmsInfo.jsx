@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Logo from '@/components/layout/Logo';
 import logo4MImg from '@/assets/4M.png';
 import cmmsImg from '@/assets/4M CMMS.webp';
 import cmmsM from '@/assets/4M M.webp';
@@ -36,33 +37,45 @@ export default function CmmsInfo({ onViewChange }) {
             className="w-full h-full overflow-hidden shadow-2xl border-b border-white/10 bg-[#05070D] group relative"
           >
             {/* Header Overlay (Positioned absolutely on top of the image) */}
-            <div className="absolute top-0 left-0 right-0 z-30 bg-linear-to-b from-black/80 via-black/30 to-transparent pt-6 sm:pt-10 pb-20 px-6 md:px-8">
-              <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                <div className="flex items-start sm:items-center gap-5 pr-24 sm:pr-0 sm:-ml-8">
-                  <div className="bg-white p-2.5 rounded-2xl flex items-center justify-center shadow-lg w-[70px] h-[70px] shrink-0">
-                    <img src={logo4MImg} alt="4M CMMS Logo" className="w-full h-full object-contain rounded-xl" />
+            <div className="absolute top-0 left-0 right-0 z-30 bg-linear-to-b from-black/80 via-black/30 to-transparent pt-6 sm:pt-8 pb-20 px-6 md:px-12">
+              <div className="relative flex items-center justify-between w-full">
+                <a
+                  href="#home"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onViewChange('home');
+                  }}
+                  className="no-underline shrink-0 focus:outline-none"
+                >
+                  <Logo />
+                </a>
+
+                {/* Middle: CMMS Showcase Badge */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden sm:flex items-center gap-3 bg-white/5 border border-white/10 backdrop-blur-md px-4 py-1.5 rounded-2xl select-none pointer-events-none shadow-lg">
+                  <div className="bg-white p-1 rounded-lg flex items-center justify-center shadow-md w-8 h-8 shrink-0">
+                    <img src={logo4MImg} alt="4M CMMS Logo" className="w-full h-full object-contain rounded-md" />
                   </div>
-                  <div>
-                    <h1 className="text-xl sm:text-3xl font-extrabold font-title tracking-tight leading-tight sm:leading-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">4M CMMS Platform</h1>
-                    <p className="text-xs sm:text-xs text-white/90 mt-1.5 uppercase font-mono tracking-wider sm:tracking-widest font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">Smart Maintenance Through the 4M Framework</p>
+                  <div className="flex flex-col text-left">
+                    <span className="text-white font-bold text-xs sm:text-sm tracking-wide leading-tight">4M CMMS Platform</span>
+                    <span className="text-[8px] sm:text-[9px] text-white/60 uppercase tracking-widest font-mono font-semibold">Smart Maintenance Through 4M</span>
                   </div>
                 </div>
+
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent opening the lightbox when clicking the back button
+                    onViewChange('home');
+                    setTimeout(() => {
+                      const el = document.getElementById('systems-spotlight');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
+                  className="flex items-center justify-center gap-1 sm:gap-1.5 border border-white/20 hover:border-white/40 bg-black/40 hover:bg-black/60 backdrop-blur-sm px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-lg sm:rounded-xl text-[11px] sm:text-sm font-semibold transition-all duration-300 w-fit cursor-pointer text-white drop-shadow-md z-40"
+                >
+                  <span className="material-symbols-outlined text-xs sm:text-base">arrow_back</span>
+                  <span>Back to Home</span>
+                </button>
               </div>
-              
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent opening the lightbox when clicking the back button
-                  onViewChange('home');
-                  setTimeout(() => {
-                    const el = document.getElementById('systems-spotlight');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }, 100);
-                }}
-                className="absolute top-6 right-6 sm:top-10 sm:right-8 lg:right-12 flex items-center justify-center gap-1 sm:gap-1.5 border border-white/20 hover:border-white/40 bg-black/40 hover:bg-black/60 backdrop-blur-sm px-2 py-0.5 sm:px-5 sm:py-2.5 rounded-md sm:rounded-xl text-[9px] sm:text-sm font-semibold transition-all duration-300 w-fit cursor-pointer text-white drop-shadow-md z-40"
-              >
-                <span className="material-symbols-outlined text-xs sm:text-base">arrow_back</span>
-                <span className="hidden sm:inline">Back to Home</span>
-              </button>
             </div>
 
             {/* Mobile Showcase Image (Only visible on screens smaller than md) */}

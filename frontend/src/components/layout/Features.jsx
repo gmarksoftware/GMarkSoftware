@@ -28,7 +28,7 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
     })
   };
 
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(-1);
 
   const phases = [
     {
@@ -80,11 +80,11 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
       {/* Higher Grounds Bento Section */}
       <section ref={sectionRef} id="features" className="relative border-t border-border-color bg-transparent min-h-[580px] lg:min-h-screen flex items-center overflow-hidden snap-section">
         <div className="mesh-bg" />
-        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 border-x border-border-color w-full py-6 lg:py-12">
+        <div className="w-full px-6 md:px-8 relative z-10 py-6 lg:py-4 xl:py-8">
 
           {/* Section Heading at top */}
           <motion.div
-            className="max-w-4xl mb-10"
+            className="max-w-4xl mb-6 lg:mb-4 xl:mb-6"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -99,7 +99,7 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
           </motion.div>
 
           {/* 3-Column Bento Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-stretch w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-4 xl:gap-6 items-stretch w-full">
 
             {/* Column 1: Resized Globe Card */}
             <motion.div
@@ -116,10 +116,10 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
             </motion.div>
 
             {/* Column 2: Data Privacy & Versatility in Application */}
-            <div className="flex flex-col gap-6 md:gap-8 justify-between h-full">
+            <div className="flex flex-col gap-6 lg:gap-4 xl:gap-8 justify-between h-full">
               {/* Data Privacy Card */}
               <motion.div
-                className="relative group p-6 rounded-xl bg-linear-to-b from-bg-secondary/40 to-bg-secondary/20 hover:from-bg-tertiary/60 hover:to-bg-secondary/50 border border-border-color backdrop-blur-md hover:border-accent-red/60 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5),0_0_25px_rgba(255,90,95,0.25)] transition-all duration-300 overflow-hidden flex-1 flex flex-col justify-center"
+                className="relative group p-6 lg:p-4 xl:p-6 rounded-xl bg-linear-to-b from-bg-secondary/40 to-bg-secondary/20 hover:from-bg-tertiary/60 hover:to-bg-secondary/50 border border-border-color backdrop-blur-md hover:border-accent-red/60 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5),0_0_25px_rgba(255,90,95,0.25)] transition-all duration-300 overflow-hidden flex-1 flex flex-col justify-center"
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
                 custom={0.2}
@@ -128,10 +128,10 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
                 style={{ willChange: 'transform, opacity' }}
               >
                 <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/0 group-hover:bg-accent-red transition-all duration-300" />
-                <div className="w-10 h-10 rounded bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-4 transition-all duration-300 group-hover:scale-105 group-hover:bg-accent-red group-hover:text-[#05070D] group-hover:-translate-y-1.5">
+                <div className="w-10 h-10 rounded bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-4 lg:mb-2 xl:mb-4 transition-all duration-300 group-hover:scale-105 group-hover:bg-accent-red group-hover:text-[#05070D] group-hover:-translate-y-1.5">
                   <span className="material-symbols-outlined text-xl">lock</span>
                 </div>
-                <h3 className="text-lg font-bold text-text-primary mb-2">Data Privacy</h3>
+                <h3 className="text-lg font-bold text-text-primary mb-2 lg:mb-1 xl:mb-2">Data Privacy</h3>
                 <p className="text-xs text-text-secondary leading-relaxed">
                   At our company, we prioritize data privacy by implementing robust security measures. We use encryption, access controls, and regular audits to ensure your confidential information remains safe and secure at all times.
                 </p>
@@ -139,7 +139,7 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
 
               {/* Versatility in Application Card */}
               <motion.div
-                className="relative group p-6 rounded-xl bg-linear-to-b from-bg-secondary/40 to-bg-secondary/20 hover:from-bg-tertiary/60 hover:to-bg-secondary/50 border border-border-color backdrop-blur-md hover:border-accent-red/60 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5),0_0_25px_rgba(255,90,95,0.25)] transition-all duration-300 overflow-hidden flex-1 flex flex-col justify-center"
+                className="relative group p-6 lg:p-4 xl:p-6 rounded-xl bg-linear-to-b from-bg-secondary/40 to-bg-secondary/20 hover:from-bg-tertiary/60 hover:to-bg-secondary/50 border border-border-color backdrop-blur-md hover:border-accent-red/60 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5),0_0_25px_rgba(255,90,95,0.25)] transition-all duration-300 overflow-hidden flex-1 flex flex-col justify-center"
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
                 custom={0.6}
@@ -148,10 +148,10 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
                 style={{ willChange: 'transform, opacity' }}
               >
                 <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/0 group-hover:bg-accent-red transition-all duration-300" />
-                <div className="w-10 h-10 rounded bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-4 transition-all duration-300 group-hover:scale-105 group-hover:bg-accent-red group-hover:text-[#05070D] group-hover:-translate-y-1.5">
+                <div className="w-10 h-10 rounded bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-4 lg:mb-2 xl:mb-4 transition-all duration-300 group-hover:scale-105 group-hover:bg-accent-red group-hover:text-[#05070D] group-hover:-translate-y-1.5">
                   <span className="material-symbols-outlined text-xl">grid_view</span>
                 </div>
-                <h3 className="text-lg font-bold text-text-primary mb-2">Versatility in Application</h3>
+                <h3 className="text-lg font-bold text-text-primary mb-2 lg:mb-1 xl:mb-2">Versatility in Application</h3>
                 <p className="text-xs text-text-secondary leading-relaxed">
                   Our platform's allows easy integration with other applications, streamlining processes and enhancing productivity for a more efficient workflow across diverse sectors.
                 </p>
@@ -159,10 +159,10 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
             </div>
 
             {/* Column 3: Detailed Insights & Full Customer Experience */}
-            <div className="flex flex-col gap-6 md:gap-8 justify-between h-full">
+            <div className="flex flex-col gap-6 lg:gap-4 xl:gap-8 justify-between h-full">
               {/* Detailed Insights Card */}
               <motion.div
-                className="relative group p-6 rounded-xl bg-linear-to-b from-bg-secondary/40 to-bg-secondary/20 hover:from-bg-tertiary/60 hover:to-bg-secondary/50 border border-border-color backdrop-blur-md hover:border-accent-red/60 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5),0_0_25px_rgba(255,90,95,0.25)] transition-all duration-300 overflow-hidden flex-1 flex flex-col justify-center"
+                className="relative group p-6 lg:p-4 xl:p-6 rounded-xl bg-linear-to-b from-bg-secondary/40 to-bg-secondary/20 hover:from-bg-tertiary/60 hover:to-bg-secondary/50 border border-border-color backdrop-blur-md hover:border-accent-red/60 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5),0_0_25px_rgba(255,90,95,0.25)] transition-all duration-300 overflow-hidden flex-1 flex flex-col justify-center"
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
                 custom={0.4}
@@ -171,10 +171,10 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
                 style={{ willChange: 'transform, opacity' }}
               >
                 <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/0 group-hover:bg-accent-red transition-all duration-300" />
-                <div className="w-10 h-10 rounded bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-4 transition-all duration-300 group-hover:scale-105 group-hover:bg-accent-red group-hover:text-[#05070D] group-hover:-translate-y-1.5">
+                <div className="w-10 h-10 rounded bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-4 lg:mb-2 xl:mb-4 transition-all duration-300 group-hover:scale-105 group-hover:bg-accent-red group-hover:text-[#05070D] group-hover:-translate-y-1.5">
                   <span className="material-symbols-outlined text-xl">analytics</span>
                 </div>
-                <h3 className="text-lg font-bold text-text-primary mb-2">Detailed Insights</h3>
+                <h3 className="text-lg font-bold text-text-primary mb-2 lg:mb-1 xl:mb-2">Detailed Insights</h3>
                 <p className="text-xs text-text-secondary leading-relaxed">
                   Gain detailed insights into your industry to empower data-driven decisions and minimize errors, ensuring your business stays ahead of curve with real-time telemetry.
                 </p>
@@ -182,7 +182,7 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
 
               {/* Full Customer Experience Card */}
               <motion.div
-                className="relative group p-6 rounded-xl bg-linear-to-b from-bg-secondary/40 to-bg-secondary/20 hover:from-bg-tertiary/60 hover:to-bg-secondary/50 border border-border-color backdrop-blur-md hover:border-accent-red/60 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5),0_0_25px_rgba(255,90,95,0.25)] transition-all duration-300 overflow-hidden flex-1 flex flex-col justify-center"
+                className="relative group p-6 lg:p-4 xl:p-6 rounded-xl bg-linear-to-b from-bg-secondary/40 to-bg-secondary/20 hover:from-bg-tertiary/60 hover:to-bg-secondary/50 border border-border-color backdrop-blur-md hover:border-accent-red/60 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5),0_0_25px_rgba(255,90,95,0.25)] transition-all duration-300 overflow-hidden flex-1 flex flex-col justify-center"
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
                 custom={0.8}
@@ -191,10 +191,10 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
                 style={{ willChange: 'transform, opacity' }}
               >
                 <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/0 group-hover:bg-accent-red transition-all duration-300" />
-                <div className="w-10 h-10 rounded bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-4 transition-all duration-300 group-hover:scale-105 group-hover:bg-accent-red group-hover:text-[#05070D] group-hover:-translate-y-1.5">
+                <div className="w-10 h-10 rounded bg-[#1A1D24]/10 border border-[#1A1D24]/20 flex items-center justify-center text-accent-red mb-4 lg:mb-2 xl:mb-4 transition-all duration-300 group-hover:scale-105 group-hover:bg-accent-red group-hover:text-[#05070D] group-hover:-translate-y-1.5">
                   <span className="material-symbols-outlined text-xl">support_agent</span>
                 </div>
-                <h3 className="text-lg font-bold text-text-primary mb-2">Full Customer Experience</h3>
+                <h3 className="text-lg font-bold text-text-primary mb-2 lg:mb-1 xl:mb-2">Full Customer Experience</h3>
                 <p className="text-xs text-text-secondary leading-relaxed">
                   Our after-sales support is quick and attentive, guaranteeing a smooth customer experience. Your satisfaction is our top priority, and we're here to assist you through every upgrade cycle.
                 </p>
@@ -208,7 +208,7 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
 
       {/* Mastery in Every Phase Section */}
       <section id="solutions" className="min-h-screen flex items-center border-t border-border-color bg-bg-secondary/30 relative snap-section py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 border-x border-border-color w-full">
+        <div className="w-full px-6 md:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
             {/* Left Column: Heading and Guarantee */}
@@ -273,7 +273,12 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
-                    onMouseEnter={() => setActiveStep(index)}
+                    onMouseEnter={() => {
+                      if (window.matchMedia('(hover: hover)').matches) {
+                        setActiveStep(index);
+                      }
+                    }}
+                    onClick={() => setActiveStep(prev => prev === index ? -1 : index)}
                   >
                     {/* Glowing dot on timeline */}
                     <div className={`relative z-10 flex items-center justify-center w-11 h-11 rounded-full bg-bg-primary border-2 transition-all duration-300 ${
@@ -305,7 +310,7 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
                       </div>
                       
                       <motion.div
-                        initial={index === 0 ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
+                        initial={{ height: 0, opacity: 0 }}
                         animate={
                           activeStep === index 
                             ? { height: 'auto', opacity: 1 } 
@@ -315,7 +320,7 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
                         style={{ overflow: 'hidden' }}
                       >
                         <motion.div
-                          initial={index === 0 ? { y: 0, opacity: 1 } : { y: 15, opacity: 0 }}
+                          initial={{ y: 15, opacity: 0 }}
                           animate={
                             activeStep === index 
                               ? { y: 0, opacity: 1 } 
@@ -397,7 +402,7 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
           transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
           style={{ willChange: 'transform, opacity' }}
         >
-          <div className="max-w-7xl mx-auto px-6 md:px-8 border-x border-border-color">
+          <div className="w-full px-6 md:px-8">
             <h3 className="text-center font-mono text-xs font-bold text-accent-red uppercase tracking-[0.25em] mb-8">
               We Take Pride In Our Numbers
             </h3>
@@ -444,7 +449,7 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
           transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
           style={{ willChange: 'transform, opacity' }}
         >
-          <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 border-x border-border-color w-full">
+          <div className="w-full px-6 md:px-8 relative z-10">
             <div className="glass-panel p-8 md:p-12 rounded-xl overflow-hidden relative group">
               {/* Ambient Background Gradient for Glow */}
               <div className="absolute -right-24 -bottom-24 w-96 h-96 bg-accent-red/10 blur-[120px] rounded-full group-hover:bg-accent-red/15 transition-all duration-500" />

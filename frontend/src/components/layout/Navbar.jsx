@@ -85,13 +85,13 @@ export default function Navbar({ currentView, onViewChange, activeSection, onAct
         ? 'opacity-0 pointer-events-none -translate-y-full'
         : 'h-[96px] bg-transparent opacity-100 translate-y-0'
         }`}>
-        <nav className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 h-full flex items-center justify-between" aria-label="Main Navigation">
+        <nav className="w-full px-4 sm:px-6 md:px-8 h-full flex items-center justify-between" aria-label="Main Navigation">
 
           {/* Logo link */}
           <a
             href="#home"
             onClick={(e) => { e.preventDefault(); handleLinkClick({ id: 'home', type: 'view', target: 'home' }); }}
-            className="no-underline shrink-0 animate-slideInFromLeft"
+            className="no-underline shrink-0 animate-slideInFromLeft focus:outline-none focus-visible:outline-none"
           >
             <Logo compact={scrolled} />
           </a>
