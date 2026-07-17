@@ -133,19 +133,16 @@ export default function IotInfo({ onViewChange }) {
                   </div>
                 </div>
 
+                {/* Back button for mobile viewports (opposite right corner) */}
                 <button 
                   onClick={(e) => {
-                    e.stopPropagation(); // Prevent opening the lightbox when clicking the back button
+                    e.stopPropagation();
                     onViewChange('home');
-                    setTimeout(() => {
-                      const el = document.getElementById('systems-spotlight');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
                   }}
-                  className="flex items-center justify-center gap-1 sm:gap-1.5 border border-white/20 hover:border-white/40 bg-black/40 hover:bg-black/60 backdrop-blur-sm px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-lg sm:rounded-xl text-[11px] sm:text-sm font-semibold transition-all duration-300 w-fit cursor-pointer text-white drop-shadow-md z-40"
+                  className="flex sm:hidden items-center justify-center border border-white/20 hover:border-white/40 bg-black/40 hover:bg-black/60 backdrop-blur-sm p-2 rounded-full transition-all duration-300 w-10 h-10 cursor-pointer text-white drop-shadow-md z-40"
+                  aria-label="Back to Home"
                 >
-                  <span className="material-symbols-outlined text-xs sm:text-base">arrow_back</span>
-                  <span>Back to Home</span>
+                  <span className="material-symbols-outlined text-lg">arrow_back</span>
                 </button>
               </div>
             </div>
@@ -186,6 +183,30 @@ export default function IotInfo({ onViewChange }) {
               .animate-float-3 { animation: floatUp 8s ease-in-out infinite 4.5s; }
               .animate-float-4 { animation: floatUp 10s ease-in-out infinite 1s; }
               .animate-float-5 { animation: floatUp 8.5s ease-in-out infinite 3.5s; }
+              
+              .shine-sweep {
+                position: relative;
+                overflow: hidden;
+              }
+              .shine-sweep::after {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -60%;
+                width: 30%;
+                height: 200%;
+                background: linear-gradient(
+                  to right,
+                  rgba(255, 255, 255, 0) 0%,
+                  rgba(255, 255, 255, 0.08) 50%,
+                  rgba(255, 255, 255, 0) 100%
+                );
+                transform: rotate(25deg);
+                transition: all 0.75s ease;
+              }
+              .shine-sweep:hover::after {
+                left: 120%;
+              }
             `}} />
 
             {/* Ambient High-Tech Telemetry Overlay */}
@@ -239,19 +260,7 @@ export default function IotInfo({ onViewChange }) {
               </p>
             </motion.div>
 
-            <button 
-              onClick={() => {
-                onViewChange('home');
-                setTimeout(() => {
-                  const el = document.getElementById('systems-spotlight');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-              }}
-              className="flex items-center justify-center gap-1.5 border border-white/20 hover:border-white/40 bg-white/5 hover:bg-white/10 px-3.5 py-1.5 md:px-5 md:py-2.5 rounded-lg md:rounded-xl text-xs md:text-sm font-semibold transition-all duration-300 w-fit cursor-pointer text-white shrink-0 self-end md:self-auto"
-            >
-              <span className="material-symbols-outlined text-sm sm:text-base">arrow_back</span>
-              <span className="hidden sm:inline">Back to Home</span>
-            </button>
+            {/* Back button removed in favor of swipe-back gesture */}
           </div>
 
         {/* Key Features Header */}
@@ -271,9 +280,9 @@ export default function IotInfo({ onViewChange }) {
             <motion.div 
               key={idx}
               variants={itemVariants} 
-              className="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-300 relative group flex flex-col justify-between"
+              className="glass-panel shine-sweep p-6 rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col justify-between hover:shadow-[0_0_30px_rgba(255,90,95,0.03)] bg-gradient-to-br from-white/[0.01] to-[#0A0C12]"
             >
-              <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/20 group-hover:bg-accent-red transition-all duration-300" />
+              <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
               <div>
                 <div className="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 group-hover:border-accent-red/30 transition-all duration-300">
                   <img src={feature.image} alt={feature.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -291,18 +300,23 @@ export default function IotInfo({ onViewChange }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Business Benefits */}
           <motion.div 
-            className="lg:col-span-6 glass-panel p-8 rounded-2xl border border-white/5 relative overflow-hidden flex flex-col justify-between"
+            className="lg:col-span-6 glass-panel shine-sweep p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,90,95,0.02)] relative overflow-hidden flex flex-col justify-between bg-gradient-to-br from-white/[0.01] to-[#0A0C12]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-accent-red/5 blur-2xl rounded-full" />
             <div>
-              <h3 className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-accent-red mb-6 border-b border-white/10 pb-3">Business Benefits</h3>
+              <div className="flex items-center gap-2 mb-6 border-b border-white/10 pb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <h3 className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-white">Business Benefits</h3>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {benefits.map((benefit, idx) => (
-                  <div key={idx} className="p-3.5 bg-white/5 border border-white/5 rounded-xl flex items-center gap-3">
-                    <span className="text-emerald-500 text-base">✓</span>
+                  <div key={idx} className="p-4 bg-gradient-to-br from-white/[0.02] to-transparent border border-white/5 hover:border-emerald-500/30 hover:bg-white/[0.04] rounded-xl flex items-center gap-3 transition-all duration-300 hover:scale-[1.02] group">
+                    <div className="w-6 h-6 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.1)] group-hover:scale-110 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition-all duration-300">
+                      <span className="material-symbols-outlined text-sm font-bold">check</span>
+                    </div>
                     <span className="text-xs font-bold text-white leading-tight font-sans">{benefit}</span>
                   </div>
                 ))}
@@ -312,18 +326,23 @@ export default function IotInfo({ onViewChange }) {
 
           {/* Industries We Serve */}
           <motion.div 
-            className="lg:col-span-6 glass-panel p-8 rounded-2xl border border-white/5 relative overflow-hidden flex flex-col justify-between"
+            className="lg:col-span-6 glass-panel shine-sweep p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,90,95,0.02)] relative overflow-hidden flex flex-col justify-between bg-gradient-to-br from-white/[0.01] to-[#0A0C12]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-accent-red/5 blur-2xl rounded-full" />
             <div>
-              <h3 className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-accent-red mb-6 border-b border-white/10 pb-3">Industries We Serve</h3>
+              <div className="flex items-center gap-2 mb-6 border-b border-white/10 pb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse" />
+                <h3 className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-white">Industries We Serve</h3>
+              </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {industries.map((ind, idx) => (
-                  <div key={idx} className="p-4 bg-white/5 border border-white/5 rounded-xl flex flex-col items-center justify-center gap-2.5 text-center">
-                    <span className="material-symbols-outlined text-accent-red text-2xl">{ind.icon}</span>
+                  <div key={idx} className="p-5 bg-gradient-to-br from-white/[0.02] to-transparent border border-white/5 hover:border-accent-red/30 hover:bg-white/[0.04] rounded-xl flex flex-col items-center justify-center gap-3 text-center transition-all duration-300 hover:scale-[1.03] group hover:shadow-[0_0_25px_rgba(255,90,95,0.05)]">
+                    <div className="w-12 h-12 rounded-2xl bg-accent-red/5 border border-accent-red/10 flex items-center justify-center text-accent-red shadow-[0_0_15px_rgba(255,90,95,0.05)] group-hover:scale-110 group-hover:bg-accent-red/10 group-hover:border-accent-red/30 transition-all duration-300">
+                      <span className="material-symbols-outlined text-2xl">{ind.icon}</span>
+                    </div>
                     <span className="text-xs font-bold text-white leading-tight font-sans">{ind.name}</span>
                   </div>
                 ))}
@@ -334,13 +353,16 @@ export default function IotInfo({ onViewChange }) {
 
         {/* Footer Banner */}
         <motion.div 
-          className="glass-panel p-8 rounded-2xl border border-white/5 relative overflow-hidden text-center max-w-4xl mx-auto space-y-4"
+          className="relative p-8 rounded-2xl overflow-hidden text-center max-w-4xl mx-auto space-y-4 group border border-white/5 hover:border-accent-red/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,90,95,0.08)] bg-gradient-to-r from-accent-red/10 via-[#0B0D14]/90 to-accent-red/10 backdrop-blur-md"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <div className="absolute top-0 left-0 w-full h-1 bg-accent-red" />
-          <h3 className="text-xl font-bold font-title text-white">Empowering Industries with Connected Intelligence</h3>
+          {/* Animated red line glow */}
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent-red to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute -top-[10px] left-1/2 -translate-x-1/2 w-48 h-[20px] bg-accent-red/30 blur-[15px] rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+          
+          <h3 className="text-xl sm:text-2xl font-bold font-title text-white tracking-wide">Empowering Industries with Connected Intelligence</h3>
           <p className="text-sm text-text-secondary leading-relaxed font-sans max-w-2xl mx-auto">
             Transform traditional operations into smart, connected, and efficient digital ecosystems through Industrial IoT.
           </p>

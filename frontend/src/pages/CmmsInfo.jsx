@@ -4,8 +4,22 @@ import Logo from '@/components/layout/Logo';
 import logo4MImg from '@/assets/4M.png';
 import cmmsImg from '@/assets/4M CMMS.webp';
 import cmmsM from '@/assets/4M M.webp';
+import manImg from '@/assets/4m_man.png';
+import machineImg from '@/assets/4m_machine.png';
+import methodImg from '@/assets/4m_method.png';
+import materialImg from '@/assets/4m_material.png';
+import { Users, Settings, ClipboardList, Package } from 'lucide-react';
 
 export default function CmmsInfo({ onViewChange }) {
+  const cmmsBenefits = [
+    { name: "Reduced Equipment Downtime", icon: "arrow_downward" },
+    { name: "Improved Asset Reliability", icon: "verified" },
+    { name: "Better Workforce Management", icon: "groups" },
+    { name: "Optimized Inventory Control", icon: "inventory" },
+    { name: "Preventive Maintenance Planning", icon: "calendar_today" },
+    { name: "Real-Time Monitoring & Reporting", icon: "monitoring" },
+    { name: "Increased Operational Efficiency", icon: "trending_up", highlight: true }
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -61,19 +75,16 @@ export default function CmmsInfo({ onViewChange }) {
                   </div>
                 </div>
 
+                {/* Back button for mobile viewports (opposite right corner) */}
                 <button 
                   onClick={(e) => {
-                    e.stopPropagation(); // Prevent opening the lightbox when clicking the back button
+                    e.stopPropagation();
                     onViewChange('home');
-                    setTimeout(() => {
-                      const el = document.getElementById('systems-spotlight');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
                   }}
-                  className="flex items-center justify-center gap-1 sm:gap-1.5 border border-white/20 hover:border-white/40 bg-black/40 hover:bg-black/60 backdrop-blur-sm px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-lg sm:rounded-xl text-[11px] sm:text-sm font-semibold transition-all duration-300 w-fit cursor-pointer text-white drop-shadow-md z-40"
+                  className="flex sm:hidden items-center justify-center border border-white/20 hover:border-white/40 bg-black/40 hover:bg-black/60 backdrop-blur-sm p-2 rounded-full transition-all duration-300 w-10 h-10 cursor-pointer text-white drop-shadow-md z-40"
+                  aria-label="Back to Home"
                 >
-                  <span className="material-symbols-outlined text-xs sm:text-base">arrow_back</span>
-                  <span>Back to Home</span>
+                  <span className="material-symbols-outlined text-lg">arrow_back</span>
                 </button>
               </div>
             </div>
@@ -123,6 +134,30 @@ export default function CmmsInfo({ onViewChange }) {
               .animate-float-1 { animation: floatUp 8s ease-in-out infinite; }
               .animate-float-2 { animation: floatUp 10s ease-in-out infinite 2s; }
               .animate-float-3 { animation: floatUp 9s ease-in-out infinite 4.5s; }
+              
+              .shine-sweep {
+                position: relative;
+                overflow: hidden;
+              }
+              .shine-sweep::after {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -60%;
+                width: 30%;
+                height: 200%;
+                background: linear-gradient(
+                  to right,
+                  rgba(255, 255, 255, 0) 0%,
+                  rgba(255, 255, 255, 0.08) 50%,
+                  rgba(255, 255, 255, 0) 100%
+                );
+                transform: rotate(25deg);
+                transition: all 0.75s ease;
+              }
+              .shine-sweep:hover::after {
+                left: 120%;
+              }
 
               .float-card {
                 will-change: transform;
@@ -257,24 +292,12 @@ export default function CmmsInfo({ onViewChange }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <p className="text-lg text-text-secondary leading-relaxed font-sans">
-                The <strong className="text-white font-semibold">4M CMMS Platform</strong> helps organizations improve maintenance efficiency by managing the four critical elements of operations:
-              </p>
+              <h2 className="text-2xl sm:text-3xl font-bold font-title text-white">
+                <span className="text-accent-red">four</span> critical elements of operations:
+              </h2>
             </motion.div>
 
-            <button 
-              onClick={() => {
-                onViewChange('home');
-                setTimeout(() => {
-                  const el = document.getElementById('systems-spotlight');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-              }}
-              className="flex items-center justify-center gap-1.5 border border-white/20 hover:border-white/40 bg-white/5 hover:bg-white/10 px-3.5 py-1.5 sm:px-5 sm:py-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 w-fit cursor-pointer text-white shrink-0 self-end sm:self-auto"
-            >
-              <span className="material-symbols-outlined text-sm sm:text-base">arrow_back</span>
-              <span className="hidden sm:inline">Back to Home</span>
-            </button>
+            {/* Back button removed in favor of swipe-back gesture */}
           </div>
 
         {/* Content Panels: The 4 Ms */}
@@ -285,109 +308,148 @@ export default function CmmsInfo({ onViewChange }) {
           animate="visible"
         >
           {/* Card 1: Man */}
-          <motion.div variants={itemVariants} className="glass-panel p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-300 relative group flex flex-col justify-between">
-            <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/20 group-hover:bg-accent-red transition-all duration-300" />
-            <div>
-              <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6 text-2xl">
-                👨
+          <motion.div 
+            variants={itemVariants} 
+            className="glass-panel shine-sweep rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col overflow-hidden bg-gradient-to-br from-white/[0.01] to-[#0A0C12] hover:shadow-[0_0_30px_rgba(255,90,95,0.03)]"
+          >
+            <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300 z-30" />
+            
+            <div className="relative w-full aspect-[4/3] overflow-hidden">
+              <img src={manImg} alt="Man" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] via-transparent to-transparent opacity-90" />
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20">
+                <div className="w-14 h-14 rounded-full bg-[#0d111b] border-2 border-accent-red/30 flex items-center justify-center text-accent-red shadow-[0_0_15px_rgba(255,90,95,0.25)] group-hover:shadow-[0_0_25px_rgba(255,90,95,0.45)] group-hover:border-accent-red transition-all duration-300">
+                  <Users className="w-6 h-6" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold font-title text-white mb-4">Man</h3>
-              <p className="text-sm text-text-secondary leading-relaxed font-sans">
-                Manage workforce performance, technician assignments, skill tracking, attendance, and maintenance responsibilities to improve productivity and accountability.
-              </p>
+            </div>
+
+            <div className="p-6 pt-10 flex flex-col justify-between flex-1 relative z-10">
+              <div>
+                <h3 className="text-xl font-bold font-title text-white mb-2">Man</h3>
+                <div className="w-8 h-[2px] bg-accent-red mb-4" />
+                <p className="text-sm text-text-secondary leading-relaxed font-sans">
+                  Manage workforce performance, technician assignments, skill tracking, attendance, and maintenance responsibilities to improve productivity and accountability.
+                </p>
+              </div>
             </div>
           </motion.div>
 
           {/* Card 2: Machine */}
-          <motion.div variants={itemVariants} className="glass-panel p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-300 relative group flex flex-col justify-between">
-            <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/20 group-hover:bg-accent-red transition-all duration-300" />
-            <div>
-              <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6 text-2xl">
-                ⚙️
+          <motion.div 
+            variants={itemVariants} 
+            className="glass-panel shine-sweep rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col overflow-hidden bg-gradient-to-br from-white/[0.01] to-[#0A0C12] hover:shadow-[0_0_30px_rgba(255,90,95,0.03)]"
+          >
+            <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300 z-30" />
+            
+            <div className="relative w-full aspect-[4/3] overflow-hidden">
+              <img src={machineImg} alt="Machine" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] via-transparent to-transparent opacity-90" />
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20">
+                <div className="w-14 h-14 rounded-full bg-[#0d111b] border-2 border-accent-red/30 flex items-center justify-center text-accent-red shadow-[0_0_15px_rgba(255,90,95,0.25)] group-hover:shadow-[0_0_25px_rgba(255,90,95,0.45)] group-hover:border-accent-red transition-all duration-300">
+                  <Settings className="w-6 h-6" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold font-title text-white mb-4">Machine</h3>
-              <p className="text-sm text-text-secondary leading-relaxed font-sans">
-                Monitor equipment health, schedule preventive maintenance, reduce downtime, track breakdowns, and extend asset life.
-              </p>
+            </div>
+
+            <div className="p-6 pt-10 flex flex-col justify-between flex-1 relative z-10">
+              <div>
+                <h3 className="text-xl font-bold font-title text-white mb-2">Machine</h3>
+                <div className="w-8 h-[2px] bg-accent-red mb-4" />
+                <p className="text-sm text-text-secondary leading-relaxed font-sans">
+                  Monitor equipment health, schedule preventive maintenance, reduce downtime, track breakdowns, and extend asset life.
+                </p>
+              </div>
             </div>
           </motion.div>
 
           {/* Card 3: Method */}
-          <motion.div variants={itemVariants} className="glass-panel p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-300 relative group flex flex-col justify-between">
-            <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/20 group-hover:bg-accent-red transition-all duration-300" />
-            <div>
-              <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6 text-2xl">
-                📋
+          <motion.div 
+            variants={itemVariants} 
+            className="glass-panel shine-sweep rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col overflow-hidden bg-gradient-to-br from-white/[0.01] to-[#0A0C12] hover:shadow-[0_0_30px_rgba(255,90,95,0.03)]"
+          >
+            <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300 z-30" />
+            
+            <div className="relative w-full aspect-[4/3] overflow-hidden">
+              <img src={methodImg} alt="Method" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] via-transparent to-transparent opacity-90" />
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20">
+                <div className="w-14 h-14 rounded-full bg-[#0d111b] border-2 border-accent-red/30 flex items-center justify-center text-accent-red shadow-[0_0_15px_rgba(255,90,95,0.25)] group-hover:shadow-[0_0_25px_rgba(255,90,95,0.45)] group-hover:border-accent-red transition-all duration-300">
+                  <ClipboardList className="w-6 h-6" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold font-title text-white mb-4">Method</h3>
-              <p className="text-sm text-text-secondary leading-relaxed font-sans">
-                Standardize maintenance procedures, work orders, inspection checklists, SOPs, and compliance processes for consistent operations.
-              </p>
+            </div>
+
+            <div className="p-6 pt-10 flex flex-col justify-between flex-1 relative z-10">
+              <div>
+                <h3 className="text-xl font-bold font-title text-white mb-2">Method</h3>
+                <div className="w-8 h-[2px] bg-accent-red mb-4" />
+                <p className="text-sm text-text-secondary leading-relaxed font-sans">
+                  Standardize maintenance procedures, work orders, inspection checklists, SOPs, and compliance processes for consistent operations.
+                </p>
+              </div>
             </div>
           </motion.div>
 
           {/* Card 4: Material */}
-          <motion.div variants={itemVariants} className="glass-panel p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-300 relative group flex flex-col justify-between">
-            <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/20 group-hover:bg-accent-red transition-all duration-300" />
-            <div>
-              <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6 text-2xl">
-                📦
+          <motion.div 
+            variants={itemVariants} 
+            className="glass-panel shine-sweep rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col overflow-hidden bg-gradient-to-br from-white/[0.01] to-[#0A0C12] hover:shadow-[0_0_30px_rgba(255,90,95,0.03)]"
+          >
+            <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300 z-30" />
+            
+            <div className="relative w-full aspect-[4/3] overflow-hidden">
+              <img src={materialImg} alt="Material" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] via-transparent to-transparent opacity-90" />
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20">
+                <div className="w-14 h-14 rounded-full bg-[#0d111b] border-2 border-accent-red/30 flex items-center justify-center text-accent-red shadow-[0_0_15px_rgba(255,90,95,0.25)] group-hover:shadow-[0_0_25px_rgba(255,90,95,0.45)] group-hover:border-accent-red transition-all duration-300">
+                  <Package className="w-6 h-6" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold font-title text-white mb-4">Material</h3>
-              <p className="text-sm text-text-secondary leading-relaxed font-sans">
-                Track spare parts inventory, material consumption, stock levels, procurement, and availability to prevent maintenance delays.
-              </p>
+            </div>
+
+            <div className="p-6 pt-10 flex flex-col justify-between flex-1 relative z-10">
+              <div>
+                <h3 className="text-xl font-bold font-title text-white mb-2">Material</h3>
+                <div className="w-8 h-[2px] bg-accent-red mb-4" />
+                <p className="text-sm text-text-secondary leading-relaxed font-sans">
+                  Track spare parts inventory, material consumption, stock levels, procurement, and availability to prevent maintenance delays.
+                </p>
+              </div>
             </div>
           </motion.div>
         </motion.div>
 
         {/* Key Benefits Banner */}
         <motion.div 
-          className="glass-panel p-8 rounded-2xl border border-white/5 relative overflow-hidden"
+          className="glass-panel shine-sweep p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,90,95,0.02)] relative overflow-hidden bg-gradient-to-br from-white/[0.01] to-[#0A0C12]"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <div className="absolute top-0 left-0 w-2 h-full bg-accent-red" />
-          <h3 className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-accent-red mb-6">Key Benefits</h3>
+          <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            <div className="p-4 bg-white/5 border border-white/5 rounded-xl flex items-center gap-3">
-              <span className="text-emerald-500 text-lg">✅</span>
-              <span className="text-sm font-bold text-white leading-tight font-sans">Reduced Equipment Downtime</span>
-            </div>
-
-            <div className="p-4 bg-white/5 border border-white/5 rounded-xl flex items-center gap-3">
-              <span className="text-emerald-500 text-lg">✅</span>
-              <span className="text-sm font-bold text-white leading-tight font-sans">Improved Asset Reliability</span>
-            </div>
-
-            <div className="p-4 bg-white/5 border border-white/5 rounded-xl flex items-center gap-3">
-              <span className="text-emerald-500 text-lg">✅</span>
-              <span className="text-sm font-bold text-white leading-tight font-sans">Better Workforce Management</span>
-            </div>
-
-            <div className="p-4 bg-white/5 border border-white/5 rounded-xl flex items-center gap-3">
-              <span className="text-emerald-500 text-lg">✅</span>
-              <span className="text-sm font-bold text-white leading-tight font-sans">Optimized Inventory Control</span>
-            </div>
-
-            <div className="p-4 bg-white/5 border border-white/5 rounded-xl flex items-center gap-3">
-              <span className="text-emerald-500 text-lg">✅</span>
-              <span className="text-sm font-bold text-white leading-tight font-sans">Preventive Maintenance Planning</span>
-            </div>
-
-            <div className="p-4 bg-white/5 border border-white/5 rounded-xl flex items-center gap-3">
-              <span className="text-emerald-500 text-lg">✅</span>
-              <span className="text-sm font-bold text-white leading-tight font-sans">Real-Time Monitoring & Reporting</span>
-            </div>
-
-            <div className="p-4 bg-white/5 border border-white/5 rounded-xl flex items-center gap-3 sm:col-span-2 lg:col-span-2">
-              <span className="text-emerald-500 text-lg">✅</span>
-              <span className="text-sm font-bold text-white leading-tight font-sans">Increased Operational Efficiency</span>
-            </div>
-
+          <div className="flex items-center gap-2 mb-6 border-b border-white/10 pb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse" />
+            <h3 className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-white">Key Benefits</h3>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {cmmsBenefits.map((ind, idx) => (
+              <div 
+                key={idx} 
+                className={`p-4 rounded-xl border flex items-center gap-3 transition-all duration-300 hover:scale-[1.02] group hover:shadow-[0_0_25px_rgba(255,90,95,0.05)] ${
+                  ind.highlight 
+                    ? 'bg-accent-red/10 border-accent-red/20 hover:border-accent-red/40 hover:bg-accent-red/15' 
+                    : 'bg-gradient-to-br from-white/[0.02] to-transparent border-white/5 hover:border-accent-red/30 hover:bg-white/[0.04]'
+                } ${idx === 6 ? 'sm:col-span-2 lg:col-span-2' : ''}`}
+              >
+                <div className="w-10 h-10 rounded-xl bg-accent-red/5 border border-accent-red/10 flex items-center justify-center text-accent-red shadow-[0_0_12px_rgba(255,90,95,0.05)] group-hover:scale-110 group-hover:bg-accent-red/10 group-hover:border-accent-red/30 transition-all duration-300 shrink-0">
+                  <span className="material-symbols-outlined text-xl">{ind.icon}</span>
+                </div>
+                <span className="text-xs font-bold text-white leading-tight font-sans">{ind.name}</span>
+              </div>
+            ))}
           </div>
         </motion.div>
         </motion.div>

@@ -162,7 +162,7 @@ export default function HeroCarousel({
   return (
     <motion.section
       id="systems-spotlight"
-      className="relative h-[620px] xs:h-[580px] lg:h-screen min-h-[500px] flex items-center overflow-hidden bg-transparent w-full border-t border-b border-border-color snap-section"
+      className="relative h-[720px] xs:h-[680px] lg:h-screen min-h-[500px] flex items-center overflow-hidden bg-transparent w-full border-t border-b border-border-color snap-section"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.3 }}
@@ -176,7 +176,7 @@ export default function HeroCarousel({
 
       {/* Main Slide Track */}
       <div className="relative z-10 w-full px-0 py-0 transition-all duration-300">
-        <div className="relative w-full h-[620px] xs:h-[580px] lg:h-screen transition-all duration-300">
+        <div className="relative w-full h-[720px] xs:h-[680px] lg:h-screen transition-all duration-300">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={currentSlide}
@@ -210,7 +210,7 @@ export default function HeroCarousel({
                 // GramUnnati Custom Slide (Centered Layout, Dark Mode, No Background Image)
                 <div className="w-full max-w-3xl mx-auto flex flex-col items-center justify-center text-center px-6 py-6 lg:py-12 relative -translate-y-4">
                   {/* Logo on top */}
-                  <div className="bg-white p-2.5 sm:p-4 rounded-3xl flex items-center justify-center shadow-xl w-[100px] h-[100px] sm:w-[160px] h-[160px] mb-4 sm:mb-8 animate-slideInFromLeft">
+                  <div className="bg-white p-2.5 sm:p-4 rounded-3xl flex items-center justify-center shadow-xl w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] mb-4 sm:mb-8 animate-slideInFromLeft">
                     <img
                       src={gramUnnatiLogoImg}
                       alt="GramUnnati Logo Icon"
@@ -246,7 +246,7 @@ export default function HeroCarousel({
                 // IoT Custom Slide (Centered Layout, Dark Mode, No Background Image)
                 <div className="w-full max-w-3xl mx-auto flex flex-col items-center justify-center text-center px-6 py-6 lg:py-12 relative -translate-y-4">
                   {/* Logo on top */}
-                  <IoTLogo size="w-[100px] h-[100px] sm:w-[160px] h-[160px] mb-4 sm:mb-8" />
+                  <IoTLogo size="w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] mb-4 sm:mb-8" />
                   
                   <span className="text-[8px] sm:text-[10px] font-mono font-bold uppercase tracking-[0.2em] px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-sm border text-accent-red bg-accent-red/10 border-accent-red/20 mb-3 sm:mb-6">
                     INDUSTRIAL TELEMETRY
@@ -276,7 +276,7 @@ export default function HeroCarousel({
                 // 4M Custom Slide (Centered Layout, Dark Mode, No Background Image)
                 <div className="w-full max-w-3xl mx-auto flex flex-col items-center justify-center text-center px-6 py-6 lg:py-12 relative -translate-y-4">
                   {/* Logo on top */}
-                  <div className="bg-white p-2.5 sm:p-4 rounded-3xl flex items-center justify-center shadow-xl w-[100px] h-[100px] sm:w-[160px] h-[160px] mb-4 sm:mb-8 animate-slideInFromLeft">
+                  <div className="bg-white p-2.5 sm:p-4 rounded-3xl flex items-center justify-center shadow-xl w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] mb-4 sm:mb-8 animate-slideInFromLeft">
                     <img
                       src={logo4MImg}
                       alt="4M Logo Icon"

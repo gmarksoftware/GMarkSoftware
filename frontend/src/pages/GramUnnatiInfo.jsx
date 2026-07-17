@@ -9,6 +9,16 @@ import gramUnnatiM from '@/assets/gramunnati_m.webp';
 
 
 export default function GramUnnatiInfo({ onViewChange }) {
+  const platformBenefits = [
+    { name: "Higher Income", icon: "payments" },
+    { name: "Fair Prices", icon: "balance" },
+    { name: "Direct Access", icon: "storefront" },
+    { name: "Financial Inclusion", icon: "currency_exchange" },
+    { name: "Sustainable", icon: "spa" },
+    { name: "Employment", icon: "groups_3" },
+    { name: "Atmanirbhar", icon: "flag", highlight: true }
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -63,19 +73,16 @@ export default function GramUnnatiInfo({ onViewChange }) {
                   </div>
                 </div>
 
+                {/* Back button for mobile viewports (opposite right corner) */}
                 <button 
                   onClick={(e) => {
-                    e.stopPropagation(); // Prevent opening the lightbox when clicking the back button
+                    e.stopPropagation();
                     onViewChange('home');
-                    setTimeout(() => {
-                      const el = document.getElementById('systems-spotlight');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
                   }}
-                  className="flex items-center justify-center gap-1 sm:gap-1.5 border border-white/20 hover:border-white/40 bg-black/40 hover:bg-black/60 backdrop-blur-sm px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-lg sm:rounded-xl text-[11px] sm:text-sm font-semibold transition-all duration-300 w-fit cursor-pointer text-white drop-shadow-md z-40"
+                  className="flex sm:hidden items-center justify-center border border-white/20 hover:border-white/40 bg-black/40 hover:bg-black/60 backdrop-blur-sm p-2 rounded-full transition-all duration-300 w-10 h-10 cursor-pointer text-white drop-shadow-md z-40"
+                  aria-label="Back to Home"
                 >
-                  <span className="material-symbols-outlined text-xs sm:text-base">arrow_back</span>
-                  <span>Back to Home</span>
+                  <span className="material-symbols-outlined text-lg">arrow_back</span>
                 </button>
               </div>
             </div>
@@ -105,6 +112,30 @@ export default function GramUnnatiInfo({ onViewChange }) {
               }
               .animate-scanline {
                 animation: scanline 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+              }
+              
+              .shine-sweep {
+                position: relative;
+                overflow: hidden;
+              }
+              .shine-sweep::after {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -60%;
+                width: 30%;
+                height: 200%;
+                background: linear-gradient(
+                  to right,
+                  rgba(255, 255, 255, 0) 0%,
+                  rgba(255, 255, 255, 0.08) 50%,
+                  rgba(255, 255, 255, 0) 100%
+                );
+                transform: rotate(25deg);
+                transition: all 0.75s ease;
+              }
+              .shine-sweep:hover::after {
+                left: 120%;
               }
             `}} />
 
@@ -139,19 +170,7 @@ export default function GramUnnatiInfo({ onViewChange }) {
               </p>
             </motion.div>
 
-            <button 
-              onClick={() => {
-                onViewChange('home');
-                setTimeout(() => {
-                  const el = document.getElementById('systems-spotlight');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-              }}
-              className="flex items-center justify-center gap-1.5 border border-white/20 hover:border-white/40 bg-white/5 hover:bg-white/10 px-3.5 py-1.5 sm:px-5 sm:py-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 w-fit cursor-pointer text-white shrink-0 self-end md:self-auto"
-            >
-              <span className="material-symbols-outlined text-sm sm:text-base">arrow_back</span>
-              <span className="hidden sm:inline">Back to Home</span>
-            </button>
+            {/* Back button removed in favor of swipe-back gesture */}
           </div>
 
           {/* Content Panels */}
@@ -162,8 +181,8 @@ export default function GramUnnatiInfo({ onViewChange }) {
             animate="visible"
           >
           {/* Panel 1: Our Vision */}
-          <motion.div variants={itemVariants} className="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-300 relative group flex flex-col justify-between">
-            <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/20 group-hover:bg-accent-red transition-all duration-300" />
+          <motion.div variants={itemVariants} className="glass-panel shine-sweep p-6 rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col justify-between hover:shadow-[0_0_30px_rgba(255,90,95,0.03)] bg-gradient-to-br from-white/[0.01] to-[#0A0C12]">
+            <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
             <div>
               <div className="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 group-hover:border-accent-red/30 transition-all duration-300">
                 <img src={visionImg} alt="Our Vision" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -176,8 +195,8 @@ export default function GramUnnatiInfo({ onViewChange }) {
           </motion.div>
 
           {/* Panel 2: Our Mission */}
-          <motion.div variants={itemVariants} className="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-300 relative group flex flex-col justify-between">
-            <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/20 group-hover:bg-accent-red transition-all duration-300" />
+          <motion.div variants={itemVariants} className="glass-panel shine-sweep p-6 rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col justify-between hover:shadow-[0_0_30px_rgba(255,90,95,0.03)] bg-gradient-to-br from-white/[0.01] to-[#0A0C12]">
+            <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
             <div>
               <div className="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 group-hover:border-accent-red/30 transition-all duration-300">
                 <img src={missionImg} alt="Our Mission" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -190,8 +209,8 @@ export default function GramUnnatiInfo({ onViewChange }) {
           </motion.div>
 
           {/* Panel 3: About Us */}
-          <motion.div variants={itemVariants} className="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-300 relative group flex flex-col justify-between">
-            <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/20 group-hover:bg-accent-red transition-all duration-300" />
+          <motion.div variants={itemVariants} className="glass-panel shine-sweep p-6 rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col justify-between hover:shadow-[0_0_30px_rgba(255,90,95,0.03)] bg-gradient-to-br from-white/[0.01] to-[#0A0C12]">
+            <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
             <div>
               <div className="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 group-hover:border-accent-red/30 transition-all duration-300">
                 <img src={aboutImg} alt="About Us" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -235,51 +254,34 @@ export default function GramUnnatiInfo({ onViewChange }) {
 
         {/* Third Row: Key Benefits Banner */}
         <motion.div 
-          className="glass-panel p-8 rounded-2xl border border-white/5 relative overflow-hidden"
+          className="glass-panel shine-sweep p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,90,95,0.02)] relative overflow-hidden bg-gradient-to-br from-white/[0.01] to-[#0A0C12]"
           variants={itemVariants}
           initial="hidden"
           animate="visible"
         >
-          <div className="absolute top-0 left-0 w-2 h-full bg-accent-red" />
-          <h3 className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-accent-red mb-6">Key Platform Benefits</h3>
+          <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
+          
+          <div className="flex items-center gap-2 mb-6 border-b border-white/10 pb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse" />
+            <h3 className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-white">Key Platform Benefits</h3>
+          </div>
           
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-6 text-center">
-            
-            <div className="p-3 bg-white/5 border border-white/5 rounded-xl flex flex-col items-center justify-center gap-2">
-              <span className="material-symbols-outlined text-accent-red">payments</span>
-              <span className="text-xs font-bold text-white leading-tight">Higher Income</span>
-            </div>
-
-            <div className="p-3 bg-white/5 border border-white/5 rounded-xl flex flex-col items-center justify-center gap-2">
-              <span className="material-symbols-outlined text-accent-red">balance</span>
-              <span className="text-xs font-bold text-white leading-tight">Fair Prices</span>
-            </div>
-
-            <div className="p-3 bg-white/5 border border-white/5 rounded-xl flex flex-col items-center justify-center gap-2">
-              <span className="material-symbols-outlined text-accent-red">storefront</span>
-              <span className="text-xs font-bold text-white leading-tight">Direct Access</span>
-            </div>
-
-            <div className="p-3 bg-white/5 border border-white/5 rounded-xl flex flex-col items-center justify-center gap-2">
-              <span className="material-symbols-outlined text-accent-red">currency_exchange</span>
-              <span className="text-xs font-bold text-white leading-tight">Financial Inclusion</span>
-            </div>
-
-            <div className="p-3 bg-white/5 border border-white/5 rounded-xl flex flex-col items-center justify-center gap-2">
-              <span className="material-symbols-outlined text-accent-red">spa</span>
-              <span className="text-xs font-bold text-white leading-tight">Sustainable</span>
-            </div>
-
-            <div className="p-3 bg-white/5 border border-white/5 rounded-xl flex flex-col items-center justify-center gap-2">
-              <span className="material-symbols-outlined text-accent-red">groups_3</span>
-              <span className="text-xs font-bold text-white leading-tight">Employment</span>
-            </div>
-
-            <div className="col-span-2 sm:col-span-1 p-3 bg-accent-red/10 border border-accent-red/20 rounded-xl flex flex-col items-center justify-center gap-2">
-              <span className="material-symbols-outlined text-accent-red">flag</span>
-              <span className="text-xs font-bold text-white leading-tight">Atmanirbhar</span>
-            </div>
-
+            {platformBenefits.map((ind, idx) => (
+              <div 
+                key={idx} 
+                className={`p-5 rounded-xl border flex flex-col items-center justify-center gap-3 text-center transition-all duration-300 hover:scale-[1.03] group hover:shadow-[0_0_25px_rgba(255,90,95,0.05)] ${
+                  ind.highlight 
+                    ? 'bg-accent-red/10 border-accent-red/20 hover:border-accent-red/40 hover:bg-accent-red/15' 
+                    : 'bg-gradient-to-br from-white/[0.02] to-transparent border-white/5 hover:border-accent-red/30 hover:bg-white/[0.04]'
+                }`}
+              >
+                <div className="w-12 h-12 rounded-2xl bg-accent-red/5 border border-accent-red/10 flex items-center justify-center text-accent-red shadow-[0_0_15px_rgba(255,90,95,0.05)] group-hover:scale-110 group-hover:bg-accent-red/10 group-hover:border-accent-red/30 transition-all duration-300">
+                  <span className="material-symbols-outlined text-2xl">{ind.icon}</span>
+                </div>
+                <span className="text-xs font-bold text-white leading-tight font-sans">{ind.name}</span>
+              </div>
+            ))}
           </div>
         </motion.div>
       </motion.div>
