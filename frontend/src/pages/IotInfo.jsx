@@ -81,12 +81,12 @@ export default function IotInfo({ onViewChange }) {
   ];
 
   return (
-    <div className="relative min-h-screen md:h-screen md:overflow-y-auto overflow-x-hidden bg-bg-primary text-text-primary select-text scroll-smooth md:snap-y md:snap-mandatory">
+    <div className="relative min-h-screen overflow-x-hidden bg-bg-primary text-text-primary select-text scroll-smooth">
       {/* Background gradients */}
       <div className="absolute inset-0 pointer-events-none z-0" style={{ backgroundImage: 'radial-gradient(circle at 50% 10%, rgba(255,90,95,0.05), transparent 60%)' }} />
       <div className="absolute inset-0 pointer-events-none z-0" style={{ backgroundImage: 'radial-gradient(circle at 10% 80%, rgba(156,204,60,0.03), transparent 50%)' }} />
 
-      <div className="w-full h-screen relative z-10 md:snap-start shrink-0">
+      <div className="w-full min-h-screen relative z-10 shrink-0">
           <motion.div 
             variants={itemVariants}
             initial="hidden"
@@ -238,7 +238,7 @@ export default function IotInfo({ onViewChange }) {
           </motion.div>
         </div>
 
-        <div className="w-full min-h-screen md:snap-start relative z-10 shrink-0">
+        <div className="w-full min-h-screen relative z-10 shrink-0">
           <motion.div 
             id="details-content"
             initial={{ opacity: 0 }}
@@ -280,9 +280,9 @@ export default function IotInfo({ onViewChange }) {
             <motion.div 
               key={idx}
               variants={itemVariants} 
-              className="glass-panel shine-sweep p-6 rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col justify-between hover:shadow-[0_0_30px_rgba(255,90,95,0.03)] bg-gradient-to-br from-white/[0.01] to-[#0A0C12]"
+              className="glass-panel shine-sweep p-6 rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col justify-between hover:shadow-[0_0_30px_rgba(255,90,95,0.03)] bg-linear-to-br from-white/1 to-[#0A0C12]"
             >
-              <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
+              <div className="absolute top-0 left-0 w-0.5 h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
               <div>
                 <div className="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 group-hover:border-accent-red/30 transition-all duration-300">
                   <img src={feature.image} alt={feature.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -300,7 +300,7 @@ export default function IotInfo({ onViewChange }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Business Benefits */}
           <motion.div 
-            className="lg:col-span-6 glass-panel shine-sweep p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,90,95,0.02)] relative overflow-hidden flex flex-col justify-between bg-gradient-to-br from-white/[0.01] to-[#0A0C12]"
+            className="lg:col-span-6 glass-panel shine-sweep p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,90,95,0.02)] relative overflow-hidden flex flex-col justify-between bg-linear-to-br from-white/1 to-[#0A0C12]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -313,7 +313,7 @@ export default function IotInfo({ onViewChange }) {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {benefits.map((benefit, idx) => (
-                  <div key={idx} className="p-4 bg-gradient-to-br from-white/[0.02] to-transparent border border-white/5 hover:border-emerald-500/30 hover:bg-white/[0.04] rounded-xl flex items-center gap-3 transition-all duration-300 hover:scale-[1.02] group">
+                  <div key={idx} className="p-4 bg-linear-to-br from-white/2 to-transparent border border-white/5 hover:border-emerald-500/30 hover:bg-white/4 rounded-xl flex items-center gap-3 transition-all duration-300 hover:scale-[1.02] group">
                     <div className="w-6 h-6 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.1)] group-hover:scale-110 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition-all duration-300">
                       <span className="material-symbols-outlined text-sm font-bold">check</span>
                     </div>
@@ -326,7 +326,7 @@ export default function IotInfo({ onViewChange }) {
 
           {/* Industries We Serve */}
           <motion.div 
-            className="lg:col-span-6 glass-panel shine-sweep p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,90,95,0.02)] relative overflow-hidden flex flex-col justify-between bg-gradient-to-br from-white/[0.01] to-[#0A0C12]"
+            className="lg:col-span-6 glass-panel shine-sweep p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,90,95,0.02)] relative overflow-hidden flex flex-col justify-between bg-linear-to-br from-white/1 to-[#0A0C12]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -339,7 +339,7 @@ export default function IotInfo({ onViewChange }) {
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {industries.map((ind, idx) => (
-                  <div key={idx} className="p-5 bg-gradient-to-br from-white/[0.02] to-transparent border border-white/5 hover:border-accent-red/30 hover:bg-white/[0.04] rounded-xl flex flex-col items-center justify-center gap-3 text-center transition-all duration-300 hover:scale-[1.03] group hover:shadow-[0_0_25px_rgba(255,90,95,0.05)]">
+                  <div key={idx} className="p-5 bg-linear-to-br from-white/2 to-transparent border border-white/5 hover:border-accent-red/30 hover:bg-white/4 rounded-xl flex flex-col items-center justify-center gap-3 text-center transition-all duration-300 hover:scale-[1.03] group hover:shadow-[0_0_25px_rgba(255,90,95,0.05)]">
                     <div className="w-12 h-12 rounded-2xl bg-accent-red/5 border border-accent-red/10 flex items-center justify-center text-accent-red shadow-[0_0_15px_rgba(255,90,95,0.05)] group-hover:scale-110 group-hover:bg-accent-red/10 group-hover:border-accent-red/30 transition-all duration-300">
                       <span className="material-symbols-outlined text-2xl">{ind.icon}</span>
                     </div>
@@ -353,14 +353,14 @@ export default function IotInfo({ onViewChange }) {
 
         {/* Footer Banner */}
         <motion.div 
-          className="relative p-8 rounded-2xl overflow-hidden text-center max-w-4xl mx-auto space-y-4 group border border-white/5 hover:border-accent-red/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,90,95,0.08)] bg-gradient-to-r from-accent-red/10 via-[#0B0D14]/90 to-accent-red/10 backdrop-blur-md"
+          className="relative p-8 rounded-2xl overflow-hidden text-center max-w-4xl mx-auto space-y-4 group border border-white/5 hover:border-accent-red/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,90,95,0.08)] bg-linear-to-r from-accent-red/10 via-[#0B0D14]/90 to-accent-red/10 backdrop-blur-md"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           {/* Animated red line glow */}
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent-red to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
-          <div className="absolute -top-[10px] left-1/2 -translate-x-1/2 w-48 h-[20px] bg-accent-red/30 blur-[15px] rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+          <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-accent-red to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-48 h-5 bg-accent-red/30 blur-[15px] rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
           
           <h3 className="text-xl sm:text-2xl font-bold font-title text-white tracking-wide">Empowering Industries with Connected Intelligence</h3>
           <p className="text-sm text-text-secondary leading-relaxed font-sans max-w-2xl mx-auto">

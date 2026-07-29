@@ -180,7 +180,7 @@ function ContactView() {
         {/* Form Column */}
         <div className="md:col-span-3 p-6 rounded border border-border-color/15 bg-bg-secondary/30 backdrop-blur-md">
           {submitted ? (
-            <div className="h-[300px] flex flex-col items-center justify-center text-center space-y-4 animate-scaleUp">
+            <div className="h-75 flex flex-col items-center justify-center text-center space-y-4 animate-scaleUp">
               <span className="material-symbols-outlined text-5xl text-emerald-400">check_circle</span>
               <h3 className="text-xl font-bold text-text-primary">Message Sent Successfully!</h3>
               <p className="text-sm text-text-secondary font-sans">Thank you for reaching out. We will contact you shortly.</p>
@@ -463,7 +463,7 @@ export default function MoreLayout({ activeTab, onTabChange }) {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
 
           {/* Left Side: Active Tab Content */}
-          <div className="lg:col-span-3 space-y-8 min-h-[500px]">
+          <div className="lg:col-span-3 space-y-8 min-h-125">
             {activeTab === 'gmark' && <GMarkAboutView />}
             {activeTab === 'contact' && <ContactView />}
             {activeTab === 'privacy' && <PrivacyView />}

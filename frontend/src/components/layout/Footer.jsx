@@ -36,7 +36,7 @@ export default function Footer({ onViewChange, currentView, onSelectSolution }) 
           <div className="col-span-2 md:col-span-5 space-y-6">
             <Logo />
             {!hideContactCards && (
-              <div className="space-y-4 max-w-[280px]">
+              <div className="space-y-4 max-w-70">
                 <div className="space-y-1">
                   <p className="text-xs text-text-secondary leading-relaxed font-sans">
                     G Mark Software Pvt. Ltd.<br />

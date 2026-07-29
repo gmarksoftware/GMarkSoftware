@@ -156,14 +156,14 @@ const ParticleWave: React.FC<ParticleWaveProps> = ({
       antialias: true,
       alpha: true,
     });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Cap pixel ratio at 2 for performance
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Cap pixel ratio at 1.5 for optimal performance
     renderer.setSize(winWidth, winHeight);
     renderer.setClearColor(0x000000, 0); // Transparent background
 
     // Performance adaptive particle density
-    const amountX = isMobile ? 70 : 140;
-    const amountY = isMobile ? 70 : 140;
-    const gap = isMobile ? 0.7 : 0.38; // Span similar physical width
+    const amountX = isMobile ? 48 : 92;
+    const amountY = isMobile ? 48 : 92;
+    const gap = isMobile ? 0.9 : 0.58; // Span similar physical width
 
     const particleNum = amountX * amountY;
     const particlePositions = new Float32Array(particleNum * 3);
@@ -344,10 +344,10 @@ const ParticleWave: React.FC<ParticleWaveProps> = ({
     const handleMouseMoveEvent = (e: MouseEvent) => handleMouseMove(e);
     const handleMouseLeaveEvent = () => handleMouseLeave();
 
-    window.addEventListener('resize', handleResizeEvent);
+    window.addEventListener('resize', handleResizeEvent, { passive: true });
     if (interactive) {
-      window.addEventListener('mousemove', handleMouseMoveEvent);
-      window.addEventListener('mouseleave', handleMouseLeaveEvent);
+      window.addEventListener('mousemove', handleMouseMoveEvent, { passive: true });
+      window.addEventListener('mouseleave', handleMouseLeaveEvent, { passive: true });
     }
 
     return () => {

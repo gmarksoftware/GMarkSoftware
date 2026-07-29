@@ -78,7 +78,7 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
   return (
     <>
       {/* Higher Grounds Bento Section */}
-      <section ref={sectionRef} id="features" className="relative border-t border-border-color bg-transparent min-h-[580px] lg:min-h-screen flex items-center overflow-hidden snap-section">
+      <section ref={sectionRef} id="features" className="relative border-t border-border-color bg-transparent min-h-145 lg:min-h-screen flex items-center overflow-hidden">
         <div className="mesh-bg" />
         <div className="w-full px-6 md:px-8 relative z-10 py-6 lg:py-4 xl:py-8">
 
@@ -110,7 +110,6 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
               variants={cardVariants}
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              style={{ willChange: 'transform, opacity' }}
             >
               <GlobeComponent className="h-full" />
             </motion.div>
@@ -125,7 +124,6 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
                 custom={0.2}
                 variants={cardVariants}
                 whileHover={{ scale: 1.03 }}
-                style={{ willChange: 'transform, opacity' }}
               >
                 <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/0 group-hover:bg-accent-red transition-all duration-300" />
                 <div className="w-10 h-10 rounded bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-4 lg:mb-2 xl:mb-4 transition-all duration-300 group-hover:scale-105 group-hover:bg-accent-red group-hover:text-[#05070D] group-hover:-translate-y-1.5">
@@ -145,7 +143,6 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
                 custom={0.6}
                 variants={cardVariants}
                 whileHover={{ scale: 1.03 }}
-                style={{ willChange: 'transform, opacity' }}
               >
                 <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/0 group-hover:bg-accent-red transition-all duration-300" />
                 <div className="w-10 h-10 rounded bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-4 lg:mb-2 xl:mb-4 transition-all duration-300 group-hover:scale-105 group-hover:bg-accent-red group-hover:text-[#05070D] group-hover:-translate-y-1.5">
@@ -168,7 +165,6 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
                 custom={0.4}
                 variants={cardVariants}
                 whileHover={{ scale: 1.03 }}
-                style={{ willChange: 'transform, opacity' }}
               >
                 <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/0 group-hover:bg-accent-red transition-all duration-300" />
                 <div className="w-10 h-10 rounded bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-4 lg:mb-2 xl:mb-4 transition-all duration-300 group-hover:scale-105 group-hover:bg-accent-red group-hover:text-[#05070D] group-hover:-translate-y-1.5">
@@ -188,7 +184,6 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
                 custom={0.8}
                 variants={cardVariants}
                 whileHover={{ scale: 1.03 }}
-                style={{ willChange: 'transform, opacity' }}
               >
                 <div className="absolute top-0 left-0 w-1 h-full bg-accent-red/0 group-hover:bg-accent-red transition-all duration-300" />
                 <div className="w-10 h-10 rounded bg-[#1A1D24]/10 border border-[#1A1D24]/20 flex items-center justify-center text-accent-red mb-4 lg:mb-2 xl:mb-4 transition-all duration-300 group-hover:scale-105 group-hover:bg-accent-red group-hover:text-[#05070D] group-hover:-translate-y-1.5">
@@ -207,7 +202,7 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
       </section>
 
       {/* Mastery in Every Phase Section */}
-      <section id="solutions" className="min-h-screen flex items-center border-t border-border-color bg-bg-secondary/30 relative snap-section py-20 lg:py-24">
+      <section id="solutions" className="min-h-screen flex items-center border-t border-border-color bg-bg-secondary/30 relative py-20 lg:py-24">
         <div className="w-full px-6 md:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
@@ -233,7 +228,7 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
 
               {/* Vertical Connector and Guarantee Card */}
               <div className="flex flex-col items-center lg:items-start mt-4">
-                <div className="w-[2px] h-12 bg-linear-to-b from-border-color to-accent-red/50 mb-3" />
+                <div className="w-0.5 h-12 bg-linear-to-b from-border-color to-accent-red/50 mb-3" />
                 <div className="flex items-center gap-2 text-accent-red mb-4">
                   <span className="material-symbols-outlined text-base animate-bounce">arrow_downward</span>
                 </div>
@@ -262,7 +257,7 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
             {/* Right Column: Interactive Vertical Timeline */}
             <div className="lg:col-span-7 relative">
               {/* Vertical line through timeline dots */}
-              <div className="absolute left-[21px] top-6 bottom-6 w-[2px] bg-border-color/50" />
+              <div className="absolute left-5.25 top-6 bottom-6 w-0.5 bg-border-color/50" />
 
               <div className="space-y-6">
                 {phases.map((phase, index) => (
@@ -273,11 +268,6 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
-                    onMouseEnter={() => {
-                      if (window.matchMedia('(hover: hover)').matches) {
-                        setActiveStep(index);
-                      }
-                    }}
                     onClick={() => setActiveStep(prev => prev === index ? -1 : index)}
                   >
                     {/* Glowing dot on timeline */}
@@ -359,7 +349,7 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
       </section>
 
       {/* Combined Velocity and Metrics Section */}
-      <section className="min-h-screen flex flex-col bg-transparent border-b border-border-color snap-section">
+      <section className="min-h-screen flex flex-col bg-transparent border-b border-border-color">
         {/* Unprecedented Velocity */}
         <motion.div
           className="relative flex-1 py-12 md:py-16 flex items-center justify-center overflow-hidden bg-surface-container-lowest border-t border-b border-border-color"
@@ -367,7 +357,6 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-          style={{ willChange: 'transform, opacity' }}
         >
           {/* 3D Particle Wave Background */}
           <div className="absolute inset-0 pointer-events-none z-0">
@@ -400,7 +389,6 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-          style={{ willChange: 'transform, opacity' }}
         >
           <div className="w-full px-6 md:px-8">
             <h3 className="text-center font-mono text-xs font-bold text-accent-red uppercase tracking-[0.25em] mb-8">
@@ -439,7 +427,7 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
       </section>
 
       {/* Combined CTA and Footer Section */}
-      <section className="lg:min-h-screen min-h-fit flex flex-col justify-between bg-transparent snap-section">
+      <section className="lg:min-h-screen min-h-fit flex flex-col justify-between bg-transparent">
         {/* Accelerated CTA */}
         <motion.div
           className="flex-1 py-8 md:py-12 relative overflow-hidden flex items-center justify-center"
@@ -447,7 +435,6 @@ export default function Features({ onCTA, onViewChange, onSelectSolution }) {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-          style={{ willChange: 'transform, opacity' }}
         >
           <div className="w-full px-6 md:px-8 relative z-10">
             <div className="glass-panel p-8 md:p-12 rounded-xl overflow-hidden relative group">

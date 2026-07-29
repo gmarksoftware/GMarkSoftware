@@ -9,7 +9,7 @@ export default function Navbar({ currentView, onViewChange, activeSection, onAct
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -83,7 +83,7 @@ export default function Navbar({ currentView, onViewChange, activeSection, onAct
     <>
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
         ? 'opacity-0 pointer-events-none -translate-y-full'
-        : 'h-[96px] bg-transparent opacity-100 translate-y-0'
+        : 'h-24 bg-transparent opacity-100 translate-y-0'
         }`}>
         <nav className="w-full px-4 sm:px-6 md:px-8 h-full flex items-center justify-between" aria-label="Main Navigation">
 
@@ -159,7 +159,7 @@ export default function Navbar({ currentView, onViewChange, activeSection, onAct
       />
 
       {/* Mobile Drawer Sidebar */}
-      <aside className={`fixed top-0 right-0 w-[42%] max-w-[170px] h-screen bg-transparent border-l border-transparent py-32 px-3 z-40 md:hidden flex flex-col justify-between transition-transform duration-300 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+      <aside className={`fixed top-0 right-0 w-[42%] max-w-42.5 h-screen bg-transparent border-l border-transparent py-32 px-3 z-40 md:hidden flex flex-col justify-between transition-transform duration-300 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>
         <ul className="flex flex-col gap-6 list-none">
           {navItems.map((item) => (

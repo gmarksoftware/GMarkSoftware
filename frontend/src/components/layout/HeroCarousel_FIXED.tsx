@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 // Custom SVG Leaf/G logo for GramUnnati
 const GramUnnatiLogo = () => (
-  <div className="relative bg-white p-4 rounded-2xl flex flex-col items-center justify-center shadow-lg w-[160px] h-[185px] mx-auto select-none">
+  <div className="relative bg-white p-4 rounded-2xl flex flex-col items-center justify-center shadow-lg w-40 h-46.25 mx-auto select-none">
     {/* Live Status Badge */}
     <div className="absolute top-3 right-3 flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/25 text-emerald-600 text-[7px] font-mono font-bold uppercase tracking-wider scale-95">
       <span className="relative flex h-1.5 w-1.5">
@@ -12,7 +12,7 @@ const GramUnnatiLogo = () => (
       </span>
       Live
     </div>
-    <svg className="w-[72px] h-[72px]" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className="w-18 h-18" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       {/* Right Leaf (Light Green) */}
       <path
         d="M 94,52 
@@ -47,7 +47,7 @@ const GramUnnatiLogo = () => (
 
 // Custom SVG high-tech 4M logo
 const Logo4M = () => (
-  <div className="bg-white p-2 rounded-lg flex items-center justify-center shadow-lg w-[80px] h-[80px] mx-auto select-none">
+  <div className="bg-white p-2 rounded-lg flex items-center justify-center shadow-lg w-20 h-20 mx-auto select-none">
     <svg className="w-full h-full" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
         {/* Glow Filter */}
@@ -120,7 +120,7 @@ const Logo4M = () => (
 
 // Mockup Components for GramUnnati (Agriculture Slide)
 const AgricultureRightMockup = () => (
-  <div className="relative w-full max-w-[480px] bg-bg-secondary/40 border border-border-color backdrop-blur-md rounded-2xl p-5 shadow-2xl grid grid-cols-2 gap-4">
+  <div className="relative w-full max-w-120 bg-bg-secondary/40 border border-border-color backdrop-blur-md rounded-2xl p-5 shadow-2xl grid grid-cols-2 gap-4">
     {/* Ambient card glow */}
     <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at center, rgba(255,90,95,0.06), transparent 70%)' }} />
 
@@ -189,7 +189,7 @@ const AgricultureRightMockup = () => (
 
 // Mockup Components for 4M (Maintenance Slide)
 const MaintenanceRightMockup = () => (
-  <div className="relative w-full max-w-[500px]">
+  <div className="relative w-full max-w-125">
     {/* 4M Labels on top of computer */}
     <div className="text-left mb-5 select-none flex flex-col gap-1 items-start pl-1">
       <span className="text-[10px] sm:text-xs font-mono font-bold tracking-[0.2em] text-text-secondary uppercase">MAN,</span>
@@ -206,7 +206,7 @@ const MaintenanceRightMockup = () => (
         <div className="grid grid-cols-3 gap-4 items-center justify-items-center w-full">
           {/* Line/Bar Chart Outline */}
           <div className="w-full flex items-center justify-center p-2">
-            <svg className="w-full max-w-[120px] h-[100px] text-text-secondary/40" viewBox="0 0 100 80" fill="none" stroke="currentColor" strokeWidth="1.2">
+            <svg className="w-full max-w-30 h-25 text-text-secondary/40" viewBox="0 0 100 80" fill="none" stroke="currentColor" strokeWidth="1.2">
               <path d="M10 10 L10 70 L90 70" />
               <rect x="22" y="50" width="10" height="20" fill="none" />
               <rect x="42" y="38" width="10" height="32" fill="none" />
@@ -218,7 +218,7 @@ const MaintenanceRightMockup = () => (
 
           {/* Pie Chart Outline */}
           <div className="w-full flex items-center justify-center p-2">
-            <svg className="w-full max-w-[100px] h-[100px] text-text-secondary/40" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.2">
+            <svg className="w-full max-w-25 h-25 text-text-secondary/40" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.2">
               <circle cx="50" cy="50" r="40" />
               <path d="M50 10 L50 50 L90 50" />
               <path d="M50 50 L22 78" />
@@ -228,7 +228,7 @@ const MaintenanceRightMockup = () => (
 
           {/* Document Preview Outline */}
           <div className="w-full flex items-center justify-center p-2">
-            <svg className="w-full max-w-[100px] h-[110px] text-text-secondary/40" viewBox="0 0 100 110" fill="none" stroke="currentColor" strokeWidth="1.2">
+            <svg className="w-full max-w-25 h-27.5 text-text-secondary/40" viewBox="0 0 100 110" fill="none" stroke="currentColor" strokeWidth="1.2">
               <rect x="25" y="20" width="55" height="75" strokeDasharray="3 3" />
               <rect x="15" y="10" width="55" height="75" fill="#05070D" />
               <line x1="23" y1="22" x2="48" y2="22" strokeDasharray="2 2" />
@@ -241,7 +241,7 @@ const MaintenanceRightMockup = () => (
       </div>
 
       {/* Monitor Stand */}
-      <div className="w-20 h-10 border-x-[5px] border-b-[5px] border-text-secondary/40 mx-auto mt-[-5px]" />
+      <div className="w-20 h-10 border-x-[5px] border-b-[5px] border-text-secondary/40 mx-auto -mt-1.25" />
       {/* Monitor Base */}
       <div className="w-44 h-1.5 bg-text-secondary/40 mx-auto rounded-full" />
     </div>
@@ -349,8 +349,8 @@ export default function HeroCarousel({ onCTA }: { onCTA: () => void }) {
       <div className="absolute inset-0 pointer-events-none z-1 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.03),transparent_65%)]" />
 
       {/* Main Slide Track */}
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-8 w-full py-16">
-        <div className="relative w-full min-h-[500px] lg:min-h-[420px]">
+      <div className="relative z-10 max-w-350 mx-auto px-6 md:px-8 w-full py-16">
+        <div className="relative w-full min-h-125 lg:min-h-105">
           {slides.map((slide, index) => {
             const isActive = index === currentSlide;
 
@@ -366,7 +366,7 @@ export default function HeroCarousel({ onCTA }: { onCTA: () => void }) {
                 <div className="lg:col-span-4 flex justify-center items-center lg:border-r lg:border-border-color lg:px-6">
                   <div className="relative shrink-0">
                     {/* Phone Frame */}
-                    <div className="relative w-[280px] h-[520px] rounded-[44px] border-8 border-text-secondary/40 bg-[#05070D] flex flex-col justify-between p-5.5 shadow-2xl overflow-hidden">
+                    <div className="relative w-70 h-130 rounded-[44px] border-8 border-text-secondary/40 bg-[#05070D] flex flex-col justify-between p-5.5 shadow-2xl overflow-hidden">
                       {/* Notch */}
                       <div className="w-24 h-5 bg-text-secondary/30 rounded-full mx-auto -mt-2 flex items-center justify-center gap-1.5">
                         <div className="w-2 h-2 rounded-full bg-white/20" />
@@ -376,7 +376,7 @@ export default function HeroCarousel({ onCTA }: { onCTA: () => void }) {
                       {/* Screen Content based on type */}
                       {slide.type === 'maintenance' ? (
                         <div className="flex-1 flex flex-col justify-center items-center py-2">
-                          <div className="bg-white p-2 rounded-xl flex items-center justify-center shadow-lg w-[150px] h-[150px] select-none mx-auto mb-3">
+                          <div className="bg-white p-2 rounded-xl flex items-center justify-center shadow-lg w-37.5 h-37.5 select-none mx-auto mb-3">
                             <svg className="w-full h-full" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <defs>
                                 <filter id="glow4m-phone" x="-20%" y="-20%" width="140%" height="140%">

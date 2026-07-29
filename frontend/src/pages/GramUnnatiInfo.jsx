@@ -36,12 +36,12 @@ export default function GramUnnatiInfo({ onViewChange }) {
   };
 
   return (
-    <div className="relative min-h-screen md:h-screen md:overflow-y-auto overflow-x-hidden bg-bg-primary text-text-primary select-text scroll-smooth md:snap-y md:snap-mandatory">
+    <div className="relative min-h-screen overflow-x-hidden bg-bg-primary text-text-primary select-text scroll-smooth">
       {/* Background gradients */}
       <div className="absolute inset-0 pointer-events-none z-0" style={{ backgroundImage: 'radial-gradient(circle at 50% 10%, rgba(255,90,95,0.05), transparent 60%)' }} />
       <div className="absolute inset-0 pointer-events-none z-0" style={{ backgroundImage: 'radial-gradient(circle at 10% 80%, rgba(156,204,60,0.03), transparent 50%)' }} />
 
-      <div className="w-full h-screen relative z-10 md:snap-start shrink-0">
+      <div className="w-full min-h-screen relative z-10 shrink-0">
           <motion.div 
             variants={itemVariants}
             initial="hidden"
@@ -142,13 +142,13 @@ export default function GramUnnatiInfo({ onViewChange }) {
             {/* Ambient High-Tech Telemetry Overlay (GramUnnati Theme) */}
             <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
               {/* Scanline Sweep */}
-              <div className="absolute left-0 right-0 h-[2px] bg-linear-to-r from-transparent via-emerald-500/20 to-transparent shadow-[0_0_10px_rgba(16,185,129,0.3)] animate-scanline" />
+              <div className="absolute left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-emerald-500/20 to-transparent shadow-[0_0_10px_rgba(16,185,129,0.3)] animate-scanline" />
             </div>
 
           </motion.div>
         </div>
 
-        <div className="w-full min-h-screen md:snap-start relative z-10 shrink-0">
+        <div className="w-full min-h-screen relative z-10 shrink-0">
           <motion.div 
             id="details-content"
             initial={{ opacity: 0 }}
@@ -181,8 +181,8 @@ export default function GramUnnatiInfo({ onViewChange }) {
             animate="visible"
           >
           {/* Panel 1: Our Vision */}
-          <motion.div variants={itemVariants} className="glass-panel shine-sweep p-6 rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col justify-between hover:shadow-[0_0_30px_rgba(255,90,95,0.03)] bg-gradient-to-br from-white/[0.01] to-[#0A0C12]">
-            <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
+          <motion.div variants={itemVariants} className="glass-panel shine-sweep p-6 rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col justify-between hover:shadow-[0_0_30px_rgba(255,90,95,0.03)] bg-linear-to-br from-white/1 to-[#0A0C12]">
+            <div className="absolute top-0 left-0 w-0.5 h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
             <div>
               <div className="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 group-hover:border-accent-red/30 transition-all duration-300">
                 <img src={visionImg} alt="Our Vision" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -195,8 +195,8 @@ export default function GramUnnatiInfo({ onViewChange }) {
           </motion.div>
 
           {/* Panel 2: Our Mission */}
-          <motion.div variants={itemVariants} className="glass-panel shine-sweep p-6 rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col justify-between hover:shadow-[0_0_30px_rgba(255,90,95,0.03)] bg-gradient-to-br from-white/[0.01] to-[#0A0C12]">
-            <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
+          <motion.div variants={itemVariants} className="glass-panel shine-sweep p-6 rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col justify-between hover:shadow-[0_0_30px_rgba(255,90,95,0.03)] bg-linear-to-br from-white/1 to-[#0A0C12]">
+            <div className="absolute top-0 left-0 w-0.5 h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
             <div>
               <div className="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 group-hover:border-accent-red/30 transition-all duration-300">
                 <img src={missionImg} alt="Our Mission" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -209,8 +209,8 @@ export default function GramUnnatiInfo({ onViewChange }) {
           </motion.div>
 
           {/* Panel 3: About Us */}
-          <motion.div variants={itemVariants} className="glass-panel shine-sweep p-6 rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col justify-between hover:shadow-[0_0_30px_rgba(255,90,95,0.03)] bg-gradient-to-br from-white/[0.01] to-[#0A0C12]">
-            <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
+          <motion.div variants={itemVariants} className="glass-panel shine-sweep p-6 rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col justify-between hover:shadow-[0_0_30px_rgba(255,90,95,0.03)] bg-linear-to-br from-white/1 to-[#0A0C12]">
+            <div className="absolute top-0 left-0 w-0.5 h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
             <div>
               <div className="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 group-hover:border-accent-red/30 transition-all duration-300">
                 <img src={aboutImg} alt="About Us" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -254,12 +254,12 @@ export default function GramUnnatiInfo({ onViewChange }) {
 
         {/* Third Row: Key Benefits Banner */}
         <motion.div 
-          className="glass-panel shine-sweep p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,90,95,0.02)] relative overflow-hidden bg-gradient-to-br from-white/[0.01] to-[#0A0C12]"
+          className="glass-panel shine-sweep p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,90,95,0.02)] relative overflow-hidden bg-linear-to-br from-white/1 to-[#0A0C12]"
           variants={itemVariants}
           initial="hidden"
           animate="visible"
         >
-          <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
+          <div className="absolute top-0 left-0 w-0.5 h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
           
           <div className="flex items-center gap-2 mb-6 border-b border-white/10 pb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse" />
@@ -273,7 +273,7 @@ export default function GramUnnatiInfo({ onViewChange }) {
                 className={`p-5 rounded-xl border flex flex-col items-center justify-center gap-3 text-center transition-all duration-300 hover:scale-[1.03] group hover:shadow-[0_0_25px_rgba(255,90,95,0.05)] ${
                   ind.highlight 
                     ? 'bg-accent-red/10 border-accent-red/20 hover:border-accent-red/40 hover:bg-accent-red/15' 
-                    : 'bg-gradient-to-br from-white/[0.02] to-transparent border-white/5 hover:border-accent-red/30 hover:bg-white/[0.04]'
+                    : 'bg-linear-to-br from-white/2 to-transparent border-white/5 hover:border-accent-red/30 hover:bg-white/4'
                 }`}
               >
                 <div className="w-12 h-12 rounded-2xl bg-accent-red/5 border border-accent-red/10 flex items-center justify-center text-accent-red shadow-[0_0_15px_rgba(255,90,95,0.05)] group-hover:scale-110 group-hover:bg-accent-red/10 group-hover:border-accent-red/30 transition-all duration-300">

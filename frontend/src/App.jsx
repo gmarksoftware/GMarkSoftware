@@ -249,8 +249,6 @@ function App() {
           wheelAccumulator += Math.abs(e.deltaX);
           
           setSwipeState({ isSwiping: true, distance: wheelAccumulator * 0.6, edge: 'left' });
-          
-          if (e.cancelable) e.preventDefault();
 
           if (wheelAccumulator >= minSwipeDistance) {
             triggerBackNavigation();
@@ -272,16 +270,16 @@ function App() {
       }
     };
 
-    // Listeners
+    // Listeners with passive performance options
     window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
     window.addEventListener('touchend', handleTouchEnd, { passive: true });
 
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener('mousedown', handleMouseDown, { passive: true });
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('mouseup', handleMouseUp, { passive: true });
 
-    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('wheel', handleWheel, { passive: true });
 
     return () => {
       window.removeEventListener('touchstart', handleTouchStart);
@@ -297,48 +295,24 @@ function App() {
     };
   }, [currentView]);
 
-  // Unified Scroll & Scroll-Snapping management on view changes
+  // Unified Scroll management on view changes
   useEffect(() => {
-    const updateScrollSnapping = () => {
-      const isDesktop = window.innerWidth >= 1024;
-      if (currentView === 'home' && isDesktop) {
-        document.documentElement.classList.add('snap-container');
-      } else {
-        document.documentElement.classList.remove('snap-container');
-      }
-    };
-    
-    updateScrollSnapping();
-    
     if (isGoingBackToCarouselRef.current) {
       isGoingBackToCarouselRef.current = false;
       setTimeout(() => {
         const el = document.getElementById('systems-spotlight');
         if (el) {
-          const isDesktop = window.innerWidth >= 1024;
-          if (isDesktop) {
-            // On desktop, align exactly to 100vh snap point
-            window.scrollTo({ top: window.innerHeight, behavior: 'instant' });
-          } else {
-            // On mobile, use calculated offset
-            const offset = 90;
-            const bodyRect = document.body.getBoundingClientRect().top;
-            const elementRect = el.getBoundingClientRect().top;
-            const elementPosition = elementRect - bodyRect;
-            const offsetPosition = elementPosition - offset;
-            window.scrollTo({ top: offsetPosition, behavior: 'instant' });
-          }
+          const offset = 90;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = el.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+          window.scrollTo({ top: offsetPosition, behavior: 'instant' });
         }
       }, 0);
     } else {
       window.scrollTo({ top: 0, behavior: 'instant' });
     }
-
-    window.addEventListener('resize', updateScrollSnapping);
-    return () => {
-      document.documentElement.classList.remove('snap-container');
-      window.removeEventListener('resize', updateScrollSnapping);
-    };
   }, [currentView]);
 
   return (

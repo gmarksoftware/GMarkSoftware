@@ -178,9 +178,10 @@ const ShaderBackground = () => {
       gl.viewport(0, 0, canvas.width, canvas.height);
     };
 
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('resize', resizeCanvas, { passive: true });
     resizeCanvas();
 
+    let animationFrameId;
     let startTime = Date.now();
     const render = () => {
       const currentTime = (Date.now() - startTime) / 1000;
@@ -206,13 +207,16 @@ const ShaderBackground = () => {
 
       gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-      requestAnimationFrame(render);
+      animationFrameId = requestAnimationFrame(render);
     };
 
-    requestAnimationFrame(render);
+    animationFrameId = requestAnimationFrame(render);
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
     };
   }, []);
 

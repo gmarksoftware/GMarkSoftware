@@ -38,12 +38,12 @@ export default function CmmsInfo({ onViewChange }) {
   };
 
   return (
-    <div className="relative min-h-screen md:h-screen md:overflow-y-auto overflow-x-hidden bg-bg-primary text-text-primary select-text scroll-smooth md:snap-y md:snap-mandatory">
+    <div className="relative min-h-screen overflow-x-hidden bg-bg-primary text-text-primary select-text scroll-smooth">
       {/* Background gradients */}
       <div className="absolute inset-0 pointer-events-none z-0" style={{ backgroundImage: 'radial-gradient(circle at 50% 10%, rgba(255,90,95,0.05), transparent 60%)' }} />
       <div className="absolute inset-0 pointer-events-none z-0" style={{ backgroundImage: 'radial-gradient(circle at 10% 80%, rgba(156,204,60,0.03), transparent 50%)' }} />
 
-      <div className="w-full h-screen relative z-10 md:snap-start shrink-0">
+      <div className="w-full min-h-screen relative z-10 shrink-0">
           <motion.div 
             variants={itemVariants}
             initial="hidden"
@@ -177,7 +177,7 @@ export default function CmmsInfo({ onViewChange }) {
             {/* Ambient High-Tech Telemetry Overlay (4M Theme) */}
             <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
               {/* Scanline Sweep */}
-              <div className="absolute left-0 right-0 h-[2px] bg-linear-to-r from-transparent via-cyan-500/20 to-transparent shadow-[0_0_10px_rgba(6,182,212,0.3)] animate-scanline" />
+              <div className="absolute left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-cyan-500/20 to-transparent shadow-[0_0_10px_rgba(6,182,212,0.3)] animate-scanline" />
 
               {/* Floating Glowing Blueish Icon Cards in the Left Blank Space */}
               
@@ -247,7 +247,7 @@ export default function CmmsInfo({ onViewChange }) {
               </div>
 
               {/* Card 5: Shield with Lock (Security) */}
-              <div className="float-card absolute left-[30%] md:left-[16%] top-[32%] md:top-[24%] flex flex-col items-center justify-center p-2 md:p-3 rounded-xl border border-cyan-500/10 animate-float-gently-5 w-[76px] h-[76px] md:w-28 md:h-28">
+              <div className="float-card absolute left-[30%] md:left-[16%] top-[32%] md:top-[24%] flex flex-col items-center justify-center p-2 md:p-3 rounded-xl border border-cyan-500/10 animate-float-gently-5 w-19 h-19 md:w-28 md:h-28">
                 <svg viewBox="0 0 100 100" className="w-9 h-9 md:w-14 md:h-14 text-cyan-400 drop-shadow-[0_0_6px_rgba(34,211,238,0.6)]" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M 50,15 C 65,15 78,22 78,35 C 78,60 62,75 50,85 Z" />
                   <rect x="40" y="46" width="20" height="14" rx="2" fill="currentColor" opacity="0.3" />
@@ -257,7 +257,7 @@ export default function CmmsInfo({ onViewChange }) {
               </div>
 
               {/* Card 6: Analytics Chart */}
-              <div className="float-card absolute left-[4%] md:left-[16%] top-[56%] md:top-[56%] flex flex-col items-center justify-center p-2 md:p-3 rounded-xl border border-cyan-500/10 animate-float-gently-6 w-[76px] h-[76px] md:w-28 md:h-28">
+              <div className="float-card absolute left-[4%] md:left-[16%] top-[56%] md:top-[56%] flex flex-col items-center justify-center p-2 md:p-3 rounded-xl border border-cyan-500/10 animate-float-gently-6 w-19 h-19 md:w-28 md:h-28">
                 <svg viewBox="0 0 100 100" className="w-9 h-9 md:w-14 md:h-14 text-cyan-400 drop-shadow-[0_0_6px_rgba(34,211,238,0.6)]" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="25" y="55" width="8" height="25" rx="1" fill="currentColor" opacity="0.3" />
                   <rect x="40" y="45" width="8" height="35" rx="1" fill="currentColor" opacity="0.3" />
@@ -275,7 +275,7 @@ export default function CmmsInfo({ onViewChange }) {
           </motion.div>
         </div>
 
-        <div className="w-full min-h-screen md:snap-start relative z-10 shrink-0">
+        <div className="w-full min-h-screen relative z-10 shrink-0">
           <motion.div 
             id="details-content"
             initial={{ opacity: 0 }}
@@ -310,13 +310,13 @@ export default function CmmsInfo({ onViewChange }) {
           {/* Card 1: Man */}
           <motion.div 
             variants={itemVariants} 
-            className="glass-panel shine-sweep rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col overflow-hidden bg-gradient-to-br from-white/[0.01] to-[#0A0C12] hover:shadow-[0_0_30px_rgba(255,90,95,0.03)]"
+            className="glass-panel shine-sweep rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col overflow-hidden bg-linear-to-br from-white/1 to-[#0A0C12] hover:shadow-[0_0_30px_rgba(255,90,95,0.03)]"
           >
-            <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300 z-30" />
+            <div className="absolute top-0 left-0 w-0.5 h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300 z-30" />
             
-            <div className="relative w-full aspect-[4/3] overflow-hidden">
+            <div className="relative w-full aspect-4/3 overflow-hidden">
               <img src={manImg} alt="Man" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] via-transparent to-transparent opacity-90" />
+              <div className="absolute inset-0 bg-linear-to-t from-[#0A0E17] via-transparent to-transparent opacity-90" />
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20">
                 <div className="w-14 h-14 rounded-full bg-[#0d111b] border-2 border-accent-red/30 flex items-center justify-center text-accent-red shadow-[0_0_15px_rgba(255,90,95,0.25)] group-hover:shadow-[0_0_25px_rgba(255,90,95,0.45)] group-hover:border-accent-red transition-all duration-300">
                   <Users className="w-6 h-6" />
@@ -327,7 +327,7 @@ export default function CmmsInfo({ onViewChange }) {
             <div className="p-6 pt-10 flex flex-col justify-between flex-1 relative z-10">
               <div>
                 <h3 className="text-xl font-bold font-title text-white mb-2">Man</h3>
-                <div className="w-8 h-[2px] bg-accent-red mb-4" />
+                <div className="w-8 h-0.5 bg-accent-red mb-4" />
                 <p className="text-sm text-text-secondary leading-relaxed font-sans">
                   Manage workforce performance, technician assignments, skill tracking, attendance, and maintenance responsibilities to improve productivity and accountability.
                 </p>
@@ -338,13 +338,13 @@ export default function CmmsInfo({ onViewChange }) {
           {/* Card 2: Machine */}
           <motion.div 
             variants={itemVariants} 
-            className="glass-panel shine-sweep rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col overflow-hidden bg-gradient-to-br from-white/[0.01] to-[#0A0C12] hover:shadow-[0_0_30px_rgba(255,90,95,0.03)]"
+            className="glass-panel shine-sweep rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col overflow-hidden bg-linear-to-br from-white/1 to-[#0A0C12] hover:shadow-[0_0_30px_rgba(255,90,95,0.03)]"
           >
-            <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300 z-30" />
+            <div className="absolute top-0 left-0 w-0.5 h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300 z-30" />
             
-            <div className="relative w-full aspect-[4/3] overflow-hidden">
+            <div className="relative w-full aspect-4/3 overflow-hidden">
               <img src={machineImg} alt="Machine" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] via-transparent to-transparent opacity-90" />
+              <div className="absolute inset-0 bg-linear-to-t from-[#0A0E17] via-transparent to-transparent opacity-90" />
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20">
                 <div className="w-14 h-14 rounded-full bg-[#0d111b] border-2 border-accent-red/30 flex items-center justify-center text-accent-red shadow-[0_0_15px_rgba(255,90,95,0.25)] group-hover:shadow-[0_0_25px_rgba(255,90,95,0.45)] group-hover:border-accent-red transition-all duration-300">
                   <Settings className="w-6 h-6" />
@@ -355,7 +355,7 @@ export default function CmmsInfo({ onViewChange }) {
             <div className="p-6 pt-10 flex flex-col justify-between flex-1 relative z-10">
               <div>
                 <h3 className="text-xl font-bold font-title text-white mb-2">Machine</h3>
-                <div className="w-8 h-[2px] bg-accent-red mb-4" />
+                <div className="w-8 h-0.5 bg-accent-red mb-4" />
                 <p className="text-sm text-text-secondary leading-relaxed font-sans">
                   Monitor equipment health, schedule preventive maintenance, reduce downtime, track breakdowns, and extend asset life.
                 </p>
@@ -366,13 +366,13 @@ export default function CmmsInfo({ onViewChange }) {
           {/* Card 3: Method */}
           <motion.div 
             variants={itemVariants} 
-            className="glass-panel shine-sweep rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col overflow-hidden bg-gradient-to-br from-white/[0.01] to-[#0A0C12] hover:shadow-[0_0_30px_rgba(255,90,95,0.03)]"
+            className="glass-panel shine-sweep rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col overflow-hidden bg-linear-to-br from-white/1 to-[#0A0C12] hover:shadow-[0_0_30px_rgba(255,90,95,0.03)]"
           >
-            <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300 z-30" />
+            <div className="absolute top-0 left-0 w-0.5 h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300 z-30" />
             
-            <div className="relative w-full aspect-[4/3] overflow-hidden">
+            <div className="relative w-full aspect-4/3 overflow-hidden">
               <img src={methodImg} alt="Method" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] via-transparent to-transparent opacity-90" />
+              <div className="absolute inset-0 bg-linear-to-t from-[#0A0E17] via-transparent to-transparent opacity-90" />
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20">
                 <div className="w-14 h-14 rounded-full bg-[#0d111b] border-2 border-accent-red/30 flex items-center justify-center text-accent-red shadow-[0_0_15px_rgba(255,90,95,0.25)] group-hover:shadow-[0_0_25px_rgba(255,90,95,0.45)] group-hover:border-accent-red transition-all duration-300">
                   <ClipboardList className="w-6 h-6" />
@@ -383,7 +383,7 @@ export default function CmmsInfo({ onViewChange }) {
             <div className="p-6 pt-10 flex flex-col justify-between flex-1 relative z-10">
               <div>
                 <h3 className="text-xl font-bold font-title text-white mb-2">Method</h3>
-                <div className="w-8 h-[2px] bg-accent-red mb-4" />
+                <div className="w-8 h-0.5 bg-accent-red mb-4" />
                 <p className="text-sm text-text-secondary leading-relaxed font-sans">
                   Standardize maintenance procedures, work orders, inspection checklists, SOPs, and compliance processes for consistent operations.
                 </p>
@@ -394,13 +394,13 @@ export default function CmmsInfo({ onViewChange }) {
           {/* Card 4: Material */}
           <motion.div 
             variants={itemVariants} 
-            className="glass-panel shine-sweep rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col overflow-hidden bg-gradient-to-br from-white/[0.01] to-[#0A0C12] hover:shadow-[0_0_30px_rgba(255,90,95,0.03)]"
+            className="glass-panel shine-sweep rounded-2xl border border-white/5 hover:border-accent-red/30 transition-all duration-300 relative group flex flex-col overflow-hidden bg-linear-to-br from-white/1 to-[#0A0C12] hover:shadow-[0_0_30px_rgba(255,90,95,0.03)]"
           >
-            <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300 z-30" />
+            <div className="absolute top-0 left-0 w-0.5 h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300 z-30" />
             
-            <div className="relative w-full aspect-[4/3] overflow-hidden">
+            <div className="relative w-full aspect-4/3 overflow-hidden">
               <img src={materialImg} alt="Material" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] via-transparent to-transparent opacity-90" />
+              <div className="absolute inset-0 bg-linear-to-t from-[#0A0E17] via-transparent to-transparent opacity-90" />
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20">
                 <div className="w-14 h-14 rounded-full bg-[#0d111b] border-2 border-accent-red/30 flex items-center justify-center text-accent-red shadow-[0_0_15px_rgba(255,90,95,0.25)] group-hover:shadow-[0_0_25px_rgba(255,90,95,0.45)] group-hover:border-accent-red transition-all duration-300">
                   <Package className="w-6 h-6" />
@@ -411,7 +411,7 @@ export default function CmmsInfo({ onViewChange }) {
             <div className="p-6 pt-10 flex flex-col justify-between flex-1 relative z-10">
               <div>
                 <h3 className="text-xl font-bold font-title text-white mb-2">Material</h3>
-                <div className="w-8 h-[2px] bg-accent-red mb-4" />
+                <div className="w-8 h-0.5 bg-accent-red mb-4" />
                 <p className="text-sm text-text-secondary leading-relaxed font-sans">
                   Track spare parts inventory, material consumption, stock levels, procurement, and availability to prevent maintenance delays.
                 </p>
@@ -422,12 +422,12 @@ export default function CmmsInfo({ onViewChange }) {
 
         {/* Key Benefits Banner */}
         <motion.div 
-          className="glass-panel shine-sweep p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,90,95,0.02)] relative overflow-hidden bg-gradient-to-br from-white/[0.01] to-[#0A0C12]"
+          className="glass-panel shine-sweep p-8 rounded-2xl border border-white/5 hover:border-accent-red/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,90,95,0.02)] relative overflow-hidden bg-linear-to-br from-white/1 to-[#0A0C12]"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <div className="absolute top-0 left-0 w-[2px] h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
+          <div className="absolute top-0 left-0 w-0.5 h-full bg-accent-red/20 group-hover:bg-accent-red group-hover:shadow-[0_0_8px_#FF5A5F] transition-all duration-300" />
           
           <div className="flex items-center gap-2 mb-6 border-b border-white/10 pb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse" />
@@ -441,7 +441,7 @@ export default function CmmsInfo({ onViewChange }) {
                 className={`p-4 rounded-xl border flex items-center gap-3 transition-all duration-300 hover:scale-[1.02] group hover:shadow-[0_0_25px_rgba(255,90,95,0.05)] ${
                   ind.highlight 
                     ? 'bg-accent-red/10 border-accent-red/20 hover:border-accent-red/40 hover:bg-accent-red/15' 
-                    : 'bg-gradient-to-br from-white/[0.02] to-transparent border-white/5 hover:border-accent-red/30 hover:bg-white/[0.04]'
+                    : 'bg-linear-to-br from-white/2 to-transparent border-white/5 hover:border-accent-red/30 hover:bg-white/4'
                 } ${idx === 6 ? 'sm:col-span-2 lg:col-span-2' : ''}`}
               >
                 <div className="w-10 h-10 rounded-xl bg-accent-red/5 border border-accent-red/10 flex items-center justify-center text-accent-red shadow-[0_0_12px_rgba(255,90,95,0.05)] group-hover:scale-110 group-hover:bg-accent-red/10 group-hover:border-accent-red/30 transition-all duration-300 shrink-0">

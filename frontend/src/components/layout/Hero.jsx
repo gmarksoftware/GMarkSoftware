@@ -4,7 +4,7 @@ export default function Hero({ onCTA }) {
   return (
     <header 
       id="home" 
-      className="relative min-h-screen lg:h-screen lg:min-h-0 flex flex-col justify-center pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-20 lg:pb-8 overflow-hidden bg-transparent snap-section"
+      className="relative min-h-screen lg:h-screen lg:min-h-0 flex flex-col justify-center pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-20 lg:pb-8 overflow-hidden bg-transparent"
     >
       {/* 3D Particle Wave Background */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
@@ -29,7 +29,7 @@ export default function Hero({ onCTA }) {
           <div className="flex flex-wrap gap-4 pt-2 mt-16 sm:mt-0 animate-slideInFromLeft delay-300">
             <button 
               onClick={onCTA}
-              className="w-[170px] h-[48px] sm:w-[200px] sm:h-[56px] flex items-center justify-center bg-transparent text-accent-red border border-accent-red font-bold text-sm sm:text-base rounded-xl shadow-lg shadow-accent-red/15 hover:bg-white/10 hover:border-white/50 hover:text-white hover:scale-[1.03] hover:shadow-xl hover:shadow-white/5 transition-all duration-300 cursor-pointer"
+              className="w-42.5 h-12 sm:w-50 sm:h-14 flex items-center justify-center bg-transparent text-accent-red border border-accent-red font-bold text-sm sm:text-base rounded-xl shadow-lg shadow-accent-red/15 hover:bg-white/10 hover:border-white/50 hover:text-white hover:scale-[1.03] hover:shadow-xl hover:shadow-white/5 transition-all duration-300 cursor-pointer"
             >
               Learn More
             </button>
@@ -50,7 +50,7 @@ export default function Hero({ onCTA }) {
               }
             }}
           >
-            <div className="w-[2px] h-12 bg-linear-to-b from-border-color to-accent-red/50 mb-3" />
+            <div className="w-0.5 h-12 bg-linear-to-b from-border-color to-accent-red/50 mb-3" />
             <div className="flex items-center gap-2 text-text-secondary group-hover:text-accent-red transition-colors duration-300">
               <span className="material-symbols-outlined text-base animate-bounce">arrow_downward</span>
               <span className="text-xs font-mono uppercase tracking-[0.25em]">Scroll to Explore</span>
