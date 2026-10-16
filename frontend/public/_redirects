@@ -1,0 +1,4 @@
+# SPA Rewrites and Legacy Path Redirects for Render / Netlify / Cloudflare Pages
+/markG/*    /:splat    301
+/markG      /          301
+/*          /index.html 200

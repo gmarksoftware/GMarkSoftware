@@ -17,6 +17,10 @@ export default function App() {
     // Strip repository name if hosted under subfolder (e.g., /markg/ or /markg)
     if (rawBase && path.startsWith(rawBase.toLowerCase())) {
       path = path.slice(rawBase.length).replace(/^\/+/, '');
+    } else if (path.startsWith('markg/')) {
+      path = path.slice(6).replace(/^\/+/, '');
+    } else if (path === 'markg') {
+      path = '';
     }
     
     const hash = window.location.hash.toLowerCase().replace(/^#\/?/, '');
