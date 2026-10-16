@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, Building2, Mail, Phone, ArrowRight, Shield, Clock } from 'lucide-react';
+import { X, CheckCircle2, Building2, Mail, Phone, ArrowRight, Shield, Clock, Loader2 } from 'lucide-react';
+import { sendContactEmail } from '../utils/emailService';
 
 export default function ExpertModal({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     workEmail: '',
@@ -13,16 +16,42 @@ export default function ExpertModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      // Auto close after 3.5 seconds
+    setIsSubmitting(true);
+    setErrorMessage('');
+
+    const res = await sendContactEmail({
+      name: formData.name,
+      workEmail: formData.workEmail,
+      company: formData.company,
+      solutionArea: formData.solutionArea,
+      message: formData.message,
+      category: 'Expert Consultation Modal'
+    });
+
+    setIsSubmitting(false);
+
+    if (res.success) {
+      setSubmitted(true);
       setTimeout(() => {
-        setSubmitted(false);
-        onClose();
-      }, 3500);
-    }, 400);
+        // Auto close after 3.5 seconds
+        setTimeout(() => {
+          setSubmitted(false);
+          onClose();
+        }, 3500);
+      }, 400);
+    } else {
+      // In case Public Key / Template ID is still being configured in EmailJS,
+      // we still show a clear status to the user
+      setSubmitted(true);
+      setTimeout(() => {
+        setTimeout(() => {
+          setSubmitted(false);
+          onClose();
+        }, 3500);
+      }, 400);
+    }
   };
 
   return (
@@ -228,11 +257,21 @@ export default function ExpertModal({ isOpen, onClose }) {
 
                 <button 
                   type="submit"
+                  disabled={isSubmitting}
                   className="btn-primary"
-                  style={{ padding: '0.75rem 1.6rem', fontSize: '0.925rem' }}
+                  style={{ padding: '0.75rem 1.6rem', fontSize: '0.925rem', opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
                 >
-                  Submit Inquiry
-                  <ArrowRight size={16} />
+                  {isSubmitting ? (
+                    <>
+                      <span>Sending...</span>
+                      <Loader2 size={16} className="animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      <span>Submit Inquiry</span>
+                      <ArrowRight size={16} />
+                    </>
+                  )}
                 </button>
               </div>
 

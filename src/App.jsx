@@ -27,7 +27,8 @@ export default function App() {
     if (full.startsWith('app/')) {
       const slug = full.split('/')[1];
       const matchedApp = APPLICATIONS.find(a => a.id === slug) || APPLICATIONS.find(a => a.id.includes(slug)) || APPLICATIONS[0];
-      return { page: 'app-detail', app: matchedApp };
+      const origin = window.history.state?.navigationOrigin || 'solutions';
+      return { page: 'app-detail', app: { ...matchedApp, navigationOrigin: origin } };
     }
     return { page: 'home', app: null };
   };
@@ -73,10 +74,11 @@ export default function App() {
   };
 
   const handleSelectApp = (app) => {
-    setSelectedApp(app);
+    const origin = app?.navigationOrigin || 'solutions';
+    setSelectedApp({ ...app, navigationOrigin: origin });
     setCurrentPage('app-detail');
     const targetUrl = getTargetUrl(`app/${app.id}`);
-    window.history.pushState({ page: 'app-detail', appId: app.id }, '', targetUrl);
+    window.history.pushState({ page: 'app-detail', appId: app.id, navigationOrigin: origin }, '', targetUrl);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -104,6 +106,7 @@ export default function App() {
           <AppDetailPage 
             app={selectedApp}
             onBack={() => handleNavigate('home')}
+            onNavigate={handleNavigate}
             onOpenExpertModal={() => setIsExpertModalOpen(true)}
             onSelectApp={handleSelectApp}
           />

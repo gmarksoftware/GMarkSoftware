@@ -27,7 +27,8 @@ import {
   X,
   MapPin,
   FileCheck,
-  Check
+  Check,
+  ChevronRight
 } from 'lucide-react';
 import { APPLICATIONS } from '../ApplicationsGridSection';
 import { getAssetUrl } from '@/utils/asset';
@@ -251,7 +252,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
         style={{ 
           backgroundColor: '#FFFFFF', 
           textAlign: 'center', 
-          paddingTop: '6.5rem', 
+          paddingTop: '2.5rem', 
           paddingBottom: '5rem', 
           paddingLeft: '1.5rem', 
           paddingRight: '1.5rem',
@@ -283,14 +284,14 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
           
 
 
-          {/* Headline matching Caveat handwriting font style and #00A3FF brush underline */}
+          {/* Headline matching Lora handwriting font style and #00A3FF brush underline */}
           <div className="relative inline-block">
             <h1 
               className="text-balance text-slate-900"
               style={{ 
-                fontFamily: "'Caveat', cursive",
-                fontSize: 'clamp(3rem, 6.4vw, 5.25rem)',
-                lineHeight: '1.15',
+                fontFamily: "'Lora', serif",
+                fontSize: 'clamp(1.75rem, 4.5vw, 3.87rem)',
+                lineHeight: '1.18',
                 letterSpacing: '-0.01em',
                 paddingTop: '0.25rem',
                 paddingBottom: '0.75rem',
@@ -383,7 +384,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
           <p 
             className="text-balance text-gray-700 font-normal"
             style={{ 
-              fontSize: 'clamp(1.05rem, 1.8vw, 1.25rem)', 
+              fontSize: 'clamp(0.92rem, 1.58vw, 1.1rem)', 
               lineHeight: '1.65', 
               maxWidth: '760px',
               margin: '1.25rem auto 2.25rem',
@@ -424,8 +425,8 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-              gap: '1rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
+              gap: '0.85rem',
               maxWidth: '840px',
               margin: '0 auto',
               position: 'relative',
@@ -534,8 +535,8 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
 
               {/* Main Headline */}
               <h2 style={{ 
-                fontFamily: "'Caveat', cursive",
-                fontSize: 'clamp(2.6rem, 5vw, 3.8rem)', 
+                fontFamily: "'Lora', serif",
+                fontSize: 'clamp(1.94rem, 3.7vw, 2.82rem)', 
                 fontWeight: 700, 
                 color: '#0F172A',
                 letterSpacing: '0',
@@ -899,8 +900,8 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                 ✕
               </span>
               <span style={{
-                fontFamily: "'Caveat', cursive",
-                fontSize: 'clamp(2rem, 3.8vw, 2.75rem)',
+                fontFamily: "'Lora', serif",
+                fontSize: 'clamp(1.5rem, 2.82vw, 2.07rem)',
                 fontWeight: 700,
                 color: '#EF4444',
                 letterSpacing: '0',
@@ -931,8 +932,8 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                 ✓
               </span>
               <span style={{
-                fontFamily: "'Caveat', cursive",
-                fontSize: 'clamp(2.1rem, 4vw, 2.9rem)',
+                fontFamily: "'Lora', serif",
+                fontSize: 'clamp(1.58rem, 2.99vw, 2.2rem)',
                 fontWeight: 700,
                 color: '#0F172A',
                 letterSpacing: '0',
@@ -1186,7 +1187,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
             <span style={{ fontSize: '0.78rem', color: '#0284C7', fontWeight: '600', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
               SECTION 6 • GUIDING PRINCIPLES
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.4rem, 4.2vw, 3.2rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.8rem, 3.17vw, 2.42rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               Our Core Operating Values
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '650px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -1258,7 +1259,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
         >
           {/* White Curved Background shape */}
           <div 
-            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 right-0 left-0 bg-white rounded-l-[70px] sm:rounded-l-[110px] md:rounded-l-[150px] lg:rounded-l-[180px] border-l border-y border-slate-300/70 shadow-[0_12px_44px_rgba(0,0,0,0.04)] pointer-events-none z-0"
+            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 right-0 left-0 bg-white rounded-l-[24px] sm:rounded-l-[90px] md:rounded-l-[150px] lg:rounded-l-[180px] border-l border-y border-slate-300/70 shadow-[0_12px_44px_rgba(0,0,0,0.04)] pointer-events-none z-0"
             style={{ right: 0 }}
           />
 
@@ -1273,31 +1274,31 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
               justifyContent: 'flex-end',
               alignItems: 'flex-start'
             }}
-            className="gap-6 sm:gap-8 lg:gap-10 py-6 sm:py-8 pl-12 sm:pl-16 md:pl-20 pr-4 sm:pr-6 md:pr-8"
+            className="gap-6 sm:gap-8 lg:gap-10 py-5 sm:py-8 pl-4 sm:pl-14 md:pl-20 pr-3.5 sm:pr-6 md:pr-8"
           >
             
             {/* LEFT: Phase 1 Info */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', width: '100%', maxWidth: '370px', flexShrink: 0 }}>
+            <div className="w-full lg:max-w-[370px] flex flex-col gap-[0.85rem] shrink-0">
               <div>
-                <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.2rem, 3.8vw, 2.75rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.2', marginTop: '2px', marginBottom: '0.75rem' }}>
-                  Village Node Pickup <br />
+                <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.07rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.25', marginTop: '2px', marginBottom: '0.75rem' }}>
+                  Village Node Pickup <br className="hidden sm:inline" />
                   & GMU Hub Intake
                 </h2>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.5rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0284C7', marginTop: '2px' }}>•</span>
                     <span>Receives real-time app notification for village cluster pickup</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0284C7', marginTop: '2px' }}>•</span>
                     <span>Scans parcel QR barcodes at village node to accept custody</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0284C7', marginTop: '2px' }}>•</span>
                     <span>Transits middle-mile corridor with automated GPS telemetry</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0284C7', marginTop: '2px' }}>•</span>
                     <span>Completes intake scan at GMU Hub warehouse dock</span>
                   </div>
@@ -1306,19 +1307,12 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
             </div>
 
             {/* RIGHT: Phase 1 Process Steps */}
-            <div style={{ position: 'relative', width: '100%', maxWidth: '530px', flexShrink: 0 }}>
+            <div className="relative w-full lg:max-w-[530px] shrink-0 min-w-0">
               <div 
-                style={{
-                  position: 'absolute',
-                  left: '21px',
-                  top: '24px',
-                  bottom: '24px',
-                  width: '2px',
-                  backgroundColor: '#CBD5E1'
-                }} 
+                className="absolute left-[16px] sm:left-[20px] top-[20px] bottom-[20px] w-[2px] bg-slate-300 pointer-events-none" 
               />
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                 {phase1Steps.map((step, index) => {
                   const isActive = activeStepP1 === index;
                   const IconComp = step.icon;
@@ -1326,7 +1320,8 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                   return (
                     <motion.div
                       key={step.num}
-                      style={{ position: 'relative', display: 'flex', gap: '1rem', cursor: 'pointer' }}
+                      style={{ position: 'relative', display: 'flex', cursor: 'pointer', alignItems: 'flex-start' }}
+                      className="gap-2.5 sm:gap-4"
                       initial={{ opacity: 0, x: 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -1334,11 +1329,10 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                       onClick={() => setActiveStepP1(prev => prev === index ? -1 : index)}
                     >
                       <div
+                        className="w-[34px] h-[34px] sm:w-[42px] sm:h-[42px] text-xs sm:text-sm font-medium"
                         style={{
                           position: 'relative',
                           zIndex: 10,
-                          width: '42px',
-                          height: '42px',
                           borderRadius: '50%',
                           border: '2px solid',
                           borderColor: isActive ? '#0F172A' : '#94A3B8',
@@ -1352,41 +1346,38 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                           boxShadow: isActive ? '0 4px 12px rgba(15, 23, 42, 0.2)' : '0 2px 6px rgba(0,0,0,0.04)'
                         }}
                       >
-                        <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>{step.num}</span>
+                        <span>{step.num}</span>
                       </div>
 
                       <div
+                        className="flex-1 min-w-0 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-200"
                         style={{
-                          flex: 1,
-                          padding: '1.25rem',
-                          borderRadius: '16px',
                           border: `1.5px solid ${isActive ? '#0F172A' : '#CBD5E1'}`,
                           backgroundColor: '#F8FAFC',
                           boxShadow: isActive ? '0 8px 24px -4px rgba(15, 23, 42, 0.12)' : '0 2px 8px rgba(0, 0, 0, 0.04)',
-                          transition: 'all 0.25s ease'
                         }}
                       >
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                            <div style={{ width: '32px', height: '32px', borderRadius: '8px', backgroundColor: isActive ? '#0F172A' : '#E0F2FE', color: isActive ? '#FFFFFF' : '#0284C7', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                              <IconComp size={16} />
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0, flex: 1 }}>
+                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg" style={{ backgroundColor: isActive ? '#0F172A' : '#E0F2FE', color: isActive ? '#FFFFFF' : '#0284C7', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                              <IconComp size={15} />
                             </div>
-                            <div>
-                              <span style={{ fontSize: '0.68rem', color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: '600', display: 'block' }}>
+                            <div style={{ minWidth: 0, flex: 1 }}>
+                              <span style={{ fontSize: '0.65rem', color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: '500', display: 'block' }}>
                                 {step.tag}
                               </span>
-                              <h3 style={{ fontSize: '0.98rem', fontWeight: '600', color: '#0F172A', margin: 0 }}>
+                              <h3 style={{ fontSize: 'clamp(0.85rem, 2.2vw, 0.98rem)', fontWeight: 500, color: '#0F172A', margin: 0, lineHeight: '1.3', overflowWrap: 'break-word', wordBreak: 'break-word' }}>
                                 {step.title}
                               </h3>
                             </div>
                           </div>
 
                           <div 
+                            className="w-6 h-6 sm:w-[26px] sm:h-[26px]"
                             style={{ 
-                              width: '26px', 
-                              height: '26px', 
                               borderRadius: '50%', 
                               backgroundColor: '#FFFFFF', 
+                              border: '1px solid #E2E8F0',
                               display: 'flex', 
                               alignItems: 'center', 
                               justifyContent: 'center', 
@@ -1396,7 +1387,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                               flexShrink: 0
                             }}
                           >
-                            <ChevronDown size={14} />
+                            <ChevronDown size={13} />
                           </div>
                         </div>
 
@@ -1409,19 +1400,19 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                               style={{ overflow: 'hidden' }}
                             >
-                              <div style={{ paddingTop: '0.85rem', marginTop: '0.75rem', borderTop: '1px solid #E2E8F0', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                <p style={{ fontSize: '0.82rem', color: '#334155', lineHeight: '1.6', margin: 0 }}>
+                              <div style={{ paddingTop: '0.75rem', marginTop: '0.7rem', borderTop: '1px solid #E2E8F0', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+                                <p style={{ fontSize: '0.82rem', color: '#334155', lineHeight: '1.55', margin: 0 }}>
                                   {step.desc}
                                 </p>
-                                <p style={{ fontSize: '0.8rem', color: '#64748B', lineHeight: '1.55', margin: 0 }}>
+                                <p style={{ fontSize: '0.78rem', color: '#64748B', lineHeight: '1.5', margin: 0 }}>
                                   {step.desc2}
                                 </p>
 
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.5rem', paddingTop: '0.5rem', borderTop: '1px dashed #CBD5E1' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '6px', marginTop: '0.4rem', paddingTop: '0.45rem', borderTop: '1px dashed #CBD5E1' }}>
                                   <span style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: '500' }}>
                                     System Status:
                                   </span>
-                                  <code style={{ fontSize: '0.72rem', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', padding: '2px 8px', borderRadius: '4px', color: '#0284C7', fontWeight: '600' }}>
+                                  <code style={{ fontSize: '0.7rem', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', padding: '2px 8px', borderRadius: '4px', color: '#0284C7', fontWeight: '500', wordBreak: 'break-all' }}>
                                     {step.status}
                                   </code>
                                 </div>
@@ -1470,7 +1461,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
         >
           {/* White Curved Background shape */}
           <div 
-            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 left-0 right-0 bg-white rounded-r-[70px] sm:rounded-r-[110px] md:rounded-r-[150px] lg:rounded-r-[180px] border-r border-y border-slate-300/70 shadow-[0_12px_44px_rgba(0,0,0,0.04)] pointer-events-none z-0"
+            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 left-0 right-0 bg-white rounded-r-[24px] sm:rounded-r-[90px] md:rounded-r-[150px] lg:rounded-r-[180px] border-r border-y border-slate-300/70 shadow-[0_12px_44px_rgba(0,0,0,0.04)] pointer-events-none z-0"
             style={{ left: 0 }}
           />
 
@@ -1485,23 +1476,16 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
               justifyContent: 'flex-start',
               alignItems: 'flex-start'
             }}
-            className="gap-6 sm:gap-8 lg:gap-10 py-6 sm:py-8 pr-12 sm:pr-16 md:pr-20 pl-4 sm:pl-6 md:pl-8"
+            className="gap-6 sm:gap-8 lg:gap-10 py-5 sm:py-8 pr-4 sm:pr-14 md:pr-20 pl-3.5 sm:pl-6 md:pl-8"
           >
             
             {/* LEFT: Phase 2 Process Steps */}
-            <div style={{ position: 'relative', width: '100%', maxWidth: '540px', flexShrink: 0, order: 1 }}>
+            <div className="relative w-full lg:max-w-[540px] shrink-0 min-w-0 order-1">
               <div 
-                style={{
-                  position: 'absolute',
-                  left: '21px',
-                  top: '24px',
-                  bottom: '24px',
-                  width: '2px',
-                  backgroundColor: '#CBD5E1'
-                }} 
+                className="absolute left-[16px] sm:left-[20px] top-[20px] bottom-[20px] w-[2px] bg-slate-300 pointer-events-none" 
               />
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                 {phase2Steps.map((step, index) => {
                   const isActive = activeStepP2 === index;
                   const IconComp = step.icon;
@@ -1509,7 +1493,8 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                   return (
                     <motion.div
                       key={step.num}
-                      style={{ position: 'relative', display: 'flex', gap: '1rem', cursor: 'pointer' }}
+                      style={{ position: 'relative', display: 'flex', cursor: 'pointer', alignItems: 'flex-start' }}
+                      className="gap-2.5 sm:gap-4"
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -1517,11 +1502,10 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                       onClick={() => setActiveStepP2(prev => prev === index ? -1 : index)}
                     >
                       <div
+                        className="w-[34px] h-[34px] sm:w-[42px] sm:h-[42px] text-xs sm:text-sm font-medium"
                         style={{
                           position: 'relative',
                           zIndex: 10,
-                          width: '42px',
-                          height: '42px',
                           borderRadius: '50%',
                           border: '2px solid',
                           borderColor: isActive ? '#0F172A' : '#94A3B8',
@@ -1535,41 +1519,38 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                           boxShadow: isActive ? '0 4px 12px rgba(15, 23, 42, 0.2)' : '0 2px 6px rgba(0,0,0,0.04)'
                         }}
                       >
-                        <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>{step.num}</span>
+                        <span>{step.num}</span>
                       </div>
 
                       <div
+                        className="flex-1 min-w-0 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-200"
                         style={{
-                          flex: 1,
-                          padding: '1.25rem',
-                          borderRadius: '16px',
                           border: `1.5px solid ${isActive ? '#0F172A' : '#CBD5E1'}`,
                           backgroundColor: '#F8FAFC',
                           boxShadow: isActive ? '0 8px 24px -4px rgba(15, 23, 42, 0.12)' : '0 2px 8px rgba(0, 0, 0, 0.04)',
-                          transition: 'all 0.25s ease'
                         }}
                       >
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                            <div style={{ width: '32px', height: '32px', borderRadius: '8px', backgroundColor: isActive ? '#0F172A' : '#E0F2FE', color: isActive ? '#FFFFFF' : '#0284C7', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                              <IconComp size={16} />
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0, flex: 1 }}>
+                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg" style={{ backgroundColor: isActive ? '#0F172A' : '#E0F2FE', color: isActive ? '#FFFFFF' : '#0284C7', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                              <IconComp size={15} />
                             </div>
-                            <div>
-                              <span style={{ fontSize: '0.68rem', color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: '600', display: 'block' }}>
+                            <div style={{ minWidth: 0, flex: 1 }}>
+                              <span style={{ fontSize: '0.65rem', color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: '500', display: 'block' }}>
                                 {step.tag}
                               </span>
-                              <h3 style={{ fontSize: '0.98rem', fontWeight: '600', color: '#0F172A', margin: 0 }}>
+                              <h3 style={{ fontSize: 'clamp(0.85rem, 2.2vw, 0.98rem)', fontWeight: 500, color: '#0F172A', margin: 0, lineHeight: '1.3', overflowWrap: 'break-word', wordBreak: 'break-word' }}>
                                 {step.title}
                               </h3>
                             </div>
                           </div>
 
                           <div 
+                            className="w-6 h-6 sm:w-[26px] sm:h-[26px]"
                             style={{ 
-                              width: '26px', 
-                              height: '26px', 
                               borderRadius: '50%', 
                               backgroundColor: '#FFFFFF', 
+                              border: '1px solid #E2E8F0',
                               display: 'flex', 
                               alignItems: 'center', 
                               justifyContent: 'center', 
@@ -1579,7 +1560,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                               flexShrink: 0
                             }}
                           >
-                            <ChevronDown size={14} />
+                            <ChevronDown size={13} />
                           </div>
                         </div>
 
@@ -1592,19 +1573,19 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                               style={{ overflow: 'hidden' }}
                             >
-                              <div style={{ paddingTop: '0.85rem', marginTop: '0.75rem', borderTop: '1px solid #E2E8F0', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                <p style={{ fontSize: '0.82rem', color: '#334155', lineHeight: '1.6', margin: 0 }}>
+                              <div style={{ paddingTop: '0.75rem', marginTop: '0.7rem', borderTop: '1px solid #E2E8F0', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+                                <p style={{ fontSize: '0.82rem', color: '#334155', lineHeight: '1.55', margin: 0 }}>
                                   {step.desc}
                                 </p>
-                                <p style={{ fontSize: '0.8rem', color: '#64748B', lineHeight: '1.55', margin: 0 }}>
+                                <p style={{ fontSize: '0.78rem', color: '#64748B', lineHeight: '1.5', margin: 0 }}>
                                   {step.desc2}
                                 </p>
 
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.5rem', paddingTop: '0.5rem', borderTop: '1px dashed #CBD5E1' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '6px', marginTop: '0.4rem', paddingTop: '0.45rem', borderTop: '1px dashed #CBD5E1' }}>
                                   <span style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: '500' }}>
                                     System Status:
                                   </span>
-                                  <code style={{ fontSize: '0.72rem', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', padding: '2px 8px', borderRadius: '4px', color: '#0284C7', fontWeight: '600' }}>
+                                  <code style={{ fontSize: '0.7rem', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', padding: '2px 8px', borderRadius: '4px', color: '#0284C7', fontWeight: '500', wordBreak: 'break-all' }}>
                                     {step.status}
                                   </code>
                                 </div>
@@ -1620,27 +1601,27 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
             </div>
 
             {/* RIGHT: Phase 2 Info */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', order: 2, width: '100%', maxWidth: '380px', flexShrink: 0 }}>
+            <div className="w-full lg:max-w-[380px] flex flex-col gap-[0.85rem] shrink-0 order-2">
               <div>
-                <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.2rem, 3.8vw, 2.75rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.2', marginTop: '2px', marginBottom: '0.75rem' }}>
-                  Hub Outbound Dispatch <br />
+                <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.07rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.25', marginTop: '2px', marginBottom: '0.75rem' }}>
+                  Hub Outbound Dispatch <br className="hidden sm:inline" />
                   & Destination SHG Drop-off
                 </h2>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.5rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0284C7', marginTop: '2px' }}>•</span>
                     <span>Receives outbound dispatch notification for sorted parcel batches at GMU Hub</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0284C7', marginTop: '2px' }}>•</span>
                     <span>Transporter scans parcels at hub dock to accept custody into delivery vehicle</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0284C7', marginTop: '2px' }}>•</span>
                     <span>Navigates delivery transit to destination village drop centers with live tracking</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0284C7', marginTop: '2px' }}>•</span>
                     <span>Destination SHG scans barcode to intake parcels for last-mile delivery</span>
                   </div>
@@ -1663,7 +1644,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
             <span style={{ fontSize: '0.78rem', color: '#0284C7', fontWeight: '600', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
               SECTION 8 • PLATFORM ECOSYSTEM
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.4rem, 4.2vw, 3.2rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.8rem, 3.17vw, 2.42rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               The GramUnnati Rural Supply Chain Architecture
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '650px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -1721,15 +1702,15 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               INTEGRATED ECOSYSTEM
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.1rem, 3.5vw, 2.6rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 1.98rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px', lineHeight: '1.25' }}>
               Connected GMU Logistics Applications
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { id: 'shg-app', name: 'SHG App', tag: 'Village Collection & Doorstep', image: getAssetUrl('/SHG Delivary and Transporter Logo 01.jpg') },
-              { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: getAssetUrl('/Final Logo-09.jpg.jpeg') },
+              { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: getAssetUrl('/gramunnati-clean.png') },
               { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', image: getAssetUrl('/G Track logo.png') },
               { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', image: getAssetUrl('/ERP Logo.png') }
             ].map((app, idx) => (
@@ -1748,32 +1729,114 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                 style={{
                   backgroundColor: '#FFFFFF',
                   border: '1px solid #E2E8F0',
-                  borderRadius: '14px',
-                  padding: '1.25rem',
+                  borderRadius: '16px',
+                  padding: '1.15rem 1.2rem',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.85rem',
+                  gap: '0.9rem',
                   cursor: 'pointer',
-                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-                  transition: 'all 0.2s ease'
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.03)',
+                  transition: 'all 0.2s ease',
+                  minHeight: '88px'
                 }}
-                className="hover:-translate-y-1 hover:shadow-md transition-all duration-200"
+                className="hover:border-slate-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
               >
-                <img 
-                  src={app.image} 
-                  alt={app.name} 
-                  style={{ width: '42px', height: '42px', objectFit: 'contain', borderRadius: '10px', border: '1px solid #E2E8F0', padding: '2px', backgroundColor: '#FFFFFF', flexShrink: 0 }} 
-                />
-                <div style={{ minWidth: 0 }}>
-                  <h3 style={{ fontSize: '0.95rem', fontWeight: '700', color: '#0F172A', margin: '0 0 2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <div 
+                  style={{
+                    width: '56px',
+                    height: '44px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}
+                >
+                  <img 
+                    src={app.image} 
+                    alt={app.name} 
+                    style={{ 
+                      maxWidth: '100%', 
+                      maxHeight: '100%', 
+                      width: 'auto',
+                      height: 'auto',
+                      objectFit: 'contain',
+                      display: 'block'
+                    }} 
+                  />
+                </div>
+                <div style={{ minWidth: 0, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <h4 style={{ 
+                    fontSize: '0.98rem', 
+                    fontWeight: '700', 
+                    color: '#0F172A', 
+                    margin: '0 0 3px', 
+                    letterSpacing: '-0.01em',
+                    lineHeight: '1.25' 
+                  }}>
                     {app.name}
-                  </h3>
-                  <p style={{ fontSize: '0.74rem', color: '#0284C7', fontWeight: '600', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  </h4>
+                  <p style={{ 
+                    fontSize: '0.76rem', 
+                    color: '#C2410C', 
+                    fontWeight: '600', 
+                    margin: 0, 
+                    lineHeight: '1.35',
+                    letterSpacing: '0.01em'
+                  }}>
                     {app.tag}
                   </p>
                 </div>
+                <ChevronRight 
+                  size={18} 
+                  className="text-slate-300 group-hover:text-slate-600 group-hover:translate-x-0.5 transition-all flex-shrink-0" 
+                />
               </div>
             ))}
+          </div>
+
+          {/* Bottom Action Controls */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '3rem', flexWrap: 'wrap' }}>
+            <button
+              onClick={onOpenExpertModal}
+              style={{
+                padding: '0.5rem 1.25rem',
+                borderRadius: '9999px',
+                fontSize: '0.85rem',
+                fontWeight: '500',
+                backgroundColor: '#7B5872',
+                color: '#FFFFFF',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                boxShadow: '0 2px 10px rgba(123, 88, 114, 0.28)'
+              }}
+              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+            >
+              <span>Schedule Fleet Consultation</span>
+              <ArrowRight size={14} />
+            </button>
+            <button
+              onClick={onBack}
+              style={{
+                padding: '0.5rem 1.15rem',
+                borderRadius: '9999px',
+                fontSize: '0.85rem',
+                fontWeight: '500',
+                backgroundColor: '#F1F5F9',
+                color: '#334155',
+                border: '1px solid #CBD5E1',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+              className="hover:bg-slate-100 hover:text-slate-900 transition-colors"
+            >
+              <ArrowLeft size={14} />
+              <span>Back to Solutions</span>
+            </button>
           </div>
 
         </div>

@@ -30,12 +30,12 @@ export default function Footer({ onSelectTab, onNavigate, onOpenExpertModal }) {
   };
 
   return (
-    <footer className="w-full relative bg-white text-neutral-900 pt-16 pb-12 overflow-hidden flex flex-col items-center justify-center font-['Inter',sans-serif]">
+    <footer className="w-full relative bg-white text-neutral-900 pt-12 sm:pt-14 md:pt-16 pb-12 overflow-hidden flex flex-col items-center justify-center font-['Inter',sans-serif]">
       {/* Background Subtle Micro Dot Grid */}
       <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none" />
 
       {/* Centered Main Container */}
-      <div className="w-full max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10 flex flex-col">
+      <div className="w-full max-w-5xl mx-auto px-4 sm:px-10 lg:px-12 relative z-10 flex flex-col">
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 lg:gap-12 pb-12 border-b border-neutral-200">
           
           {/* Col 1: Brand & Contact Info */}
@@ -206,7 +206,7 @@ export default function Footer({ onSelectTab, onNavigate, onOpenExpertModal }) {
         {/* Bottom Bar: Copyright and Legal */}
         <div className="w-full pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-600">
           <p>© {new Date().getFullYear()} G Mark Software Pvt. Ltd. All Rights Reserved.</p>
-          <div className="flex flex-wrap items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-3 sm:gap-6">
             <button
               type="button"
               onClick={() => handleNav('help')}

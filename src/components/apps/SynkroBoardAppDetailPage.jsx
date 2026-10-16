@@ -37,7 +37,8 @@ import {
   FileSpreadsheet,
   CheckSquare2,
   GitBranch,
-  Timer
+  Timer,
+  ChevronRight
 } from 'lucide-react';
 
 import { APPLICATIONS } from '../ApplicationsGridSection';
@@ -181,9 +182,9 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
   // Connected Ecosystem Applications
   const CONNECTED_APPS = [
     { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', desc: 'Double-entry accounting, invoice reconciliation & resource planning', image: getAssetUrl('/ERP Logo.png') },
-    { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', desc: 'Facility telemetry, machine monitoring & preventive work orders', image: getAssetUrl('/G-Nova IOT logo 02.jpg') },
+    { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', desc: 'Facility telemetry, machine monitoring & preventive work orders', image: getAssetUrl('/g-nova-clean.png') },
     { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', desc: 'Real-time on-field workforce tracking & client visit automation', image: getAssetUrl('/G Track logo.png') },
-    { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', desc: 'Digital marketplace for farmers & rural self-help enterprises', image: getAssetUrl('/Final Logo-09.jpg.jpeg') }
+    { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', desc: 'Digital marketplace for farmers & rural self-help enterprises', image: getAssetUrl('/gramunnati-clean.png') }
   ];
 
   const handleAppClick = (targetId) => {
@@ -205,20 +206,21 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
 
 
       {/* ========================================================================= */}
-      {/* 2. HERO SECTION WITH CAVEAT HEADING & FLOATING SYNKROBOARD LOGO BADGE */}
+      {/* 2. HERO SECTION WITH Lora HEADING & FLOATING SYNKROBOARD LOGO BADGE */}
       {/* ========================================================================= */}
       <section 
         style={{
           backgroundColor: '#e8e8e8',
           borderBottom: '1px solid #CBD5E1',
-          padding: '4rem 0 4.5rem'
+          paddingTop: 'clamp(3rem, 5vw, 4.5rem)',
+          paddingBottom: '4.5rem'
         }}
       >
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ textAlign: 'center', maxWidth: '880px', margin: '0 auto 3rem' }}>
             
-            {/* Headline with 'Caveat', cursive and floating logo card with hand-drawn arrow */}
+            {/* Headline with 'Lora', serif and floating logo card with hand-drawn arrow */}
             <div className="relative inline-block w-full">
               
               {/* Floating SynkroBoard Logo Square Card with Curved Arrow */}
@@ -282,8 +284,8 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
               {/* Main Headline */}
               <h1 
                 style={{ 
-                  fontFamily: "'Caveat', cursive",
-                  fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', 
+                  fontFamily: "'Lora', serif",
+                  fontSize: 'clamp(1.65rem, 3.7vw, 2.82rem)', 
                   fontWeight: 600, 
                   color: '#0F172A',
                   letterSpacing: '0',
@@ -313,7 +315,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
               </h1>
             </div>
 
-            <p style={{ fontSize: 'clamp(1.05rem, 1.8vw, 1.22rem)', color: '#475569', lineHeight: '1.65', margin: '0 auto 2rem', maxWidth: '780px' }}>
+            <p style={{ fontSize: 'clamp(0.92rem, 1.58vw, 1.07rem)', color: '#475569', lineHeight: '1.65', margin: '0 auto 2rem', maxWidth: '780px' }}>
               Bridge the gap between strategic project governance and real-time operational execution. Powered by multi-view visualization (Kanban, RACI, Gantt, Eisenhower), absence-aware scheduling, and sub-second WebSocket team synchronization.
             </p>
 
@@ -348,7 +350,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
           <div 
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
               gap: '1rem'
             }}
           >
@@ -400,8 +402,8 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
               EXECUTIVE CONTEXT
             </span>
             <h2 style={{ 
-              fontFamily: "'Caveat', cursive",
-              fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', 
+              fontFamily: "'Lora', serif",
+              fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
               fontWeight: 600, 
               color: '#0F172A',
               letterSpacing: '0',
@@ -420,7 +422,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem' }}>
             
             {/* Problem Card */}
             <div 
@@ -538,8 +540,8 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
 
               {/* Main Headline */}
               <h2 style={{ 
-                fontFamily: "'Caveat', cursive",
-                fontSize: 'clamp(2.6rem, 5vw, 3.8rem)', 
+                fontFamily: "'Lora', serif",
+                fontSize: 'clamp(1.4rem, 3.5vw, 2.82rem)', 
                 fontWeight: 700, 
                 color: '#0F172A',
                 letterSpacing: '0',
@@ -701,8 +703,8 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                 ✕
               </span>
               <h2 style={{ 
-                fontFamily: "'Caveat', cursive",
-                fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)', 
+                fontFamily: "'Lora', serif",
+                fontSize: 'clamp(1.25rem, 3.34vw, 2.55rem)', 
                 fontWeight: 600, 
                 color: '#0F172A',
                 letterSpacing: '0',
@@ -723,8 +725,8 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
             {/* Line 2: Just live automation & boards */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
               <h2 style={{ 
-                fontFamily: "'Caveat', cursive",
-                fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)', 
+                fontFamily: "'Lora', serif",
+                fontSize: 'clamp(1.25rem, 3.34vw, 2.55rem)', 
                 fontWeight: 600, 
                 color: '#0F172A',
                 letterSpacing: '0',
@@ -915,8 +917,8 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
               VERSATILE PROJECT VISUALIZATION
             </span>
             <h2 style={{ 
-              fontFamily: "'Caveat', cursive",
-              fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', 
+              fontFamily: "'Lora', serif",
+              fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
               fontWeight: 600, 
               color: '#0F172A',
               letterSpacing: '0',
@@ -1016,7 +1018,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                   <h4 style={{ fontSize: '0.85rem', fontWeight: '700', color: '#0B3A70', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem' }}>
                     Core Architectural Capabilities
                   </h4>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '0.85rem' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '0.85rem' }}>
                     {currentView.highlights.map((h, hIdx) => (
                       <div key={hIdx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', color: '#334155', fontWeight: '500' }}>
                         <CheckCircle2 size={18} style={{ color: currentView.color, flexShrink: 0 }} />
@@ -1050,8 +1052,8 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
               SYSTEM CAPABILITIES
             </span>
             <h2 style={{ 
-              fontFamily: "'Caveat', cursive",
-              fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', 
+              fontFamily: "'Lora', serif",
+              fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
               fontWeight: 600, 
               color: '#0F172A',
               letterSpacing: '0',
@@ -1138,8 +1140,8 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
               ORGANIZATIONAL GOALS & ROLES
             </span>
             <h2 style={{ 
-              fontFamily: "'Caveat', cursive",
-              fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', 
+              fontFamily: "'Lora', serif",
+              fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
               fontWeight: 600, 
               color: '#0F172A',
               letterSpacing: '0',
@@ -1158,7 +1160,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem' }}>
             {stakeholderRoles.map((role, idx) => {
               const RoleIcon = role.icon;
               return (
@@ -1236,8 +1238,8 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
               ENTERPRISE ARCHITECTURE
             </span>
             <h2 style={{ 
-              fontFamily: "'Caveat', cursive",
-              fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', 
+              fontFamily: "'Lora', serif",
+              fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
               fontWeight: 600, 
               color: '#0F172A',
               letterSpacing: '0',
@@ -1256,7 +1258,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem' }}>
             
             <div 
               style={{
@@ -1340,8 +1342,8 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
               OUR VALUES & VISION
             </span>
             <h2 style={{ 
-              fontFamily: "'Caveat', cursive",
-              fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', 
+              fontFamily: "'Lora', serif",
+              fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
               fontWeight: 600, 
               color: '#0F172A',
               letterSpacing: '0',
@@ -1360,7 +1362,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1.25rem' }}>
             {coreValues.map((val, idx) => (
               <div 
                 key={idx}
@@ -1404,43 +1406,80 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               INTEGRATED PLATFORM ARCHITECTURE
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.1rem, 3.5vw, 2.6rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 2.64vw, 1.98rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               Seamlessly Connected to the G Mark Ecosystem
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {CONNECTED_APPS.map((app, idx) => (
               <div 
                 key={idx}
                 onClick={() => handleAppClick(app.id)}
                 style={{
                   backgroundColor: '#FFFFFF',
-                  border: '1px solid #CBD5E1',
-                  borderRadius: '14px',
-                  padding: '1.25rem',
+                  border: '1px solid #E2E8F0',
+                  borderRadius: '16px',
+                  padding: '1.15rem 1.2rem',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.85rem',
+                  gap: '0.9rem',
                   cursor: 'pointer',
-                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-                  transition: 'all 0.2s ease'
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.03)',
+                  transition: 'all 0.2s ease',
+                  minHeight: '88px'
                 }}
-                className="hover:-translate-y-1 hover:shadow-md transition-all duration-200"
+                className="hover:border-slate-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
               >
-                <img 
-                  src={app.image} 
-                  alt={app.name} 
-                  style={{ width: '42px', height: '42px', objectFit: 'contain', borderRadius: '10px', border: '1px solid #E2E8F0', padding: '2px', backgroundColor: '#FFFFFF', flexShrink: 0 }} 
-                />
-                <div style={{ minWidth: 0 }}>
-                  <h3 style={{ fontSize: '0.95rem', fontWeight: '700', color: '#0F172A', margin: '0 0 2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <div 
+                  style={{
+                    width: '56px',
+                    height: '44px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}
+                >
+                  <img 
+                    src={app.image} 
+                    alt={app.name} 
+                    style={{ 
+                      maxWidth: '100%', 
+                      maxHeight: '100%', 
+                      width: 'auto',
+                      height: 'auto',
+                      objectFit: 'contain',
+                      display: 'block'
+                    }} 
+                  />
+                </div>
+                <div style={{ minWidth: 0, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <h4 style={{ 
+                    fontSize: '0.98rem', 
+                    fontWeight: '700', 
+                    color: '#0F172A', 
+                    margin: '0 0 3px', 
+                    letterSpacing: '-0.01em',
+                    lineHeight: '1.25' 
+                  }}>
                     {app.name}
-                  </h3>
-                  <p style={{ fontSize: '0.74rem', color: '#EA580C', fontWeight: '700', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  </h4>
+                  <p style={{ 
+                    fontSize: '0.76rem', 
+                    color: '#C2410C', 
+                    fontWeight: '600', 
+                    margin: 0, 
+                    lineHeight: '1.35',
+                    letterSpacing: '0.01em'
+                  }}>
                     {app.tag}
                   </p>
                 </div>
+                <ChevronRight 
+                  size={18} 
+                  className="text-slate-300 group-hover:text-slate-600 group-hover:translate-x-0.5 transition-all flex-shrink-0" 
+                />
               </div>
             ))}
           </div>
@@ -1476,8 +1515,8 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
 
           <h2 
             style={{ 
-              fontFamily: "'Caveat', cursive",
-              fontSize: 'clamp(2.4rem, 4.2vw, 3.2rem)', 
+              fontFamily: "'Lora', serif",
+              fontSize: 'clamp(1.5rem, 3.17vw, 2.42rem)', 
               fontWeight: 600, 
               color: '#0F172A', 
               letterSpacing: '0',
@@ -1503,9 +1542,9 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
             <button
               onClick={onOpenExpertModal}
               style={{
-                padding: '0.85rem 2.25rem',
+                padding: '0.5rem 1.25rem',
                 borderRadius: '9999px',
-                fontSize: '0.95rem',
+                fontSize: '0.85rem',
                 fontWeight: '500',
                 backgroundColor: '#7B5872',
                 color: '#FFFFFF',
@@ -1513,13 +1552,33 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '8px',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+                gap: '6px',
+                boxShadow: '0 2px 10px rgba(123, 88, 114, 0.28)'
               }}
               className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
             >
               <span>Schedule Live SynkroBoard Demo</span>
-              <ArrowRight size={16} />
+              <ArrowRight size={14} />
+            </button>
+            <button
+              onClick={onBack}
+              style={{
+                padding: '0.5rem 1.15rem',
+                borderRadius: '9999px',
+                fontSize: '0.85rem',
+                fontWeight: '500',
+                backgroundColor: '#F1F5F9',
+                color: '#334155',
+                border: '1px solid #CBD5E1',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+              className="hover:bg-slate-100 hover:text-slate-900 transition-colors"
+            >
+              <ArrowLeft size={14} />
+              <span>Back to Solutions</span>
             </button>
           </div>
 

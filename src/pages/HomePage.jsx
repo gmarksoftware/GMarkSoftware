@@ -50,7 +50,8 @@ export default function HomePage({ onOpenExpertModal, onNavigate, onSelectApp })
       {/* 4th Page: Builders Community Orbit Hero */}
       <section 
         id="community-section" 
-        className="w-full min-h-screen flex flex-col overflow-hidden"
+        className="w-full min-h-[72vh] md:min-h-screen flex flex-col overflow-hidden bg-white"
+        style={{ backgroundColor: '#ffffff' }}
       >
         <CommunityOrbitDemo />
       </section>

@@ -22,7 +22,8 @@ import {
   HelpCircle,
   TrendingUp,
   Award,
-  Layers
+  Layers,
+  ChevronRight
 } from 'lucide-react';
 
 import { APPLICATIONS } from '../ApplicationsGridSection';
@@ -198,9 +199,9 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
   // Connected Ecosystem Applications
   const CONNECTED_APPS = [
     { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', desc: 'Double-entry accounting, order fulfillment & billing', image: getAssetUrl('/ERP Logo.png') },
-    { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', desc: 'Industrial telemetry & facility asset governance', image: getAssetUrl('/G-Nova IOT logo 02.jpg') },
-    { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', desc: 'Digital marketplace for farmers & rural enterprises', image: getAssetUrl('/Final Logo-09.jpg.jpeg') },
-    { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', desc: 'Enterprise sprint, kanban & RACI workflows', image: getAssetUrl('/Task Management & Team Collaboration Logo 01.jpg') }
+    { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', desc: 'Industrial telemetry & facility asset governance', image: getAssetUrl('/g-nova-clean.png') },
+    { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', desc: 'Digital marketplace for farmers & rural enterprises', image: getAssetUrl('/gramunnati-clean.png') },
+    { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', desc: 'Enterprise sprint, kanban & RACI workflows', image: getAssetUrl('/synkroboard-clean.png') }
   ];
 
   const handleAppClick = (targetId) => {
@@ -225,18 +226,18 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
       {/* ========================================================================= */}
       {/* 2. HERO SECTION */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#e8e8e8', paddingTop: '3.5rem', paddingBottom: '3rem', position: 'relative' }}>
+      <section style={{ backgroundColor: '#e8e8e8', paddingTop: '2.25rem', paddingBottom: '3rem', position: 'relative' }}>
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem', textAlign: 'center' }}>
           
 
 
-          {/* Headline matching Caveat handwriting font style with #00A3FF brush underline */}
+          {/* Headline matching Lora handwriting font style with #00A3FF brush underline */}
           <div className="relative inline-block">
             <h1 
               className="text-balance text-slate-900"
               style={{ 
-                fontFamily: "'Caveat', cursive",
-                fontSize: 'clamp(3rem, 6.4vw, 5.25rem)',
+                fontFamily: "'Lora', serif",
+                fontSize: 'clamp(1.75rem, 4.5vw, 3.87rem)',
                 lineHeight: '1.15',
                 letterSpacing: '0',
                 paddingTop: '0.25rem',
@@ -331,7 +332,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
           <p 
             className="text-balance text-gray-600 font-normal"
             style={{ 
-              fontSize: 'clamp(1.05rem, 1.8vw, 1.25rem)', 
+              fontSize: 'clamp(0.92rem, 1.58vw, 1.1rem)', 
               lineHeight: '1.65', 
               maxWidth: '780px',
               margin: '1.25rem auto 2.25rem',
@@ -372,7 +373,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
               gap: '1rem',
               maxWidth: '960px',
               margin: '0 auto',
@@ -422,7 +423,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
           borderTop: '1px solid #CBD5E1', 
           borderBottom: '1px solid #CBD5E1', 
           padding: '4.5rem 0 5rem',
-          maxWidth: 'calc(50vw + 560px)',
+          maxWidth: 'min(100%, calc(50vw + 560px))',
           marginRight: 0,
           marginLeft: 'auto',
           borderTopLeftRadius: '28px',
@@ -446,8 +447,8 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
               EXECUTIVE OVERVIEW & PROBLEM STATEMENT
             </span>
             <h2 style={{ 
-              fontFamily: "'Caveat', cursive", 
-              fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', 
+              fontFamily: "'Lora', serif", 
+              fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
               fontWeight: 600, 
               color: '#0F172A', 
               letterSpacing: '0', 
@@ -466,7 +467,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', marginBottom: '3.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '2rem', marginBottom: '3.5rem' }}>
             
             {/* The Problem Card */}
             <div 
@@ -562,7 +563,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '1rem' }}>
               {CORE_VALUES.map((val, idx) => (
                 <div 
                   key={idx}
@@ -599,7 +600,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               STAKEHOLDER GOALS & VALUE UNLOCKED
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               Empowering On-Field Teams & Executive Leadership
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -678,7 +679,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '2rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '2rem', marginBottom: '2rem' }}>
               
               {/* Challenges */}
               <div style={{ backgroundColor: '#F8FAFC', padding: '1.5rem', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
@@ -714,7 +715,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
             </div>
 
             {/* Stakeholder Metrics Strip */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', borderTop: '1px solid #E2E8F0', paddingTop: '1.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '1rem', borderTop: '1px solid #E2E8F0', paddingTop: '1.5rem' }}>
               {currentStakeholder.metrics.map((m, idx) => (
                 <div key={idx} style={{ backgroundColor: '#F8FAFC', padding: '1rem 1.25rem', borderRadius: '12px', border: '1px solid #CBD5E1' }}>
                   <div style={{ fontSize: '1.5rem', fontWeight: '800', color: currentStakeholder.accentColor }}>
@@ -800,8 +801,8 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
 
               {/* Main Headline */}
               <h2 style={{ 
-                fontFamily: "'Caveat', cursive",
-                fontSize: 'clamp(2.6rem, 5vw, 3.8rem)', 
+                fontFamily: "'Lora', serif",
+                fontSize: 'clamp(1.4rem, 3.5vw, 2.82rem)', 
                 fontWeight: 700, 
                 color: '#0F172A',
                 letterSpacing: '0',
@@ -937,7 +938,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               PLATFORM ARCHITECTURE ECOSYSTEM
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               3 Integrated Pillars. Zero Friction Telemetry.
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -945,7 +946,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.75rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.75rem' }}>
             
             {/* 1. Mobile App for Field Employees */}
             <div 
@@ -1117,8 +1118,8 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
                 ✕
               </span>
               <h2 style={{ 
-                fontFamily: "'Caveat', cursive",
-                fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)', 
+                fontFamily: "'Lora', serif",
+                fontSize: 'clamp(1.25rem, 3.34vw, 2.55rem)', 
                 fontWeight: 600, 
                 color: '#0F172A',
                 letterSpacing: '0',
@@ -1139,8 +1140,8 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
             {/* Line 2: Just automated performance analytics */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
               <h2 style={{ 
-                fontFamily: "'Caveat', cursive",
-                fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)', 
+                fontFamily: "'Lora', serif",
+                fontSize: 'clamp(1.25rem, 3.34vw, 2.55rem)', 
                 fontWeight: 600, 
                 color: '#0F172A',
                 letterSpacing: '0',
@@ -1324,7 +1325,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               SYSTEM CAPABILITIES & SPECIFICATIONS
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               The 7 Core Field Operations Functional Modules
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -1333,7 +1334,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
           </div>
 
           {/* 7 Modules Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.25rem', marginBottom: '2.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.25rem', marginBottom: '2.5rem' }}>
             {CORE_MODULES.map((mod) => {
               const IconComp = mod.icon;
               return (
@@ -1392,7 +1393,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
             <span style={{ fontSize: '0.78rem', color: '#15803D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               TRANSFORMATION BENCHMARKS
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               Manual Field Methods vs. G-Track Automated Telemetry
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -1459,45 +1460,80 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               INTEGRATED ENTERPRISE ECOSYSTEM
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.1rem, 3.5vw, 2.6rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 2.64vw, 1.98rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               Seamlessly Connected to the G Mark Ecosystem
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {CONNECTED_APPS.map((app, idx) => (
               <div 
                 key={idx}
                 onClick={() => handleAppClick(app.id)}
                 style={{
                   backgroundColor: '#FFFFFF',
-                  border: '1px solid #CBD5E1',
-                  borderRadius: '14px',
-                  padding: '1.25rem',
+                  border: '1px solid #E2E8F0',
+                  borderRadius: '16px',
+                  padding: '1.15rem 1.2rem',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.85rem',
+                  gap: '0.9rem',
                   cursor: 'pointer',
-                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-                  transition: 'all 0.2s ease'
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.03)',
+                  transition: 'all 0.2s ease',
+                  minHeight: '88px'
                 }}
-                className="hover:-translate-y-1 hover:shadow-md transition-all duration-200"
+                className="hover:border-slate-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
               >
-                <img 
-                  src={app.image} 
-                  alt={app.name} 
-                  style={{ width: '42px', height: '42px', objectFit: 'contain', borderRadius: '10px', border: '1px solid #E2E8F0', padding: '2px', backgroundColor: '#FFFFFF', flexShrink: 0 }} 
-                />
-                <div style={{ minWidth: 0 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
-                    <h4 style={{ fontSize: '0.92rem', fontWeight: '700', color: '#0F172A', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      {app.name}
-                    </h4>
-                  </div>
-                  <p style={{ fontSize: '0.74rem', color: '#EA580C', fontWeight: '700', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <div 
+                  style={{
+                    width: '56px',
+                    height: '44px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}
+                >
+                  <img 
+                    src={app.image} 
+                    alt={app.name} 
+                    style={{ 
+                      maxWidth: '100%', 
+                      maxHeight: '100%', 
+                      width: 'auto',
+                      height: 'auto',
+                      objectFit: 'contain',
+                      display: 'block'
+                    }} 
+                  />
+                </div>
+                <div style={{ minWidth: 0, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <h4 style={{ 
+                    fontSize: '0.98rem', 
+                    fontWeight: '700', 
+                    color: '#0F172A', 
+                    margin: '0 0 3px', 
+                    letterSpacing: '-0.01em',
+                    lineHeight: '1.25' 
+                  }}>
+                    {app.name}
+                  </h4>
+                  <p style={{ 
+                    fontSize: '0.76rem', 
+                    color: '#C2410C', 
+                    fontWeight: '600', 
+                    margin: 0, 
+                    lineHeight: '1.35',
+                    letterSpacing: '0.01em'
+                  }}>
                     {app.tag}
                   </p>
                 </div>
+                <ChevronRight 
+                  size={18} 
+                  className="text-slate-300 group-hover:text-slate-600 group-hover:translate-x-0.5 transition-all flex-shrink-0" 
+                />
               </div>
             ))}
           </div>
@@ -1517,8 +1553,8 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
           </div>
 
           <h2 style={{ 
-            fontFamily: "'Caveat', cursive", 
-            fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', 
+            fontFamily: "'Lora', serif", 
+            fontSize: 'clamp(1.89rem, 3.7vw, 2.64rem)', 
             fontWeight: 600, 
             color: '#0F172A', 
             letterSpacing: '0', 
@@ -1553,9 +1589,9 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
             <button
               onClick={onOpenExpertModal}
               style={{
-                padding: '0.85rem 2.25rem',
+                padding: '0.5rem 1.25rem',
                 borderRadius: '9999px',
-                fontSize: '0.95rem',
+                fontSize: '0.85rem',
                 fontWeight: '500',
                 backgroundColor: '#7B5872',
                 color: '#FFFFFF',
@@ -1563,20 +1599,20 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '8px',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+                gap: '6px',
+                boxShadow: '0 2px 10px rgba(123, 88, 114, 0.28)'
               }}
               className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
             >
               <span>Schedule Platform Consultation</span>
-              <ArrowRight size={16} />
+              <ArrowRight size={14} />
             </button>
             <button
               onClick={onBack}
               style={{
-                padding: '0.85rem 1.85rem',
+                padding: '0.5rem 1.15rem',
                 borderRadius: '9999px',
-                fontSize: '0.95rem',
+                fontSize: '0.85rem',
                 fontWeight: '500',
                 backgroundColor: '#F1F5F9',
                 color: '#334155',
@@ -1584,11 +1620,12 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '8px'
+                gap: '6px'
               }}
-              className="hover:bg-slate-100 transition-colors"
+              className="hover:bg-slate-100 hover:text-slate-900 transition-colors"
             >
-              <span>Explore Other Applications</span>
+              <ArrowLeft size={14} />
+              <span>Back to Solutions</span>
             </button>
           </div>
 

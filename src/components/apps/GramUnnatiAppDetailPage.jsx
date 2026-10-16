@@ -26,11 +26,102 @@ import {
   LayoutDashboard,
   Check,
   ChevronRight,
-  ArrowUpRight
+  ArrowUpRight,
+  Search,
+  CreditCard,
+  BarChart3
 } from 'lucide-react';
 
 import { APPLICATIONS } from '../ApplicationsGridSection';
 import { getAssetUrl } from '@/utils/asset';
+
+// Realistic Smartphone Device Mockup Component
+function MobileDeviceMockup({ imageSrc, alt, caption, badge, badgeColor = '#15803D', badgeBg = '#DCFCE7' }) {
+  return (
+    <div className="flex flex-col items-center justify-center w-full my-2">
+      {badge && (
+        <span 
+          style={{
+            fontSize: '0.72rem',
+            fontWeight: '700',
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            padding: '3px 10px',
+            borderRadius: '9999px',
+            backgroundColor: badgeBg,
+            color: badgeColor,
+            marginBottom: '10px',
+            display: 'inline-block'
+          }}
+        >
+          {badge}
+        </span>
+      )}
+      <div 
+        style={{
+          width: '100%',
+          maxWidth: '280px',
+          backgroundColor: '#0F172A',
+          borderRadius: '36px',
+          padding: '10px 10px 12px',
+          boxShadow: '0 20px 45px -10px rgba(15, 23, 42, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.08) inset',
+          position: 'relative',
+          margin: '0 auto'
+        }}
+      >
+        {/* Dynamic Island / Speaker Notch */}
+        <div 
+          style={{
+            width: '76px',
+            height: '14px',
+            backgroundColor: '#0F172A',
+            borderRadius: '0 0 10px 10px',
+            margin: '-10px auto 6px',
+            position: 'relative',
+            zIndex: 10
+          }}
+        />
+        {/* Inner Screen Container */}
+        <div 
+          style={{
+            borderRadius: '24px',
+            overflow: 'hidden',
+            backgroundColor: '#FFFFFF',
+            position: 'relative',
+            border: '1px solid #334155'
+          }}
+        >
+          <img 
+            src={imageSrc} 
+            alt={alt}
+            style={{
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+              objectFit: 'contain'
+            }}
+            loading="lazy"
+          />
+        </div>
+        {/* Bottom Home Indicator Bar */}
+        <div 
+          style={{
+            width: '84px',
+            height: '4px',
+            backgroundColor: 'rgba(255, 255, 255, 0.35)',
+            borderRadius: '9999px',
+            margin: '8px auto 2px'
+          }}
+        />
+      </div>
+      {caption && (
+        <p style={{ fontSize: '0.76rem', color: '#64748B', marginTop: '10px', textAlign: 'center', fontWeight: '500', maxWidth: '280px' }}>
+          {caption}
+        </p>
+      )}
+    </div>
+  );
+}
 
 export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onSelectApp }) {
   const [activeStakeholderTab, setActiveStakeholderTab] = useState('farmers');
@@ -259,9 +350,9 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
   // Connected Ecosystem Applications
   const CONNECTED_APPS = [
     { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', desc: 'Double-entry accounting, GST engine & inventory', image: getAssetUrl('/ERP Logo.png') },
-    { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', desc: 'Industrial telemetry and facility monitoring', image: getAssetUrl('/G-Nova IOT logo 02.jpg') },
+    { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', desc: 'Industrial telemetry and facility monitoring', image: getAssetUrl('/g-nova-clean.png') },
     { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', desc: 'Real-time vehicle tracking & cold-chain monitoring', image: getAssetUrl('/G Track logo.png') },
-    { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', desc: 'Enterprise sprint, kanban & RACI workflows', image: getAssetUrl('/Task Management & Team Collaboration Logo 01.jpg') }
+    { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', desc: 'Enterprise sprint, kanban & RACI workflows', image: getAssetUrl('/synkroboard-clean.png') }
   ];
 
   const handleAppClick = (targetId) => {
@@ -284,18 +375,18 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
       {/* ========================================================================= */}
       {/* 2. HERO SECTION */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#e8e8e8', paddingTop: '3.5rem', paddingBottom: '3rem', position: 'relative' }}>
+      <section style={{ backgroundColor: '#e8e8e8', paddingTop: '2.25rem', paddingBottom: '3rem', position: 'relative' }}>
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem', textAlign: 'center' }}>
           
 
 
-          {/* Headline matching Caveat handwriting font style with #00A3FF brush underline */}
+          {/* Headline matching Lora handwriting font style with #00A3FF brush underline */}
           <div className="relative inline-block">
             <h1 
               className="text-balance text-slate-900"
               style={{ 
-                fontFamily: "'Caveat', cursive",
-                fontSize: 'clamp(3rem, 6.4vw, 5.25rem)',
+                fontFamily: "'Lora', serif",
+                fontSize: 'clamp(1.75rem, 4.5vw, 3.87rem)',
                 lineHeight: '1.15',
                 letterSpacing: '0',
                 paddingTop: '0.25rem',
@@ -390,7 +481,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
           <p 
             className="text-balance text-gray-600 font-normal"
             style={{ 
-              fontSize: 'clamp(1.05rem, 1.8vw, 1.25rem)', 
+              fontSize: 'clamp(0.92rem, 1.58vw, 1.1rem)', 
               lineHeight: '1.65', 
               maxWidth: '780px',
               margin: '1.25rem auto 2.25rem',
@@ -431,7 +522,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
               gap: '1rem',
               maxWidth: '960px',
               margin: '0 auto',
@@ -469,6 +560,85 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
             ))}
           </div>
 
+          {/* Farmer Onboarding App Spotlight: Your Farming Companion */}
+          <div 
+            style={{
+              marginTop: '3.5rem',
+              backgroundColor: '#FFFFFF',
+              borderRadius: '24px',
+              border: '1px solid #CBD5E1',
+              padding: '2.5rem 2rem',
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.04)',
+              textAlign: 'left'
+            }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Smartphone Mockup */}
+              <div className="lg:col-span-5 flex justify-center">
+                <MobileDeviceMockup 
+                  imageSrc={getAssetUrl('/gramunnati-farmer-onboarding.png')}
+                  alt="GramUnnati Mobile App - Farmer Welcome and Onboarding Screen"
+                  caption="Mobile Onboarding: Your Digital Farming Companion"
+                  badge="Mobile Gateway"
+                  badgeColor="#15803D"
+                  badgeBg="#DCFCE7"
+                />
+              </div>
+
+              {/* Concise Explanation */}
+              <div className="lg:col-span-7 flex flex-col justify-center">
+                <span style={{ fontSize: '0.78rem', color: '#15803D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '6px' }}>
+                  FARMER ONBOARDING EXPERIENCE
+                </span>
+                <h3 
+                  style={{ 
+                    fontFamily: "'Lora', serif", 
+                    fontSize: 'clamp(1.35rem, 2.5vw, 1.85rem)', 
+                    fontWeight: 600, 
+                    color: '#0F172A', 
+                    letterSpacing: '0',
+                    lineHeight: '1.25',
+                    marginBottom: '1rem' 
+                  }}
+                >
+                  Your Digital Farming Companion: Essential Inputs at Your Doorstep
+                </h3>
+                <p style={{ fontSize: '0.92rem', color: '#475569', lineHeight: '1.65', marginBottom: '1.25rem' }}>
+                  The GramUnnati mobile application welcomes farmers and rural growers into an intuitive digital agricultural hub. Designed for simplicity, the introductory interface empowers cultivators to discover all essential farming supplies without navigating complicated menus or travel hurdles.
+                </p>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '1.5rem' }}>
+                  {[
+                    { title: 'Comprehensive Input Discovery', desc: 'Browse certified seeds, fertilizers, and crop-protection bio-pesticides curated for local regional soil.' },
+                    { title: 'Doorstep Delivery Assurance', desc: 'Essential farming products brought directly to village communities, eliminating expensive middleman logistics.' },
+                    { title: 'Flexible Getting Started Flow', desc: 'Quick access to Sign In or Sign Up, alongside a convenient "Remind me Later" option to explore the app at any pace.' }
+                  ].map((feat, idx) => (
+                    <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                      <div style={{ width: '20px', height: '20px', borderRadius: '50%', backgroundColor: '#DCFCE7', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#15803D', flexShrink: 0, marginTop: '2px' }}>
+                        <Check size={12} strokeWidth={3} />
+                      </div>
+                      <div>
+                        <span style={{ fontSize: '0.88rem', fontWeight: '700', color: '#0F172A' }}>{feat.title}: </span>
+                        <span style={{ fontSize: '0.86rem', color: '#64748B', lineHeight: '1.5' }}>{feat.desc}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.9rem', borderRadius: '9999px', backgroundColor: '#F0FDF4', border: '1px solid #BBF7D0', color: '#15803D', fontSize: '0.8rem', fontWeight: '600' }}>
+                    <Sprout size={14} />
+                    <span>Vernacular Friendly</span>
+                  </div>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.9rem', borderRadius: '9999px', backgroundColor: '#F8FAFC', border: '1px solid #E2E8F0', color: '#475569', fontSize: '0.8rem', fontWeight: '600' }}>
+                    <Truck size={14} />
+                    <span>Village Doorstep Fulfillment</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -481,7 +651,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
           borderTop: '1px solid #CBD5E1', 
           borderBottom: '1px solid #CBD5E1', 
           padding: '4.5rem 0 5rem',
-          maxWidth: 'calc(50vw + 560px)',
+          maxWidth: 'min(100%, calc(50vw + 560px))',
           marginRight: 0,
           marginLeft: 'auto',
           borderTopLeftRadius: '28px',
@@ -505,8 +675,8 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
               EXECUTIVE OVERVIEW & PROBLEM STATEMENT
             </span>
             <h2 style={{ 
-              fontFamily: "'Caveat', cursive", 
-              fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', 
+              fontFamily: "'Lora', serif", 
+              fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
               fontWeight: 600, 
               color: '#0F172A', 
               letterSpacing: '0', 
@@ -525,7 +695,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', marginBottom: '3.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '2rem', marginBottom: '3.5rem' }}>
             
             {/* The Problem Card */}
             <div 
@@ -621,7 +791,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '1rem' }}>
               {CORE_VALUES.map((val, idx) => (
                 <div 
                   key={idx}
@@ -658,7 +828,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               STAKEHOLDER GOALS & VALUE CREATION
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               Tailored Impact Across the Rural Value Chain
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -738,7 +908,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '2rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '2rem', marginBottom: '2rem' }}>
               
               {/* Challenges */}
               <div style={{ backgroundColor: '#F8FAFC', padding: '1.5rem', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
@@ -774,7 +944,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
             </div>
 
             {/* Stakeholder Metrics Strip */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', borderTop: '1px solid #E2E8F0', paddingTop: '1.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '1rem', borderTop: '1px solid #E2E8F0', paddingTop: '1.5rem' }}>
               {currentStakeholder.metrics.map((m, idx) => (
                 <div key={idx} style={{ backgroundColor: '#F8FAFC', padding: '1rem 1.25rem', borderRadius: '12px', border: '1px solid #CBD5E1' }}>
                   <div style={{ fontSize: '1.5rem', fontWeight: '800', color: currentStakeholder.accentColor }}>
@@ -792,6 +962,84 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
 
           </div>
 
+          {/* Easy Registration & Account Access Showcase */}
+          <div 
+            style={{
+              marginTop: '2.5rem',
+              backgroundColor: '#FFFFFF',
+              borderRadius: '24px',
+              border: '1.5px solid #CBD5E1',
+              padding: '2.5rem 2rem',
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.03)'
+            }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Concise Explanation */}
+              <div className="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1">
+                <span style={{ fontSize: '0.78rem', color: '#15803D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '6px' }}>
+                  STREAMLINED ACCOUNT ACCESS
+                </span>
+                <h3 
+                  style={{ 
+                    fontFamily: "'Lora', serif", 
+                    fontSize: 'clamp(1.35rem, 2.5vw, 1.85rem)', 
+                    fontWeight: 600, 
+                    color: '#0F172A', 
+                    letterSpacing: '0',
+                    lineHeight: '1.25',
+                    marginBottom: '1rem' 
+                  }}
+                >
+                  Start Your Farming Journey: Fast & Hassle-Free Mobile Sign-Up
+                </h3>
+                <p style={{ fontSize: '0.92rem', color: '#475569', lineHeight: '1.65', marginBottom: '1.25rem' }}>
+                  Getting started on GramUnnati is designed specifically for rural ease. Cultivators register directly with their 10-digit mobile number, agreeing to transparent Terms and Privacy Policies to unlock quick and easy farming solutions.
+                </p>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '1.5rem' }}>
+                  {[
+                    { title: 'Standard Mobile Number Login', desc: 'Pre-configured country code (+91) with rapid mobile digit entry without demanding unnecessary personal paperwork upfront.' },
+                    { title: 'One-Tap Policy Agreement', desc: 'Integrated Terms & Conditions and Privacy Policy consent checkbox protecting user data and digital platform rights.' },
+                    { title: 'Direct OTP Verification', desc: 'Instant "Get OTP" action triggers a one-time passcode for secure, passwordless authentication tailored for rural mobile connectivity.' }
+                  ].map((feat, idx) => (
+                    <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                      <div style={{ width: '20px', height: '20px', borderRadius: '50%', backgroundColor: '#DCFCE7', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#15803D', flexShrink: 0, marginTop: '2px' }}>
+                        <Check size={12} strokeWidth={3} />
+                      </div>
+                      <div>
+                        <span style={{ fontSize: '0.88rem', fontWeight: '700', color: '#0F172A' }}>{feat.title}: </span>
+                        <span style={{ fontSize: '0.86rem', color: '#64748B', lineHeight: '1.5' }}>{feat.desc}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.9rem', borderRadius: '9999px', backgroundColor: '#F0FDF4', border: '1px solid #BBF7D0', color: '#15803D', fontSize: '0.8rem', fontWeight: '600' }}>
+                    <ShieldCheck size={14} />
+                    <span>Passwordless OTP Login</span>
+                  </div>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.9rem', borderRadius: '9999px', backgroundColor: '#F8FAFC', border: '1px solid #E2E8F0', color: '#475569', fontSize: '0.8rem', fontWeight: '600' }}>
+                    <Users size={14} />
+                    <span>Instant Account Creation</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Smartphone Mockup */}
+              <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
+                <MobileDeviceMockup 
+                  imageSrc={getAssetUrl('/gramunnati-farmer-registration.png')}
+                  alt="GramUnnati Mobile App - Start Your Farming Journey Registration Screen"
+                  caption="Mobile Registration: Start your farming journey"
+                  badge="Simple Sign-Up"
+                  badgeColor="#15803D"
+                  badgeBg="#DCFCE7"
+                />
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -805,7 +1053,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               END-TO-END APPLICATION ECOSYSTEM
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               3 Specialized Interfaces. One Connected Platform.
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -813,137 +1061,226 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.75rem' }}>
-            
-            {/* 1. Buyer Mobile App */}
-            <div 
-              style={{
-                backgroundColor: '#F8FAFC',
-                border: '1.5px solid #E2E8F0',
-                borderRadius: '22px',
-                padding: '2rem',
-                display: 'flex',
-                flexDirection: 'column',
-                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.03)'
-              }}
-              className="hover:border-emerald-300 transition-colors"
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-                <div style={{ width: '46px', height: '46px', borderRadius: '14px', backgroundColor: '#DCFCE7', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#15803D' }}>
-                  <Smartphone size={24} />
-                </div>
-                <span style={{ fontSize: '0.75rem', fontWeight: '700', color: '#15803D', backgroundColor: '#DCFCE7', padding: '3px 10px', borderRadius: '20px' }}>
-                  Mobile App
-                </span>
+          {/* 1. Buyer Mobile Application Showcase */}
+          <div 
+            style={{
+              backgroundColor: '#F8FAFC',
+              border: '1.5px solid #E2E8F0',
+              borderRadius: '24px',
+              padding: '2.5rem 2rem',
+              marginBottom: '2.5rem',
+              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.03)'
+            }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Smartphone Mockup */}
+              <div className="lg:col-span-5 flex justify-center">
+                <MobileDeviceMockup 
+                  imageSrc={getAssetUrl('/gramunnati-buyer-marketplace.png')}
+                  alt="GramUnnati Buyer Mobile App - Product Discovery and Marketplace Screen"
+                  caption="Buyer Marketplace: Product Discovery, Prices & Cart"
+                  badge="Buyer App Interface"
+                  badgeColor="#15803D"
+                  badgeBg="#DCFCE7"
+                />
               </div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0F172A', marginBottom: '0.5rem' }}>
-                Buyer Mobile Application
-              </h3>
-              <p style={{ fontSize: '0.88rem', color: '#64748B', lineHeight: '1.6', marginBottom: '1.5rem', flex: 1 }}>
-                Dedicated mobile client for farmers, commercial buyers, and rural consumers to discover agri-inputs, compare prices, apply harvest coupons, and track delivery states.
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', borderTop: '1px solid #E2E8F0', paddingTop: '1.25rem' }}>
-                {[
-                  'Multi-lingual vernacular catalog navigation',
-                  'Product variants (weights, grades) & combo kits',
-                  'Shopping cart with multiple payment & COD options',
-                  'Live shipment tracking with SMS & push alerts',
-                  'Instant order-linked complaint ticket lodging'
-                ].map((f, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', color: '#334155' }}>
-                    <Check size={14} color="#16A34A" />
-                    <span>{f}</span>
+
+              {/* Description & Features */}
+              <div className="lg:col-span-7 flex flex-col justify-center">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.75rem' }}>
+                  <div style={{ width: '40px', height: '40px', borderRadius: '12px', backgroundColor: '#DCFCE7', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#15803D' }}>
+                    <Smartphone size={22} />
                   </div>
-                ))}
+                  <span style={{ fontSize: '0.78rem', fontWeight: '700', color: '#15803D', backgroundColor: '#DCFCE7', padding: '3px 12px', borderRadius: '20px' }}>
+                    Buyer Mobile Application
+                  </span>
+                </div>
+
+                <h3 
+                  style={{ 
+                    fontFamily: "'Lora', serif", 
+                    fontSize: 'clamp(1.35rem, 2.5vw, 1.85rem)', 
+                    fontWeight: 600, 
+                    color: '#0F172A', 
+                    letterSpacing: '0',
+                    lineHeight: '1.25',
+                    marginBottom: '1rem' 
+                  }}
+                >
+                  Agricultural Shopping, Instant Search & One-Tap Cart Checkout
+                </h3>
+
+                <p style={{ fontSize: '0.92rem', color: '#475569', lineHeight: '1.65', marginBottom: '1.25rem' }}>
+                  The Buyer Mobile Application offers a smooth, consumer-grade shopping experience designed for farmers, rural families, and bulk institutional buyers. Customers easily search the catalog, view certified product specifications, inspect clear prices, and add items directly to their cart.
+                </p>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '1.5rem' }}>
+                  {[
+                    { title: 'Keyword Search & Filtering', desc: 'Fast search bar for agricultural inputs including fertilizers, composts, and seasonal produce.' },
+                    { title: 'Transparent Farm Produce Catalog', desc: 'Browse curated product cards (e.g. Goa Mango, Farm Fresh Products) with upfront unit pricing (₹100) and favorite lists.' },
+                    { title: 'Instant Add to Cart', desc: 'Direct cart additions enabling fast basket accumulation and consolidated order checkout.' },
+                    { title: 'Dedicated Bottom Navigation', desc: 'Intuitive bottom menu providing immediate one-touch switching between Home, Orders, Local Weather/Temp, Cart, and Profile.' }
+                  ].map((feat, idx) => (
+                    <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                      <div style={{ width: '20px', height: '20px', borderRadius: '50%', backgroundColor: '#DCFCE7', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#15803D', flexShrink: 0, marginTop: '2px' }}>
+                        <Check size={12} strokeWidth={3} />
+                      </div>
+                      <div>
+                        <span style={{ fontSize: '0.88rem', fontWeight: '700', color: '#0F172A' }}>{feat.title}: </span>
+                        <span style={{ fontSize: '0.86rem', color: '#64748B', lineHeight: '1.5' }}>{feat.desc}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.9rem', borderRadius: '9999px', backgroundColor: '#F0FDF4', border: '1px solid #BBF7D0', color: '#15803D', fontSize: '0.8rem', fontWeight: '600' }}>
+                    <ShoppingBag size={14} />
+                    <span>Instant Cart Checkout</span>
+                  </div>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.9rem', borderRadius: '9999px', backgroundColor: '#F8FAFC', border: '1px solid #E2E8F0', color: '#475569', fontSize: '0.8rem', fontWeight: '600' }}>
+                    <Search size={14} />
+                    <span>Live Input Search</span>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
 
-            {/* 2. Seller Mobile App */}
-            <div 
-              style={{
-                backgroundColor: '#F8FAFC',
-                border: '1.5px solid #E2E8F0',
-                borderRadius: '22px',
-                padding: '2rem',
-                display: 'flex',
-                flexDirection: 'column',
-                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.03)'
-              }}
-              className="hover:border-blue-300 transition-colors"
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-                <div style={{ width: '46px', height: '46px', borderRadius: '14px', backgroundColor: '#E0F2FE', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0284C7' }}>
-                  <Store size={24} />
-                </div>
-                <span style={{ fontSize: '0.75rem', fontWeight: '700', color: '#0284C7', backgroundColor: '#E0F2FE', padding: '3px 10px', borderRadius: '20px' }}>
-                  Merchant App
-                </span>
-              </div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0F172A', marginBottom: '0.5rem' }}>
-                Seller Mobile Application
-              </h3>
-              <p style={{ fontSize: '0.88rem', color: '#64748B', lineHeight: '1.6', marginBottom: '1.5rem', flex: 1 }}>
-                Dedicated merchant workspace for local producers, FPOs, and village entrepreneurs to manage inventory, fulfill incoming orders, and configure custom discount promotions.
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', borderTop: '1px solid #E2E8F0', paddingTop: '1.25rem' }}>
-                {[
-                  'Fast-track digital KYC & document submission',
-                  'Real-time stock inventory & price adjustment',
-                  'Order packaging, verification & dispatch status triggers',
-                  'Percentage & flat coupon creator engine',
-                  'Daily earnings ledger & direct bank settlement'
-                ].map((f, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', color: '#334155' }}>
-                    <Check size={14} color="#0284C7" />
-                    <span>{f}</span>
+          {/* 2. Seller Mobile Application Showcase */}
+          <div 
+            style={{
+              backgroundColor: '#F8FAFC',
+              border: '1.5px solid #E2E8F0',
+              borderRadius: '24px',
+              padding: '2.5rem 2rem',
+              marginBottom: '2.5rem',
+              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.03)'
+            }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Description & Features */}
+              <div className="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.75rem' }}>
+                  <div style={{ width: '40px', height: '40px', borderRadius: '12px', backgroundColor: '#E0F2FE', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0284C7' }}>
+                    <Store size={22} />
                   </div>
-                ))}
+                  <span style={{ fontSize: '0.78rem', fontWeight: '700', color: '#0284C7', backgroundColor: '#E0F2FE', padding: '3px 12px', borderRadius: '20px' }}>
+                    Merchant App Interface
+                  </span>
+                </div>
+
+                <h3 
+                  style={{ 
+                    fontFamily: "'Lora', serif", 
+                    fontSize: 'clamp(1.35rem, 2.5vw, 1.85rem)', 
+                    fontWeight: 600, 
+                    color: '#0F172A', 
+                    letterSpacing: '0',
+                    lineHeight: '1.25',
+                    marginBottom: '1rem' 
+                  }}
+                >
+                  Revenue Analytics, Store Overview & Merchant Operations
+                </h3>
+
+                <p style={{ fontSize: '0.92rem', color: '#475569', lineHeight: '1.65', marginBottom: '1.25rem' }}>
+                  The Seller Mobile Application equips village producers, farmer cooperatives, and rural agro-dealers with complete control over their commercial storefront. Merchants review real-time revenue stats, track store catalog status, and fulfill incoming orders with ease.
+                </p>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '1.5rem' }}>
+                  {[
+                    { title: 'Live Revenue Analytics', desc: 'Real-time Total Revenue review (with flexible period filters like "Today", Weekly, or All-Time) and visual daily trend tracking.' },
+                    { title: 'Store Overview & Catalog Health', desc: 'Instant breakdown of Total Active Products vs. Total Inactive Products with direct "View All Products" inventory management.' },
+                    { title: 'Centralized Business Navigation', desc: 'Dedicated bottom bar tabs for rapid access to Home, Products, Orders, Payments, and Merchant Profile.' },
+                    { title: 'Order Fulfillment & Payouts', desc: 'Track incoming buyer orders, update packaging status, and monitor digital payment settlements directly to linked bank accounts.' }
+                  ].map((feat, idx) => (
+                    <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                      <div style={{ width: '20px', height: '20px', borderRadius: '50%', backgroundColor: '#E0F2FE', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0284C7', flexShrink: 0, marginTop: '2px' }}>
+                        <Check size={12} strokeWidth={3} />
+                      </div>
+                      <div>
+                        <span style={{ fontSize: '0.88rem', fontWeight: '700', color: '#0F172A' }}>{feat.title}: </span>
+                        <span style={{ fontSize: '0.86rem', color: '#64748B', lineHeight: '1.5' }}>{feat.desc}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.9rem', borderRadius: '9999px', backgroundColor: '#F0F9FF', border: '1px solid #BAE6FD', color: '#0284C7', fontSize: '0.8rem', fontWeight: '600' }}>
+                    <BarChart3 size={14} />
+                    <span>Real-Time Revenue Telemetry</span>
+                  </div>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.9rem', borderRadius: '9999px', backgroundColor: '#F8FAFC', border: '1px solid #E2E8F0', color: '#475569', fontSize: '0.8rem', fontWeight: '600' }}>
+                    <CreditCard size={14} />
+                    <span>Direct Bank Settlements</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Smartphone Mockup */}
+              <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
+                <MobileDeviceMockup 
+                  imageSrc={getAssetUrl('/gramunnati-seller-dashboard.png')}
+                  alt="GramUnnati Seller Mobile App - Revenue and Store Overview Dashboard Screen"
+                  caption="Seller Dashboard: Revenue Analytics & Store Overview"
+                  badge="Seller App Interface"
+                  badgeColor="#0284C7"
+                  badgeBg="#E0F2FE"
+                />
               </div>
             </div>
+          </div>
 
-            {/* 3. Central Admin Dashboard */}
-            <div 
-              style={{
-                backgroundColor: '#F8FAFC',
-                border: '1.5px solid #E2E8F0',
-                borderRadius: '22px',
-                padding: '2rem',
-                display: 'flex',
-                flexDirection: 'column',
-                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.03)'
-              }}
-              className="hover:border-purple-300 transition-colors"
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-                <div style={{ width: '46px', height: '46px', borderRadius: '14px', backgroundColor: '#F3E8FF', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9333EA' }}>
-                  <LayoutDashboard size={24} />
-                </div>
-                <span style={{ fontSize: '0.75rem', fontWeight: '700', color: '#9333EA', backgroundColor: '#F3E8FF', padding: '3px 10px', borderRadius: '20px' }}>
-                  Super Admin
-                </span>
-              </div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0F172A', marginBottom: '0.5rem' }}>
-                Central Admin Dashboard
-              </h3>
-              <p style={{ fontSize: '0.88rem', color: '#64748B', lineHeight: '1.6', marginBottom: '1.5rem', flex: 1 }}>
-                Unified cloud control center enabling enterprise administrators to govern users, verify seller compliance, oversee dispute resolution, and broadcast targeted push campaigns.
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', borderTop: '1px solid #E2E8F0', paddingTop: '1.25rem' }}>
-                {[
-                  'Seller document verification & approval pipeline',
-                  'Master Product Catalog taxonomy governance',
-                  'Targeted regional ad banner & advisory manager',
-                  'Firebase FCM push notification broadcaster',
-                  'Complaint ticket mediation & refund approval system'
-                ].map((f, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', color: '#334155' }}>
-                    <Check size={14} color="#9333EA" />
-                    <span>{f}</span>
+          {/* 3. Central Admin Dashboard */}
+          <div 
+            style={{
+              backgroundColor: '#F8FAFC',
+              border: '1.5px solid #E2E8F0',
+              borderRadius: '22px',
+              padding: '2.25rem 2rem',
+              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.03)'
+            }}
+            className="hover:border-purple-300 transition-colors"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              <div className="lg:col-span-5">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1rem' }}>
+                  <div style={{ width: '44px', height: '44px', borderRadius: '14px', backgroundColor: '#F3E8FF', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9333EA' }}>
+                    <LayoutDashboard size={24} />
                   </div>
-                ))}
+                  <div>
+                    <span style={{ fontSize: '0.75rem', fontWeight: '700', color: '#9333EA', backgroundColor: '#F3E8FF', padding: '3px 10px', borderRadius: '20px' }}>
+                      Super Admin Portal
+                    </span>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0F172A', margin: '4px 0 0' }}>
+                      Central Admin Dashboard
+                    </h3>
+                  </div>
+                </div>
+                <p style={{ fontSize: '0.88rem', color: '#64748B', lineHeight: '1.6', margin: 0 }}>
+                  Unified cloud control center enabling enterprise administrators to govern users, verify seller compliance, oversee dispute resolution, and broadcast targeted push campaigns.
+                </p>
+              </div>
+
+              <div className="lg:col-span-7">
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '10px' }}>
+                  {[
+                    'Seller document verification & approval pipeline',
+                    'Master Product Catalog taxonomy governance',
+                    'Targeted regional ad banner & advisory manager',
+                    'Firebase FCM push notification broadcaster',
+                    'Complaint ticket mediation & refund approval system'
+                  ].map((f, i) => (
+                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', color: '#334155', backgroundColor: '#FFFFFF', padding: '10px 14px', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+                      <Check size={14} color="#9333EA" style={{ flexShrink: 0 }} />
+                      <span>{f}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-
           </div>
 
         </div>
@@ -959,7 +1296,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               PLATFORM SPECIFICATIONS & CORE CAPABILITIES
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               The 9 Core Architectural Functional Modules
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -968,7 +1305,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
           </div>
 
           {/* 9 Modules Interactive Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.25rem', marginBottom: '2.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.25rem', marginBottom: '2.5rem' }}>
             {CORE_MODULES.map((mod) => {
               const IconComp = mod.icon;
               return (
@@ -1027,7 +1364,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
             <span style={{ fontSize: '0.78rem', color: '#15803D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               TRANSFORMATION BENCHMARKS
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               Traditional Rural Trade vs. GramUnnati Digital Platform
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -1094,45 +1431,80 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               INTEGRATED PLATFORM ARCHITECTURE
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.1rem, 3.5vw, 2.6rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 2.64vw, 1.98rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               Seamlessly Connected to the G Mark Ecosystem
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {CONNECTED_APPS.map((app, idx) => (
               <div 
                 key={idx}
                 onClick={() => handleAppClick(app.id)}
                 style={{
                   backgroundColor: '#FFFFFF',
-                  border: '1px solid #CBD5E1',
-                  borderRadius: '14px',
-                  padding: '1.25rem',
+                  border: '1px solid #E2E8F0',
+                  borderRadius: '16px',
+                  padding: '1.15rem 1.2rem',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.85rem',
+                  gap: '0.9rem',
                   cursor: 'pointer',
-                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-                  transition: 'all 0.2s ease'
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.03)',
+                  transition: 'all 0.2s ease',
+                  minHeight: '88px'
                 }}
-                className="hover:-translate-y-1 hover:shadow-md transition-all duration-200"
+                className="hover:border-slate-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
               >
-                <img 
-                  src={app.image} 
-                  alt={app.name} 
-                  style={{ width: '42px', height: '42px', objectFit: 'contain', borderRadius: '10px', border: '1px solid #E2E8F0', padding: '2px', backgroundColor: '#FFFFFF', flexShrink: 0 }} 
-                />
-                <div style={{ minWidth: 0 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
-                    <h4 style={{ fontSize: '0.92rem', fontWeight: '700', color: '#0F172A', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      {app.name}
-                    </h4>
-                  </div>
-                  <p style={{ fontSize: '0.74rem', color: '#EA580C', fontWeight: '700', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <div 
+                  style={{
+                    width: '56px',
+                    height: '44px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}
+                >
+                  <img 
+                    src={app.image} 
+                    alt={app.name} 
+                    style={{ 
+                      maxWidth: '100%', 
+                      maxHeight: '100%', 
+                      width: 'auto',
+                      height: 'auto',
+                      objectFit: 'contain',
+                      display: 'block'
+                    }} 
+                  />
+                </div>
+                <div style={{ minWidth: 0, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <h4 style={{ 
+                    fontSize: '0.98rem', 
+                    fontWeight: '700', 
+                    color: '#0F172A', 
+                    margin: '0 0 3px', 
+                    letterSpacing: '-0.01em',
+                    lineHeight: '1.25' 
+                  }}>
+                    {app.name}
+                  </h4>
+                  <p style={{ 
+                    fontSize: '0.76rem', 
+                    color: '#C2410C', 
+                    fontWeight: '600', 
+                    margin: 0, 
+                    lineHeight: '1.35',
+                    letterSpacing: '0.01em'
+                  }}>
                     {app.tag}
                   </p>
                 </div>
+                <ChevronRight 
+                  size={18} 
+                  className="text-slate-300 group-hover:text-slate-600 group-hover:translate-x-0.5 transition-all flex-shrink-0" 
+                />
               </div>
             ))}
           </div>
@@ -1152,8 +1524,8 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
           </div>
 
           <h2 style={{ 
-            fontFamily: "'Caveat', cursive", 
-            fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', 
+            fontFamily: "'Lora', serif", 
+            fontSize: 'clamp(1.5rem, 3.7vw, 2.64rem)', 
             fontWeight: 600, 
             color: '#0F172A', 
             letterSpacing: '0', 
@@ -1188,9 +1560,9 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
             <button
               onClick={onOpenExpertModal}
               style={{
-                padding: '0.85rem 2.25rem',
+                padding: '0.5rem 1.25rem',
                 borderRadius: '9999px',
-                fontSize: '0.95rem',
+                fontSize: '0.85rem',
                 fontWeight: '500',
                 backgroundColor: '#7B5872',
                 color: '#FFFFFF',
@@ -1198,20 +1570,20 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '8px',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+                gap: '6px',
+                boxShadow: '0 2px 10px rgba(123, 88, 114, 0.28)'
               }}
               className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
             >
               <span>Schedule Platform Consultation</span>
-              <ArrowRight size={16} />
+              <ArrowRight size={14} />
             </button>
             <button
               onClick={onBack}
               style={{
-                padding: '0.85rem 1.85rem',
+                padding: '0.5rem 1.15rem',
                 borderRadius: '9999px',
-                fontSize: '0.95rem',
+                fontSize: '0.85rem',
                 fontWeight: '500',
                 backgroundColor: '#F1F5F9',
                 color: '#334155',
@@ -1219,11 +1591,12 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '8px'
+                gap: '6px'
               }}
-              className="hover:bg-slate-100 transition-colors"
+              className="hover:bg-slate-100 hover:text-slate-900 transition-colors"
             >
-              <span>Explore Other Applications</span>
+              <ArrowLeft size={14} />
+              <span>Back to Solutions</span>
             </button>
           </div>
 

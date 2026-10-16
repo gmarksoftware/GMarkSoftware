@@ -37,7 +37,8 @@ import {
   FolderTree,
   Terminal,
   HelpCircle,
-  Scale
+  Scale,
+  BarChart3
 } from 'lucide-react';
 import { APPLICATIONS } from '../ApplicationsGridSection';
 import { getAssetUrl } from '@/utils/asset';
@@ -260,7 +261,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         style={{ 
           backgroundColor: '#FFFFFF', 
           textAlign: 'center', 
-          paddingTop: '6.5rem', 
+          paddingTop: '2.5rem', 
           paddingBottom: '5rem', 
           paddingLeft: '1.5rem', 
           paddingRight: '1.5rem', 
@@ -291,14 +292,14 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         <div style={{ maxWidth: '880px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
 
 
-          {/* Headline matching Caveat handwriting font style and #00A3FF brush underline */}
+          {/* Headline matching Lora handwriting font style and #00A3FF brush underline */}
           <div className="relative inline-block">
             <h1 
               className="text-balance text-slate-900"
               style={{ 
-                fontFamily: "'Caveat', cursive",
-                fontSize: 'clamp(3rem, 6.4vw, 5.25rem)',
-                lineHeight: '1.15',
+                fontFamily: "'Lora', serif",
+                fontSize: 'clamp(1.75rem, 4.5vw, 3.87rem)',
+                lineHeight: '1.18',
                 letterSpacing: '-0.01em',
                 paddingTop: '0.25rem',
                 paddingBottom: '0.75rem',
@@ -392,7 +393,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
           <p 
             className="text-balance text-gray-600 font-normal"
             style={{ 
-              fontSize: 'clamp(1.05rem, 1.8vw, 1.25rem)', 
+              fontSize: 'clamp(0.88rem, 1.58vw, 1.1rem)', 
               lineHeight: '1.65', 
               maxWidth: '760px',
               margin: '1.25rem auto 2.25rem',
@@ -433,8 +434,8 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-              gap: '1rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
+              gap: '0.85rem',
               maxWidth: '840px',
               margin: '0 auto',
               position: 'relative',
@@ -508,7 +509,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         >
           {/* White Curved Background shape */}
           <div 
-            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 right-0 left-0 bg-white rounded-l-[70px] sm:rounded-l-[110px] md:rounded-l-[150px] lg:rounded-l-[180px] border-l border-y border-slate-300/70 shadow-[0_12px_44px_rgba(0,0,0,0.04)] pointer-events-none z-0"
+            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 right-0 left-0 bg-white rounded-l-[24px] sm:rounded-l-[90px] md:rounded-l-[150px] lg:rounded-l-[180px] border-l border-y border-slate-300/70 shadow-[0_12px_44px_rgba(0,0,0,0.04)] pointer-events-none z-0"
             style={{ right: 0 }}
           />
 
@@ -524,40 +525,40 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
               justifyContent: 'flex-end',
               alignItems: 'flex-start'
             }}
-            className="gap-6 sm:gap-8 lg:gap-10 py-6 sm:py-8 pl-12 sm:pl-16 md:pl-20 pr-4 sm:pr-6 md:pr-8"
+            className="gap-6 sm:gap-8 lg:gap-10 py-5 sm:py-8 pl-4 sm:pl-14 md:pl-20 pr-3.5 sm:pr-6 md:pr-8"
           >
             
             {/* LEFT: Sales Cycle Info */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', width: '100%', maxWidth: '370px', flexShrink: 0 }}>
+            <div className="w-full lg:max-w-[370px] flex flex-col gap-[0.85rem] shrink-0">
               <div>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', fontWeight: '400', color: '#0B3A70', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', fontWeight: '500', color: '#0B3A70', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
                   <Sparkles size={14} style={{ color: '#0B3A70' }} />
                   <span>SALES & BILLING CYCLE</span>
                 </span>
                 
-                <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.2rem, 3.8vw, 2.75rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.2', marginTop: '2px', marginBottom: '0.75rem' }}>
-                  Customer Orders, <br />
+                <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.07rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.25', marginTop: '2px', marginBottom: '0.75rem' }}>
+                  Customer Orders, <br className="hidden sm:inline" />
                   Challans & Invoices
                 </h2>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.5rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
                     <span>Creates Customer master & sets credit/payment terms</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
                     <span>Books Sales Order (SO) with pricing & item discounts</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
                     <span>Dispatches goods via Delivery Challan & updates stock</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
                     <span>Auto-generates GST Tax Invoice & posts ledger debits</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
                     <span>Reconciles customer receipt voucher & settles outstanding</span>
                   </div>
@@ -566,19 +567,12 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
             </div>
 
             {/* RIGHT: Sales Process Steps */}
-            <div style={{ position: 'relative', width: '100%', maxWidth: '530px', flexShrink: 0 }}>
+            <div className="relative w-full lg:max-w-[530px] shrink-0 min-w-0">
               <div 
-                style={{
-                  position: 'absolute',
-                  left: '21px',
-                  top: '24px',
-                  bottom: '24px',
-                  width: '2px',
-                  backgroundColor: '#CBD5E1'
-                }} 
+                className="absolute left-[16px] sm:left-[20px] top-[20px] bottom-[20px] w-[2px] bg-slate-300 pointer-events-none" 
               />
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                 {salesSteps.map((step, index) => {
                   const isActive = activeStepSales === index;
                   const IconComp = step.icon;
@@ -586,7 +580,8 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                   return (
                     <motion.div
                       key={step.num}
-                      style={{ position: 'relative', display: 'flex', gap: '1rem', cursor: 'pointer' }}
+                      style={{ position: 'relative', display: 'flex', cursor: 'pointer', alignItems: 'flex-start' }}
+                      className="gap-2.5 sm:gap-4"
                       initial={{ opacity: 0, x: 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -594,11 +589,10 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                       onClick={() => setActiveStepSales(prev => prev === index ? -1 : index)}
                     >
                       <div
+                        className="w-[34px] h-[34px] sm:w-[42px] sm:h-[42px] text-xs sm:text-sm font-medium"
                         style={{
                           position: 'relative',
                           zIndex: 10,
-                          width: '42px',
-                          height: '42px',
                           borderRadius: '50%',
                           border: '2px solid',
                           borderColor: isActive ? '#0F172A' : '#94A3B8',
@@ -612,41 +606,38 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                           boxShadow: isActive ? '0 4px 12px rgba(15, 23, 42, 0.2)' : '0 2px 6px rgba(0,0,0,0.04)'
                         }}
                       >
-                        <span style={{ fontSize: '0.85rem', fontWeight: '400' }}>{step.num}</span>
+                        <span>{step.num}</span>
                       </div>
 
                       <div
+                        className="flex-1 min-w-0 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-200"
                         style={{
-                          flex: 1,
-                          padding: '1.25rem',
-                          borderRadius: '16px',
                           border: `1.5px solid ${isActive ? '#0F172A' : '#CBD5E1'}`,
                           backgroundColor: '#F8FAFC',
                           boxShadow: isActive ? '0 8px 24px -4px rgba(15, 23, 42, 0.12)' : '0 2px 8px rgba(0, 0, 0, 0.04)',
-                          transition: 'all 0.25s ease'
                         }}
                       >
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                            <div style={{ width: '32px', height: '32px', borderRadius: '8px', backgroundColor: isActive ? '#0F172A' : '#EBF3FC', color: isActive ? '#FFFFFF' : '#0B3A70', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                              <IconComp size={16} />
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0, flex: 1 }}>
+                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg" style={{ backgroundColor: isActive ? '#0F172A' : '#EBF3FC', color: isActive ? '#FFFFFF' : '#0B3A70', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                              <IconComp size={15} />
                             </div>
-                            <div>
-                              <span style={{ fontSize: '0.68rem', color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: '400', display: 'block' }}>
+                            <div style={{ minWidth: 0, flex: 1 }}>
+                              <span style={{ fontSize: '0.65rem', color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: '500', display: 'block' }}>
                                 {step.tag}
                               </span>
-                              <h3 style={{ fontSize: '0.98rem', fontWeight: '400', color: '#0F172A', margin: 0 }}>
+                              <h3 style={{ fontSize: 'clamp(0.85rem, 2.2vw, 0.98rem)', fontWeight: 500, color: '#0F172A', margin: 0, lineHeight: '1.3', overflowWrap: 'break-word', wordBreak: 'break-word' }}>
                                 {step.title}
                               </h3>
                             </div>
                           </div>
 
                           <div 
+                            className="w-6 h-6 sm:w-[26px] sm:h-[26px]"
                             style={{ 
-                              width: '26px', 
-                              height: '26px', 
                               borderRadius: '50%', 
                               backgroundColor: '#FFFFFF', 
+                              border: '1px solid #E2E8F0',
                               display: 'flex', 
                               alignItems: 'center', 
                               justifyContent: 'center', 
@@ -656,7 +647,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                               flexShrink: 0
                             }}
                           >
-                            <ChevronDown size={14} />
+                            <ChevronDown size={13} />
                           </div>
                         </div>
 
@@ -669,19 +660,19 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                               style={{ overflow: 'hidden' }}
                             >
-                              <div style={{ paddingTop: '0.85rem', marginTop: '0.75rem', borderTop: '1px solid #E2E8F0', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                <p style={{ fontSize: '0.82rem', color: '#334155', lineHeight: '1.6', margin: 0, fontWeight: '400' }}>
+                              <div style={{ paddingTop: '0.75rem', marginTop: '0.7rem', borderTop: '1px solid #E2E8F0', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+                                <p style={{ fontSize: '0.82rem', color: '#334155', lineHeight: '1.55', margin: 0, fontWeight: '400' }}>
                                   {step.desc}
                                 </p>
-                                <p style={{ fontSize: '0.8rem', color: '#64748B', lineHeight: '1.55', margin: 0, fontWeight: '400' }}>
+                                <p style={{ fontSize: '0.78rem', color: '#64748B', lineHeight: '1.5', margin: 0, fontWeight: '400' }}>
                                   {step.desc2}
                                 </p>
 
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.5rem', paddingTop: '0.5rem', borderTop: '1px dashed #CBD5E1' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '6px', marginTop: '0.4rem', paddingTop: '0.45rem', borderTop: '1px dashed #CBD5E1' }}>
                                   <span style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: '400' }}>
                                     Document State:
                                   </span>
-                                  <code style={{ fontSize: '0.72rem', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', padding: '2px 8px', borderRadius: '4px', color: '#0F172A', fontWeight: '400' }}>
+                                  <code style={{ fontSize: '0.7rem', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', padding: '2px 8px', borderRadius: '4px', color: '#0F172A', fontWeight: '500', wordBreak: 'break-all' }}>
                                     {step.status}
                                   </code>
                                 </div>
@@ -730,7 +721,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         >
           {/* White Curved Background shape */}
           <div 
-            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 left-0 right-0 bg-white rounded-r-[70px] sm:rounded-r-[110px] md:rounded-r-[150px] lg:rounded-r-[180px] border-r border-y border-slate-300/70 shadow-[0_12px_44px_rgba(0,0,0,0.04)] pointer-events-none z-0"
+            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 left-0 right-0 bg-white rounded-r-[24px] sm:rounded-r-[90px] md:rounded-r-[150px] lg:rounded-r-[180px] border-r border-y border-slate-300/70 shadow-[0_12px_44px_rgba(0,0,0,0.04)] pointer-events-none z-0"
             style={{ left: 0 }}
           />
 
@@ -746,23 +737,16 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
               justifyContent: 'flex-start',
               alignItems: 'flex-start'
             }}
-            className="gap-6 sm:gap-8 lg:gap-10 py-6 sm:py-8 pr-12 sm:pr-16 md:pr-20 pl-4 sm:pl-6 md:pl-8"
+            className="gap-6 sm:gap-8 lg:gap-10 py-5 sm:py-8 pr-4 sm:pr-14 md:pr-20 pl-3.5 sm:pl-6 md:pl-8"
           >
             
             {/* LEFT: Purchase Process Steps */}
-            <div style={{ position: 'relative', width: '100%', maxWidth: '540px', flexShrink: 0, order: 1 }}>
+            <div className="relative w-full lg:max-w-[540px] shrink-0 min-w-0 order-1">
               <div 
-                style={{
-                  position: 'absolute',
-                  left: '21px',
-                  top: '24px',
-                  bottom: '24px',
-                  width: '2px',
-                  backgroundColor: '#CBD5E1'
-                }} 
+                className="absolute left-[16px] sm:left-[20px] top-[20px] bottom-[20px] w-[2px] bg-slate-300 pointer-events-none" 
               />
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                 {procurementSteps.map((step, index) => {
                   const isActive = activeStepProcure === index;
                   const IconComp = step.icon;
@@ -770,7 +754,8 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                   return (
                     <motion.div
                       key={step.num}
-                      style={{ position: 'relative', display: 'flex', gap: '1rem', cursor: 'pointer' }}
+                      style={{ position: 'relative', display: 'flex', cursor: 'pointer', alignItems: 'flex-start' }}
+                      className="gap-2.5 sm:gap-4"
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -778,11 +763,10 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                       onClick={() => setActiveStepProcure(prev => prev === index ? -1 : index)}
                     >
                       <div
+                        className="w-[34px] h-[34px] sm:w-[42px] sm:h-[42px] text-xs sm:text-sm font-medium"
                         style={{
                           position: 'relative',
                           zIndex: 10,
-                          width: '42px',
-                          height: '42px',
                           borderRadius: '50%',
                           border: '2px solid',
                           borderColor: isActive ? '#0F172A' : '#94A3B8',
@@ -796,41 +780,38 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                           boxShadow: isActive ? '0 4px 12px rgba(15, 23, 42, 0.2)' : '0 2px 6px rgba(0,0,0,0.04)'
                         }}
                       >
-                        <span style={{ fontSize: '0.85rem', fontWeight: '400' }}>{step.num}</span>
+                        <span>{step.num}</span>
                       </div>
 
                       <div
+                        className="flex-1 min-w-0 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-200"
                         style={{
-                          flex: 1,
-                          padding: '1.25rem',
-                          borderRadius: '16px',
                           border: `1.5px solid ${isActive ? '#0F172A' : '#CBD5E1'}`,
                           backgroundColor: '#F8FAFC',
                           boxShadow: isActive ? '0 8px 24px -4px rgba(15, 23, 42, 0.12)' : '0 2px 8px rgba(0, 0, 0, 0.04)',
-                          transition: 'all 0.25s ease'
                         }}
                       >
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                            <div style={{ width: '32px', height: '32px', borderRadius: '8px', backgroundColor: isActive ? '#0F172A' : '#EBF3FC', color: isActive ? '#FFFFFF' : '#0B3A70', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                              <IconComp size={16} />
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0, flex: 1 }}>
+                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg" style={{ backgroundColor: isActive ? '#0F172A' : '#EBF3FC', color: isActive ? '#FFFFFF' : '#0B3A70', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                              <IconComp size={15} />
                             </div>
-                            <div>
-                              <span style={{ fontSize: '0.68rem', color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: '400', display: 'block' }}>
+                            <div style={{ minWidth: 0, flex: 1 }}>
+                              <span style={{ fontSize: '0.65rem', color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: '500', display: 'block' }}>
                                 {step.tag}
                               </span>
-                              <h3 style={{ fontSize: '0.98rem', fontWeight: '400', color: '#0F172A', margin: 0 }}>
+                              <h3 style={{ fontSize: 'clamp(0.85rem, 2.2vw, 0.98rem)', fontWeight: 500, color: '#0F172A', margin: 0, lineHeight: '1.3', overflowWrap: 'break-word', wordBreak: 'break-word' }}>
                                 {step.title}
                               </h3>
                             </div>
                           </div>
 
                           <div 
+                            className="w-6 h-6 sm:w-[26px] sm:h-[26px]"
                             style={{ 
-                              width: '26px', 
-                              height: '26px', 
                               borderRadius: '50%', 
                               backgroundColor: '#FFFFFF', 
+                              border: '1px solid #E2E8F0',
                               display: 'flex', 
                               alignItems: 'center', 
                               justifyContent: 'center', 
@@ -840,7 +821,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                               flexShrink: 0
                             }}
                           >
-                            <ChevronDown size={14} />
+                            <ChevronDown size={13} />
                           </div>
                         </div>
 
@@ -853,19 +834,19 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                               style={{ overflow: 'hidden' }}
                             >
-                              <div style={{ paddingTop: '0.85rem', marginTop: '0.75rem', borderTop: '1px solid #E2E8F0', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                <p style={{ fontSize: '0.82rem', color: '#334155', lineHeight: '1.6', margin: 0, fontWeight: '400' }}>
+                              <div style={{ paddingTop: '0.75rem', marginTop: '0.7rem', borderTop: '1px solid #E2E8F0', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+                                <p style={{ fontSize: '0.82rem', color: '#334155', lineHeight: '1.55', margin: 0, fontWeight: '400' }}>
                                   {step.desc}
                                 </p>
-                                <p style={{ fontSize: '0.8rem', color: '#64748B', lineHeight: '1.55', margin: 0, fontWeight: '400' }}>
+                                <p style={{ fontSize: '0.78rem', color: '#64748B', lineHeight: '1.5', margin: 0, fontWeight: '400' }}>
                                   {step.desc2}
                                 </p>
 
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.5rem', paddingTop: '0.5rem', borderTop: '1px dashed #CBD5E1' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '6px', marginTop: '0.4rem', paddingTop: '0.45rem', borderTop: '1px dashed #CBD5E1' }}>
                                   <span style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: '400' }}>
                                     Document State:
                                   </span>
-                                  <code style={{ fontSize: '0.72rem', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', padding: '2px 8px', borderRadius: '4px', color: '#0F172A', fontWeight: '400' }}>
+                                  <code style={{ fontSize: '0.7rem', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', padding: '2px 8px', borderRadius: '4px', color: '#0F172A', fontWeight: '500', wordBreak: 'break-all' }}>
                                     {step.status}
                                   </code>
                                 </div>
@@ -881,36 +862,36 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
             </div>
 
             {/* RIGHT: Purchase Process Info */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', order: 2, width: '100%', maxWidth: '380px', flexShrink: 0 }}>
+            <div className="w-full lg:max-w-[380px] flex flex-col gap-[0.85rem] shrink-0 order-2">
               <div>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', fontWeight: '400', color: '#0B3A70', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', fontWeight: '500', color: '#0B3A70', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
                   <Sparkles size={14} style={{ color: '#0B3A70' }} />
                   <span>PROCUREMENT & GRN LIFECYCLE</span>
                 </span>
                 
-                <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.2rem, 3.8vw, 2.75rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.2', marginTop: '2px', marginBottom: '0.75rem' }}>
-                  Purchase Orders, <br />
+                <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.07rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.25', marginTop: '2px', marginBottom: '0.75rem' }}>
+                  Purchase Orders, <br className="hidden sm:inline" />
                   GRNs & Inward Stock
                 </h2>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.5rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
                     <span>Onboards verified suppliers & associates HSN/SAC codes</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
                     <span>Issues official Purchase Orders with pricing and bulk Excel import</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
                     <span>Generates Goods Receipt Notes (GRN) with strict quantity tracking</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
                     <span>Verifies vendor Purchase Invoices against inward GRN logs</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
                     <span>Executes disbursement payment vouchers & updates ledger credits</span>
                   </div>
@@ -933,16 +914,16 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               FINANCIAL CORE & TAX ENGINE
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px', lineHeight: '1.25' }}>
               Double-Entry Accounting & Automated GST Engine
             </h2>
-            <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
+            <p style={{ color: '#64748B', fontSize: '0.92rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
               Complete financial control with multi-voucher journals, automated Debit/Credit postings, intra vs inter-state tax logic, and real-time ledger histories.
             </p>
           </div>
 
           {/* 4 Voucher Cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.25rem', marginBottom: '3rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '1rem', marginBottom: '3rem' }}>
             {financeVouchers.map((v, idx) => (
               <div 
                 key={idx}
@@ -950,7 +931,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                   backgroundColor: '#FFFFFF',
                   border: '1px solid #CBD5E1',
                   borderRadius: '16px',
-                  padding: '1.5rem',
+                  padding: '1.25rem',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '0.85rem',
@@ -958,7 +939,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <h3 style={{ fontSize: '1.05rem', fontWeight: '500', color: '#0F172A', margin: 0 }}>
+                  <h3 style={{ fontSize: '1.02rem', fontWeight: '500', color: '#0F172A', margin: 0 }}>
                     {v.title}
                   </h3>
                   <span style={{ fontSize: '0.68rem', padding: '2px 8px', borderRadius: '100px', backgroundColor: '#EBF3FC', color: '#0B3A70', border: '1px solid #CBD5E1' }}>
@@ -1013,10 +994,10 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
               borderTopLeftRadius: 0,
               borderBottomLeftRadius: 0,
               boxShadow: '0 8px 30px rgba(0, 0, 0, 0.05)',
-              paddingTop: '2.25rem',
-              paddingBottom: '2.25rem',
-              paddingRight: '1.5rem',
-              paddingLeft: 'max(1.5rem, calc((100vw - 1120px) / 2 + 1.5rem))',
+              paddingTop: '2rem',
+              paddingBottom: '2rem',
+              paddingRight: '1.25rem',
+              paddingLeft: 'max(1.25rem, calc((100vw - 1120px) / 2 + 1.5rem))',
               boxSizing: 'border-box'
             }}
           >
@@ -1024,8 +1005,8 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
               style={{
                 maxWidth: '1072px',
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                gap: '2rem',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+                gap: '1.5rem',
                 alignItems: 'center'
               }}
             >
@@ -1070,7 +1051,370 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       </section>
 
       {/* ========================================================================= */}
-      {/* 5. MASTER DATA DIRECTORY & ROLES MATRIX */}
+      {/* 5. FINANCIAL REPORTING — PROFIT & LOSS REPORT */}
+      {/* ========================================================================= */}
+      <section 
+        id="profit-loss-section"
+        style={{ 
+          backgroundColor: '#e8e8e8', 
+          padding: '4.5rem 0 5rem', 
+          borderTop: '1px solid #CBD5E1' 
+        }}
+      >
+        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* LEFT COLUMN: Content & Features */}
+            <motion.div 
+              className="lg:col-span-5 flex flex-col justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: '#0B3A70', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.5rem', fontWeight: '500' }}>
+                <BarChart3 size={15} style={{ color: '#0B3A70' }} />
+                <span>FINANCIAL REPORTING</span>
+              </div>
+
+              <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.3rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.25', margin: '0 0 1rem' }}>
+                Profit & Loss Report
+              </h2>
+
+              <p style={{ color: '#475569', fontSize: '0.96rem', lineHeight: '1.65', margin: '0 0 1.75rem' }}>
+                The Profit & Loss Report displays the company's financial performance for a selected period. It provides a clear overview of revenue, expenditure, gross profit, and net profit.
+              </p>
+
+              {/* Key Features List */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
+                {[
+                  'View total revenue, total expenditure, gross profit, and net profit.',
+                  'Review detailed income and expenditure entries, including Sales, Purchase, Direct Expenses, and Closing Stock.',
+                  'Select a financial year or customize the date range.',
+                  'Use Expand All to view detailed account group information.',
+                  'Export reports for accounting, financial review, and business analysis.'
+                ].map((feature, idx) => (
+                  <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                    <div 
+                      style={{ 
+                        width: '22px', 
+                        height: '22px', 
+                        borderRadius: '50%', 
+                        backgroundColor: '#EBF3FC', 
+                        color: '#0B3A70', 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        justifyContent: 'center', 
+                        flexShrink: 0,
+                        marginTop: '2px',
+                        border: '1px solid #CBD5E1'
+                      }}
+                    >
+                      <Check size={13} strokeWidth={2.5} />
+                    </div>
+                    <span style={{ fontSize: '0.88rem', color: '#334155', lineHeight: '1.55', fontWeight: '400' }}>
+                      {feature}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* RIGHT COLUMN: Actual Screenshot Display */}
+            <motion.div 
+              className="lg:col-span-7"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div 
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #CBD5E1',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  boxShadow: '0 12px 36px -6px rgba(15, 23, 42, 0.08), 0 4px 14px rgba(0, 0, 0, 0.04)',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                }}
+              >
+                {/* Clean Enterprise Top Window Header Bar */}
+                <div 
+                  style={{
+                    backgroundColor: '#F8FAFC',
+                    borderBottom: '1px solid #E2E8F0',
+                    padding: '9px 16px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '12px'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <div style={{ width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#CBD5E1' }} />
+                    <div style={{ width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#E2E8F0' }} />
+                    <div style={{ width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#E2E8F0' }} />
+                  </div>
+                  
+                  <div 
+                    style={{
+                      fontSize: '0.72rem',
+                      color: '#475569',
+                      backgroundColor: '#FFFFFF',
+                      border: '1px solid #E2E8F0',
+                      borderRadius: '6px',
+                      padding: '2px 12px',
+                      fontWeight: '400',
+                      letterSpacing: '0.01em',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px'
+                    }}
+                  >
+                    <span>app.gmarkerp.com/reports/profit-loss</span>
+                  </div>
+
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#16A34A', display: 'inline-block' }} />
+                    <span style={{ fontSize: '0.7rem', color: '#16A34A', fontWeight: '500' }}>Live System</span>
+                  </div>
+                </div>
+
+                {/* Screenshot Frame */}
+                <div style={{ padding: '8px', backgroundColor: '#F8FAFC' }}>
+                  <img 
+                    src={getAssetUrl('/Screenshot 2026-10-13 105644.png')}
+                    alt="G Mark ERP Profit & Loss Report"
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      display: 'block',
+                      borderRadius: '10px',
+                      border: '1px solid #E2E8F0',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+                    }}
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Caption Bar */}
+                <div 
+                  style={{
+                    padding: '10px 16px',
+                    backgroundColor: '#FFFFFF',
+                    borderTop: '1px solid #F1F5F9',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    flexWrap: 'wrap',
+                    gap: '8px'
+                  }}
+                >
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: '#0F172A', fontWeight: '500' }}>
+                    <TrendingUp size={14} style={{ color: '#0B3A70' }} />
+                    Financial Reporting & Analysis
+                  </span>
+                  <span style={{ fontSize: '0.72rem', color: '#64748B' }}>
+                    Trading Account, Income & Expenditure Ledger
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 6. MASTERS MODULE — YOUR ERP DATA FOUNDATION */}
+      {/* ========================================================================= */}
+      <section 
+        id="masters-module-section"
+        style={{ 
+          backgroundColor: '#e8e8e8', 
+          padding: '4.5rem 0 5rem', 
+          borderTop: '1px solid #CBD5E1' 
+        }}
+      >
+        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* LEFT COLUMN: Actual Screenshot Display (Alternating order on desktop) */}
+            <motion.div 
+              className="lg:col-span-7 order-2 lg:order-1"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div 
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #CBD5E1',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  boxShadow: '0 12px 36px -6px rgba(15, 23, 42, 0.08), 0 4px 14px rgba(0, 0, 0, 0.04)',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                }}
+              >
+                {/* Clean Enterprise Top Window Header Bar */}
+                <div 
+                  style={{
+                    backgroundColor: '#F8FAFC',
+                    borderBottom: '1px solid #E2E8F0',
+                    padding: '9px 16px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '12px'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <div style={{ width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#CBD5E1' }} />
+                    <div style={{ width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#E2E8F0' }} />
+                    <div style={{ width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#E2E8F0' }} />
+                  </div>
+                  
+                  <div 
+                    style={{
+                      fontSize: '0.72rem',
+                      color: '#475569',
+                      backgroundColor: '#FFFFFF',
+                      border: '1px solid #E2E8F0',
+                      borderRadius: '6px',
+                      padding: '2px 12px',
+                      fontWeight: '400',
+                      letterSpacing: '0.01em',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px'
+                    }}
+                  >
+                    <span>app.gmarkerp.com/masters/group-master</span>
+                  </div>
+
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#16A34A', display: 'inline-block' }} />
+                    <span style={{ fontSize: '0.7rem', color: '#16A34A', fontWeight: '500' }}>Live System</span>
+                  </div>
+                </div>
+
+                {/* Screenshot Frame */}
+                <div style={{ padding: '8px', backgroundColor: '#F8FAFC' }}>
+                  <img 
+                    src={getAssetUrl('/Screenshot 2026-10-13 105712.png')}
+                    alt="G Mark ERP Masters Module"
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      display: 'block',
+                      borderRadius: '10px',
+                      border: '1px solid #E2E8F0',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+                    }}
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Caption Bar */}
+                <div 
+                  style={{
+                    padding: '10px 16px',
+                    backgroundColor: '#FFFFFF',
+                    borderTop: '1px solid #F1F5F9',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    flexWrap: 'wrap',
+                    gap: '8px'
+                  }}
+                >
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: '#0F172A', fontWeight: '500' }}>
+                    <FolderTree size={14} style={{ color: '#0B3A70' }} />
+                    ERP Master Directory & Data Foundation
+                  </span>
+                  <span style={{ fontSize: '0.72rem', color: '#64748B' }}>
+                    Centralized Data Governance & Categories
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* RIGHT COLUMN: Content & 6 Master Types (Alternating order on desktop) */}
+            <motion.div 
+              className="lg:col-span-5 flex flex-col justify-center order-1 lg:order-2"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: '#0B3A70', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.5rem', fontWeight: '500' }}>
+                <Database size={15} style={{ color: '#0B3A70' }} />
+                <span>SYSTEM MASTERS</span>
+              </div>
+
+              <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.3rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.25', margin: '0 0 1rem' }}>
+                Masters — Your ERP Data Foundation
+              </h2>
+
+              <p style={{ color: '#475569', fontSize: '0.96rem', lineHeight: '1.65', margin: '0 0 1.5rem' }}>
+                The Masters module is used to create and manage the fundamental data required for day-to-day ERP operations. It provides a centralized foundation for managing financial accounts, products, categories, units, and tax classifications.
+              </p>
+
+              {/* 6 Master Types Grid */}
+              <div 
+                style={{ 
+                  display: 'grid', 
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', 
+                  gap: '0.75rem' 
+                }}
+              >
+                {[
+                  { title: 'Group Master', desc: 'Organizes financial accounts into meaningful groups.', icon: FolderTree },
+                  { title: 'Account Master', desc: 'Manages customer, supplier, and other account details.', icon: Building2 },
+                  { title: 'Unit Master', desc: 'Defines measurement units used for products.', icon: Scale },
+                  { title: 'Category Master', desc: 'Organizes products into relevant categories.', icon: Layers },
+                  { title: 'HSN Master', desc: 'Manages tax classification codes.', icon: BadgePercent },
+                  { title: 'Product Master', desc: 'Stores product details, pricing, and related information.', icon: ShoppingCart }
+                ].map((master, idx) => {
+                  const IconComp = master.icon;
+                  return (
+                    <div 
+                      key={idx}
+                      style={{
+                        backgroundColor: '#FFFFFF',
+                        border: '1px solid #CBD5E1',
+                        borderRadius: '12px',
+                        padding: '0.85rem 0.95rem',
+                        boxShadow: '0 1px 4px rgba(0,0,0,0.02)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '4px'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
+                        <div style={{ width: '22px', height: '22px', borderRadius: '6px', backgroundColor: '#EBF3FC', color: '#0B3A70', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                          <IconComp size={13} />
+                        </div>
+                        <h4 style={{ fontSize: '0.86rem', fontWeight: '600', color: '#0F172A', margin: 0 }}>
+                          {master.title}
+                        </h4>
+                      </div>
+                      <p style={{ fontSize: '0.78rem', color: '#64748B', lineHeight: '1.45', margin: '2px 0 0', paddingLeft: '29px' }}>
+                        {master.desc}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 7. MASTER DATA DIRECTORY & ROLES MATRIX */}
       {/* ========================================================================= */}
       <section style={{ backgroundColor: '#e8e8e8', padding: '4rem 0 4.5rem', borderTop: '1px solid #CBD5E1' }}>
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
@@ -1079,13 +1423,13 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               SYSTEM MASTERS & SECURITY
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.2rem, 3.8vw, 2.75rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.07rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px', lineHeight: '1.25' }}>
               Master Data Hierarchy & Role-Based Access (RBAC)
             </h2>
           </div>
 
           {/* Master Directory Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', marginBottom: '2.75rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1rem', marginBottom: '2.75rem' }}>
             {masterCategories.map((m, idx) => (
               <div 
                 key={idx}
@@ -1136,10 +1480,10 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
               borderTopRightRadius: 0,
               borderBottomRightRadius: 0,
               boxShadow: '0 8px 30px rgba(0, 0, 0, 0.05)',
-              paddingTop: '2.25rem',
-              paddingBottom: '2.25rem',
-              paddingLeft: '1.5rem',
-              paddingRight: 'max(1.5rem, calc((100vw - 1120px) / 2 + 1.5rem))',
+              paddingTop: '2rem',
+              paddingBottom: '2rem',
+              paddingLeft: '1.25rem',
+              paddingRight: 'max(1.25rem, calc((100vw - 1120px) / 2 + 1.5rem))',
               boxSizing: 'border-box'
             }}
           >
@@ -1155,7 +1499,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 <span>User Roles & Permission Boundaries</span>
               </h3>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 160px), 1fr))', gap: '0.85rem' }}>
                 {rolesMatrix.map((r, idx) => (
                   <div 
                     key={idx}
@@ -1192,12 +1536,12 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               ARCHITECTURE & INFRASTRUCTURE
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.2rem, 3.8vw, 2.75rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.07rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px', lineHeight: '1.25' }}>
               Enterprise Full-Stack Technology Architecture
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem', marginBottom: '2.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '1rem', marginBottom: '2.5rem' }}>
             {techStack.map((stack, idx) => (
               <div 
                 key={idx}
@@ -1230,7 +1574,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
               backgroundColor: '#FFFFFF',
               border: '1.5px solid #93C5FD',
               borderRadius: '16px',
-              padding: '1.5rem 1.75rem',
+              padding: '1.25rem 1.5rem',
               display: 'flex',
               alignItems: 'flex-start',
               gap: '1rem',
@@ -1263,17 +1607,17 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               INTEGRATED ECOSYSTEM
             </span>
-            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.1rem, 3.5vw, 2.6rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 1.98rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px', lineHeight: '1.25' }}>
               Connected Enterprise Platforms
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '1rem' }}>
             {[
-              { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', image: getAssetUrl('/G-Nova IOT logo 02.jpg') },
+              { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', image: getAssetUrl('/g-nova-clean.png') },
               { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', image: getAssetUrl('/G Track logo.png') },
-              { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: getAssetUrl('/Final Logo-09.jpg.jpeg') },
-              { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', image: getAssetUrl('/Task Management & Team Collaboration Logo 01.jpg') }
+              { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: getAssetUrl('/gramunnati-clean.png') },
+              { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', image: getAssetUrl('/synkroboard-clean.png') }
             ].map((app, idx) => (
               <div 
                 key={idx}
@@ -1291,7 +1635,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                   backgroundColor: '#FFFFFF',
                   border: '1px solid #CBD5E1',
                   borderRadius: '14px',
-                  padding: '1.25rem',
+                  padding: '1.15rem 1.25rem',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.85rem',
@@ -1301,11 +1645,13 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 }}
                 className="hover:-translate-y-1 hover:shadow-md transition-all duration-200"
               >
-                <img 
-                  src={app.image} 
-                  alt={app.name} 
-                  style={{ width: '42px', height: '42px', objectFit: 'contain', borderRadius: '10px', border: '1px solid #E2E8F0', padding: '2px', backgroundColor: '#FFFFFF', flexShrink: 0 }} 
-                />
+                <div style={{ width: '56px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <img 
+                    src={app.image} 
+                    alt={app.name} 
+                    style={{ maxWidth: '100%', maxHeight: '100%', width: 'auto', height: 'auto', objectFit: 'contain', display: 'block' }} 
+                  />
+                </div>
                 <div style={{ minWidth: 0 }}>
                   <h3 style={{ fontSize: '0.95rem', fontWeight: '700', color: '#0F172A', margin: '0 0 2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                     {app.name}
@@ -1326,7 +1672,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       {/* ========================================================================= */}
       <section style={{ backgroundColor: '#FFFFFF', color: '#0F172A', padding: '4.5rem 1.5rem', textAlign: 'center', borderTop: '1px solid #CBD5E1' }}>
         <div style={{ maxWidth: '680px', margin: '0 auto' }}>
-          <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.4rem, 4.2vw, 3rem)', fontWeight: 600, letterSpacing: '0', margin: 0, marginBottom: '1rem', color: '#0F172A', lineHeight: '1.3' }}>
+          <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.5rem, 3.17vw, 2.24rem)', fontWeight: 600, letterSpacing: '0', margin: 0, marginBottom: '1rem', color: '#0F172A', lineHeight: '1.3' }}>
             <span>Transform Your Enterprise Operations with </span>
             <span className="relative inline-block whitespace-nowrap">
               <span className="relative z-10 text-slate-900 font-normal">
@@ -1354,9 +1700,9 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
             <button
               onClick={onOpenExpertModal}
               style={{
-                padding: '0.85rem 2.15rem',
+                padding: '0.5rem 1.25rem',
                 borderRadius: '9999px',
-                fontSize: '0.95rem',
+                fontSize: '0.85rem',
                 fontWeight: '500',
                 backgroundColor: '#7B5872',
                 color: '#FFFFFF',
@@ -1364,13 +1710,33 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '8px',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+                gap: '6px',
+                boxShadow: '0 2px 10px rgba(123, 88, 114, 0.28)'
               }}
               className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
             >
               <span>Schedule Enterprise Consultation</span>
-              <ArrowRight size={16} />
+              <ArrowRight size={14} />
+            </button>
+            <button
+              onClick={onBack}
+              style={{
+                padding: '0.5rem 1.15rem',
+                borderRadius: '9999px',
+                fontSize: '0.85rem',
+                fontWeight: '500',
+                backgroundColor: '#F1F5F9',
+                color: '#334155',
+                border: '1px solid #CBD5E1',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+              className="hover:bg-slate-100 hover:text-slate-900 transition-colors"
+            >
+              <ArrowLeft size={14} />
+              <span>Back to Solutions</span>
             </button>
           </div>
         </div>

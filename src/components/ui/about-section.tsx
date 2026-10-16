@@ -216,8 +216,8 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
             <h1 
               className="text-gray-900 mb-8"
               style={{
-                fontFamily: "'Caveat', cursive",
-                fontSize: 'clamp(3rem, 5.5vw, 4.5rem)',
+                fontFamily: "'Lora', serif",
+                fontSize: 'clamp(2.24rem, 4.14vw, 3.39rem)',
                 lineHeight: '1.15',
                 letterSpacing: '0',
                 fontWeight: 600

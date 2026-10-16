@@ -29,8 +29,8 @@ export default function NextGenTransformationSection({ onOpenExpertModal }) {
             <h2 
               className="text-neutral-950"
               style={{
-                fontFamily: "'Caveat', cursive",
-                fontSize: 'clamp(2.5rem, 4.5vw, 3.6rem)',
+                fontFamily: "'Lora', serif",
+                fontSize: 'clamp(1.89rem, 3.34vw, 2.73rem)',
                 lineHeight: '1.15',
                 letterSpacing: '0',
                 fontWeight: 600

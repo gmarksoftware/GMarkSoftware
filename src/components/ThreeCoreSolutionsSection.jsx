@@ -728,6 +728,19 @@ export default function ThreeCoreSolutionsSection({ onOpenExpertModal }) {
       </div>
 
       <style>{`
+        .editorial-panel {
+          padding: 1.25rem !important;
+        }
+        @media (min-width: 640px) {
+          .editorial-panel {
+            padding: 2rem !important;
+          }
+        }
+        @media (min-width: 1024px) {
+          .editorial-panel {
+            padding: 3rem !important;
+          }
+        }
         @media (min-width: 992px) {
           .solution-grid {
             grid-template-columns: 1.1fr 1fr !important;

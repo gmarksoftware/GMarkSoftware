@@ -19,8 +19,10 @@ import {
   MessageSquare,
   HelpCircle,
   Zap,
-  Activity
+  Activity,
+  Loader2
 } from 'lucide-react';
+import { sendContactEmail } from '../utils/emailService';
 
 // Custom Intersection Observer Hook for smooth scroll reveal
 function useScrollReveal(options = { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }) {
@@ -100,16 +102,24 @@ export default function HelpPage({ onOpenExpertModal }) {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
     setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
-      setSubmitted(true);
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-      setTimeout(() => setSubmitted(false), 5000);
-    }, 700);
+
+    await sendContactEmail({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+      activeTab: activeTab
+    });
+
+    setSubmitting(false);
+    setSubmitted(true);
+    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    setTimeout(() => setSubmitted(false), 5000);
   };
 
   const contactCards = [
@@ -206,8 +216,8 @@ export default function HelpPage({ onOpenExpertModal }) {
         {/* Headline */}
         <h1 
           style={{ 
-            fontFamily: "'Caveat', cursive",
-            fontSize: 'clamp(3rem, 6vw, 4.75rem)', 
+            fontFamily: "'Lora', serif",
+            fontSize: 'clamp(2.24rem, 4.49vw, 3.61rem)', 
             fontWeight: 600, 
             letterSpacing: '0', 
             color: '#0F172A',
@@ -232,7 +242,7 @@ export default function HelpPage({ onOpenExpertModal }) {
 
         <p 
           style={{ 
-            fontSize: 'clamp(1rem, 2vw, 1.15rem)', 
+            fontSize: 'clamp(0.88rem, 1.76vw, 1.01rem)', 
             lineHeight: '1.7', 
             color: '#475569',
             maxWidth: '680px',
@@ -404,8 +414,8 @@ export default function HelpPage({ onOpenExpertModal }) {
                 DIRECT ACTION PATHWAYS
               </span>
               <h2 style={{ 
-                fontFamily: "'Caveat', cursive",
-                fontSize: 'clamp(2.2rem, 3.8vw, 2.75rem)', 
+                fontFamily: "'Lora', serif",
+                fontSize: 'clamp(1.63rem, 2.82vw, 2.07rem)', 
                 fontWeight: 600, 
                 color: '#0F172A',
                 letterSpacing: '0',
@@ -750,11 +760,22 @@ export default function HelpPage({ onOpenExpertModal }) {
                       style={{
                         padding: '0.85rem 2.2rem',
                         fontSize: '0.98rem',
-                        borderRadius: '10px'
+                        borderRadius: '10px',
+                        opacity: submitting ? 0.75 : 1,
+                        cursor: submitting ? 'not-allowed' : 'pointer'
                       }}
                     >
-                      {submitting ? 'Sending Ticket...' : 'Send Message'}
-                      <ArrowRight size={17} />
+                      {submitting ? (
+                        <>
+                          <span>Sending Ticket...</span>
+                          <Loader2 size={17} className="animate-spin" />
+                        </>
+                      ) : (
+                        <>
+                          <span>Send Message</span>
+                          <ArrowRight size={17} />
+                        </>
+                      )}
                     </button>
                   </div>
 

@@ -139,12 +139,12 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
     <div className="w-full min-h-screen bg-[#e8e8e8] pt-2 sm:pt-4 pb-16 sm:pb-24 px-4 sm:px-8 lg:px-12 flex flex-col justify-center items-center font-['Inter',sans-serif]">
       <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
         
-        {/* Section Heading with Caveat handwriting font style */}
+        {/* Section Heading with Lora font style */}
         <h2
-          className="text-balance text-slate-900 text-center mb-8 sm:mb-12 md:mb-14 -translate-y-14 sm:-translate-y-24 md:-translate-y-28"
+          className="text-balance text-slate-900 text-center mb-6 sm:mb-12 md:mb-14 -translate-y-6 sm:-translate-y-24 md:-translate-y-28"
           style={{ 
-            fontFamily: "'Caveat', cursive",
-            fontSize: 'clamp(2.6rem, 4.8vw, 4rem)',
+            fontFamily: "'Lora', serif",
+            fontSize: 'clamp(1.5rem, 3.52vw, 2.99rem)',
             lineHeight: '1.15',
             letterSpacing: '0',
             fontWeight: 600,
@@ -175,7 +175,7 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
         {/* App Tiles Grid (Exact Odoo Style) */}
         <motion.div 
           layout
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 gap-y-8 sm:gap-x-12 sm:gap-y-10 md:gap-x-14 md:gap-y-12 w-full max-w-3xl justify-items-center -translate-y-6 sm:-translate-y-10 md:-translate-y-12"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 sm:gap-x-12 gap-y-6 sm:gap-y-10 md:gap-x-14 md:gap-y-12 w-full max-w-3xl justify-items-center -translate-y-2 sm:-translate-y-10 md:-translate-y-12"
         >
           {APPLICATIONS.map((app, idx) => {
             const FallbackIcon = app.fallbackIcon;

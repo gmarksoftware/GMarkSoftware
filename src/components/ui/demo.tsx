@@ -90,7 +90,7 @@ export function MarqueeDemo({ className = "" }) {
       <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-[#0F172A] -translate-y-5 sm:-translate-y-7 mb-6 sm:mb-8">
         Integrated with Industry-Leading Technologies
       </p>
-      <Marquee pauseOnHover={true} speed={36} className="!mt-0 !pt-0 !pb-0">
+      <Marquee pauseOnHover={true} speed={36} className="!mt-0 !pt-0 !pb-0 translate-y-6 sm:translate-y-8 md:translate-y-9">
         {arr.map((Logo, index) => (
           <div
             key={index}
