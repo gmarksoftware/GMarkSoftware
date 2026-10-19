@@ -16,9 +16,8 @@ export function Hero({
   return (
     <section
       id="hero"
-      className="relative mx-auto w-full overflow-x-clip bg-white px-6 md:px-8 text-center flex flex-col justify-between items-center pt-32 md:pt-40 pb-10"
+      className="relative mx-auto w-full max-w-full overflow-hidden bg-white px-4 sm:px-6 md:px-8 text-center flex flex-col justify-start sm:justify-between items-center pt-[70px] sm:pt-28 md:pt-20 pb-14 sm:pb-8 md:pb-4 min-h-0 sm:min-h-[92vh] md:min-h-screen"
       style={{
-        minHeight: '100vh',
         backgroundColor: '#ffffff'
       }}
     >
@@ -32,8 +31,8 @@ export function Hero({
 
       {/* Horizon Curvature Arc in Grey (#e8e8e8) */}
       <div
-        className="absolute left-1/2 top-[calc(100%-110px)] sm:top-[calc(100%-130px)] md:top-[calc(100%-150px)] lg:top-[calc(100%-170px)] 
-        h-[480px] w-[700px] md:h-[550px] md:w-[1100px] lg:h-[750px] lg:w-[140%] 
+        className="absolute left-1/2 top-[calc(100%-56px)] sm:top-[calc(100%-120px)] md:top-[calc(100%-150px)] lg:top-[calc(100%-170px)] 
+        h-[400px] w-[700px] sm:h-[480px] sm:w-[800px] md:h-[550px] md:w-[1100px] lg:h-[750px] lg:w-[140%] 
         -translate-x-1/2 rounded-[100%] border-t border-slate-300/40 bg-[#e8e8e8] 
         animate-fade-up shadow-[0_-20px_50px_rgba(0,0,0,0.06)] pointer-events-none z-0"
         style={{
@@ -43,10 +42,10 @@ export function Hero({
 
       {/* Centered Content Container */}
       <div 
-        className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center text-center my-auto pt-4 w-full translate-y-20 sm:translate-y-14 md:translate-y-20 lg:translate-y-28 xl:translate-y-32"
+        className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center text-center my-0 md:my-0 pt-1 sm:pt-4 md:pt-4 w-full translate-y-0 sm:translate-y-4 md:translate-y-0"
       >
         {/* 1. Upper-left caption: Built for real-world operations */}
-        <div className="hidden lg:flex absolute -left-16 xl:-left-48 2xl:-left-64 -top-2 xl:-top-3 flex-col items-start z-20 pointer-events-none select-none">
+        <div className="hidden lg:flex absolute lg:-left-6 xl:-left-36 2xl:-left-52 -top-2 xl:-top-3 flex-col items-start z-20 pointer-events-none select-none">
           <svg
             className="w-10 h-10 pointer-events-none overflow-visible mb-1 ml-6"
             viewBox="0 0 40 40"
@@ -78,7 +77,7 @@ export function Hero({
         </div>
 
         {/* 4. Mid-Right near blue underline: From machines to meaningful insights. (Arrow pointing left targeting 'Industry') */}
-        <div className="hidden lg:flex absolute -right-36 xl:-right-60 2xl:-right-72 top-1/2 -translate-y-8 items-center z-20 pointer-events-none select-none">
+        <div className="hidden lg:flex absolute lg:-right-6 xl:-right-24 2xl:-right-44 top-1/2 -translate-y-8 items-center z-20 pointer-events-none select-none">
           <svg
             className="w-10 h-7 xl:w-12 xl:h-8 pointer-events-none overflow-visible mr-1.5"
             viewBox="0 0 50 30"
@@ -102,7 +101,7 @@ export function Hero({
             />
           </svg>
           <span 
-            className="font-semibold text-[16px] xl:text-[18.5px] leading-tight rotate-2 whitespace-nowrap"
+            className="font-semibold text-[16px] xl:text-[18.5px] leading-tight rotate-2 max-w-[210px] xl:max-w-[250px] text-left"
             style={{ fontFamily: "'Lora', serif", color: '#7B5872' }}
           >
             From machines to meaningful insights.
@@ -114,11 +113,11 @@ export function Hero({
           className="hero-heading-mobile animate-fade-in text-balance font-bold sm:font-semibold text-slate-900"
           style={{ 
             fontFamily: "'Lora', serif",
-            fontSize: 'clamp(2.42rem, 4.84vw, 3.96rem)',
+            fontSize: 'clamp(2.15rem, 4.84vw, 3.96rem)',
             lineHeight: '1.15',
             letterSpacing: '0',
-            paddingTop: '0.5rem',
-            paddingBottom: '0.75rem',
+            paddingTop: '0.25rem',
+            paddingBottom: '0.4rem',
             display: 'inline-block',
             fontWeight: 700,
             color: '#0F172A'
@@ -151,13 +150,11 @@ export function Hero({
         {/* Subtitle */}
         {subtitle && (
           <p
-            className="animate-fade-in text-balance text-gray-600 font-normal"
+            className="animate-fade-in text-balance text-gray-600 font-normal px-2 sm:px-0 mt-2 sm:mt-4 md:mt-5 mb-3.5 sm:mb-6 md:mb-8"
             style={{
-              fontSize: 'clamp(0.92rem, 1.58vw, 1.1rem)',
-              lineHeight: '1.65',
+              fontSize: 'clamp(0.88rem, 1.58vw, 1.1rem)',
+              lineHeight: '1.55',
               maxWidth: '760px',
-              marginTop: '1.25rem',
-              marginBottom: '2rem',
               color: '#475569'
             }}
           >
@@ -166,7 +163,7 @@ export function Hero({
         )}
 
         {/* CTA Button Wrapper with caption positioned below */}
-        <div className="relative flex flex-col justify-center items-center z-20 w-full mb-8">
+        <div className="relative flex flex-col justify-center items-center z-20 w-full mb-3 sm:mb-6 md:mb-8">
           {ctaLabel && (
             <Button
               asChild
@@ -183,7 +180,7 @@ export function Hero({
           )}
 
           {/* 3. Below CTA button: Explore what we can build for you */}
-          <div className="hidden md:flex items-center justify-center mt-5 z-20 pointer-events-none select-none -translate-x-32 md:-translate-x-44 lg:-translate-x-56 xl:-translate-x-60">
+          <div className="hidden md:flex items-center justify-center mt-4 sm:mt-5 z-20 pointer-events-none select-none -translate-x-32 md:-translate-x-44 lg:-translate-x-56 xl:-translate-x-60">
             <span 
               className="font-semibold text-[15px] lg:text-[17.5px] leading-tight -rotate-1 whitespace-nowrap"
               style={{ fontFamily: "'Lora', serif", color: '#7B5872' }}
@@ -215,10 +212,10 @@ export function Hero({
           </div>
         </div>
 
-        {/* 6. Lower-right area: Technology that works beyond the screen. (Moved lower) */}
-        <div className="hidden lg:flex absolute -right-24 lg:-right-40 xl:-right-60 2xl:-right-72 -bottom-20 lg:-bottom-24 xl:-bottom-32 flex-col items-start z-20 pointer-events-none select-none">
+        {/* 6. Lower-right area: Technology that works beyond the screen. (Positioned above technology heading) */}
+        <div className="hidden lg:flex absolute lg:-right-6 xl:-right-24 2xl:-right-44 bottom-2 lg:bottom-4 xl:bottom-6 flex-col items-start z-20 pointer-events-none select-none">
           <span 
-            className="font-semibold text-[16px] xl:text-[18.5px] leading-tight rotate-2 whitespace-nowrap mb-1"
+            className="font-semibold text-[16px] xl:text-[18.5px] leading-tight rotate-2 max-w-[200px] xl:max-w-[240px] text-left mb-1"
             style={{ fontFamily: "'Lora', serif", color: '#7B5872' }}
           >
             Technology that works beyond the screen.
@@ -250,7 +247,7 @@ export function Hero({
 
       {/* Sliding Marquee Inside Hero */}
       {showMarquee && (
-        <div className="relative z-20 w-full max-w-6xl mx-auto mt-auto translate-y-12 sm:translate-y-16 md:translate-y-20 pb-2">
+        <div className="relative z-20 w-full max-w-6xl mx-auto mt-2 sm:mt-auto pt-1 sm:pt-8 md:pt-0 translate-y-0 sm:translate-y-2 md:-translate-y-6 pb-2">
           <MarqueeDemo />
         </div>
       )}

@@ -37,9 +37,9 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
     fieldStaff: {
       title: 'Field Sales & Service Representatives',
       tagline: 'Frictionless geo-attendance, digital product catalogs & on-field order booking',
-      accentColor: '#16A34A',
-      bgColor: '#F0FDF4',
-      borderColor: '#BBF7D0',
+      accentColor: '#7B5872',
+      bgColor: '#F8FAFC',
+      borderColor: '#E2E8F0',
       icon: Smartphone,
       challenges: [
         'Manual register attendance and tedious daily end-of-day paperwork reporting',
@@ -62,9 +62,9 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
     management: {
       title: 'Operations Management & Central Admin',
       tagline: 'Complete live workforce visibility, route compliance & revenue analytics',
-      accentColor: '#0284C7',
-      bgColor: '#F0F9FF',
-      borderColor: '#BAE6FD',
+      accentColor: '#7B5872',
+      bgColor: '#F8FAFC',
+      borderColor: '#E2E8F0',
       icon: LayoutDashboard,
       challenges: [
         'Zero real-time visibility into distributed field team whereabouts and daily progress',
@@ -226,7 +226,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
       {/* ========================================================================= */}
       {/* 2. HERO SECTION */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#e8e8e8', paddingTop: '2.25rem', paddingBottom: '3rem', position: 'relative' }}>
+      <section style={{ backgroundColor: '#e8e8e8', paddingTop: 'clamp(1.25rem, 2.5vw, 2rem)', paddingBottom: 'clamp(2.5rem, 4vw, 3.5rem)', position: 'relative' }}>
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem', textAlign: 'center' }}>
           
 
@@ -597,7 +597,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               STAKEHOLDER GOALS & VALUE UNLOCKED
             </span>
             <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
@@ -783,7 +783,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
                         boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
                       }}
                     >
-                      <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#0B3A70', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>
+                      <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#7B5872', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>
                         <span style={{ fontSize: '13px' }}>⚡</span>
                       </div>
                       <div style={{ textAlign: 'left' }}>
@@ -935,7 +935,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               PLATFORM ARCHITECTURE ECOSYSTEM
             </span>
             <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
@@ -1322,7 +1322,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               SYSTEM CAPABILITIES & SPECIFICATIONS
             </span>
             <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
@@ -1355,7 +1355,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
                     <div style={{ width: '42px', height: '42px', borderRadius: '12px', backgroundColor: '#F1F5F9', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0F172A' }}>
                       <IconComp size={22} />
                     </div>
-                    <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', fontWeight: '700', color: '#0B3A70', backgroundColor: '#EBF3FC', padding: '2px 8px', borderRadius: '6px' }}>
+                    <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', fontWeight: '700', color: '#475569', backgroundColor: '#F1F5F9', padding: '2px 8px', borderRadius: '6px' }}>
                       {mod.badge}
                     </span>
                   </div>
@@ -1439,7 +1439,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
                       <td style={{ padding: '1rem 1.25rem', fontWeight: '700', color: '#0F172A' }}>{row.dim}</td>
                       <td style={{ padding: '1rem 1.25rem', color: '#991B1B' }}>✕ {row.old}</td>
                       <td style={{ padding: '1rem 1.25rem', color: '#166534', fontWeight: '600' }}>✓ {row.neu}</td>
-                      <td style={{ padding: '1rem 1.25rem', color: '#0B3A70', fontWeight: '700' }}>{row.imp}</td>
+                      <td style={{ padding: '1rem 1.25rem', color: '#7B5872', fontWeight: '700' }}>{row.imp}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -1457,7 +1457,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               INTEGRATED ENTERPRISE ECOSYSTEM
             </span>
             <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 2.64vw, 1.98rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>

@@ -56,8 +56,8 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       key: 'man',
       badge: 'MAN',
       title: 'Workforce & Roles',
-      color: '#0B3A70',
-      bgColor: '#EBF3FC',
+      color: '#7B5872',
+      bgColor: '#F1F5F9',
       icon: Users,
       desc: 'Governance of operational personnel, shift technicians, and emergency responders across multi-facility operations.',
       bullets: [
@@ -275,8 +275,8 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         style={{ 
           backgroundColor: '#FFFFFF', 
           textAlign: 'center', 
-          paddingTop: '2.5rem', 
-          paddingBottom: '4.5rem', 
+          paddingTop: 'clamp(1.25rem, 2.5vw, 2rem)', 
+          paddingBottom: 'clamp(2.5rem, 4vw, 3.75rem)', 
           paddingLeft: '1.5rem', 
           paddingRight: '1.5rem', 
           position: 'relative',
@@ -464,7 +464,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                     boxShadow: '0 2px 6px rgba(15, 23, 42, 0.04)'
                   }}
                 >
-                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.4rem', color: '#0B3A70' }}>
+                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.4rem', color: '#7B5872' }}>
                     <IconComp size={20} />
                   </div>
                   <div style={{ fontSize: '1.35rem', fontWeight: '600', color: '#0F172A', letterSpacing: '-0.02em' }}>
@@ -491,7 +491,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       >
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               EXECUTIVE OVERVIEW
             </span>
             <h2 style={{ 
@@ -610,7 +610,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                      <div style={{ width: '36px', height: '36px', borderRadius: '10px', backgroundColor: '#EBF3FC', color: '#0B3A70', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ width: '36px', height: '36px', borderRadius: '10px', backgroundColor: '#F1F5F9', color: '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <FlowIcon size={20} />
                       </div>
                       <span style={{ fontSize: '0.8rem', fontWeight: '600', color: '#64748B', backgroundColor: '#F1F5F9', padding: '2px 8px', borderRadius: '6px' }}>
@@ -643,7 +643,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               PROVEN INDUSTRIAL METHODOLOGY
             </span>
             <h2 style={{ 
@@ -779,7 +779,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                         boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
                       }}
                     >
-                      <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#0B3A70', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>
+                      <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#7B5872', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>
                         <span style={{ fontSize: '13px' }}>⚡</span>
                       </div>
                       <div style={{ textAlign: 'left' }}>
@@ -1168,7 +1168,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               INSTRUMENTATION MATRIX
             </span>
             <h2 style={{ 
@@ -1220,7 +1220,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                         backgroundColor: idx % 2 === 0 ? '#FFFFFF' : '#FBFDFF'
                       }}
                     >
-                      <td style={{ padding: '1.1rem 1.5rem', fontWeight: '500', color: '#0B3A70' }}>
+                      <td style={{ padding: '1.1rem 1.5rem', fontWeight: '500', color: '#0F172A' }}>
                         {row.module}
                       </td>
                       <td style={{ padding: '1.1rem 1.5rem', color: '#334155', lineHeight: '1.5' }}>
@@ -1253,7 +1253,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               GOVERNANCE & SECURITY
             </span>
             <h2 style={{ 
@@ -1310,7 +1310,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                   boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
                 }}
               >
-                <div style={{ fontSize: '0.78rem', fontWeight: '700', color: '#0B3A70', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '6px' }}>
+                <div style={{ fontSize: '0.78rem', fontWeight: '700', color: '#7B5872', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '6px' }}>
                   TIER LEVEL 0{idx + 1}
                 </div>
                 <h3 style={{ fontSize: '1.1rem', fontWeight: '500', color: '#0F172A', margin: 0, marginBottom: '8px' }}>
@@ -1342,7 +1342,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.75rem' }}>
-                <div style={{ width: '36px', height: '36px', borderRadius: '8px', backgroundColor: '#EBF3FC', color: '#0B3A70', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ width: '36px', height: '36px', borderRadius: '8px', backgroundColor: '#F1F5F9', color: '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Bell size={20} />
                 </div>
                 <h3 style={{ fontSize: '1.15rem', fontWeight: '500', color: '#0F172A', margin: 0 }}>
@@ -1417,7 +1417,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               ACCESS DELEGATION
             </span>
             <h2 style={{ 
@@ -1464,7 +1464,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                   boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
                 }}
               >
-                <div style={{ fontSize: '0.75rem', fontWeight: '600', color: '#0B3A70', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '4px' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: '600', color: '#7B5872', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '4px' }}>
                   {r.scope}
                 </div>
                 <h3 style={{ fontSize: '1.15rem', fontWeight: '500', color: '#0F172A', margin: 0, marginBottom: '6px' }}>
@@ -1502,7 +1502,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               TECHNICAL ARCHITECTURE
             </span>
             <h2 style={{ 
@@ -1553,7 +1553,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                         backgroundColor: idx % 2 === 0 ? '#FFFFFF' : '#FBFDFF'
                       }}
                     >
-                      <td style={{ padding: '1.1rem 1.5rem', fontWeight: '600', color: '#0B3A70' }}>
+                      <td style={{ padding: '1.1rem 1.5rem', fontWeight: '600', color: '#0F172A' }}>
                         {row.layer}
                       </td>
                       <td style={{ padding: '1.1rem 1.5rem', color: '#334155', lineHeight: '1.5' }}>
@@ -1590,7 +1590,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                     boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
                   }}
                 >
-                  <span style={{ fontSize: '0.75rem', fontWeight: '600', color: '#0B3A70', backgroundColor: '#EBF3FC', padding: '3px 8px', borderRadius: '6px' }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: '600', color: '#475569', backgroundColor: '#F1F5F9', padding: '3px 8px', borderRadius: '6px' }}>
                     {ind.badge}
                   </span>
                   <h4 style={{ fontSize: '1.05rem', fontWeight: '500', color: '#0F172A', margin: '8px 0 4px' }}>
@@ -1607,7 +1607,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
           {/* Connected Ecosystem Applications */}
           <div style={{ marginTop: '3.5rem', paddingTop: '3rem', borderTop: '1px solid #CBD5E1' }}>
             <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-              <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+              <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
                 INTEGRATED PLATFORM ARCHITECTURE
               </span>
               <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 2.64vw, 1.98rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
@@ -1719,7 +1719,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
           <span 
             style={{ 
               fontSize: '0.78rem', 
-              color: '#0B3A70', 
+              color: '#7B5872', 
               fontWeight: '400', 
               letterSpacing: '0.12em', 
               textTransform: 'uppercase',

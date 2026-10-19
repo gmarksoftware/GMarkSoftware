@@ -6,7 +6,8 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import HelpPage from './pages/HelpPage';
 import AppDetailPage from './pages/AppDetailPage';
-import { APPLICATIONS } from './components/ApplicationsGridSection';
+import { APPLICATIONS, ALL_NAVIGABLE_APPS, findAppOrModule } from './components/ApplicationsGridSection';
+import { getModuleById } from './data/modulesRegistry';
 
 export default function App() {
   // Read initial route from URL path or hash with base path awareness
@@ -28,10 +29,11 @@ export default function App() {
     
     if (full === 'about') return { page: 'about', app: null };
     if (full === 'help') return { page: 'help', app: null };
-    if (full.startsWith('app/')) {
-      const slug = full.split('/')[1];
-      const matchedApp = APPLICATIONS.find(a => a.id === slug) || APPLICATIONS.find(a => a.id.includes(slug)) || APPLICATIONS[0];
-      const origin = window.history.state?.navigationOrigin || 'solutions';
+    if (full.startsWith('app/') || full.startsWith('technology/') || full.startsWith('module/')) {
+      const parts = full.split('/');
+      const slug = parts[1];
+      const origin = full.startsWith('technology/') ? 'technology' : (window.history.state?.navigationOrigin || 'solutions');
+      const matchedApp = getModuleById(slug) || findAppOrModule(slug) || APPLICATIONS[0];
       return { page: 'app-detail', app: { ...matchedApp, navigationOrigin: origin } };
     }
     return { page: 'home', app: null };

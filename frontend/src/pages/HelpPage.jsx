@@ -347,8 +347,8 @@ export default function HelpPage({ onOpenExpertModal }) {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-            gap: '1rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+            gap: '0.75rem',
             maxWidth: '820px',
             margin: '2rem auto 0',
             opacity: heroMounted ? 1 : 0,

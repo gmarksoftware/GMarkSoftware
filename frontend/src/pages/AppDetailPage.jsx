@@ -2,10 +2,17 @@ import React from 'react';
 import ShgAppDetailPage from '../components/apps/ShgAppDetailPage';
 import TransporterAppDetailPage from '../components/apps/TransporterAppDetailPage';
 import ErpAppDetailPage from '../components/apps/ErpAppDetailPage';
+import DoubleEntryAccountingPage from '../components/apps/DoubleEntryAccountingPage';
+import GstInvoicingPage from '../components/apps/GstInvoicingPage';
+import SalesPurchaseOrdersPage from '../components/apps/SalesPurchaseOrdersPage';
+import MultiWarehouseInventoryPage from '../components/apps/MultiWarehouseInventoryPage';
+import BranchLedgerCashflowPage from '../components/apps/BranchLedgerCashflowPage';
 import IotAppDetailPage from '../components/apps/IotAppDetailPage';
 import GramUnnatiAppDetailPage from '../components/apps/GramUnnatiAppDetailPage';
 import GTrackAppDetailPage from '../components/apps/GTrackAppDetailPage';
 import SynkroBoardAppDetailPage from '../components/apps/SynkroBoardAppDetailPage';
+import UniversalModuleDetailPage from '../components/apps/UniversalModuleDetailPage';
+import { getModuleById } from '../data/modulesRegistry';
 import DetailSubNavBar from '../components/DetailSubNavBar';
 import { 
   ArrowLeft, 
@@ -21,6 +28,81 @@ import {
 
 export default function AppDetailPage({ app, onBack, onOpenExpertModal, onSelectApp, onNavigate }) {
   const renderDetailContent = () => {
+    // ---------------------------------------------------------
+    // Core ERP & Finance Sub-Modules
+    // ---------------------------------------------------------
+    // 1. Double-Entry Accounting
+    if (app?.id === 'double-entry-accounting' || app?.id === 'double-entry' || app?.name?.toLowerCase().includes('double-entry')) {
+      return (
+        <DoubleEntryAccountingPage 
+          app={app} 
+          onBack={onBack} 
+          onOpenExpertModal={onOpenExpertModal} 
+          onSelectApp={onSelectApp}
+        />
+      );
+    }
+
+    // 2. GST & E-Way Invoicing
+    if (app?.id === 'gst-eway-invoicing' || app?.id === 'gst-invoicing' || app?.name?.toLowerCase().includes('gst')) {
+      return (
+        <GstInvoicingPage 
+          app={app} 
+          onBack={onBack} 
+          onOpenExpertModal={onOpenExpertModal} 
+          onSelectApp={onSelectApp}
+        />
+      );
+    }
+
+    // 3. Sales & Purchase Orders
+    if (app?.id === 'sales-purchase-orders' || app?.name?.toLowerCase().includes('purchase orders') || app?.name?.toLowerCase().includes('sales & purchase')) {
+      return (
+        <SalesPurchaseOrdersPage 
+          app={app} 
+          onBack={onBack} 
+          onOpenExpertModal={onOpenExpertModal} 
+          onSelectApp={onSelectApp}
+        />
+      );
+    }
+
+    // 4. Multi-Warehouse Inventory
+    if (app?.id === 'multi-warehouse-inventory' || app?.name?.toLowerCase().includes('multi-warehouse') || app?.name?.toLowerCase().includes('warehouse inventory')) {
+      return (
+        <MultiWarehouseInventoryPage 
+          app={app} 
+          onBack={onBack} 
+          onOpenExpertModal={onOpenExpertModal} 
+          onSelectApp={onSelectApp}
+        />
+      );
+    }
+
+    // 5. Branch Ledger & Cashflow
+    if (app?.id === 'branch-ledger-cashflow' || app?.name?.toLowerCase().includes('branch ledger') || app?.name?.toLowerCase().includes('cashflow')) {
+      return (
+        <BranchLedgerCashflowPage 
+          app={app} 
+          onBack={onBack} 
+          onOpenExpertModal={onOpenExpertModal} 
+          onSelectApp={onSelectApp}
+        />
+      );
+    }
+
+    // 6. Enterprise ERP Core / ERP Overview
+    if (app?.id === 'erp-core' || app?.id === 'erp' || app?.name?.toLowerCase().includes('enterprise erp core') || app?.name?.toLowerCase().includes('erp')) {
+      return (
+        <ErpAppDetailPage 
+          app={app} 
+          onBack={onBack} 
+          onOpenExpertModal={onOpenExpertModal} 
+          onSelectApp={onSelectApp}
+        />
+      );
+    }
+
     // If G-Track is selected, render full G Mark Tracking & Field Force Management page
     if (app?.id === 'g-track' || app?.id === 'gtrack' || app?.id === 'tracking' || app?.name?.toLowerCase().includes('track')) {
       return (
@@ -49,18 +131,6 @@ export default function AppDetailPage({ app, onBack, onOpenExpertModal, onSelect
     if (app?.id === 'g-nova-iot' || app?.id === 'iot' || app?.name?.toLowerCase().includes('iot') || app?.name?.toLowerCase().includes('g-nova')) {
       return (
         <IotAppDetailPage 
-          app={app} 
-          onBack={onBack} 
-          onOpenExpertModal={onOpenExpertModal} 
-          onSelectApp={onSelectApp}
-        />
-      );
-    }
-
-    // If ERP App is selected, render full ERP workflow & architecture page
-    if (app?.id === 'erp' || app?.name?.toLowerCase().includes('erp')) {
-      return (
-        <ErpAppDetailPage 
           app={app} 
           onBack={onBack} 
           onOpenExpertModal={onOpenExpertModal} 
@@ -105,6 +175,19 @@ export default function AppDetailPage({ app, onBack, onOpenExpertModal, onSelect
       );
     }
 
+    // Check if the requested app is any registered module in MODULES_REGISTRY
+    const registeredModule = getModuleById(app?.id) || getModuleById(app?.name);
+    if (registeredModule) {
+      return (
+        <UniversalModuleDetailPage 
+          module={registeredModule} 
+          onBack={onBack} 
+          onOpenExpertModal={onOpenExpertModal} 
+          onSelectApp={onSelectApp}
+        />
+      );
+    }
+
     const FallbackIcon = app?.fallbackIcon || Layers;
 
     return (
@@ -115,8 +198,8 @@ export default function AppDetailPage({ app, onBack, onOpenExpertModal, onSelect
           style={{ 
             backgroundColor: '#FFFFFF', 
             textAlign: 'center', 
-            paddingTop: '2.75rem', 
-            paddingBottom: '5rem', 
+            paddingTop: 'clamp(1.25rem, 2.5vw, 2rem)', 
+            paddingBottom: 'clamp(2.5rem, 4vw, 3.75rem)', 
             paddingLeft: '1.5rem', 
             paddingRight: '1.5rem', 
             position: 'relative',
@@ -187,7 +270,7 @@ export default function AppDetailPage({ app, onBack, onOpenExpertModal, onSelect
               <br className="hidden sm:inline" />
               <span>Platform </span>
               <span className="relative inline-block whitespace-nowrap">
-                <span className="relative z-10 text-slate-900 font-semibold">
+                <span className="relative z-10 font-semibold" style={{ color: '#FC787D' }}>
                   Overview
                 </span>
                 <svg
@@ -330,7 +413,7 @@ export default function AppDetailPage({ app, onBack, onOpenExpertModal, onSelect
                     boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
                   }}
                 >
-                  <div style={{ width: '32px', height: '32px', borderRadius: '8px', backgroundColor: '#EBF3FC', color: '#0B3A70', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                  <div style={{ width: '32px', height: '32px', borderRadius: '8px', backgroundColor: '#F1F5F9', color: '#7B5872', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
                     <CheckCircle2 size={18} />
                   </div>
                   <div>
@@ -352,11 +435,9 @@ export default function AppDetailPage({ app, onBack, onOpenExpertModal, onSelect
     );
   };
 
-  const isGramUnnati = app?.id === 'gram-unnati' || app?.id === 'gramunnati' || app?.name?.toLowerCase().includes('gram') || app?.name?.toLowerCase().includes('unnati');
-
   return (
-    <div className="app-detail-root-container" style={{ minHeight: '100vh', backgroundColor: '#e8e8e8', paddingTop: '64px' }}>
-      {!isGramUnnati && <DetailSubNavBar app={app} onBack={onBack} onNavigate={onNavigate} />}
+    <div className="app-detail-root-container" style={{ minHeight: '100vh', backgroundColor: '#FFFFFF', paddingTop: '64px' }}>
+      <DetailSubNavBar app={app} onBack={onBack} onNavigate={onNavigate} onSelectApp={onSelectApp} />
       {renderDetailContent()}
     </div>
   );

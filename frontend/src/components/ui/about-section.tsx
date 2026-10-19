@@ -172,14 +172,14 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
               animationNum={5}
               timelineRef={heroRef}
               customVariants={revealVariants}
-              className="flex gap-4 items-center"
+              className="flex flex-wrap gap-2 sm:gap-4 items-center"
             >
-              <div className="flex items-center gap-2 sm:text-base text-xs">
+              <div className="flex items-center gap-1.5 sm:gap-2 sm:text-base text-xs">
                 <span className="text-red-500 font-bold">99.98%</span>
                 <span className="text-gray-600 font-medium">platform availability</span>
-                <span className="text-gray-300">|</span>
+                <span className="text-gray-300 hidden sm:inline">|</span>
               </div>
-              <div className="flex items-center gap-2 sm:text-base text-xs">
+              <div className="flex items-center gap-1.5 sm:gap-2 sm:text-base text-xs">
                 <span className="text-red-500 font-bold">50Hz</span>
                 <span className="text-gray-600 font-medium">telemetry acquisition</span>
               </div>

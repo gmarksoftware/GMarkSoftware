@@ -252,8 +252,8 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
         style={{ 
           backgroundColor: '#FFFFFF', 
           textAlign: 'center', 
-          paddingTop: '2.5rem', 
-          paddingBottom: '5rem', 
+          paddingTop: 'clamp(1.25rem, 2.5vw, 2rem)', 
+          paddingBottom: 'clamp(2.5rem, 4vw, 3.75rem)', 
           paddingLeft: '1.5rem', 
           paddingRight: '1.5rem',
           position: 'relative',
@@ -405,14 +405,14 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                 borderRadius: '9999px',
                 fontSize: '0.95rem',
                 fontWeight: '500',
-                backgroundColor: '#0F172A',
+                backgroundColor: '#7B5872',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                boxShadow: '0 4px 16px rgba(15, 23, 42, 0.35)'
+                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
               }}
               className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
             >
@@ -452,7 +452,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                     transition: 'transform 0.2s ease'
                   }}
                 >
-                  <div style={{ width: '34px', height: '34px', borderRadius: '8px', backgroundColor: '#EBF3FC', color: '#0B3A70', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '34px', height: '34px', borderRadius: '8px', backgroundColor: '#F1F5F9', color: '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <IconC size={16} />
                   </div>
                   <div style={{ textAlign: 'left' }}>
@@ -517,7 +517,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                         boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
                       }}
                     >
-                      <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#0B3A70', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>
+                      <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#7B5872', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>
                         <span style={{ fontSize: '13px' }}>🚛</span>
                       </div>
                       <div style={{ textAlign: 'left' }}>
@@ -1699,7 +1699,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '1.75rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               INTEGRATED ECOSYSTEM
             </span>
             <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 1.98rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px', lineHeight: '1.25' }}>

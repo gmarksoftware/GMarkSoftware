@@ -4,7 +4,7 @@ import { Marquee } from "@/components/ui/marquee";
 export const Logos = {
   tailwindcss: () => (
     <svg
-      className="h-7 sm:h-8 w-auto transition-transform duration-300 hover:scale-110"
+      className="h-6 sm:h-8 w-auto transition-transform duration-300 hover:scale-110"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 262 33"
@@ -25,7 +25,7 @@ export const Logos = {
   ),
   nextjs: () => (
     <svg
-      className="h-5 sm:h-6 w-auto fill-[#0F172A] transition-transform duration-300 hover:scale-110"
+      className="h-4.5 sm:h-6 w-auto fill-[#0F172A] transition-transform duration-300 hover:scale-110"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 394 79"
     >
@@ -44,11 +44,11 @@ export const Logos = {
     </svg>
   ),
   framer: () => (
-    <div className="h-fit flex items-center justify-start font-bold text-base sm:text-lg text-[#0F172A] gap-2 transition-transform duration-300 hover:scale-110">
+    <div className="h-fit flex items-center justify-start font-bold text-sm sm:text-lg text-[#0F172A] gap-1.5 sm:gap-2 transition-transform duration-300 hover:scale-110">
       <svg
         viewBox="0 0 14 21"
         role="presentation"
-        className="h-5 sm:h-6 fill-current text-[#0F172A]"
+        className="h-4.5 sm:h-6 fill-current text-[#0F172A]"
       >
         <path d="M0 0h14v7H7zm0 7h7l7 7H7v7l-7-7z" fill="currentColor"></path>
       </svg>
@@ -57,7 +57,7 @@ export const Logos = {
   ),
   aws: () => (
     <svg
-      className="h-7 sm:h-8 w-auto transition-transform duration-300 hover:scale-110"
+      className="h-6 sm:h-8 w-auto transition-transform duration-300 hover:scale-110"
       version="1.1"
       viewBox="-45.101 -44.95 390.872 269.7"
     >
@@ -87,24 +87,14 @@ export function MarqueeDemo({ className = "" }) {
 
   return (
     <div className={`w-full flex flex-col items-center justify-center ${className}`}>
-      <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-[#0F172A] -translate-y-5 sm:-translate-y-7 mb-6 sm:mb-8">
+      <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.16em] sm:tracking-[0.25em] text-[#0F172A] mb-1.5 sm:mb-4 md:mb-5 text-center px-4">
         Integrated with Industry-Leading Technologies
       </p>
-      <Marquee pauseOnHover={true} speed={36} className="!mt-0 !pt-0 !pb-0 translate-y-6 sm:translate-y-8 md:translate-y-9">
+      <Marquee pauseOnHover={true} speed={36} className="!mt-0 !pt-0 !pb-0 -translate-y-1 sm:translate-y-1 md:translate-y-2">
         {arr.map((Logo, index) => (
           <div
             key={index}
-            style={{
-              paddingLeft: '5rem',
-              paddingRight: '5rem',
-              marginLeft: '2rem',
-              marginRight: '2rem',
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexShrink: 0
-            }}
-            className="relative h-full cursor-pointer transition-transform duration-300 hover:scale-110"
+            className="relative h-full cursor-pointer transition-transform duration-300 hover:scale-110 inline-flex items-center justify-center shrink-0 px-6 sm:px-14 md:px-20 mx-2 sm:mx-6 md:mx-8"
           >
             <Logo />
           </div>

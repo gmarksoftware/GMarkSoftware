@@ -68,32 +68,21 @@ export default function ExpertModal({ isOpen, onClose }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '1.5rem'
+        padding: '1rem'
       }}
       onClick={onClose}
     >
       <div 
+        className="w-full max-w-[560px] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden max-h-[92vh] flex flex-col"
         style={{
-          backgroundColor: '#FFFFFF',
-          borderRadius: '16px',
-          maxWidth: '560px',
-          width: '100%',
-          boxShadow: '0 25px 50px -12px rgba(11, 58, 112, 0.25)',
-          border: '1px solid #E2E8F0',
-          overflow: 'hidden',
           animation: 'scaleUp 0.2s ease-out'
         }}
         onClick={e => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div style={{
-          padding: '1.5rem 1.75rem',
-          borderBottom: '1px solid #F1F5F9',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          backgroundColor: '#FAFCFE'
-        }}>
+        <div 
+          className="p-4 sm:p-6 border-b border-slate-100 flex items-center justify-between bg-[#FAFCFE] shrink-0"
+        >
           <div>
             <div className="eyebrow-tag" style={{ fontSize: '0.7rem', marginBottom: '0.2rem' }}>
               DIRECT ENGINEERING CONSULTATION
@@ -121,7 +110,7 @@ export default function ExpertModal({ isOpen, onClose }) {
         </div>
 
         {/* Modal Body */}
-        <div style={{ padding: '1.75rem' }}>
+        <div className="p-4 sm:p-7 overflow-y-auto">
           {submitted ? (
             <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
               <div style={{ width: '56px', height: '56px', borderRadius: '50%', backgroundColor: '#DCFCE7', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem' }}>
@@ -137,7 +126,7 @@ export default function ExpertModal({ isOpen, onClose }) {
           ) : (
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
               
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '600', color: '#334155', marginBottom: '0.35rem' }}>
                     Full Name *
@@ -181,7 +170,7 @@ export default function ExpertModal({ isOpen, onClose }) {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: '600', color: '#334155', marginBottom: '0.35rem' }}>
                     Organization / Company *

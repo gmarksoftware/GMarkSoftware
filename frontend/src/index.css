@@ -66,10 +66,10 @@
   --radius-xl: 24px;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 }
 
 html {
@@ -80,10 +80,14 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
   overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
@@ -180,7 +184,7 @@ body {
 /* Mobile Hero Heading Optimization - clears fixed header and prevents paragraph overlap */
 @media (max-width: 767px) {
   .hero-heading-mobile {
-    font-size: clamp(1.65rem, 4.8vw, 2.15rem) !important;
+    font-size: clamp(1.5rem, 5.2vw, 2.15rem) !important;
     font-weight: 700 !important;
     line-height: 1.22 !important;
     padding-top: 0.25rem !important;
@@ -191,7 +195,7 @@ body {
     bottom: -0.25rem !important;
   }
   .data-vision-headline-mobile {
-    font-size: clamp(1.35rem, 4.8vw, 1.65rem) !important;
+    font-size: clamp(1.3rem, 4.8vw, 1.75rem) !important;
     font-weight: 700 !important;
     line-height: 1.25 !important;
     color: #0F172A !important;

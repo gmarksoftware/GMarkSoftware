@@ -42,6 +42,7 @@ import {
 } from 'lucide-react';
 import { APPLICATIONS } from '../ApplicationsGridSection';
 import { getAssetUrl } from '@/utils/asset';
+import ErpModuleNavRibbon from './ErpModuleNavRibbon';
 
 export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectApp }) {
   const [activeStepSales, setActiveStepSales] = useState(0); // active accordion step for Sales Cycle
@@ -253,7 +254,6 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
 
   return (
     <div style={{ backgroundColor: '#e8e8e8', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Inter', sans-serif" }}>
-      
       {/* ========================================================================= */}
       {/* 1. HERO HEADER (FIRST PAGE - WHITE WITH GREY CURVATURE ARC) */}
       {/* ========================================================================= */}
@@ -261,8 +261,8 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         style={{ 
           backgroundColor: '#FFFFFF', 
           textAlign: 'center', 
-          paddingTop: '2.5rem', 
-          paddingBottom: '5rem', 
+          paddingTop: 'clamp(1.25rem, 2.5vw, 2rem)', 
+          paddingBottom: 'clamp(2.5rem, 4vw, 3.75rem)', 
           paddingLeft: '1.5rem', 
           paddingRight: '1.5rem', 
           position: 'relative',
@@ -461,7 +461,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                     transition: 'transform 0.2s ease'
                   }}
                 >
-                  <div style={{ width: '34px', height: '34px', borderRadius: '8px', backgroundColor: '#EBF3FC', color: '#0B3A70', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '34px', height: '34px', borderRadius: '8px', backgroundColor: '#F1F5F9', color: '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <IconC size={16} />
                   </div>
                   <div style={{ textAlign: 'left' }}>
@@ -619,7 +619,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                       >
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0, flex: 1 }}>
-                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg" style={{ backgroundColor: isActive ? '#0F172A' : '#EBF3FC', color: isActive ? '#FFFFFF' : '#0B3A70', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg" style={{ backgroundColor: isActive ? '#0F172A' : '#F1F5F9', color: isActive ? '#FFFFFF' : '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                               <IconComp size={15} />
                             </div>
                             <div style={{ minWidth: 0, flex: 1 }}>
@@ -793,7 +793,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                       >
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0, flex: 1 }}>
-                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg" style={{ backgroundColor: isActive ? '#0F172A' : '#EBF3FC', color: isActive ? '#FFFFFF' : '#0B3A70', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg" style={{ backgroundColor: isActive ? '#0F172A' : '#F1F5F9', color: isActive ? '#FFFFFF' : '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                               <IconComp size={15} />
                             </div>
                             <div style={{ minWidth: 0, flex: 1 }}>
@@ -942,7 +942,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                   <h3 style={{ fontSize: '1.02rem', fontWeight: '500', color: '#0F172A', margin: 0 }}>
                     {v.title}
                   </h3>
-                  <span style={{ fontSize: '0.68rem', padding: '2px 8px', borderRadius: '100px', backgroundColor: '#EBF3FC', color: '#0B3A70', border: '1px solid #CBD5E1' }}>
+                  <span style={{ fontSize: '0.68rem', padding: '2px 8px', borderRadius: '100px', backgroundColor: '#F8FAFC', color: '#475569', border: '1px solid #CBD5E1' }}>
                     {v.badge}
                   </span>
                 </div>
@@ -1100,8 +1100,8 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                         width: '22px', 
                         height: '22px', 
                         borderRadius: '50%', 
-                        backgroundColor: '#EBF3FC', 
-                        color: '#0B3A70', 
+                        backgroundColor: '#F1F5F9', 
+                        color: '#7B5872', 
                         display: 'flex', 
                         alignItems: 'center', 
                         justifyContent: 'center', 
@@ -1393,7 +1393,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                       }}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
-                        <div style={{ width: '22px', height: '22px', borderRadius: '6px', backgroundColor: '#EBF3FC', color: '#0B3A70', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <div style={{ width: '22px', height: '22px', borderRadius: '6px', backgroundColor: '#F1F5F9', color: '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                           <IconComp size={13} />
                         </div>
                         <h4 style={{ fontSize: '0.86rem', fontWeight: '600', color: '#0F172A', margin: 0 }}>

@@ -264,8 +264,8 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         style={{ 
           backgroundColor: '#FFFFFF', 
           textAlign: 'center', 
-          paddingTop: '2.5rem', 
-          paddingBottom: '5rem', 
+          paddingTop: 'clamp(1.25rem, 2.5vw, 2rem)', 
+          paddingBottom: 'clamp(2.5rem, 4vw, 3.75rem)', 
           paddingLeft: '1.5rem', 
           paddingRight: '1.5rem',
           position: 'relative',
@@ -417,14 +417,14 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 borderRadius: '9999px',
                 fontSize: '0.95rem',
                 fontWeight: '500',
-                backgroundColor: '#0F172A',
+                backgroundColor: '#7B5872',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                boxShadow: '0 4px 16px rgba(15, 23, 42, 0.35)'
+                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
               }}
               className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
             >
@@ -464,7 +464,7 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                     transition: 'transform 0.2s ease'
                   }}
                 >
-                  <div style={{ width: '36px', height: '36px', borderRadius: '10px', backgroundColor: '#DCFCE7', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '10px', backgroundColor: '#F1F5F9', color: '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <IconC size={18} />
                   </div>
                   <div style={{ textAlign: 'left' }}>
@@ -1719,7 +1719,7 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '1.75rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               EXPLORE ADJACENT PLATFORMS
             </span>
             <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 2.64vw, 1.98rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>

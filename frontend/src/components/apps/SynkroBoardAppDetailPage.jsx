@@ -212,8 +212,8 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
         style={{
           backgroundColor: '#e8e8e8',
           borderBottom: '1px solid #CBD5E1',
-          paddingTop: 'clamp(3rem, 5vw, 4.5rem)',
-          paddingBottom: '4.5rem'
+          paddingTop: 'clamp(1.25rem, 2.5vw, 2.25rem)',
+          paddingBottom: 'clamp(2.5rem, 4vw, 3.5rem)'
         }}
       >
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
@@ -398,7 +398,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               EXECUTIVE CONTEXT
             </span>
             <h2 style={{ 
@@ -522,7 +522,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                         boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
                       }}
                     >
-                      <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#0B3A70', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>
+                      <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#7B5872', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>
                         <span style={{ fontSize: '13px' }}>⚡</span>
                       </div>
                       <div style={{ textAlign: 'left' }}>
@@ -913,7 +913,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               VERSATILE PROJECT VISUALIZATION
             </span>
             <h2 style={{ 
@@ -957,8 +957,8 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                 style={{
                   padding: '0.75rem 1.25rem',
                   borderRadius: '12px',
-                  border: activeVisualizationTab === idx ? '1px solid #0B3A70' : '1px solid #CBD5E1',
-                  backgroundColor: activeVisualizationTab === idx ? '#0B3A70' : '#FFFFFF',
+                  border: activeVisualizationTab === idx ? '1px solid #0F172A' : '1px solid #CBD5E1',
+                  backgroundColor: activeVisualizationTab === idx ? '#0F172A' : '#FFFFFF',
                   color: activeVisualizationTab === idx ? '#FFFFFF' : '#334155',
                   fontSize: '0.88rem',
                   fontWeight: '600',
@@ -1015,7 +1015,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                 </p>
 
                 <div style={{ borderTop: '1px solid #F1F5F9', paddingTop: '1.5rem' }}>
-                  <h4 style={{ fontSize: '0.85rem', fontWeight: '700', color: '#0B3A70', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem' }}>
+                  <h4 style={{ fontSize: '0.85rem', fontWeight: '700', color: '#7B5872', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem' }}>
                     Core Architectural Capabilities
                   </h4>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '0.85rem' }}>
@@ -1048,7 +1048,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               SYSTEM CAPABILITIES
             </span>
             <h2 style={{ 
@@ -1102,7 +1102,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                         backgroundColor: idx % 2 === 0 ? '#FFFFFF' : '#FBFDFF'
                       }}
                     >
-                      <td style={{ padding: '1.1rem 1.5rem', fontWeight: '600', color: '#0B3A70' }}>
+                      <td style={{ padding: '1.1rem 1.5rem', fontWeight: '600', color: '#0F172A' }}>
                         {row.area}
                       </td>
                       <td style={{ padding: '1.1rem 1.5rem', color: '#334155', lineHeight: '1.5' }}>
@@ -1136,7 +1136,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               ORGANIZATIONAL GOALS & ROLES
             </span>
             <h2 style={{ 
@@ -1234,7 +1234,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               ENTERPRISE ARCHITECTURE
             </span>
             <h2 style={{ 
@@ -1338,7 +1338,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               OUR VALUES & VISION
             </span>
             <h2 style={{ 
@@ -1403,7 +1403,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               INTEGRATED PLATFORM ARCHITECTURE
             </span>
             <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 2.64vw, 1.98rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
@@ -1502,7 +1502,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
           <span 
             style={{ 
               fontSize: '0.78rem', 
-              color: '#0B3A70', 
+              color: '#7B5872', 
               fontWeight: '400', 
               letterSpacing: '0.12em', 
               textTransform: 'uppercase',

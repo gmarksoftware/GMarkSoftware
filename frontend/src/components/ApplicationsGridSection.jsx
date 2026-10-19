@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getAssetUrl } from '../utils/asset';
+import { getModuleById } from '../data/modulesRegistry';
 import {
   ArrowRight,
   Sparkles,
@@ -19,8 +20,86 @@ import {
   Package,
   Headphones,
   FileText,
-  X
+  X,
+  Wallet,
+  Receipt,
+  ShoppingCart
 } from 'lucide-react';
+
+export const ERP_MODULES = [
+  {
+    id: 'erp-core',
+    name: 'Enterprise ERP Core',
+    category: 'Core ERP & Finance',
+    tagline: 'Centralized Multi-Tenant ERP Architecture & System Masters',
+    image: getAssetUrl('/ERP Logo.png'),
+    fallbackIcon: Layers,
+    badge: 'ERP Core',
+    accent: '#0D9488',
+    description: 'Centralized enterprise resource planning backbone orchestrating multi-tenant database infrastructure, master data governance, role-based security, and cross-platform integrations.',
+    features: ['Multi-tenant data isolation & Prisma ORM', 'Master Data Directory (Accounts, Groups, UOM, HSN)', 'Granular RBAC with JWT Bearer security', 'Unified GraphQL & RESTful Webhook bus']
+  },
+  {
+    id: 'double-entry-accounting',
+    name: 'Double-Entry Accounting',
+    category: 'Core ERP & Finance',
+    tagline: 'Compliant Multi-Voucher Double-Entry Ledger System',
+    image: getAssetUrl('/ERP Logo.png'),
+    fallbackIcon: Wallet,
+    badge: 'Accounting',
+    accent: '#0D9488',
+    description: 'Comprehensive financial accounting module enforcing double-entry validation across receipt, payment, journal, and contra vouchers with real-time audit trails and automated ledger balances.',
+    features: ['Automated Debit/Credit ledger posting', '4 Statutory voucher types (Receipt, Payment, Journal, Contra)', 'Real-time Chart of Accounts & Trial Balance', 'Bill-by-bill invoice tagging & reconciliations']
+  },
+  {
+    id: 'gst-eway-invoicing',
+    name: 'GST & E-Way Invoicing',
+    category: 'Core ERP & Finance',
+    tagline: 'Statutory Tax Invoicing & Automated E-Way Ingestion',
+    image: getAssetUrl('/ERP Logo.png'),
+    fallbackIcon: Receipt,
+    badge: 'Tax & Invoicing',
+    accent: '#0D9488',
+    description: 'Automated tax computation engine supporting intra-state (CGST + SGST) and inter-state (IGST) statutory compliance, HSN code lookups, E-Way bill generation, and immutable digital invoices.',
+    features: ['Automated intra-state vs inter-state tax logic', 'Statutory HSN/SAC tax code classification', 'Immutable digital tax invoice locking', 'E-Way bill number and transport verification']
+  },
+  {
+    id: 'sales-purchase-orders',
+    name: 'Sales & Purchase Orders',
+    category: 'Core ERP & Finance',
+    tagline: 'End-to-End SO & PO Procurement Lifecycle',
+    image: getAssetUrl('/ERP Logo.png'),
+    fallbackIcon: ShoppingCart,
+    badge: 'Commercial Orders',
+    accent: '#0D9488',
+    description: 'Complete commercial trade and procurement lifecycle management from customer quote, Sales Order, and Delivery Challan to supplier Purchase Order, Gate Inward, and GRN verification.',
+    features: ['5-Step Sales & Distribution workflow', '5-Step Purchase Order & GRN lifecycle', 'Bulk Excel import for procurement schedules', 'Document state tracking (SO, Challan, SI, PO, GRN, PI)']
+  },
+  {
+    id: 'multi-warehouse-inventory',
+    name: 'Multi-Warehouse Inventory',
+    category: 'Core ERP & Finance',
+    tagline: 'Multi-Location Stock Telemetry & Bin Allocation',
+    image: getAssetUrl('/ERP Logo.png'),
+    fallbackIcon: Package,
+    badge: 'Inventory & Stock',
+    accent: '#0D9488',
+    description: 'Centralized inventory engine managing multiple warehouses, automated stock reservations upon SO creation, dispatch deductions, GRN inward additions, and safety stock reorder triggers.',
+    features: ['Multi-warehouse & regional depot tracking', 'Real-time stock reservation & bin allocation', 'Automated stock deductions on dispatch challans', 'UOM conversions & safety stock threshold alerts']
+  },
+  {
+    id: 'branch-ledger-cashflow',
+    name: 'Branch Ledger & Cashflow',
+    category: 'Core ERP & Finance',
+    tagline: 'Multi-Branch Financial Consolidation & Cash Liquidity',
+    image: getAssetUrl('/ERP Logo.png'),
+    fallbackIcon: BarChart3,
+    badge: 'Cashflow & P&L',
+    accent: '#0D9488',
+    description: 'Multi-branch financial consolidation and cashflow management providing independent branch ledgers, centralized corporate balance sheets, daily liquidity monitoring, and Profit & Loss reporting.',
+    features: ['Multi-branch ledger consolidation', 'Daily cashbook & bank account reconciliation', 'Cashflow liquidity & runway forecasting', 'Interactive Profit & Loss statement reporting']
+  }
+];
 
 export const APPLICATIONS = [
   {
@@ -124,6 +203,21 @@ export const APPLICATIONS = [
   }
 ];
 
+export const ALL_NAVIGABLE_APPS = [...APPLICATIONS, ...ERP_MODULES];
+
+export const findAppOrModule = (id) => {
+  if (!id) return null;
+  const lower = String(id).toLowerCase().trim();
+  return (
+    getModuleById(lower) ||
+    ERP_MODULES.find(m => m.id === lower) ||
+    APPLICATIONS.find(a => a.id === lower) ||
+    ERP_MODULES.find(m => m.id.includes(lower)) ||
+    APPLICATIONS.find(a => a.id.includes(lower)) ||
+    null
+  );
+};
+
 export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp }) {
   const [selectedApp, setSelectedApp] = useState(null);
 
@@ -136,12 +230,12 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#e8e8e8] pt-2 sm:pt-4 pb-16 sm:pb-24 px-4 sm:px-8 lg:px-12 flex flex-col justify-center items-center font-['Inter',sans-serif]">
+    <div className="w-full min-h-0 pt-0 pb-4 sm:py-10 md:pt-4 md:pb-24 lg:min-h-screen lg:py-0 bg-[#e8e8e8] px-4 sm:px-8 lg:px-12 flex flex-col justify-center items-center font-['Inter',sans-serif]">
       <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
         
         {/* Section Heading with Lora font style */}
         <h2
-          className="text-balance text-slate-900 text-center mb-6 sm:mb-12 md:mb-14 -translate-y-6 sm:-translate-y-24 md:-translate-y-28"
+          className="text-balance text-slate-900 text-center mb-6 sm:mb-8 md:mb-14 translate-y-0 md:-translate-y-28"
           style={{ 
             fontFamily: "'Lora', serif",
             fontSize: 'clamp(1.5rem, 3.52vw, 2.99rem)',
@@ -175,7 +269,7 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
         {/* App Tiles Grid (Exact Odoo Style) */}
         <motion.div 
           layout
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 sm:gap-x-12 gap-y-6 sm:gap-y-10 md:gap-x-14 md:gap-y-12 w-full max-w-3xl justify-items-center -translate-y-2 sm:-translate-y-10 md:-translate-y-12"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 sm:gap-x-10 md:gap-x-14 gap-y-6 sm:gap-y-8 md:gap-y-12 w-full max-w-3xl justify-items-center translate-y-0 md:-translate-y-12"
         >
           {APPLICATIONS.map((app, idx) => {
             const FallbackIcon = app.fallbackIcon;
@@ -188,7 +282,7 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3, delay: idx * 0.02 }}
                 onClick={() => handleAppClick(app)}
-                className="group flex flex-col items-center cursor-pointer w-28 sm:w-32"
+                className="group flex flex-col items-center cursor-pointer w-28 sm:w-32 select-none"
               >
                 {/* Odoo Style White Rounded Icon Card */}
                 <div className="w-[88px] h-[88px] sm:w-[96px] sm:h-[96px] rounded-[22px] bg-white shadow-[0_4px_16px_rgba(0,0,0,0.06)] group-hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] group-hover:-translate-y-1.5 transition-all duration-300 flex items-center justify-center p-3.5 relative overflow-hidden">
@@ -227,7 +321,7 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
               transition={{ duration: 0.2 }}
-              className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-neutral-200 relative overflow-hidden"
+              className="bg-white rounded-3xl p-5 sm:p-8 max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-neutral-200 relative"
             >
               {/* Close Button */}
               <button

@@ -132,9 +132,9 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
     farmers: {
       title: 'Farmers (Producers & Buyers)',
       tagline: 'Direct marketplace access, transparent price discovery & yield maximization',
-      accentColor: '#16A34A',
-      bgColor: '#F0FDF4',
-      borderColor: '#BBF7D0',
+      accentColor: '#7B5872',
+      bgColor: '#F8FAFC',
+      borderColor: '#E2E8F0',
       icon: Sprout,
       challenges: [
         'Exploitation by local middlemen and non-transparent mandi commissions',
@@ -157,9 +157,9 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
     industries: {
       title: 'Rural Micro-Industries & Entrepreneurs',
       tagline: 'Empowering village-level manufacturing, packaging & national trade',
-      accentColor: '#0284C7',
-      bgColor: '#F0F9FF',
-      borderColor: '#BAE6FD',
+      accentColor: '#7B5872',
+      bgColor: '#F8FAFC',
+      borderColor: '#E2E8F0',
       icon: Store,
       challenges: [
         'Limited geographic reach confined to nearby weekly village haats',
@@ -182,9 +182,9 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
     shg: {
       title: 'Women Self-Help Groups (SHGs)',
       tagline: 'Financial self-reliance, regular product creation & zero distress migration',
-      accentColor: '#D97706',
-      bgColor: '#FFFBEB',
-      borderColor: '#FDE68A',
+      accentColor: '#7B5872',
+      bgColor: '#F8FAFC',
+      borderColor: '#E2E8F0',
       icon: Users,
       challenges: [
         'Lack of formalized marketing channels for handmade rural foods and handicrafts',
@@ -375,7 +375,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
       {/* ========================================================================= */}
       {/* 2. HERO SECTION */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#e8e8e8', paddingTop: '2.25rem', paddingBottom: '3rem', position: 'relative' }}>
+      <section style={{ backgroundColor: '#e8e8e8', paddingTop: 'clamp(1.25rem, 2.5vw, 2rem)', paddingBottom: 'clamp(2.5rem, 4vw, 3.5rem)', position: 'relative' }}>
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem', textAlign: 'center' }}>
           
 
@@ -825,7 +825,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               STAKEHOLDER GOALS & VALUE CREATION
             </span>
             <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
@@ -1050,7 +1050,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               END-TO-END APPLICATION ECOSYSTEM
             </span>
             <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
@@ -1293,7 +1293,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               PLATFORM SPECIFICATIONS & CORE CAPABILITIES
             </span>
             <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
@@ -1326,7 +1326,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
                     <div style={{ width: '42px', height: '42px', borderRadius: '12px', backgroundColor: '#F1F5F9', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0F172A' }}>
                       <IconComp size={22} />
                     </div>
-                    <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', fontWeight: '700', color: '#0B3A70', backgroundColor: '#EBF3FC', padding: '2px 8px', borderRadius: '6px' }}>
+                    <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', fontWeight: '700', color: '#475569', backgroundColor: '#F1F5F9', padding: '2px 8px', borderRadius: '6px' }}>
                       {mod.badge}
                     </span>
                   </div>
@@ -1410,7 +1410,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
                       <td style={{ padding: '1rem 1.25rem', fontWeight: '700', color: '#0F172A' }}>{row.dim}</td>
                       <td style={{ padding: '1rem 1.25rem', color: '#991B1B' }}>✕ {row.old}</td>
                       <td style={{ padding: '1rem 1.25rem', color: '#166534', fontWeight: '600' }}>✓ {row.neu}</td>
-                      <td style={{ padding: '1rem 1.25rem', color: '#0B3A70', fontWeight: '700' }}>{row.imp}</td>
+                      <td style={{ padding: '1rem 1.25rem', color: '#7B5872', fontWeight: '700' }}>{row.imp}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -1428,7 +1428,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               INTEGRATED PLATFORM ARCHITECTURE
             </span>
             <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 2.64vw, 1.98rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>

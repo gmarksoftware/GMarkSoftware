@@ -14,7 +14,7 @@ export default function HomePage({ onOpenExpertModal, onNavigate, onSelectApp })
   };
 
   return (
-    <div className="w-full flex flex-col bg-[#e8e8e8] text-slate-900" style={{ backgroundColor: '#e8e8e8' }}>
+    <div className="w-full max-w-full flex flex-col bg-[#e8e8e8] text-slate-900 overflow-x-hidden" style={{ backgroundColor: '#e8e8e8' }}>
       {/* 1st Page: Hero Section */}
       <Hero 
         title="The New Standard of"
@@ -29,7 +29,7 @@ export default function HomePage({ onOpenExpertModal, onNavigate, onSelectApp })
       {/* 2nd Page: Applications & Platforms Grid (Odoo Style) */}
       <section 
         id="applications-section" 
-        className="w-full min-h-screen bg-[#e8e8e8] flex flex-col items-center justify-center"
+        className="w-full min-h-0 pt-0 pb-6 sm:py-12 md:py-16 lg:min-h-screen lg:py-0 bg-[#e8e8e8] flex flex-col items-center justify-center overflow-x-hidden"
         style={{ backgroundColor: '#e8e8e8' }}
       >
         <ApplicationsGridSection 
@@ -41,7 +41,7 @@ export default function HomePage({ onOpenExpertModal, onNavigate, onSelectApp })
       {/* 3rd Page: Data Vision / Higher Grounds Section */}
       <section 
         id="data-vision-section" 
-        className="w-full min-h-screen bg-[#e8e8e8] flex flex-col items-center justify-center"
+        className="w-full min-h-0 bg-[#e8e8e8] flex flex-col items-center overflow-x-hidden"
         style={{ backgroundColor: '#e8e8e8' }}
       >
         <DataVisionSection />
@@ -50,7 +50,7 @@ export default function HomePage({ onOpenExpertModal, onNavigate, onSelectApp })
       {/* 4th Page: Builders Community Orbit Hero */}
       <section 
         id="community-section" 
-        className="w-full min-h-[72vh] md:min-h-screen flex flex-col overflow-hidden bg-white"
+        className="w-full min-h-0 pt-4 pb-8 sm:py-10 md:min-h-screen flex flex-col overflow-hidden bg-white"
         style={{ backgroundColor: '#ffffff' }}
       >
         <CommunityOrbitDemo />

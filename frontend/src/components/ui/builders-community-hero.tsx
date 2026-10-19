@@ -87,10 +87,10 @@ const DESKTOP_STAGE_H = 490;
 const DESKTOP_CENTER = { x: 600, y: 580 };
 const DESKTOP_RADIUS: Record<OrbitRing, number> = { outer: 490, inner: 390 };
 
-// Mobile Stage configuration (< 640px) - spacious, balanced non-colliding dimensions
+// Mobile Stage configuration (< 640px) - clean, balanced non-colliding dimensions
 const MOBILE_STAGE_W = 390;
-const MOBILE_STAGE_H = 385;
-const MOBILE_CENTER = { x: 195, y: 245 };
+const MOBILE_STAGE_H = 295;
+const MOBILE_CENTER = { x: 195, y: 195 };
 const MOBILE_RADIUS: Record<OrbitRing, number> = { outer: 170, inner: 116 };
 
 function positionOnRing(item: OrbitItem, isMobile: boolean): CSSProperties {
@@ -109,6 +109,13 @@ function positionOnRing(item: OrbitItem, isMobile: boolean): CSSProperties {
 function arcPath(r: number, isMobile: boolean) {
   const center = isMobile ? MOBILE_CENTER : DESKTOP_CENTER;
   const stageH = isMobile ? MOBILE_STAGE_H : DESKTOP_STAGE_H;
+
+  if (isMobile) {
+    // On mobile, the orbit is a clean semicircle dome overhead framing the avatars.
+    // It terminates at the semicircle baseline (center.y) so it never cuts through or overlaps the stats below.
+    return `M ${center.x - r} ${center.y} A ${r} ${r} 0 0 1 ${center.x + r} ${center.y}`;
+  }
+
   const dy = center.y - stageH;
   if (Math.abs(dy) >= r) {
     // If center is above stage bottom, arc starts/ends at y = center.y
@@ -296,9 +303,9 @@ export default function CommunityOrbit({
       setIsMobile(mobile);
 
       if (mobile) {
-        // On mobile, scale stage gently to fit screen width
-        const targetW = Math.min(parentW - 20, MOBILE_STAGE_W);
-        setScale(Math.min(1, Math.max(0.85, targetW / MOBILE_STAGE_W)));
+        // On mobile, scale stage to fit screen width without horizontal overflow
+        const targetW = Math.min(parentW - 24, MOBILE_STAGE_W);
+        setScale(Math.min(1, Math.max(0.68, targetW / MOBILE_STAGE_W)));
       } else {
         // On desktop, scale between 0.68 and 1.0 to fit container
         const targetW = Math.min(parentW - 32, DESKTOP_STAGE_W);
@@ -326,13 +333,13 @@ export default function CommunityOrbit({
 
   return (
     <div
-      className={`w-full flex-1 flex flex-col items-center justify-between text-center bg-white text-slate-900 pt-8 sm:pt-16 md:pt-20 pb-8 sm:pb-12 md:pb-16 ${className ?? ''}`}
+      className={`w-full max-w-full overflow-hidden flex-1 flex flex-col items-center justify-between text-center bg-white text-slate-900 pt-4 sm:pt-12 md:pt-20 pb-8 sm:pb-12 md:pb-16 ${className ?? ''}`}
       style={{ backgroundColor: '#ffffff' }}
     >
       {/* Orbit Visual Stage (Clean white background with elegant subtle orbit arcs) */}
       <div
         ref={frameRef}
-        className="relative mx-auto w-full max-w-[1240px] overflow-hidden flex justify-center bg-white"
+        className="relative mx-auto w-full max-w-[1240px] overflow-hidden flex justify-center bg-white px-2"
         style={{ height: stageH * scale, backgroundColor: '#ffffff' }}
       >
         <div
@@ -438,9 +445,9 @@ export default function CommunityOrbit({
           <div 
             className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-20"
             style={{
-              top: isMobile ? '275px' : '375px',
-              gap: isMobile ? '16px' : '36px',
-              width: isMobile ? '340px' : 'auto'
+              top: isMobile ? '215px' : '375px',
+              gap: isMobile ? 'clamp(10px, 3.5vw, 18px)' : '36px',
+              width: isMobile ? 'min(340px, 92%)' : 'auto'
             }}
           >
             {stats && stats.map((s, i) => (
@@ -461,7 +468,7 @@ export default function CommunityOrbit({
                   <span 
                     className="font-bold leading-none tracking-[-0.03em] text-[#0f172a] tabular-nums"
                     style={{
-                      fontSize: isMobile ? '24px' : '48px'
+                      fontSize: isMobile ? 'clamp(20px, 5.5vw, 24px)' : '48px'
                     }}
                   >
                     <CountUp value={s.value} delay={0.8 + i * 0.1} />
@@ -502,10 +509,10 @@ export default function CommunityOrbit({
               transition={{ duration: 0.7, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
             >
               <h2 
-                className="w-full max-w-[850px] text-center text-[#0f172a] mx-auto"
+                className="w-full max-w-[850px] text-center text-[#0f172a] mx-auto px-2"
                 style={{
                   fontFamily: "'Lora', serif",
-                  fontSize: 'clamp(1.75rem, 3.2vw, 2.7rem)',
+                  fontSize: 'clamp(1.5rem, 3.2vw, 2.7rem)',
                   lineHeight: '1.2',
                   letterSpacing: '-0.01em',
                   fontWeight: 600,
@@ -517,7 +524,7 @@ export default function CommunityOrbit({
           )}
 
           {tags && tags.length > 0 && (
-            <div className="w-full mt-4 sm:mt-6 flex max-w-[760px] flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 mx-auto">
+            <div className="w-full mt-4 sm:mt-6 flex max-w-[760px] flex-wrap items-center justify-center gap-2 sm:gap-3.5 mx-auto px-2">
               {tags.map((t, i) => {
                 const Tag = (t.href ? motion.a : motion.button) as typeof motion.a;
                 return (
