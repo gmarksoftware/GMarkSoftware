@@ -48,8 +48,7 @@ import {
   SlidersHorizontal,
   Edit3,
   ChevronDown,
-  ChevronUp,
-  ChevronRight
+  ChevronUp
 } from 'lucide-react';
 import { APPLICATIONS, findAppOrModule } from './ApplicationsGridSection';
 import { getModuleById } from '../data/modulesRegistry';
@@ -208,16 +207,111 @@ const INDUSTRY_CATEGORIES = [
   }
 ];
 
+const SOLUTION_CATEGORY_CONFIG = {
+  'CORE ERP & FINANCE': {
+    icon: Layers,
+    color: 'text-teal-600',
+    bg: 'bg-teal-50 border-teal-200/70',
+    badgeText: '6 Apps'
+  },
+  '4M OPERATIONS & CMMS': {
+    icon: Settings,
+    color: 'text-amber-600',
+    bg: 'bg-amber-50 border-amber-200/70',
+    badgeText: '6 Apps'
+  },
+  'INDUSTRIAL IOT & G-NOVA': {
+    icon: Activity,
+    color: 'text-sky-600',
+    bg: 'bg-sky-50 border-sky-200/70',
+    badgeText: '6 Apps'
+  },
+  'SUPPLY CHAIN & LOGISTICS': {
+    icon: Truck,
+    color: 'text-blue-600',
+    bg: 'bg-blue-50 border-blue-200/70',
+    badgeText: '6 Apps'
+  },
+  'FIELD FORCE & TELEMETRY': {
+    icon: MapPin,
+    color: 'text-violet-600',
+    bg: 'bg-violet-50 border-violet-200/70',
+    badgeText: '6 Apps'
+  },
+  'AGRI-COMMERCE & RURAL': {
+    icon: Sprout,
+    color: 'text-emerald-600',
+    bg: 'bg-emerald-50 border-emerald-200/70',
+    badgeText: '6 Apps'
+  },
+  'TASK MANAGEMENT (SYNKRO)': {
+    icon: ClipboardList,
+    color: 'text-rose-600',
+    bg: 'bg-rose-50 border-rose-200/70',
+    badgeText: '6 Apps'
+  },
+  'PLATFORM & EDGE CLOUD': {
+    icon: Server,
+    color: 'text-indigo-600',
+    bg: 'bg-indigo-50 border-indigo-200/70',
+    badgeText: '6 Apps'
+  }
+};
+
+const TECH_CATEGORY_CONFIG = {
+  'CORE STACK & CLOUD PLATFORM': {
+    icon: Server,
+    color: 'text-indigo-600',
+    bg: 'bg-indigo-50 border-indigo-200/70'
+  },
+  'EDGE TELEMETRY & PROTOCOLS': {
+    icon: Zap,
+    color: 'text-amber-600',
+    bg: 'bg-amber-50 border-amber-200/70'
+  },
+  'ENTERPRISE LOGIC & GOVERNANCE': {
+    icon: ShieldCheck,
+    color: 'text-teal-600',
+    bg: 'bg-teal-50 border-teal-200/70'
+  }
+};
+
+const INDUSTRY_CATEGORY_CONFIG = {
+  'FACILITIES & INFRASTRUCTURE': {
+    icon: Building2,
+    color: 'text-sky-600',
+    bg: 'bg-sky-50 border-sky-200/70'
+  },
+  'RURAL COMMERCE & AGRI-SUPPLY': {
+    icon: Sprout,
+    color: 'text-emerald-600',
+    bg: 'bg-emerald-50 border-emerald-200/70'
+  },
+  'MANUFACTURING & FLEET OPERATIONS': {
+    icon: Factory,
+    color: 'text-blue-600',
+    bg: 'bg-blue-50 border-blue-200/70'
+  }
+};
+
 export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertModal, onScrollToSection, onSelectApp }) {
   const [activeMenu, setActiveMenu] = useState(null); // 'solutions' | 'technology' | 'industries' | null
   const [isClosing, setIsClosing] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(null);
   const [scrolled, setScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const navRef = useRef(null);
   const scrollPosRef = useRef(0);
   const isLockedRef = useRef(false);
   const navigatingRef = useRef(false);
+  const lastScrollYRef = useRef(0);
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.setAttribute('data-nav-hidden', isVisible ? 'false' : 'true');
+    }
+  }, [isVisible]);
 
   useEffect(() => {
     setActiveCategoryIndex(null);
@@ -244,6 +338,8 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
     navigatingRef.current = true;
     closeMenu();
     setMobileMenuOpen(false);
+    setIsVisible(true);
+    lastScrollYRef.current = 0;
     if (onSelectApp) {
       const found = getModuleById(appId) || findAppOrModule(appId) || APPLICATIONS.find(a => a.id === appId) || { id: appId };
       onSelectApp({ ...found, navigationOrigin: origin });
@@ -324,16 +420,47 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
   }, []);
 
   useEffect(() => {
+    lastScrollYRef.current = Math.max(0, window.scrollY || window.pageYOffset || 0);
+
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
+      // Don't auto-hide when mobile menu or mega-menu dropdown is open, or scroll is locked
+      if (mobileMenuOpen || activeMenu || isLockedRef.current) {
+        setIsVisible(true);
+        return;
       }
+
+      const currentScrollY = Math.max(0, window.scrollY || window.pageYOffset || 0);
+      const isPast = currentScrollY > 20;
+      setScrolled((prev) => (prev !== isPast ? isPast : prev));
+
+      // Always visible near the top of the page
+      if (currentScrollY <= 40) {
+        setIsVisible(true);
+        lastScrollYRef.current = currentScrollY;
+        return;
+      }
+
+      const deltaY = currentScrollY - lastScrollYRef.current;
+
+      // Ignore small movements (threshold of 8px to prevent jitter)
+      if (Math.abs(deltaY) < 8) {
+        return;
+      }
+
+      if (deltaY > 0) {
+        // Scrolling DOWN -> hide navigation bar smoothly
+        setIsVisible(false);
+      } else {
+        // Scrolling UP (reverse) -> make navigation bar visible smoothly
+        setIsVisible(true);
+      }
+
+      lastScrollYRef.current = currentScrollY;
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [mobileMenuOpen, activeMenu]);
 
   // Close menu on click outside
   useEffect(() => {
@@ -379,6 +506,8 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
   const handlePageNav = (page) => {
     navigatingRef.current = true;
     closeAllMenus();
+    setIsVisible(true);
+    lastScrollYRef.current = 0;
     if (onNavigate) {
       onNavigate(page);
     }
@@ -388,6 +517,8 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
   const handleSolutionNav = (sectionId) => {
     navigatingRef.current = true;
     closeAllMenus();
+    setIsVisible(true);
+    lastScrollYRef.current = 0;
     if (currentPage !== 'home' && onNavigate) {
       onNavigate('home');
       setTimeout(() => {
@@ -411,209 +542,142 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
 
       <header 
         ref={navRef}
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        className="fixed top-0 left-0 right-0 z-50"
         style={{
           backgroundColor: '#FFFFFF',
-          borderBottom: activeMenu ? '1px solid #E2E8F0' : '1px solid #E2E8F0',
-          boxShadow: activeMenu ? '0 16px 36px -4px rgba(15, 23, 42, 0.12)' : (scrolled ? '0 2px 8px rgba(15, 23, 42, 0.04)' : 'none'),
+          borderBottom: activeMenu || scrolled ? '1px solid #E2E8F0' : 'none',
+          boxShadow: activeMenu 
+            ? '0 16px 36px -4px rgba(15, 23, 42, 0.12)' 
+            : (scrolled ? '0 2px 8px rgba(15, 23, 42, 0.04)' : 'none'),
+          transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
+          pointerEvents: isVisible ? 'auto' : 'none',
+          transition: 'transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.25s ease',
           zIndex: 60
         }}
       >
         <div style={{ backgroundColor: '#FFFFFF', position: 'relative', zIndex: 61 }}>
-          <div style={{ width: '100%', padding: '0 1.75rem', margin: 0 }} className="nav-header-full">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', minHeight: '64px', position: 'relative', width: '100%' }}>
+          <div className="nav-header-full">
+            <div className="nav-header-inner">
               
               {/* Left Side Brand Logo */}
               <div 
                 onClick={() => handlePageNav('home')}
-                style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  cursor: 'pointer',
-                  zIndex: 10,
-                  userSelect: 'none',
-                  padding: '4px 0'
-                }}
                 className="nav-logo-wrap"
-                title="G Mark"
+                title="G Mark Software"
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handlePageNav('home'); } }}
               >
                 <img 
                   src={logoBlack} 
-                  alt="G Mark" 
-                  style={{ height: '38px', width: 'auto', objectFit: 'contain' }}
+                  alt="G Mark Software Pvt. Ltd" 
+                  className="nav-logo-img"
+                  draggable={false}
                 />
               </div>
 
-              {/* Clean Navigation Bar Links */}
-              <nav 
-                style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  gap: '2.5rem',
-                  position: 'absolute',
-                  left: '50%',
-                  transform: 'translateX(-50%)'
-                }}
-                className="desktop-nav"
-              >
-                {/* HOME BUTTON */}
-                <div>
-                  <button 
-                    onClick={() => handlePageNav('home')}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      fontSize: '0.95rem',
-                      fontWeight: (currentPage === 'home' && !activeMenu) ? '700' : '600',
-                      color: (currentPage === 'home' && !activeMenu) ? '#0B3A70' : '#1E293B',
-                      cursor: 'pointer',
-                      padding: '0.65rem 0.85rem',
-                      fontFamily: 'inherit',
-                      borderRadius: '8px',
-                      backgroundColor: (currentPage === 'home' && !activeMenu) ? '#F1F5F9' : 'transparent',
-                      transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
-                    }}
-                  >
-                    Home
-                  </button>
-                </div>
+              {/* Center: Odoo-Style Clean Minimalist Navigation Links */}
+              <nav className="desktop-nav">
+                {/* HOME */}
+                <button 
+                  type="button"
+                  onClick={() => handlePageNav('home')}
+                  className={`nav-link-odoo ${currentPage === 'home' && !activeMenu ? 'nav-link-odoo-active' : ''}`}
+                >
+                  <span>Home</span>
+                </button>
 
-                {/* SOLUTIONS BUTTON */}
-                <div>
-                  <button 
-                    onClick={() => toggleMenu('solutions')}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      fontSize: '0.95rem',
-                      fontWeight: activeMenu === 'solutions' ? '700' : '600',
-                      color: activeMenu === 'solutions' ? '#0B3A70' : '#1E293B',
-                      cursor: 'pointer',
-                      padding: '0.65rem 0.85rem',
-                      fontFamily: 'inherit',
-                      borderRadius: '8px',
-                      backgroundColor: activeMenu === 'solutions' ? '#F1F5F9' : 'transparent',
-                      transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
-                    }}
-                  >
-                    Solutions
-                  </button>
-                </div>
+                {/* SOLUTIONS (Dropdown) */}
+                <button 
+                  type="button"
+                  onClick={() => toggleMenu('solutions')}
+                  className={`nav-link-odoo ${activeMenu === 'solutions' ? 'nav-link-odoo-active' : ''}`}
+                  aria-expanded={activeMenu === 'solutions'}
+                >
+                  <span>Solutions</span>
+                  <ChevronDown 
+                    size={13} 
+                    className={`nav-link-chevron ${activeMenu === 'solutions' ? 'nav-link-chevron-open' : ''}`} 
+                  />
+                </button>
 
-                {/* TECHNOLOGY BUTTON */}
-                <div>
-                  <button 
-                    onClick={() => toggleMenu('technology')}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      fontSize: '0.95rem',
-                      fontWeight: activeMenu === 'technology' ? '700' : '600',
-                      color: activeMenu === 'technology' ? '#0B3A70' : '#1E293B',
-                      cursor: 'pointer',
-                      padding: '0.65rem 0.85rem',
-                      fontFamily: 'inherit',
-                      borderRadius: '8px',
-                      backgroundColor: activeMenu === 'technology' ? '#F1F5F9' : 'transparent',
-                      transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
-                    }}
-                  >
-                    Technology
-                  </button>
-                </div>
+                {/* TECHNOLOGY (Dropdown) */}
+                <button 
+                  type="button"
+                  onClick={() => toggleMenu('technology')}
+                  className={`nav-link-odoo ${activeMenu === 'technology' ? 'nav-link-odoo-active' : ''}`}
+                  aria-expanded={activeMenu === 'technology'}
+                >
+                  <span>Technology</span>
+                  <ChevronDown 
+                    size={13} 
+                    className={`nav-link-chevron ${activeMenu === 'technology' ? 'nav-link-chevron-open' : ''}`} 
+                  />
+                </button>
 
-                {/* INDUSTRIES BUTTON */}
-                <div>
-                  <button 
-                    onClick={() => toggleMenu('industries')}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      fontSize: '0.95rem',
-                      fontWeight: activeMenu === 'industries' ? '700' : '600',
-                      color: activeMenu === 'industries' ? '#0B3A70' : '#1E293B',
-                      cursor: 'pointer',
-                      padding: '0.65rem 0.85rem',
-                      fontFamily: 'inherit',
-                      borderRadius: '8px',
-                      backgroundColor: activeMenu === 'industries' ? '#F1F5F9' : 'transparent',
-                      transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
-                    }}
-                  >
-                    Industries
-                  </button>
-                </div>
+                {/* INDUSTRIES (Dropdown) */}
+                <button 
+                  type="button"
+                  onClick={() => toggleMenu('industries')}
+                  className={`nav-link-odoo ${activeMenu === 'industries' ? 'nav-link-odoo-active' : ''}`}
+                  aria-expanded={activeMenu === 'industries'}
+                >
+                  <span>Industries</span>
+                  <ChevronDown 
+                    size={13} 
+                    className={`nav-link-chevron ${activeMenu === 'industries' ? 'nav-link-chevron-open' : ''}`} 
+                  />
+                </button>
 
-                {/* ABOUT BUTTON (Full Page View) */}
-                <div>
-                  <button 
-                    onClick={() => handlePageNav('about')}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      fontSize: '0.95rem',
-                      fontWeight: currentPage === 'about' ? '700' : '600',
-                      color: currentPage === 'about' ? '#0B3A70' : '#1E293B',
-                      cursor: 'pointer',
-                      padding: '0.65rem 0.85rem',
-                      fontFamily: 'inherit',
-                      borderRadius: '8px',
-                      backgroundColor: currentPage === 'about' ? '#F1F5F9' : 'transparent',
-                      transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
-                    }}
-                  >
-                    About
-                  </button>
-                </div>
+                {/* ABOUT */}
+                <button 
+                  type="button"
+                  onClick={() => handlePageNav('about')}
+                  className={`nav-link-odoo ${currentPage === 'about' && !activeMenu ? 'nav-link-odoo-active' : ''}`}
+                >
+                  <span>About</span>
+                </button>
 
-                {/* HELP BUTTON (Full Page View) */}
-                <div>
-                  <button 
-                    onClick={() => handlePageNav('help')}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      fontSize: '0.95rem',
-                      fontWeight: currentPage === 'help' ? '700' : '600',
-                      color: currentPage === 'help' ? '#0B3A70' : '#1E293B',
-                      cursor: 'pointer',
-                      padding: '0.65rem 0.85rem',
-                      fontFamily: 'inherit',
-                      borderRadius: '8px',
-                      backgroundColor: currentPage === 'help' ? '#F1F5F9' : 'transparent',
-                      transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
-                    }}
-                  >
-                    Help
-                  </button>
-                </div>
-
+                {/* HELP */}
+                <button 
+                  type="button"
+                  onClick={() => handlePageNav('help')}
+                  className={`nav-link-odoo ${currentPage === 'help' && !activeMenu ? 'nav-link-odoo-active' : ''}`}
+                >
+                  <span>Help</span>
+                </button>
               </nav>
 
-              {/* Right Spacer for Desktop Layout Symmetry */}
-              <div style={{ width: '120px' }} className="desktop-right-spacer" />
+              {/* Right Side: Odoo-Style Action Buttons */}
+              <div className="desktop-nav-actions">
+                <button 
+                  type="button"
+                  onClick={() => handlePageNav('help')}
+                  className="nav-action-text-btn"
+                >
+                  Contact
+                </button>
+                <button 
+                  type="button"
+                  onClick={onOpenExpertModal}
+                  className="nav-action-primary-btn"
+                >
+                  <span>Request Consultation</span>
+                </button>
+              </div>
 
-              {/* Mobile hamburger toggle */}
+              {/* Mobile Hamburger Toggle (Clean Flat Minimalist Style) */}
               <div className="mobile-nav-toggle-wrap">
                 <button
-                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  style={{
-                    background: 'none',
-                    border: '1px solid #CBD5E1',
-                    borderRadius: '8px',
-                    padding: '8px',
-                    color: '#1E293B',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    minWidth: '40px',
-                    minHeight: '40px'
+                  type="button"
+                  onClick={() => {
+                    if (activeMenu) closeMenu();
+                    setMobileMenuOpen(!mobileMenuOpen);
                   }}
-                  className="mobile-nav-toggle"
+                  className="mobile-nav-toggle-odoo text-slate-800 hover:text-slate-950 p-1 border-0 bg-transparent shadow-none ring-0 outline-none focus:outline-none"
                   aria-label="Toggle navigation menu"
                 >
-                  {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                  {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
               </div>
 
@@ -664,92 +728,80 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
 
                 <div className="solutions-mega-menu-inner" style={{ maxWidth: '1240px', margin: '0 auto', backgroundColor: '#FFFFFF' }}>
                   
-                  {/* Unified Interactive Category Accordion (Responsive Desktop, Tablet & Mobile) */}
-                  <div className="category-accordion-container">
+                  {/* Desktop Directory Header */}
+                  <div className="hidden lg:flex items-center justify-between pb-3.5 mb-4 border-b border-slate-100">
+                    <div>
+                      <h2 className="text-sm font-bold text-slate-900 tracking-wide uppercase">
+                        Solutions & Application Directory
+                      </h2>
+                      <p className="text-xs text-slate-500 mt-0.5">
+                        Integrated industrial platforms, ERP modules, IoT telemetry and field operations
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={closeMenu}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors cursor-pointer"
+                      aria-label="Close Solutions Menu"
+                    >
+                      <span>Close</span>
+                      <X size={14} />
+                    </button>
+                  </div>
+
+                  {/* Flat Clean Minimalist Grid Layout */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-7 sm:gap-y-8 lg:gap-x-10 lg:gap-y-9 py-2">
                     {SOLUTION_CATEGORIES.map((cat, catIdx) => {
-                      const isExpanded = activeCategoryIndex === catIdx;
+                      const config = SOLUTION_CATEGORY_CONFIG[cat.title] || {
+                        icon: Layers,
+                        color: 'text-slate-700',
+                        bg: 'bg-slate-50 border-slate-200/70'
+                      };
+                      const CatIcon = config.icon;
+
                       return (
                         <div 
                           key={catIdx} 
-                          className={`category-accordion-card ${isExpanded ? 'category-accordion-card-active' : ''}`}
+                          className="flex flex-col group/category"
                         >
-                          <button
-                            type="button"
-                            onClick={() => setActiveCategoryIndex(isExpanded ? null : catIdx)}
-                            className="category-accordion-header"
-                            aria-expanded={isExpanded}
-                          >
-                            <div className="category-accordion-header-left">
-                              <span className="category-accordion-title">
+                          {/* Category Header */}
+                          <div className="flex items-center justify-between pb-2.5 mb-2 border-b border-slate-200/70">
+                            <div className="flex items-center gap-2.5 min-w-0">
+                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 border ${config.bg} ${config.color} transition-transform group-hover/category:scale-105 duration-200`}>
+                                <CatIcon size={15} />
+                              </div>
+                              <h3 className="text-xs sm:text-[13px] font-bold tracking-wider text-slate-900 uppercase truncate font-sans">
                                 {cat.title}
-                              </span>
+                              </h3>
                             </div>
-                            <div className="category-accordion-header-right">
-                              <span className="category-accordion-count-badge">
-                                {cat.items.length} Apps
-                              </span>
-                              <div className={`category-accordion-chevron ${isExpanded ? 'category-accordion-chevron-open' : ''}`}>
-                                <ChevronDown size={18} />
-                              </div>
-                            </div>
-                          </button>
+                            <span className="text-[11px] font-semibold text-slate-500 bg-slate-100/90 border border-slate-200/70 px-2 py-0.5 rounded-full shrink-0 ml-2">
+                              {cat.items.length} Apps
+                            </span>
+                          </div>
 
-                          {isExpanded && (
-                            <div className="category-accordion-body">
-                              <div className="category-accordion-body-header">
-                                <span className="category-accordion-body-subtitle">
-                                  Select an application to view modules and features
+                          {/* Associated Apps List directly on Section Background */}
+                          <div className="space-y-0.5">
+                            {cat.items.map((item, idx) => (
+                              <div 
+                                key={idx} 
+                                onClick={() => handleAppItemClick(item.appId, 'solutions')}
+                                onKeyDown={(e) => {
+                                  if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    handleAppItemClick(item.appId, 'solutions');
+                                  }
+                                }}
+                                className="group/item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer select-none transition-colors duration-150 hover:bg-slate-50 active:bg-slate-100"
+                                role="button"
+                                tabIndex={0}
+                              >
+                                <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover/item:bg-blue-600 transition-colors shrink-0" />
+                                <span className="text-[13px] font-medium text-slate-700 group-hover/item:text-slate-950 truncate transition-colors">
+                                  {item.name}
                                 </span>
-                                <button
-                                  type="button"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    setActiveCategoryIndex(null);
-                                  }}
-                                  className="category-close-top-btn"
-                                  aria-label="Close section"
-                                >
-                                  <X size={13} />
-                                  <span>Close</span>
-                                </button>
                               </div>
-
-                              <div className="category-items-grid-simple">
-                                {cat.items.map((item, idx) => (
-                                  <div 
-                                    key={idx} 
-                                    onClick={() => handleAppItemClick(item.appId, 'solutions')}
-                                    onKeyDown={(e) => {
-                                      if (e.key === 'Enter' || e.key === ' ') {
-                                        e.preventDefault();
-                                        handleAppItemClick(item.appId, 'solutions');
-                                      }
-                                    }}
-                                    className="category-item-simple-row"
-                                    role="button"
-                                    tabIndex={0}
-                                  >
-                                    <span className="category-item-simple-name">{item.name}</span>
-                                    <ChevronRight size={15} className="category-item-simple-arrow" />
-                                  </div>
-                                ))}
-                              </div>
-
-                              <div className="category-accordion-footer">
-                                <button
-                                  type="button"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    setActiveCategoryIndex(null);
-                                  }}
-                                  className="category-accordion-close-btn"
-                                >
-                                  <ChevronUp size={14} />
-                                  <span>Collapse Section</span>
-                                </button>
-                              </div>
-                            </div>
-                          )}
+                            ))}
+                          </div>
                         </div>
                       );
                     })}
@@ -813,96 +865,85 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
 
                 <div className="technology-mega-menu-inner" style={{ maxWidth: '1240px', margin: '0 auto', backgroundColor: '#FFFFFF' }}>
                   
-                  {/* Unified Interactive Category Accordion (Responsive Desktop, Tablet & Mobile) */}
-                  <div className="category-accordion-container">
+                  {/* Desktop Tech Header */}
+                  <div className="hidden lg:flex items-center justify-between pb-3.5 mb-4 border-b border-slate-100">
+                    <div>
+                      <h2 className="text-sm font-bold text-slate-900 tracking-wide uppercase">
+                        Enterprise Technology & Cloud Stack
+                      </h2>
+                      <p className="text-xs text-slate-500 mt-0.5">
+                        Enterprise stack architecture, industrial protocols, edge telemetry and distributed logic
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={closeMenu}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors cursor-pointer"
+                      aria-label="Close Technology Menu"
+                    >
+                      <span>Close</span>
+                      <X size={14} />
+                    </button>
+                  </div>
+
+                  {/* Flat Clean Minimalist Grid Layout */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-7 sm:gap-y-8 lg:gap-x-10 lg:gap-y-9 py-2">
                     {TECHNOLOGY_CATEGORIES.map((cat, catIdx) => {
-                      const isExpanded = activeCategoryIndex === catIdx;
+                      const config = TECH_CATEGORY_CONFIG[cat.title] || {
+                        icon: Server,
+                        color: 'text-slate-700',
+                        bg: 'bg-slate-50 border-slate-200/70'
+                      };
+                      const CatIcon = config.icon;
+
                       return (
                         <div 
                           key={catIdx} 
-                          className={`category-accordion-card ${isExpanded ? 'category-accordion-card-active' : ''}`}
+                          className="flex flex-col group/category"
                         >
-                          <button
-                            type="button"
-                            onClick={() => setActiveCategoryIndex(isExpanded ? null : catIdx)}
-                            className="category-accordion-header"
-                            aria-expanded={isExpanded}
-                          >
-                            <div className="category-accordion-header-left">
-                              <span className="category-accordion-title">
+                          {/* Category Header */}
+                          <div className="flex items-center justify-between pb-2.5 mb-2 border-b border-slate-200/70">
+                            <div className="flex items-center gap-2.5 min-w-0">
+                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 border ${config.bg} ${config.color} transition-transform group-hover/category:scale-105 duration-200`}>
+                                <CatIcon size={15} />
+                              </div>
+                              <h3 className="text-xs sm:text-[13px] font-bold tracking-wider text-slate-900 uppercase truncate font-sans">
                                 {cat.title}
-                              </span>
+                              </h3>
                             </div>
-                            <div className="category-accordion-header-right">
-                              <span className="category-accordion-count-badge">
-                                {cat.items.length} Tech
-                              </span>
-                              <div className={`category-accordion-chevron ${isExpanded ? 'category-accordion-chevron-open' : ''}`}>
-                                <ChevronDown size={18} />
-                              </div>
-                            </div>
-                          </button>
+                            <span className="text-[11px] font-semibold text-slate-500 bg-slate-100/90 border border-slate-200/70 px-2 py-0.5 rounded-full shrink-0 ml-2">
+                              {cat.items.length} Tech
+                            </span>
+                          </div>
 
-                          {isExpanded && (
-                            <div className="category-accordion-body">
-                              <div className="category-accordion-body-header">
-                                <span className="category-accordion-body-subtitle">
-                                  Enterprise Stack Architecture & Industrial Protocols
-                                </span>
-                                <button
-                                  type="button"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    setActiveCategoryIndex(null);
-                                  }}
-                                  className="category-close-top-btn"
-                                  aria-label="Close section"
-                                >
-                                  <X size={13} />
-                                  <span>Close</span>
-                                </button>
+                          {/* Associated Tech Items directly on Section Background */}
+                          <div className="space-y-1">
+                            {cat.items.map((item, idx) => (
+                              <div 
+                                key={idx} 
+                                onClick={() => handleAppItemClick(item.appId, 'technology')}
+                                onKeyDown={(e) => {
+                                  if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    handleAppItemClick(item.appId, 'technology');
+                                  }
+                                }}
+                                className="group/item flex items-start gap-2 px-2 py-1.5 rounded-lg cursor-pointer select-none transition-colors duration-150 hover:bg-slate-50 active:bg-slate-100"
+                                role="button"
+                                tabIndex={0}
+                              >
+                                <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover/item:bg-blue-600 transition-colors shrink-0 mt-1.5" />
+                                <div className="min-w-0 flex-1">
+                                  <span className="text-[13px] font-medium text-slate-700 group-hover/item:text-slate-950 transition-colors block leading-snug">
+                                    {item.label}
+                                  </span>
+                                  <p className="text-[11.5px] text-slate-500 mt-0.5 line-clamp-2 leading-relaxed">
+                                    {item.desc}
+                                  </p>
+                                </div>
                               </div>
-
-                              <div className="category-items-grid-detailed">
-                                {cat.items.map((item, idx) => (
-                                  <div 
-                                    key={idx} 
-                                    onClick={() => handleAppItemClick(item.appId, 'technology')}
-                                    onKeyDown={(e) => {
-                                      if (e.key === 'Enter' || e.key === ' ') {
-                                        e.preventDefault();
-                                        handleAppItemClick(item.appId, 'technology');
-                                      }
-                                    }}
-                                    className="category-item-detailed-row"
-                                    role="button"
-                                    tabIndex={0}
-                                  >
-                                    <div className="category-item-detailed-label">
-                                      {item.label}
-                                    </div>
-                                    <div className="category-item-detailed-desc">
-                                      {item.desc}
-                                    </div>
-                                  </div>
-                                ))}
-                              </div>
-
-                              <div className="category-accordion-footer">
-                                <button
-                                  type="button"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    setActiveCategoryIndex(null);
-                                  }}
-                                  className="category-accordion-close-btn"
-                                >
-                                  <ChevronUp size={14} />
-                                  <span>Close Section</span>
-                                </button>
-                              </div>
-                            </div>
-                          )}
+                            ))}
+                          </div>
                         </div>
                       );
                     })}
@@ -966,96 +1007,85 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
 
                 <div className="industries-mega-menu-inner" style={{ maxWidth: '1240px', margin: '0 auto', backgroundColor: '#FFFFFF' }}>
                   
-                  {/* Unified Interactive Category Accordion (Responsive Desktop, Tablet & Mobile) */}
-                  <div className="category-accordion-container">
+                  {/* Desktop Industry Header */}
+                  <div className="hidden lg:flex items-center justify-between pb-3.5 mb-4 border-b border-slate-100">
+                    <div>
+                      <h2 className="text-sm font-bold text-slate-900 tracking-wide uppercase">
+                        Industry Verticals & Deployments
+                      </h2>
+                      <p className="text-xs text-slate-500 mt-0.5">
+                        Field-proven operational systems across smart facilities, rural commerce and manufacturing fleets
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={closeMenu}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors cursor-pointer"
+                      aria-label="Close Industries Menu"
+                    >
+                      <span>Close</span>
+                      <X size={14} />
+                    </button>
+                  </div>
+
+                  {/* Flat Clean Minimalist Grid Layout */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-7 sm:gap-y-8 lg:gap-x-10 lg:gap-y-9 py-2">
                     {INDUSTRY_CATEGORIES.map((cat, catIdx) => {
-                      const isExpanded = activeCategoryIndex === catIdx;
+                      const config = INDUSTRY_CATEGORY_CONFIG[cat.title] || {
+                        icon: Building2,
+                        color: 'text-slate-700',
+                        bg: 'bg-slate-50 border-slate-200/70'
+                      };
+                      const CatIcon = config.icon;
+
                       return (
                         <div 
                           key={catIdx} 
-                          className={`category-accordion-card ${isExpanded ? 'category-accordion-card-active' : ''}`}
+                          className="flex flex-col group/category"
                         >
-                          <button
-                            type="button"
-                            onClick={() => setActiveCategoryIndex(isExpanded ? null : catIdx)}
-                            className="category-accordion-header"
-                            aria-expanded={isExpanded}
-                          >
-                            <div className="category-accordion-header-left">
-                              <span className="category-accordion-title">
+                          {/* Category Header */}
+                          <div className="flex items-center justify-between pb-2.5 mb-2 border-b border-slate-200/70">
+                            <div className="flex items-center gap-2.5 min-w-0">
+                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 border ${config.bg} ${config.color} transition-transform group-hover/category:scale-105 duration-200`}>
+                                <CatIcon size={15} />
+                              </div>
+                              <h3 className="text-xs sm:text-[13px] font-bold tracking-wider text-slate-900 uppercase truncate font-sans">
                                 {cat.title}
-                              </span>
+                              </h3>
                             </div>
-                            <div className="category-accordion-header-right">
-                              <span className="category-accordion-count-badge">
-                                {cat.items.length} Verticals
-                              </span>
-                              <div className={`category-accordion-chevron ${isExpanded ? 'category-accordion-chevron-open' : ''}`}>
-                                <ChevronDown size={18} />
-                              </div>
-                            </div>
-                          </button>
+                            <span className="text-[11px] font-semibold text-slate-500 bg-slate-100/90 border border-slate-200/70 px-2 py-0.5 rounded-full shrink-0 ml-2">
+                              {cat.items.length} Verticals
+                            </span>
+                          </div>
 
-                          {isExpanded && (
-                            <div className="category-accordion-body">
-                              <div className="category-accordion-body-header">
-                                <span className="category-accordion-body-subtitle">
-                                  Industry Verticals, Field Deployments & Operations
-                                </span>
-                                <button
-                                  type="button"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    setActiveCategoryIndex(null);
-                                  }}
-                                  className="category-close-top-btn"
-                                  aria-label="Close section"
-                                >
-                                  <X size={13} />
-                                  <span>Close</span>
-                                </button>
+                          {/* Associated Industry Items directly on Section Background */}
+                          <div className="space-y-1">
+                            {cat.items.map((item, idx) => (
+                              <div 
+                                key={idx} 
+                                onClick={() => handleAppItemClick(item.appId, 'industries')}
+                                onKeyDown={(e) => {
+                                  if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    handleAppItemClick(item.appId, 'industries');
+                                  }
+                                }}
+                                className="group/item flex items-start gap-2 px-2 py-1.5 rounded-lg cursor-pointer select-none transition-colors duration-150 hover:bg-slate-50 active:bg-slate-100"
+                                role="button"
+                                tabIndex={0}
+                              >
+                                <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover/item:bg-blue-600 transition-colors shrink-0 mt-1.5" />
+                                <div className="min-w-0 flex-1">
+                                  <span className="text-[13px] font-medium text-slate-700 group-hover/item:text-slate-950 transition-colors block leading-snug">
+                                    {item.label}
+                                  </span>
+                                  <p className="text-[11.5px] text-slate-500 mt-0.5 line-clamp-2 leading-relaxed">
+                                    {item.desc}
+                                  </p>
+                                </div>
                               </div>
-
-                              <div className="category-items-grid-detailed">
-                                {cat.items.map((item, idx) => (
-                                  <div 
-                                    key={idx} 
-                                    onClick={() => handleAppItemClick(item.appId, 'industries')}
-                                    onKeyDown={(e) => {
-                                      if (e.key === 'Enter' || e.key === ' ') {
-                                        e.preventDefault();
-                                        handleAppItemClick(item.appId, 'industries');
-                                      }
-                                    }}
-                                    className="category-item-detailed-row"
-                                    role="button"
-                                    tabIndex={0}
-                                  >
-                                    <div className="category-item-detailed-label">
-                                      {item.label}
-                                    </div>
-                                    <div className="category-item-detailed-desc">
-                                      {item.desc}
-                                    </div>
-                                  </div>
-                                ))}
-                              </div>
-
-                              <div className="category-accordion-footer">
-                                <button
-                                  type="button"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    setActiveCategoryIndex(null);
-                                  }}
-                                  className="category-accordion-close-btn"
-                                >
-                                  <ChevronUp size={14} />
-                                  <span>Close Section</span>
-                                </button>
-                              </div>
-                            </div>
-                          )}
+                            ))}
+                          </div>
                         </div>
                       );
                     })}
@@ -1863,7 +1893,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
           .technology-mega-menu-inner,
           .industries-mega-menu-inner {
             padding: 1.75rem 2rem 2rem;
-            max-width: 1060px !important;
+            max-width: 1240px !important;
           }
 
           .category-accordion-container {
@@ -2147,30 +2177,280 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
           }
         }
 
+        /* Navbar Header & Brand Logo Responsive Styling */
+        .nav-header-full {
+          width: 100%;
+          padding: 0 1.75rem;
+          margin: 0;
+          box-sizing: border-box;
+        }
+
+        .nav-header-inner {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          min-height: 62px;
+          position: relative;
+          width: 100%;
+        }
+
+        .nav-logo-wrap {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          z-index: 10;
+          user-select: none;
+          padding: 3px 0;
+          transition: opacity 0.2s ease, transform 0.15s ease;
+        }
+        .nav-logo-wrap:hover {
+          opacity: 0.88;
+        }
+        .nav-logo-wrap:active {
+          transform: scale(0.98);
+        }
+
+        .nav-logo-img {
+          height: 27px;
+          width: auto;
+          max-width: 135px;
+          object-fit: contain;
+          display: block;
+          transition: height 0.2s ease, max-width 0.2s ease;
+        }
+
+        /* ========================================================================= */
+        /* ODOO-STYLE CLEAN ENTERPRISE HEADER STYLES */
+        /* ========================================================================= */
+
+        /* Desktop Nav Link Container */
+        .desktop-nav {
+          display: none;
+          align-items: center;
+          gap: 0.25rem;
+          margin: 0;
+          padding: 0;
+        }
+
+        /* Minimalist Nav Links (Clean text, no button box on hover) */
+        .nav-link-odoo {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.35rem;
+          padding: 0.5rem 0.65rem;
+          font-family: inherit;
+          font-size: 14.5px;
+          font-weight: 500;
+          color: #475569;
+          background: transparent !important;
+          border: none;
+          outline: none;
+          border-radius: 0;
+          cursor: pointer;
+          user-select: none;
+          transition: color 0.15s ease;
+          line-height: 1.25;
+        }
+
+        .nav-link-odoo:hover,
+        .nav-link-odoo:focus,
+        .nav-link-odoo:focus-visible {
+          color: #0F172A;
+          background: transparent !important;
+          outline: none;
+        }
+
+        .nav-link-odoo:active {
+          color: #0F172A;
+          background: transparent !important;
+        }
+
+        .nav-link-odoo-active {
+          color: #0F172A !important;
+          font-weight: 600 !important;
+          background: transparent !important;
+        }
+
+        /* Smooth Rotating Chevron for Dropdown Links */
+        .nav-link-chevron {
+          color: #94A3B8;
+          transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), color 0.15s ease;
+        }
+
+        .nav-link-odoo:hover .nav-link-chevron {
+          color: #0F172A;
+        }
+
+        .nav-link-odoo-active .nav-link-chevron {
+          color: #0F172A;
+        }
+
+        .nav-link-chevron-open {
+          transform: rotate(180deg);
+          color: #0F172A !important;
+        }
+
+        /* Odoo Right Actions Group */
+        .desktop-nav-actions {
+          display: none;
+          align-items: center;
+          gap: 0.75rem;
+        }
+
+        .nav-action-text-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.45rem 0.65rem;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 500;
+          color: #475569;
+          background: transparent !important;
+          border: none;
+          outline: none;
+          border-radius: 0;
+          cursor: pointer;
+          transition: color 0.15s ease;
+        }
+
+        .nav-action-text-btn:hover,
+        .nav-action-text-btn:focus,
+        .nav-action-text-btn:active {
+          color: #0F172A;
+          background: transparent !important;
+          outline: none;
+        }
+
+        .nav-action-primary-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.375rem;
+          padding: 0.48rem 1.05rem;
+          font-family: inherit;
+          font-size: 13.5px;
+          font-weight: 600;
+          color: #FFFFFF;
+          background-color: #714B67; /* Odoo signature enterprise purple */
+          border: 1px solid transparent;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: background-color 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
+          box-shadow: 0 1px 2px rgba(113, 75, 103, 0.15);
+        }
+
+        .nav-action-primary-btn:hover {
+          background-color: #5E3E55;
+          box-shadow: 0 2px 6px rgba(113, 75, 103, 0.25);
+        }
+
+        .nav-action-primary-btn:active {
+          transform: scale(0.98);
+        }
+
+        /* Mobile Nav Toggle Button */
+        .mobile-nav-toggle-wrap {
+          display: flex;
+          align-items: center;
+        }
+
+        .mobile-nav-toggle-odoo {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 4px;
+          color: #1E293B;
+          background: transparent !important;
+          border: none !important;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+          outline: none !important;
+          cursor: pointer;
+          transition: color 0.15s ease, opacity 0.15s ease;
+        }
+
+        .mobile-nav-toggle-odoo:hover {
+          background-color: transparent !important;
+          color: #0F172A;
+          border: none !important;
+          box-shadow: none !important;
+        }
+
+        .mobile-nav-toggle-odoo:active {
+          background-color: transparent !important;
+          opacity: 0.7;
+          border: none !important;
+          box-shadow: none !important;
+        }
+
         /* Desktop Nav Breakpoint (>= 1024px) */
         @media (min-width: 1024px) {
           .desktop-nav {
             display: flex !important;
           }
-          .desktop-right-spacer {
-            display: block !important;
+          .desktop-nav-actions {
+            display: flex !important;
           }
           .mobile-nav-toggle-wrap {
             display: none !important;
           }
         }
 
-        /* Tablet & Mobile Nav Breakpoint (< 1024px) */
+        /* Tablet Nav Breakpoint (< 1024px) */
         @media (max-width: 1023px) {
+          .nav-header-full {
+            padding: 0 1.25rem;
+          }
+          .nav-header-inner {
+            min-height: 58px;
+          }
+          .nav-logo-img {
+            height: 24px;
+            max-width: 120px;
+          }
           .desktop-nav {
             display: none !important;
           }
-          .desktop-right-spacer {
+          .desktop-nav-actions {
             display: none !important;
           }
           .mobile-nav-toggle-wrap {
             display: flex !important;
           }
+        }
+
+        /* Mobile Screen Breakpoint (< 640px) */
+        @media (max-width: 639px) {
+          .nav-header-full {
+            padding: 0 1rem;
+          }
+          .nav-header-inner {
+            min-height: 54px;
+          }
+          .nav-logo-img {
+            height: 18px;
+            max-width: 90px;
+          }
+        }
+
+        /* Very Small Screens (< 360px) */
+        @media (max-width: 359px) {
+          .nav-header-full {
+            padding: 0 0.75rem;
+          }
+          .nav-logo-img {
+            height: 16px;
+            max-width: 80px;
+          }
+        }
+
+        /* Adaptive Sticky Sub-Navbars on detail pages when header hides/reveals */
+        .sticky-subnav-ribbon {
+          transition: top 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        html[data-nav-hidden="true"] .sticky-subnav-ribbon {
+          top: 0px !important;
         }
       `}</style>
     </>

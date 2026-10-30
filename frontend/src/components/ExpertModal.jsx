@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, Building2, Mail, Phone, ArrowRight, Shield, Clock, Loader2 } from 'lucide-react';
+import { X, CheckCircle2, Building2, Mail, Phone, ArrowRight, Shield, Clock, Loader2, AlertCircle } from 'lucide-react';
 import { sendContactEmail } from '../utils/emailService';
 
 export default function ExpertModal({ isOpen, onClose }) {
@@ -18,15 +18,48 @@ export default function ExpertModal({ isOpen, onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setErrorMessage('');
 
+    const name = formData.name.trim();
+    const workEmail = formData.workEmail.trim();
+    const message = formData.message.trim();
+
+    if (!name) {
+      setErrorMessage('Please enter your full name.');
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!workEmail || !emailRegex.test(workEmail)) {
+      setErrorMessage('Please enter a valid work email address.');
+      return;
+    }
+    if (!message) {
+      setErrorMessage('Please enter your consultation requirements.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const title = formData.solutionArea ? `Consultation: ${formData.solutionArea}` : 'Expert Consultation Request';
+    const time = new Date().toLocaleString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    });
+
     const res = await sendContactEmail({
-      name: formData.name,
-      workEmail: formData.workEmail,
-      company: formData.company,
+      name,
+      email: workEmail,
+      workEmail,
+      title,
+      subject: title,
+      time,
+      company: formData.company.trim(),
       solutionArea: formData.solutionArea,
-      message: formData.message,
+      message,
       category: 'Expert Consultation Modal'
     });
 
@@ -34,6 +67,7 @@ export default function ExpertModal({ isOpen, onClose }) {
 
     if (res.success) {
       setSubmitted(true);
+      setErrorMessage('');
       setTimeout(() => {
         // Auto close after 3.5 seconds
         setTimeout(() => {
@@ -42,15 +76,7 @@ export default function ExpertModal({ isOpen, onClose }) {
         }, 3500);
       }, 400);
     } else {
-      // In case Public Key / Template ID is still being configured in EmailJS,
-      // we still show a clear status to the user
-      setSubmitted(true);
-      setTimeout(() => {
-        setTimeout(() => {
-          setSubmitted(false);
-          onClose();
-        }, 3500);
-      }, 400);
+      setErrorMessage(res.error || 'Failed to submit consultation request. Please try again.');
     }
   };
 
@@ -125,6 +151,22 @@ export default function ExpertModal({ isOpen, onClose }) {
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
+              {errorMessage && (
+                <div style={{
+                  padding: '0.75rem 1rem',
+                  borderRadius: '6px',
+                  backgroundColor: '#FEF2F2',
+                  border: '1px solid #FCA5A5',
+                  color: '#991B1B',
+                  fontSize: '0.85rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}>
+                  <AlertCircle size={16} style={{ color: '#DC2626', flexShrink: 0 }} />
+                  <span>{errorMessage}</span>
+                </div>
+              )}
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>

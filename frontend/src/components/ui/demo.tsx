@@ -82,19 +82,19 @@ export const Logos = {
   ),
 };
 
-export function MarqueeDemo({ className = "" }) {
+export function MarqueeDemo({ className = "" }: { className?: string }) {
   const arr = [Logos.tailwindcss, Logos.framer, Logos.nextjs, Logos.aws];
 
   return (
     <div className={`w-full flex flex-col items-center justify-center ${className}`}>
-      <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.16em] sm:tracking-[0.25em] text-[#0F172A] mb-1.5 sm:mb-4 md:mb-5 text-center px-4">
+      <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] sm:tracking-[0.28em] text-slate-500 mb-6 sm:mb-8 text-center px-4 w-full mx-auto leading-relaxed">
         Integrated with Industry-Leading Technologies
       </p>
-      <Marquee pauseOnHover={true} speed={36} className="!mt-0 !pt-0 !pb-0 -translate-y-1 sm:translate-y-1 md:translate-y-2">
+      <Marquee pauseOnHover={true} speed={36} className="!mt-0 !pt-0 !pb-0">
         {arr.map((Logo, index) => (
           <div
             key={index}
-            className="relative h-full cursor-pointer transition-transform duration-300 hover:scale-110 inline-flex items-center justify-center shrink-0 px-6 sm:px-14 md:px-20 mx-2 sm:mx-6 md:mx-8"
+            className="relative h-full cursor-pointer transition-transform duration-300 hover:scale-105 inline-flex items-center justify-center shrink-0 px-8 sm:px-14 md:px-18 mx-3 sm:mx-6"
           >
             <Logo />
           </div>

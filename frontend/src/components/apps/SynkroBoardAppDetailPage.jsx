@@ -269,7 +269,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                   }}
                 >
                   <img 
-                    src={getAssetUrl("/Task Management & Team Collaboration Logo 01.jpg")} 
+                    src={getAssetUrl("/synkroboard-clean.png")} 
                     alt="SynkroBoard Logo" 
                     style={{
                       width: '100%',

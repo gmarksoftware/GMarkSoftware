@@ -1,263 +1,187 @@
 "use client"
 
 import React from "react"
-import { Button } from "@/components/ui/button"
+import { motion, useReducedMotion } from "framer-motion"
 import { MarqueeDemo } from "@/components/ui/demo"
+import { ENTERPRISE_EASING } from "@/components/ui/scroll-reveal"
 
 export function Hero({
   title = "The New Standard of",
   highlightText = "Digital Industry",
   subtitle = "Use Accurate Data to Get a 360-Degree View of Your Business. Accelerate decisions with industrial-grade intelligence.",
   ctaLabel = "Learn More",
-  ctaHref = "#",
+  ctaHref = "#applications-section",
   onCtaClick,
+  secondaryCtaLabel = "Explore what we can build for you",
+  secondaryCtaHref = "#applications-section",
+  onSecondaryCtaClick,
   showMarquee = true,
+}: {
+  title?: string
+  highlightText?: string
+  subtitle?: string
+  ctaLabel?: string
+  ctaHref?: string
+  onCtaClick?: (e?: any) => void
+  secondaryCtaLabel?: string
+  secondaryCtaHref?: string
+  onSecondaryCtaClick?: (e?: any) => void
+  showMarquee?: boolean
 }) {
+  const prefersReduced = useReducedMotion()
+
   return (
     <section
       id="hero"
-      className="relative mx-auto w-full max-w-full overflow-hidden bg-white px-4 sm:px-6 md:px-8 text-center flex flex-col justify-start sm:justify-between items-center pt-[70px] sm:pt-28 md:pt-20 pb-14 sm:pb-8 md:pb-4 min-h-0 sm:min-h-[92vh] md:min-h-screen"
+      className="relative w-full overflow-hidden bg-white text-center pt-24 sm:pt-28 lg:pt-32 pb-8 sm:pb-12 lg:pb-14"
       style={{
         backgroundColor: '#ffffff'
       }}
     >
-      {/* Grid BG */}
+      {/* Subtle Background Pattern */}
       <div
-        className="absolute -z-10 inset-0 opacity-80 h-[650px] w-full 
-        bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] 
-        bg-[size:6rem_5rem] 
-        [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none"
+        className="absolute inset-0 -z-10 h-[680px] w-full 
+          bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] 
+          bg-[size:6rem_5rem] 
+          [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none opacity-60"
+        aria-hidden="true"
       />
 
-      {/* Horizon Curvature Arc in Grey (#e8e8e8) */}
-      <div
-        className="absolute left-1/2 top-[calc(100%-56px)] sm:top-[calc(100%-120px)] md:top-[calc(100%-150px)] lg:top-[calc(100%-170px)] 
-        h-[400px] w-[700px] sm:h-[480px] sm:w-[800px] md:h-[550px] md:w-[1100px] lg:h-[750px] lg:w-[140%] 
-        -translate-x-1/2 rounded-[100%] border-t border-slate-300/40 bg-[#e8e8e8] 
-        animate-fade-up shadow-[0_-20px_50px_rgba(0,0,0,0.06)] pointer-events-none z-0"
-        style={{
-          backgroundColor: '#e8e8e8'
-        }}
-      />
+      {/* Main Centered Content Container (max-w-4xl to max-w-5xl) */}
+      <div className="relative z-10 w-full max-w-4xl lg:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
 
-      {/* Centered Content Container */}
-      <div 
-        className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center text-center my-0 md:my-0 pt-1 sm:pt-4 md:pt-4 w-full translate-y-0 sm:translate-y-4 md:translate-y-0"
-      >
-        {/* 1. Upper-left caption: Built for real-world operations */}
-        <div className="hidden lg:flex absolute lg:-left-6 xl:-left-36 2xl:-left-52 -top-2 xl:-top-3 flex-col items-start z-20 pointer-events-none select-none">
-          <svg
-            className="w-10 h-10 pointer-events-none overflow-visible mb-1 ml-6"
-            viewBox="0 0 40 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M 32 34 C 28 20, 20 12, 8 6"
-              stroke="#7B5872"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              fill="none"
-            />
-            <path
-              d="M 8 18 L 8 6 L 20 6"
-              stroke="#7B5872"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-          </svg>
-          <span 
-            className="font-semibold text-[16px] xl:text-[18.5px] leading-tight -rotate-3 whitespace-nowrap"
-            style={{ fontFamily: "'Lora', serif", color: '#7B5872' }}
-          >
-            Built for real-world operations
-          </span>
-        </div>
-
-        {/* 4. Mid-Right near blue underline: From machines to meaningful insights. (Arrow pointing left targeting 'Industry') */}
-        <div className="hidden lg:flex absolute lg:-right-6 xl:-right-24 2xl:-right-44 top-1/2 -translate-y-8 items-center z-20 pointer-events-none select-none">
-          <svg
-            className="w-10 h-7 xl:w-12 xl:h-8 pointer-events-none overflow-visible mr-1.5"
-            viewBox="0 0 50 30"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M 46 20 C 32 20, 18 16, 6 12"
-              stroke="#7B5872"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              fill="none"
-            />
-            <path
-              d="M 16 6 L 6 12 L 16 18"
-              stroke="#7B5872"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-          </svg>
-          <span 
-            className="font-semibold text-[16px] xl:text-[18.5px] leading-tight rotate-2 max-w-[210px] xl:max-w-[250px] text-left"
-            style={{ fontFamily: "'Lora', serif", color: '#7B5872' }}
-          >
-            From machines to meaningful insights.
-          </span>
-        </div>
-
-        {/* Title with Highlighted Underline */}
-        <h1
-          className="hero-heading-mobile animate-fade-in text-balance font-bold sm:font-semibold text-slate-900"
-          style={{ 
-            fontFamily: "'Lora', serif",
-            fontSize: 'clamp(2.15rem, 4.84vw, 3.96rem)',
-            lineHeight: '1.15',
-            letterSpacing: '0',
-            paddingTop: '0.25rem',
-            paddingBottom: '0.4rem',
-            display: 'inline-block',
+        {/* 1. Main Hero Heading: "The New Standard of Digital Industry" */}
+        <motion.h1
+          initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: ENTERPRISE_EASING }}
+          className="font-bold text-slate-900 tracking-tight text-center max-w-3xl sm:max-w-4xl mx-auto px-2"
+          style={{
+            fontFamily: "'Kalam', cursive",
+            fontSize: 'clamp(2.35rem, 5vw, 4.35rem)',
+            lineHeight: '1.22',
             fontWeight: 700,
-            color: '#0F172A'
+            color: '#111827',
           }}
         >
-          <span className="block sm:inline font-bold sm:font-semibold" style={{ color: '#0F172A' }}>The New Standard</span>
-          <span className="hidden sm:inline"> </span>
-          <br className="hidden sm:inline" />
-          <span className="inline font-bold sm:font-semibold" style={{ color: '#0F172A' }}>of </span>
-          <span className="relative inline-block whitespace-nowrap">
-            <span className="relative z-10 font-bold sm:font-semibold" style={{ color: '#FC787D' }}>
+          <span className="block sm:inline font-bold" style={{ color: '#111827' }}>
+            The New Standard of{' '}
+          </span>
+          <span className="relative inline-block whitespace-nowrap mt-1 sm:mt-0">
+            <span className="relative z-10 px-2.5 sm:px-3 font-bold" style={{ color: '#111827' }}>
               {highlightText || "Digital Industry"}
             </span>
-            {/* Hand-drawn marker brush stroke highlight */}
-            <svg
-              className="hero-underline-mobile absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3 sm:h-4.5 pointer-events-none z-0 overflow-visible"
-              viewBox="0 0 260 22"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M 4,14 Q 130,5 256,12 Q 130,20 6,17"
-                fill="#00A3FF"
-              />
-            </svg>
-          </span>
-        </h1>
-
-        {/* Subtitle */}
-        {subtitle && (
-          <p
-            className="animate-fade-in text-balance text-gray-600 font-normal px-2 sm:px-0 mt-2 sm:mt-4 md:mt-5 mb-3.5 sm:mb-6 md:mb-8"
-            style={{
-              fontSize: 'clamp(0.88rem, 1.58vw, 1.1rem)',
-              lineHeight: '1.55',
-              maxWidth: '760px',
-              color: '#475569'
-            }}
-          >
-            {subtitle}
-          </p>
-        )}
-
-        {/* CTA Button Wrapper with caption positioned below */}
-        <div className="relative flex flex-col justify-center items-center z-20 w-full mb-3 sm:mb-6 md:mb-8">
-          {ctaLabel && (
-            <Button
-              asChild
-              className="w-fit min-w-40 sm:min-w-48 px-9 py-3.5 h-12 rounded-full text-white hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md font-medium text-base font-geist tracking-tight cursor-pointer"
-              style={{ 
-                backgroundColor: '#7B5872', 
-                borderRadius: '9999px',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+            {/* Thick rounded orange marker-style highlight behind text */}
+            <span
+              className="absolute -inset-x-1 sm:-inset-x-2 -inset-y-0.5 sm:-inset-y-1 z-0 pointer-events-none"
+              style={{
+                backgroundColor: '#FFA834',
+                borderRadius: '18px 24px 16px 22px / 22px 16px 24px 18px',
+                transform: 'rotate(-0.8deg)',
+                opacity: 0.95
               }}
-              onClick={onCtaClick}
-            >
-              <a href={ctaHref} onClick={onCtaClick}>{ctaLabel}</a>
-            </Button>
-          )}
-
-          {/* 3. Below CTA button: Explore what we can build for you */}
-          <div className="hidden md:flex items-center justify-center mt-4 sm:mt-5 z-20 pointer-events-none select-none -translate-x-32 md:-translate-x-44 lg:-translate-x-56 xl:-translate-x-60">
-            <span 
-              className="font-semibold text-[15px] lg:text-[17.5px] leading-tight -rotate-1 whitespace-nowrap"
-              style={{ fontFamily: "'Lora', serif", color: '#7B5872' }}
-            >
-              Explore what we can build for you
-            </span>
-            <svg
-              className="w-9 h-9 pointer-events-none overflow-visible ml-2 -mt-4"
-              viewBox="0 0 36 36"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M 6 28 C 10 18, 18 10, 26 6"
-                stroke="#7B5872"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                fill="none"
-              />
-              <path
-                d="M 14 6 L 26 6 L 26 18"
-                stroke="#7B5872"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-              />
-            </svg>
-          </div>
-        </div>
-
-        {/* 6. Lower-right area: Technology that works beyond the screen. (Positioned above technology heading) */}
-        <div className="hidden lg:flex absolute lg:-right-6 xl:-right-24 2xl:-right-44 bottom-2 lg:bottom-4 xl:bottom-6 flex-col items-start z-20 pointer-events-none select-none">
-          <span 
-            className="font-semibold text-[16px] xl:text-[18.5px] leading-tight rotate-2 max-w-[200px] xl:max-w-[240px] text-left mb-1"
-            style={{ fontFamily: "'Lora', serif", color: '#7B5872' }}
-          >
-            Technology that works beyond the screen.
+              aria-hidden="true"
+            />
           </span>
-          <svg
-            className="w-10 h-12 pointer-events-none overflow-visible ml-6"
-            viewBox="0 0 40 50"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M 24 4 C 24 20, 20 32, 10 42"
-              stroke="#7B5872"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              fill="none"
-            />
-            <path
-              d="M 8 30 L 10 42 L 22 38"
-              stroke="#7B5872"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-          </svg>
-        </div>
+        </motion.h1>
+
+        {/* 2. Subtitle with bright cyan-blue hand-drawn underline */}
+        <motion.div
+          initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: ENTERPRISE_EASING }}
+          className="font-bold text-slate-900 px-3 sm:px-0 mt-4 sm:mt-5 mb-6 sm:mb-8 w-full max-w-2xl sm:max-w-3xl mx-auto text-center"
+          style={{
+            fontFamily: "'Kalam', cursive",
+            fontSize: 'clamp(1.15rem, 2.1vw, 1.65rem)',
+            lineHeight: '1.45',
+            color: '#18181B'
+          }}
+        >
+          <p className="block">
+            Use Accurate Data to Get a 360-Degree View of Your Business.
+          </p>
+          <p className="block mt-1 sm:mt-2">
+            Accelerate decisions with{' '}
+            <span className="relative inline-block whitespace-nowrap">
+              <span className="relative z-10">industrial-grade intelligence.</span>
+              {/* Hand-drawn bright blue brush underline */}
+              <svg
+                className="absolute -bottom-2 sm:-bottom-2.5 left-0 w-full h-3 sm:h-4 pointer-events-none z-0 overflow-visible"
+                viewBox="0 0 280 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M 3 13 Q 70 5 140 11 Q 210 16 277 9 Q 140 18 3 13"
+                  fill="#00A3FF"
+                />
+              </svg>
+            </span>
+          </p>
+        </motion.div>
+
+        {/* 3. Action Buttons Section */}
+        <motion.div 
+          initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.3, ease: ENTERPRISE_EASING }}
+          className="relative flex flex-col items-center justify-center z-20 w-full"
+        >
+          {/* Primary & Secondary Buttons Container */}
+          <div className="relative flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4.5 w-full max-w-sm sm:max-w-none mx-auto">
+            
+            {/* Primary Button ("Learn More"): Muted plum background, white text */}
+            {ctaLabel && (
+              <a
+                href={ctaHref}
+                onClick={onCtaClick}
+                className="inline-flex items-center justify-center px-7 sm:px-8 py-3.5 sm:py-4 text-[15px] sm:text-[16px] font-semibold text-white rounded-xl transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md hover:bg-[#5E3E55] active:scale-[0.98] select-none text-center w-full sm:w-auto"
+                style={{
+                  backgroundColor: '#714B67',
+                  fontFamily: "'Plus Jakarta Sans', sans-serif"
+                }}
+              >
+                {ctaLabel}
+              </a>
+            )}
+
+            {/* Secondary Button ("Explore what we can build for you"): Soft light neutral */}
+            {secondaryCtaLabel && (
+              <a
+                href={secondaryCtaHref}
+                onClick={onSecondaryCtaClick || onCtaClick}
+                className="inline-flex items-center justify-center px-7 sm:px-8 py-3.5 sm:py-4 text-[15px] sm:text-[16px] font-semibold rounded-xl transition-all duration-200 cursor-pointer border border-slate-200/80 hover:bg-slate-200/90 active:scale-[0.98] select-none text-center w-full sm:w-auto"
+                style={{
+                  backgroundColor: '#F1F5F9',
+                  color: '#714B67',
+                  fontFamily: "'Plus Jakarta Sans', sans-serif"
+                }}
+              >
+                {secondaryCtaLabel}
+              </a>
+            )}
+
+          </div>
+        </motion.div>
+
       </div>
 
-      {/* Sliding Marquee Inside Hero */}
+      {/* 4. Tech Stack Logo Bar: Dedicated compact top margin with scroll reveal */}
       {showMarquee && (
-        <div className="relative z-20 w-full max-w-6xl mx-auto mt-2 sm:mt-auto pt-1 sm:pt-8 md:pt-0 translate-y-0 sm:translate-y-2 md:-translate-y-6 pb-2">
+        <motion.div
+          initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.75, delay: 0.1, ease: ENTERPRISE_EASING }}
+          className="relative z-20 w-full max-w-5xl mx-auto mt-10 sm:mt-12 lg:mt-14 px-4"
+        >
           <MarqueeDemo />
-        </div>
+        </motion.div>
       )}
-
-      {/* Bottom Fade Overlay transitioning to grey */}
-      <div
-        className="animate-fade-up relative opacity-0 [perspective:2000px] 
-        after:absolute after:inset-0 after:z-50 
-        after:[background:linear-gradient(to_top,#e8e8e8_10%,transparent)]"
-      />
     </section>
   )
 }
+
+export default Hero

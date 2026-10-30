@@ -81,17 +81,17 @@ export interface CommunityOrbitProps {
   className?: string;
 }
 
-// Desktop Stage configuration (>= 640px)
-const DESKTOP_STAGE_W = 1200;
-const DESKTOP_STAGE_H = 490;
-const DESKTOP_CENTER = { x: 600, y: 580 };
-const DESKTOP_RADIUS: Record<OrbitRing, number> = { outer: 490, inner: 390 };
+// Desktop Stage configuration (>= 640px) - refined, compact, balanced
+const DESKTOP_STAGE_W = 1000;
+const DESKTOP_STAGE_H = 410;
+const DESKTOP_CENTER = { x: 500, y: 485 };
+const DESKTOP_RADIUS: Record<OrbitRing, number> = { outer: 410, inner: 325 };
 
 // Mobile Stage configuration (< 640px) - clean, balanced non-colliding dimensions
-const MOBILE_STAGE_W = 390;
-const MOBILE_STAGE_H = 295;
-const MOBILE_CENTER = { x: 195, y: 195 };
-const MOBILE_RADIUS: Record<OrbitRing, number> = { outer: 170, inner: 116 };
+const MOBILE_STAGE_W = 360;
+const MOBILE_STAGE_H = 265;
+const MOBILE_CENTER = { x: 180, y: 175 };
+const MOBILE_RADIUS: Record<OrbitRing, number> = { outer: 152, inner: 104 };
 
 function positionOnRing(item: OrbitItem, isMobile: boolean): CSSProperties {
   const center = isMobile ? MOBILE_CENTER : DESKTOP_CENTER;
@@ -125,10 +125,10 @@ function arcPath(r: number, isMobile: boolean) {
   return `M ${center.x - dx} ${stageH} A ${r} ${r} 0 0 1 ${center.x + dx} ${stageH}`;
 }
 
-function OrbitAvatar({ src, alt, size = 68, statusDot = true }: OrbitAvatarItem) {
+function OrbitAvatar({ src, alt, size = 58, statusDot = true }: OrbitAvatarItem) {
   return (
     <div
-      className="relative rounded-full p-[2.5px] bg-white ring-1 ring-slate-200/90 shadow-[0_8px_24px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.04)] transition-all duration-300 hover:scale-105 hover:shadow-[0_12px_28px_rgba(0,0,0,0.14)] cursor-pointer"
+      className="relative rounded-full p-[2px] bg-white ring-1 ring-slate-200/90 shadow-[0_6px_20px_rgba(0,0,0,0.09),0_2px_5px_rgba(0,0,0,0.03)] transition-all duration-300 hover:scale-105 hover:shadow-[0_10px_24px_rgba(0,0,0,0.13)] cursor-pointer"
       style={{ width: size, height: size }}
     >
       <div className="h-full w-full overflow-hidden rounded-full bg-slate-100">
@@ -140,8 +140,8 @@ function OrbitAvatar({ src, alt, size = 68, statusDot = true }: OrbitAvatarItem)
         />
       </div>
       {statusDot && (
-        <span className="absolute bottom-0 right-0.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-500 ring-2 ring-white shadow-xs">
-          <span className="h-1.5 w-1.5 rounded-full bg-white opacity-80" />
+        <span className="absolute bottom-0 right-0.5 flex h-3 w-3 sm:h-3.5 sm:w-3.5 items-center justify-center rounded-full bg-emerald-500 ring-2 ring-white shadow-xs">
+          <span className="h-1 w-1 sm:h-1.5 sm:w-1.5 rounded-full bg-white opacity-80" />
         </span>
       )}
     </div>
@@ -150,9 +150,9 @@ function OrbitAvatar({ src, alt, size = 68, statusDot = true }: OrbitAvatarItem)
 
 function OrbitStatus({ label }: OrbitStatusItem) {
   return (
-    <div className="flex h-[36px] sm:h-[38px] items-center gap-2 whitespace-nowrap rounded-full border border-emerald-200/90 bg-white/95 px-3 sm:px-3.5 text-[12px] sm:text-[13px] font-semibold text-slate-800 shadow-[0_4px_16px_rgba(16,185,129,0.14),0_2px_4px_rgba(0,0,0,0.03)] backdrop-blur-xs transition-all duration-200 hover:border-emerald-300 hover:shadow-[0_6px_20px_rgba(16,185,129,0.2)]">
-      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-white shadow-xs">
-        <Check size={12} strokeWidth={2.8} />
+    <div className="flex h-[32px] sm:h-[35px] items-center gap-1.5 sm:gap-2 whitespace-nowrap rounded-full border border-emerald-200/90 bg-white/95 px-2.5 sm:px-3 text-[11px] sm:text-[12px] font-semibold text-slate-800 shadow-[0_4px_16px_rgba(16,185,129,0.14),0_2px_4px_rgba(0,0,0,0.03)] backdrop-blur-xs transition-all duration-200 hover:border-emerald-300 hover:shadow-[0_6px_20px_rgba(16,185,129,0.2)]">
+      <span className="flex h-4.5 w-4.5 sm:h-5 sm:w-5 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-white shadow-xs">
+        <Check size={11} strokeWidth={2.8} />
       </span>
       <span>{label}</span>
     </div>
@@ -161,8 +161,8 @@ function OrbitStatus({ label }: OrbitStatusItem) {
 
 function OrbitPill({ icon, label }: OrbitPillItem) {
   return (
-    <div className="flex h-[32px] sm:h-[38px] items-center gap-1.5 sm:gap-2 whitespace-nowrap rounded-full border border-slate-200/90 bg-white/95 px-2.5 sm:px-3.5 text-[11px] sm:text-[13px] font-semibold text-slate-800 shadow-[0_4px_16px_rgba(0,0,0,0.06),0_2px_4px_rgba(0,0,0,0.02)] backdrop-blur-xs transition-all duration-200 hover:border-slate-300 hover:shadow-[0_6px_20px_rgba(0,0,0,0.09)]">
-      <span className="flex h-5 w-5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">
+    <div className="flex h-[30px] sm:h-[34px] items-center gap-1.5 sm:gap-2 whitespace-nowrap rounded-full border border-slate-200/90 bg-white/95 px-2.5 sm:px-3 text-[10.5px] sm:text-[12px] font-semibold text-slate-800 shadow-[0_4px_16px_rgba(0,0,0,0.06),0_2px_4px_rgba(0,0,0,0.02)] backdrop-blur-xs transition-all duration-200 hover:border-slate-300 hover:shadow-[0_6px_20px_rgba(0,0,0,0.09)]">
+      <span className="flex h-4.5 w-4.5 sm:h-5 sm:w-5 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">
         {icon}
       </span>
       <span>{label}</span>
@@ -175,16 +175,16 @@ function OrbitBadge({ icon, iconBg = 'bg-blue-50', badge, badgeIcon, label, glow
     <div className="relative flex items-center">
       {/* Main Circular Icon */}
       <div 
-        className="relative flex h-[36px] w-[36px] sm:h-[46px] sm:w-[46px] items-center justify-center rounded-full border border-slate-200/90 bg-white shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-all duration-200 hover:scale-105"
-        style={glow ? { boxShadow: `0 4px 18px ${glow}, 0 2px 6px rgba(0,0,0,0.04)` } : undefined}
+        className="relative flex h-[32px] w-[32px] sm:h-[40px] sm:w-[40px] items-center justify-center rounded-full border border-slate-200/90 bg-white shadow-[0_4px_14px_rgba(0,0,0,0.06)] transition-all duration-200 hover:scale-105"
+        style={glow ? { boxShadow: `0 4px 16px ${glow}, 0 2px 5px rgba(0,0,0,0.04)` } : undefined}
       >
-        <div className={`flex h-[28px] w-[28px] sm:h-[38px] sm:w-[38px] items-center justify-center rounded-full ${iconBg}`}>
+        <div className={`flex h-[24px] w-[24px] sm:h-[32px] sm:w-[32px] items-center justify-center rounded-full ${iconBg}`}>
           {icon}
         </div>
 
         {/* Attached small indicator badge (e.g. "↑ 12") */}
         {badge !== undefined && (
-          <span className="absolute -bottom-1 -right-3.5 sm:-right-4 flex h-[17px] sm:h-[20px] items-center gap-0.5 sm:gap-1 rounded-full border border-emerald-200 bg-emerald-50/95 px-1 sm:px-1.5 text-[9.5px] sm:text-[11px] font-bold leading-none text-emerald-700 shadow-xs">
+          <span className="absolute -bottom-1 -right-3 sm:-right-3.5 flex h-[16px] sm:h-[18px] items-center gap-0.5 rounded-full border border-emerald-200 bg-emerald-50/95 px-1 text-[9px] sm:text-[10px] font-bold leading-none text-emerald-700 shadow-xs">
             {badgeIcon}
             <span>{badge}</span>
           </span>
@@ -193,7 +193,7 @@ function OrbitBadge({ icon, iconBg = 'bg-blue-50', badge, badgeIcon, label, glow
 
       {/* Attached text pill (e.g. "240", "18", "36") */}
       {label && (
-        <span className="-ml-2 sm:-ml-2.5 flex h-[24px] sm:h-[30px] items-center rounded-full border border-slate-200/90 bg-white/95 pl-3 sm:pl-3.5 pr-2 sm:pr-3 text-[10.5px] sm:text-[12px] font-bold text-slate-800 shadow-[0_2px_8px_rgba(0,0,0,0.04)] z-[-1]">
+        <span className="-ml-1.5 sm:-ml-2 flex h-[22px] sm:h-[26px] items-center rounded-full border border-slate-200/90 bg-white/95 pl-2.5 sm:pl-3 pr-2 sm:pr-2.5 text-[10px] sm:text-[11px] font-bold text-slate-800 shadow-[0_2px_8px_rgba(0,0,0,0.04)] z-[-1]">
           {label}
         </span>
       )}
@@ -203,14 +203,14 @@ function OrbitBadge({ icon, iconBg = 'bg-blue-50', badge, badgeIcon, label, glow
 
 function OrbitCheck() {
   return (
-    <div className="relative flex h-[36px] w-[36px] sm:h-[46px] sm:w-[46px] items-center justify-center rounded-full bg-emerald-50/90 border border-emerald-300/80 shadow-[0_4px_18px_rgba(16,185,129,0.22)] transition-all duration-200 hover:scale-105">
+    <div className="relative flex h-[32px] w-[32px] sm:h-[40px] sm:w-[40px] items-center justify-center rounded-full bg-emerald-50/90 border border-emerald-300/80 shadow-[0_4px_16px_rgba(16,185,129,0.2)] transition-all duration-200 hover:scale-105">
       <motion.div
         animate={{ scale: [1, 1.08, 1], opacity: [0.6, 1, 0.6] }}
         transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute inset-0 rounded-full border border-emerald-400/40"
       />
-      <div className="flex h-[24px] w-[24px] sm:h-[30px] sm:w-[30px] items-center justify-center rounded-full bg-emerald-600 text-white shadow-xs">
-        <Check size={14} strokeWidth={3} />
+      <div className="flex h-[20px] w-[20px] sm:h-[26px] sm:w-[26px] items-center justify-center rounded-full bg-emerald-600 text-white shadow-xs">
+        <Check size={12} strokeWidth={3} />
       </div>
     </div>
   );
@@ -287,40 +287,56 @@ export default function CommunityOrbit({
   stats,
   headline,
   tags = [],
+  minScale,
   className,
 }: CommunityOrbitProps) {
   const frameRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
   const prefersReduced = useReducedMotion();
+  const prevWidthRef = useRef(0);
+  const prevMobileRef = useRef<boolean | null>(null);
 
   useLayoutEffect(() => {
     const frame = frameRef.current;
     if (!frame) return;
+    const targetEl = frame.parentElement || frame;
+
     const measure = () => {
-      const parentW = frame.parentElement ? frame.parentElement.clientWidth : window.innerWidth;
+      const parentW = targetEl.clientWidth || window.innerWidth;
       const mobile = parentW < 640;
+
+      // Ignore subpixel or tiny scrollbar-toggle jitter (< 2px) if breakpoint hasn't changed
+      if (Math.abs(parentW - prevWidthRef.current) < 2 && mobile === prevMobileRef.current) {
+        return;
+      }
+      prevWidthRef.current = parentW;
+      prevMobileRef.current = mobile;
+
       setIsMobile(mobile);
 
       if (mobile) {
-        // On mobile, scale stage to fit screen width without horizontal overflow
-        const targetW = Math.min(parentW - 24, MOBILE_STAGE_W);
-        setScale(Math.min(1, Math.max(0.68, targetW / MOBILE_STAGE_W)));
+        // On mobile, scale stage to fit screen width smoothly without horizontal overflow
+        const availableW = Math.max(280, parentW - 20);
+        const targetScale = availableW / MOBILE_STAGE_W;
+        setScale(Math.min(1, Math.max(minScale ?? 0.55, targetScale)));
       } else {
-        // On desktop, scale between 0.68 and 1.0 to fit container
-        const targetW = Math.min(parentW - 32, DESKTOP_STAGE_W);
-        setScale(Math.min(1, Math.max(0.68, targetW / DESKTOP_STAGE_W)));
+        // On desktop/tablet, scale smoothly down from 1.0 to fit container width without clipping
+        const availableW = Math.max(560, parentW - 32);
+        const targetScale = availableW / DESKTOP_STAGE_W;
+        setScale(Math.min(1, Math.max(minScale ?? 0.58, targetScale)));
       }
     };
+
     measure();
     const ro = new ResizeObserver(measure);
-    ro.observe(frame);
+    ro.observe(targetEl);
     window.addEventListener('resize', measure);
     return () => {
       ro.disconnect();
       window.removeEventListener('resize', measure);
     };
-  }, []);
+  }, [minScale]);
 
   const stageW = isMobile ? MOBILE_STAGE_W : DESKTOP_STAGE_W;
   const stageH = isMobile ? MOBILE_STAGE_H : DESKTOP_STAGE_H;
@@ -333,13 +349,13 @@ export default function CommunityOrbit({
 
   return (
     <div
-      className={`w-full max-w-full overflow-hidden flex-1 flex flex-col items-center justify-between text-center bg-white text-slate-900 pt-4 sm:pt-12 md:pt-20 pb-8 sm:pb-12 md:pb-16 ${className ?? ''}`}
+      className={`w-full max-w-full overflow-hidden flex flex-col items-center justify-center text-center bg-white text-slate-900 pt-1 sm:pt-3 pb-2 sm:pb-4 ${className ?? ''}`}
       style={{ backgroundColor: '#ffffff' }}
     >
       {/* Orbit Visual Stage (Clean white background with elegant subtle orbit arcs) */}
       <div
         ref={frameRef}
-        className="relative mx-auto w-full max-w-[1240px] overflow-hidden flex justify-center bg-white px-2"
+        className="relative mx-auto w-full max-w-[1040px] overflow-hidden flex justify-center bg-white px-2"
         style={{ height: stageH * scale, backgroundColor: '#ffffff' }}
       >
         <div
@@ -365,8 +381,9 @@ export default function CommunityOrbit({
               className="stroke-slate-200/85"
               strokeWidth={1.5}
               initial={prefersReduced ? { pathLength: 1 } : { pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1.4, ease: 'easeOut' }}
+              whileInView={{ pathLength: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 1.2, ease: 'easeOut' }}
             />
 
             {/* Inner Arc Stroke */}
@@ -375,8 +392,9 @@ export default function CommunityOrbit({
               className="stroke-slate-200/85"
               strokeWidth={1.5}
               initial={prefersReduced ? { pathLength: 1 } : { pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1.4, ease: 'easeOut', delay: 0.1 }}
+              whileInView={{ pathLength: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 1.2, ease: 'easeOut', delay: 0.1 }}
             />
 
             {/* Subtle Connection Node Dots along Outer Arc */}
@@ -423,8 +441,9 @@ export default function CommunityOrbit({
                 className="absolute -translate-x-1/2 -translate-y-1/2 z-10"
                 style={positionOnRing(item, isMobile)}
                 initial={prefersReduced ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.7 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.45, delay: 0.3 + i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45, delay: 0.2 + i * 0.05, ease: [0.22, 1, 0.36, 1] }}
               >
                 <motion.div
                   animate={prefersReduced ? undefined : { y: [0, -3.5, 0] }}
@@ -445,8 +464,8 @@ export default function CommunityOrbit({
           <div 
             className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-20"
             style={{
-              top: isMobile ? '215px' : '375px',
-              gap: isMobile ? 'clamp(10px, 3.5vw, 18px)' : '36px',
+              top: isMobile ? '192px' : '318px',
+              gap: isMobile ? 'clamp(10px, 3.5vw, 18px)' : '34px',
               width: isMobile ? 'min(340px, 92%)' : 'auto'
             }}
           >
@@ -455,28 +474,29 @@ export default function CommunityOrbit({
                 {i > 0 && (
                   <div 
                     className="w-[1px] bg-slate-200/90 self-center" 
-                    style={{ height: isMobile ? '34px' : '48px' }}
+                    style={{ height: isMobile ? '28px' : '36px' }}
                   />
                 )}
                 <motion.div
                   className="flex flex-col items-center justify-center text-center px-1"
                   variants={reveal}
                   initial={prefersReduced ? 'show' : 'hidden'}
-                  animate="show"
-                  transition={{ duration: 0.6, delay: 0.8 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.6, delay: 0.4 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <span 
                     className="font-bold leading-none tracking-[-0.03em] text-[#0f172a] tabular-nums"
                     style={{
-                      fontSize: isMobile ? 'clamp(20px, 5.5vw, 24px)' : '48px'
+                      fontSize: isMobile ? 'clamp(18px, 4.8vw, 22px)' : '38px'
                     }}
                   >
-                    <CountUp value={s.value} delay={0.8 + i * 0.1} />
+                    <CountUp value={s.value} delay={0.4 + i * 0.1} />
                   </span>
                   <span 
-                    className="font-medium leading-none text-slate-500 mt-2"
+                    className="font-medium leading-none text-slate-500 mt-1.5"
                     style={{
-                      fontSize: isMobile ? '12px' : '14px'
+                      fontSize: isMobile ? '11px' : '13px'
                     }}
                   >
                     {s.label}
@@ -485,9 +505,9 @@ export default function CommunityOrbit({
                   <div 
                     className="rounded-full bg-emerald-500 mx-auto" 
                     style={{
-                      width: isMobile ? '20px' : '32px',
-                      height: '3px',
-                      marginTop: isMobile ? '6px' : '10px'
+                      width: isMobile ? '18px' : '28px',
+                      height: '2.5px',
+                      marginTop: isMobile ? '5px' : '8px'
                     }}
                   />
                 </motion.div>
@@ -499,21 +519,22 @@ export default function CommunityOrbit({
 
       {/* Optional Lower Section (Headline & Tags if provided) */}
       {(headline || (tags && tags.length > 0)) && (
-        <div className="w-full bg-white flex flex-col items-center justify-center pt-6 sm:pt-10 md:pt-12 px-4">
+        <div className="w-full bg-white flex flex-col items-center justify-center pt-3 sm:pt-4 md:pt-5 px-4">
           {headline && (
             <motion.div
               className="w-full flex flex-col items-center justify-center text-center"
               variants={reveal}
               initial={prefersReduced ? 'show' : 'hidden'}
-              animate="show"
-              transition={{ duration: 0.7, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              whileInView="show"
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
               <h2 
-                className="w-full max-w-[850px] text-center text-[#0f172a] mx-auto px-2"
+                className="w-full max-w-[800px] text-center text-[#0f172a] mx-auto px-2"
                 style={{
                   fontFamily: "'Lora', serif",
-                  fontSize: 'clamp(1.5rem, 3.2vw, 2.7rem)',
-                  lineHeight: '1.2',
+                  fontSize: 'clamp(1.35rem, 2.6vw, 2.25rem)',
+                  lineHeight: '1.25',
                   letterSpacing: '-0.01em',
                   fontWeight: 600,
                 }}
@@ -524,7 +545,7 @@ export default function CommunityOrbit({
           )}
 
           {tags && tags.length > 0 && (
-            <div className="w-full mt-4 sm:mt-6 flex max-w-[760px] flex-wrap items-center justify-center gap-2 sm:gap-3.5 mx-auto px-2">
+            <div className="w-full mt-4 sm:mt-5 flex max-w-[720px] flex-wrap items-center justify-center gap-2 sm:gap-3 mx-auto px-2">
               {tags.map((t, i) => {
                 const Tag = (t.href ? motion.a : motion.button) as typeof motion.a;
                 return (
@@ -534,13 +555,14 @@ export default function CommunityOrbit({
                     onClick={t.onClick}
                     variants={reveal}
                     initial={prefersReduced ? 'show' : 'hidden'}
-                    animate="show"
-                    transition={{ duration: 0.5, delay: 1.4 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.25 }}
+                    transition={{ duration: 0.5, delay: 0.6 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                     whileHover={{ y: -2 }}
                     whileTap={{ y: 0 }}
-                    className="group flex h-9 sm:h-10 items-center gap-2 sm:gap-2.5 rounded-full border border-slate-200/90 bg-white pl-2 pr-3.5 sm:pr-4 text-[13px] sm:text-[14px] font-medium text-slate-700 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-slate-300 hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-emerald-500/40 active:shadow-none cursor-pointer"
+                    className="group flex h-8 sm:h-9 items-center gap-2 sm:gap-2.5 rounded-full border border-slate-200/90 bg-white pl-2 pr-3 sm:pr-3.5 text-[12px] sm:text-[13px] font-medium text-slate-700 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-slate-300 hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-emerald-500/40 active:shadow-none cursor-pointer"
                   >
-                    <span className="flex h-6.5 w-6.5 sm:h-7 sm:w-7 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 transition-colors group-hover:bg-emerald-600 group-hover:text-white [&>svg]:h-[14px] [&>svg]:w-[14px] sm:[&>svg]:h-[15px] sm:[&>svg]:w-[15px]">
+                    <span className="flex h-5.5 w-5.5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 transition-colors group-hover:bg-emerald-600 group-hover:text-white [&>svg]:h-[13px] [&>svg]:w-[13px] sm:[&>svg]:h-[14px] sm:[&>svg]:w-[14px]">
                       {t.icon}
                     </span>
                     <span className="font-medium text-slate-800">{t.label}</span>

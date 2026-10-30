@@ -268,69 +268,99 @@ export default function MultiWarehouseInventoryPage({ app, onBack, onOpenExpertM
       {/* ========================================================================= */}
       {/* 2. INTERACTIVE LIVE WAREHOUSE SIMULATOR */}
       {/* ========================================================================= */}
-      <section style={{ maxWidth: '1240px', margin: '-2.5rem auto 3.5rem', padding: '0 1.5rem', position: 'relative', zIndex: 10 }}>
-        <div style={{
-          backgroundColor: '#FFFFFF',
-          borderRadius: '2rem',
-          padding: '2.5rem',
-          boxShadow: '0 20px 40px -15px rgba(0,0,0,0.08)',
-          border: '1px solid #E5E7EB'
-        }}>
+      <section className="max-w-[1240px] -mt-6 sm:-mt-10 mb-10 sm:mb-14 mx-auto px-3 sm:px-6 relative z-10">
+        <div className="bg-white rounded-2xl sm:rounded-[2rem] p-4 sm:p-6 lg:p-10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.08)] border border-slate-200">
+          
           {/* Section Header */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}>
+          <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4 mb-5 sm:mb-8">
             <div>
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                fontSize: '0.8rem',
-                fontWeight: 700,
-                color: '#7B5872',
-                backgroundColor: '#F1F5F9',
-                border: '1px solid #E2E8F0',
-                padding: '0.35rem 0.85rem',
-                borderRadius: '9999px',
-                marginBottom: '0.75rem'
-              }}>
+              <div className="inline-flex items-center gap-2 text-xs font-bold text-[#7B5872] bg-slate-100 border border-slate-200 px-3 py-1 rounded-full mb-2 w-fit">
                 <Warehouse size={14} />
-                Live Multi-Node Stock Explorer
+                <span>Live Multi-Node Stock Explorer</span>
               </div>
-              <h2 style={{ fontFamily: "'Lora', serif", fontSize: '1.75rem', fontWeight: 600, color: '#111827', margin: 0 }}>
-                Warehouse Network & Available-to-Promise (ATP)
+              <h2 className="text-xl sm:text-2xl lg:text-[28px] font-bold text-slate-900 leading-tight mb-1" style={{ fontFamily: "'Lora', serif" }}>
+                Warehouse Network &amp; Available-to-Promise (ATP)
               </h2>
-              <p style={{ color: '#6B7280', fontSize: '0.95rem', marginTop: '0.35rem', margin: 0 }}>
+              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
                 Select a facility below to view live bin-level stock balances, active reservations, and safety threshold alerts.
               </p>
             </div>
 
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.75rem',
-              backgroundColor: '#F9FAFB',
-              border: '1px solid #E5E7EB',
-              borderRadius: '0.75rem',
-              padding: '0.6rem 1rem',
-              fontSize: '0.85rem',
-              color: '#374151'
-            }}>
-              <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '9999px', backgroundColor: '#10B981' }}></span>
-              <span>Central Real-Time Sync Active</span>
+            <div className="inline-flex items-center gap-2 bg-slate-50 border border-slate-200/90 rounded-xl px-3 py-2 text-xs text-slate-700 w-fit shrink-0">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="font-medium">Central Real-Time Sync Active</span>
             </div>
           </div>
 
-          {/* Warehouse Selector Buttons */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-            gap: '1rem',
-            marginBottom: '2.5rem'
-          }}>
+          {/* Warehouse Selector: Mobile Swipeable Carousel (<sm) */}
+          <div className="block sm:hidden mb-5">
+            <div className="flex items-center justify-between text-[11px] text-slate-500 mb-2 px-1 font-medium">
+              <span>Swipe facilities ({warehouses.findIndex(w => w.id === selectedWarehouse) + 1}/4)</span>
+              <div className="flex items-center gap-1.5">
+                {warehouses.map((wh) => (
+                  <span
+                    key={wh.id}
+                    className={`h-1.5 rounded-full transition-all duration-200 ${
+                      selectedWarehouse === wh.id ? 'w-4 bg-slate-900' : 'w-1.5 bg-slate-200'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-3 pt-1 px-1 -mx-1">
+              {warehouses.map((wh) => {
+                const isSelected = selectedWarehouse === wh.id;
+                return (
+                  <button
+                    key={wh.id}
+                    type="button"
+                    onClick={() => setSelectedWarehouse(wh.id)}
+                    className={`w-[260px] shrink-0 snap-center rounded-2xl p-4 text-left transition-all duration-200 cursor-pointer select-none ${
+                      isSelected
+                        ? 'bg-slate-900 text-white shadow-xl ring-2 ring-slate-900/10 scale-[1.01]'
+                        : 'bg-slate-50 text-slate-800 border border-slate-200 hover:border-slate-300'
+                    }`}
+                  >
+                    <div className="flex justify-between items-center mb-2">
+                      <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-md border ${
+                        isSelected 
+                          ? 'bg-white/20 text-white border-white/20' 
+                          : 'bg-slate-200/80 text-slate-700 border-slate-300/80'
+                      }`}>
+                        {wh.status}
+                      </span>
+                      <Building size={16} className={isSelected ? 'text-white/80' : 'text-slate-400'} />
+                    </div>
+
+                    <div className="font-bold text-sm leading-tight mb-1">
+                      {wh.name}
+                    </div>
+
+                    <div className={`text-xs mb-3 truncate ${isSelected ? 'text-slate-300' : 'text-slate-500'}`}>
+                      {wh.location}
+                    </div>
+
+                    <div className={`flex justify-between items-center text-xs pt-2.5 border-t ${
+                      isSelected ? 'border-white/15 text-slate-200' : 'border-slate-200 text-slate-600'
+                    }`}>
+                      <span>Capacity: <b className={isSelected ? 'text-white' : 'text-slate-900'}>{wh.capacity}</b></span>
+                      <span>Util: <b className={isSelected ? 'text-white' : 'text-slate-900'}>{wh.utilization}</b></span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Warehouse Selector: Desktop & Tablet Grid (>=sm) */}
+          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             {warehouses.map((wh) => {
               const isSelected = selectedWarehouse === wh.id;
               return (
                 <button
                   key={wh.id}
+                  type="button"
                   onClick={() => setSelectedWarehouse(wh.id)}
                   style={{
                     backgroundColor: isSelected ? '#0F172A' : '#F9FAFB',
@@ -343,6 +373,7 @@ export default function MultiWarehouseInventoryPage({ app, onBack, onOpenExpertM
                     transition: 'all 0.2s ease',
                     boxShadow: isSelected ? '0 8px 20px -4px rgba(15, 23, 42, 0.2)' : 'none'
                   }}
+                  className="hover:-translate-y-0.5 transition-transform"
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
                     <span style={{
@@ -378,34 +409,41 @@ export default function MultiWarehouseInventoryPage({ app, onBack, onOpenExpertM
           </div>
 
           {/* Current Facility Details Header */}
-          <div style={{
-            backgroundColor: '#F3F4F6',
-            borderRadius: '1rem',
-            padding: '1rem 1.5rem',
-            marginBottom: '1.5rem',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '1rem'
-          }}>
-            <div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#6B7280', textTransform: 'uppercase' }}>Selected Location</div>
-              <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#111827' }}>{currentWH.name} — {currentWH.type}</div>
-            </div>
-            <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.85rem' }}>
-              <div><span style={{ color: '#6B7280' }}>Active SKUs:</span> <strong style={{ color: '#111827' }}>{currentWH.activeSKUs}</strong></div>
-              <div><span style={{ color: '#6B7280' }}>Capacity:</span> <strong style={{ color: '#111827' }}>{currentWH.capacity}</strong></div>
-              <div><span style={{ color: '#6B7280' }}>Utilization:</span> <strong style={{ color: '#1E3A8A' }}>{currentWH.utilization}</strong></div>
+          <div className="bg-slate-100/90 rounded-2xl p-4 sm:p-5 mb-5 sm:mb-6 border border-slate-200/80">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+              <div>
+                <div className="text-[10.5px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider">
+                  Selected Location
+                </div>
+                <div className="text-sm sm:text-lg font-bold text-slate-900 leading-snug">
+                  {currentWH.name} — <span className="font-normal text-slate-600 text-xs sm:text-base">{currentWH.type}</span>
+                </div>
+              </div>
+
+              {/* Responsive Stats: 3-column micro grid on mobile, inline on desktop */}
+              <div className="grid grid-cols-3 gap-2 sm:flex sm:items-center sm:gap-5 text-xs sm:text-sm pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-200">
+                <div className="bg-white/90 sm:bg-transparent p-2 sm:p-0 rounded-xl sm:rounded-none border sm:border-0 border-slate-200/60 text-center sm:text-left">
+                  <span className="text-slate-500 block text-[10px] sm:text-xs sm:inline">Active SKUs: </span>
+                  <strong className="text-slate-900 font-bold">{currentWH.activeSKUs}</strong>
+                </div>
+                <div className="bg-white/90 sm:bg-transparent p-2 sm:p-0 rounded-xl sm:rounded-none border sm:border-0 border-slate-200/60 text-center sm:text-left">
+                  <span className="text-slate-500 block text-[10px] sm:text-xs sm:inline">Capacity: </span>
+                  <strong className="text-slate-900 font-bold">{currentWH.capacity}</strong>
+                </div>
+                <div className="bg-white/90 sm:bg-transparent p-2 sm:p-0 rounded-xl sm:rounded-none border sm:border-0 border-slate-200/60 text-center sm:text-left">
+                  <span className="text-slate-500 block text-[10px] sm:text-xs sm:inline">Utilization: </span>
+                  <strong className="text-[#0B3A70] font-bold">{currentWH.utilization}</strong>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Stock Table */}
-          <div style={{ overflowX: 'auto', borderRadius: '0.75rem', border: '1px solid #E5E7EB' }}>
+          {/* SKU Inventory Table: Desktop & Tablet View (>=md) */}
+          <div className="hidden md:block overflow-x-auto rounded-xl border border-slate-200 shadow-2xs">
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem', textAlign: 'left' }}>
               <thead>
                 <tr style={{ backgroundColor: '#F9FAFB', borderBottom: '1px solid #E5E7EB', color: '#4B5563', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase' }}>
-                  <th style={{ padding: '0.85rem 1rem' }}>SKU Code & Description</th>
+                  <th style={{ padding: '0.85rem 1rem' }}>SKU Code &amp; Description</th>
                   <th style={{ padding: '0.85rem 1rem' }}>Category</th>
                   <th style={{ padding: '0.85rem 1rem', textAlign: 'right' }}>Physical On-Hand</th>
                   <th style={{ padding: '0.85rem 1rem', textAlign: 'right' }}>SO Reserved</th>
@@ -457,20 +495,83 @@ export default function MultiWarehouseInventoryPage({ app, onBack, onOpenExpertM
             </table>
           </div>
 
-          <div style={{
-            marginTop: '1.25rem',
-            padding: '1rem',
-            backgroundColor: '#EFF6FF',
-            borderRadius: '0.75rem',
-            border: '1px solid #DBEAFE',
-            fontSize: '0.825rem',
-            color: '#1E40AF',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.75rem'
-          }}>
-            <ShieldCheck size={20} style={{ flexShrink: 0 }} />
-            <div>
+          {/* SKU Inventory Cards: Mobile-Optimized Stackable View (<md) */}
+          <div className="block md:hidden space-y-3">
+            {currentItems.map((item, idx) => (
+              <div 
+                key={idx} 
+                className="rounded-2xl p-4 bg-white border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow"
+              >
+                {/* Top: SKU Title, SKU Code, Status */}
+                <div className="flex items-start justify-between gap-2 pb-2.5 mb-2.5 border-b border-slate-100">
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                      {item.name}
+                    </h4>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="text-[10px] font-mono text-slate-600 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded">
+                        {item.sku}
+                      </span>
+                      <span className="text-[10.5px] text-slate-500 font-medium">
+                        {item.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md border shrink-0 ${
+                    item.status === 'Healthy' 
+                      ? 'bg-emerald-50 text-emerald-700 border-emerald-200' 
+                      : item.status === 'Reorder Alert' 
+                      ? 'bg-amber-50 text-amber-700 border-amber-200' 
+                      : 'bg-rose-50 text-rose-700 border-rose-200'
+                  }`}>
+                    {item.status}
+                  </span>
+                </div>
+
+                {/* 3 Metrics: Physical On-Hand | SO Reserved | Available-To-Promise */}
+                <div className="grid grid-cols-3 gap-2 p-2.5 rounded-xl bg-slate-50/90 border border-slate-100 text-center mb-2.5">
+                  <div>
+                    <span className="text-[9.5px] uppercase tracking-wider text-slate-400 font-bold block mb-0.5">
+                      On-Hand
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold text-slate-900">
+                      {item.onHand.toLocaleString()}
+                    </span>
+                  </div>
+
+                  <div>
+                    <span className="text-[9.5px] uppercase tracking-wider text-slate-400 font-bold block mb-0.5">
+                      Reserved
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold text-amber-600">
+                      -{item.reserved.toLocaleString()}
+                    </span>
+                  </div>
+
+                  <div className="bg-white rounded-lg p-1 border border-blue-100 shadow-2xs">
+                    <span className="text-[9.5px] uppercase tracking-wider text-[#0B3A70] font-bold block mb-0.5">
+                      ATP
+                    </span>
+                    <span className="text-xs sm:text-sm font-extrabold text-[#0B3A70]">
+                      {item.atp.toLocaleString()}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Footer info: UOM & Safety Buffer */}
+                <div className="flex items-center justify-between text-[11px] text-slate-500 px-0.5">
+                  <span>UOM: <strong className="text-slate-700 font-semibold">{item.uom}</strong></span>
+                  <span>Safety Buffer: <strong className="text-slate-700 font-semibold">{item.minBuffer}</strong></span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Three-State Formula Callout */}
+          <div className="mt-4 p-3.5 sm:p-4 rounded-xl bg-blue-50/90 border border-blue-200/70 text-xs sm:text-[13px] text-blue-900 flex items-start sm:items-center gap-3">
+            <ShieldCheck size={20} className="shrink-0 text-blue-700 mt-0.5 sm:mt-0" />
+            <div className="leading-relaxed">
               <strong>Three-State Formula Applied:</strong> Available-to-Promise (ATP) = Physical On-Hand - Reserved Customer Allocations. If an order exceeds ATP, the system automatically triggers an Inter-Warehouse Transfer (STO) from the nearest high-stock depot or blocks dispatch.
             </div>
           </div>

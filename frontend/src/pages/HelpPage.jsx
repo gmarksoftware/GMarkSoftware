@@ -20,7 +20,8 @@ import {
   HelpCircle,
   Zap,
   Activity,
-  Loader2
+  Loader2,
+  AlertCircle
 } from 'lucide-react';
 import { sendContactEmail } from '../utils/emailService';
 
@@ -94,6 +95,7 @@ export default function HelpPage({ onOpenExpertModal }) {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -104,22 +106,65 @@ export default function HelpPage({ onOpenExpertModal }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
+    setErrorMessage('');
+
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const message = formData.message.trim();
+
+    if (!name) {
+      setErrorMessage('Please enter your name.');
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      setErrorMessage('Please enter a valid work email address.');
+      return;
+    }
+    if (!message) {
+      setErrorMessage('Please enter your message details.');
+      return;
+    }
+
     setSubmitting(true);
 
-    await sendContactEmail({
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      subject: formData.subject,
-      message: formData.message,
-      activeTab: activeTab
+    const tabTitles = {
+      advisor: 'Schedule Consultation with an Advisor',
+      developments: 'Request Custom Telemetry & Software Development',
+      partner: 'Inquire About Partner & FPO Programs',
+      bug: 'Submit an Engineering Support Ticket'
+    };
+    const title = formData.subject.trim() || tabTitles[activeTab] || 'Website Support Inquiry';
+    const time = new Date().toLocaleString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    });
+
+    const res = await sendContactEmail({
+      name,
+      email,
+      title,
+      subject: title,
+      time,
+      phone: formData.phone.trim(),
+      message,
+      activeTab
     });
 
     setSubmitting(false);
-    setSubmitted(true);
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-    setTimeout(() => setSubmitted(false), 5000);
+
+    if (res.success) {
+      setSubmitted(true);
+      setErrorMessage('');
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      setTimeout(() => setSubmitted(false), 5000);
+    } else {
+      setErrorMessage(res.error || 'Failed to dispatch inquiry. Please try again.');
+    }
   };
 
   const contactCards = [
@@ -625,6 +670,22 @@ export default function HelpPage({ onOpenExpertModal }) {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.35rem' }}>
+                  {errorMessage && (
+                    <div style={{
+                      padding: '0.85rem 1.15rem',
+                      borderRadius: '10px',
+                      backgroundColor: '#FEF2F2',
+                      border: '1.5px solid #FCA5A5',
+                      color: '#991B1B',
+                      fontSize: '0.9rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.65rem'
+                    }}>
+                      <AlertCircle size={18} style={{ color: '#DC2626', flexShrink: 0 }} />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
                   
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
                     <div>

@@ -30,7 +30,7 @@ export default function DetailSubNavBar({ app, onSelectApp, onNavigate }) {
 
   return (
     <div 
-      className="sticky top-[64px] z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-[0_1px_3px_rgba(15,23,42,0.03)]"
+      className="sticky-subnav-ribbon sticky top-[54px] sm:top-[58px] lg:top-[64px] z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-[0_1px_3px_rgba(15,23,42,0.03)]"
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
       <div className="px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2">

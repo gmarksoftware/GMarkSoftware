@@ -38,22 +38,22 @@ import {
   Terminal,
   HelpCircle,
   Scale,
-  BarChart3
+  BarChart3,
+  ExternalLink,
+  Laptop
 } from 'lucide-react';
 import { APPLICATIONS } from '../ApplicationsGridSection';
 import { getAssetUrl } from '@/utils/asset';
-import ErpModuleNavRibbon from './ErpModuleNavRibbon';
 
-export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectApp }) {
-  const [activeStepSales, setActiveStepSales] = useState(0); // active accordion step for Sales Cycle
-  const [activeStepProcure, setActiveStepProcure] = useState(0); // active accordion step for Procurement Cycle
-  const [activeFinanceTab, setActiveFinanceTab] = useState(0); // active tab for Finance Vouchers
+export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSelectApp }) {
+  const [activeStepSales, setActiveStepSales] = useState(0); // active step for Sales Cycle
+  const [activeStepProcure, setActiveStepProcure] = useState(0); // active step for Procurement Cycle
 
   const metricPills = [
-    { label: '< 50ms Query Engine', sub: 'PostgreSQL & Prisma ORM', icon: Database },
-    { label: '100% Tax Accuracy', sub: 'CGST, SGST & IGST Engine', icon: BadgePercent },
-    { label: '3 Languages', sub: 'English, Marathi & Hindi', icon: Globe },
-    { label: 'RBAC & Phone OTP', sub: 'JWT Bearer & AWS SNS', icon: ShieldCheck }
+    { label: '< 50ms Query Engine', sub: 'PostgreSQL & Prisma ORM', icon: Database, accent: '#0284c7' },
+    { label: '100% Tax Accuracy', sub: 'CGST, SGST & IGST Engine', icon: BadgePercent, accent: '#16a34a' },
+    { label: '3 Languages', sub: 'English, Marathi & Hindi', icon: Globe, accent: '#8b5cf6' },
+    { label: 'RBAC & Phone OTP', sub: 'JWT Bearer & AWS SNS', icon: ShieldCheck, accent: '#ea580c' }
   ];
 
   const salesSteps = [
@@ -156,6 +156,8 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
     {
       title: 'Receipt Voucher',
       badge: 'Cash Inflow',
+      badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+      icon: Wallet,
       desc: 'Records incoming funds from customers, debtors, or miscellaneous income.',
       flow: 'Debit: Bank/Cash A/c → Credit: Customer Ledger A/c',
       points: ['Bill-by-bill invoice tagging', 'Automatic settlement adjustment', 'Advance payment holding ledger']
@@ -163,6 +165,8 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
     {
       title: 'Payment Voucher',
       badge: 'Cash Outflow',
+      badgeColor: 'bg-rose-50 text-rose-700 border-rose-200',
+      icon: Receipt,
       desc: 'Records disbursements to suppliers, vendors, employee salaries, and operational costs.',
       flow: 'Debit: Supplier/Expense A/c → Credit: Bank/Cash A/c',
       points: ['Vendor invoice due-date matching', 'Tax deduction support', 'Audit-ready transaction records']
@@ -170,6 +174,8 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
     {
       title: 'Journal Voucher',
       badge: 'Book Adjustments',
+      badgeColor: 'bg-sky-50 text-sky-700 border-sky-200',
+      icon: FileSpreadsheet,
       desc: 'Handles non-cash accounting adjustments, depreciation, provisions, and inter-ledger transfers.',
       flow: 'Debit: Target Ledger A/c → Credit: Source Ledger A/c',
       points: ['Double-entry debit/credit validation', 'Year-end provision entries', 'Cross-department cost allocation']
@@ -177,6 +183,8 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
     {
       title: 'Contra Voucher',
       badge: 'Internal Transfers',
+      badgeColor: 'bg-purple-50 text-purple-700 border-purple-200',
+      icon: RefreshCw,
       desc: 'Records internal monetary movements between company bank accounts and cash registers.',
       flow: 'Debit: Destination Bank/Cash → Credit: Source Bank/Cash',
       points: ['Zero tax impact transactions', 'Bank deposit & withdrawal tracking', 'Petty cash fund replenishment']
@@ -193,126 +201,102 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
   ];
 
   const rolesMatrix = [
-    { role: 'Superadmin', desc: 'Highest administrative authority; manages system configurations, tenants, and global audits.', color: '#0F172A' },
-    { role: 'Administrator', desc: 'Oversees daily business operations, master approvals, financial controls, and reports.', color: '#0B3A70' },
-    { role: 'Seller', desc: 'Focuses on customer sales, quotations, Sales Orders, Challans, and billing invoices.', color: '#16A34A' },
-    { role: 'Buyer', desc: 'Manages supplier relations, procurement contracts, Purchase Orders, and GRN verification.', color: '#D97706' },
-    { role: 'Operator', desc: 'Executes rapid routine data entry, gate pass records, and daily voucher entries.', color: '#64748B' }
+    { role: 'Superadmin', desc: 'Highest administrative authority; manages system configurations, tenants, and global audits.', color: '#0F172A', badge: 'Full Control' },
+    { role: 'Administrator', desc: 'Oversees daily business operations, master approvals, financial controls, and reports.', color: '#0B3A70', badge: 'Ops Master' },
+    { role: 'Seller', desc: 'Focuses on customer sales, quotations, Sales Orders, Challans, and billing invoices.', color: '#16A34A', badge: 'Sales Desk' },
+    { role: 'Buyer', desc: 'Manages supplier relations, procurement contracts, Purchase Orders, and GRN verification.', color: '#D97706', badge: 'Procurement' },
+    { role: 'Operator', desc: 'Executes rapid routine data entry, gate pass records, and daily voucher entries.', color: '#64748B', badge: 'Data Entry' }
   ];
 
   const techStack = [
-    { category: 'Frontend UI', items: ['React 19', 'Vite 7', 'Redux Toolkit / Saga', 'Tailwind CSS / Inter'] },
-    { category: 'Backend API', items: ['NestJS 11', 'TypeScript 5.9', 'Swagger OpenAPI 3.0', 'JWT Bearer Auth'] },
-    { category: 'Database & ORM', items: ['PostgreSQL 14+', 'Prisma 6.19 ORM', 'Redis & BullMQ Queues', 'Automated Migrations'] },
-    { category: 'Localization & Cloud', items: ['i18next (EN, MR, HI)', 'AWS SNS SMS Gateways', 'Excel Import Engine', 'Secure File Storage'] }
+    { category: 'Frontend UI', items: ['React 19', 'Vite 7', 'Redux Toolkit / Saga', 'Tailwind CSS / Inter'], icon: Laptop },
+    { category: 'Backend API', items: ['NestJS 11', 'TypeScript 5.9', 'Swagger OpenAPI 3.0', 'JWT Bearer Auth'], icon: Server },
+    { category: 'Database & ORM', items: ['PostgreSQL 14+', 'Prisma 6.19 ORM', 'Redis & BullMQ Queues', 'Automated Migrations'], icon: Database },
+    { category: 'Localization & Cloud', items: ['i18next (EN, MR, HI)', 'AWS SNS SMS Gateways', 'Excel Import Engine', 'Secure File Storage'], icon: Globe }
   ];
 
   const connectedApps = [
     {
-      name: 'CMMS',
-      desc: 'Man, Machine, Method & Material maintenance orchestration',
-      image: getAssetUrl('/4M.png'),
-      badge: 'Operations'
-    },
-    {
-      name: 'GramUnnati',
-      desc: 'Digital agriculture marketplace & farmer trade advisory',
-      image: getAssetUrl('/Final Logo-09.jpg.jpeg'),
-      badge: 'Agritech'
-    },
-    {
+      id: 'g-nova-iot',
       name: 'G-Nova IoT',
-      desc: '50Hz telemetry ingestion & weighbridge automation',
-      image: getAssetUrl('/G-Nova IOT logo 02.jpg'),
+      tag: 'G-Nova Telemetry & 4M ERP',
+      image: getAssetUrl('/g-nova-clean.png'),
       badge: 'Hardware IoT'
     },
     {
+      id: 'g-track',
       name: 'G Track',
-      desc: 'Enterprise GPS fleet tracking & cold-chain telemetry',
+      tag: 'Field Force & GPS Telemetry',
       image: getAssetUrl('/G Track logo.png'),
       badge: 'Live Fleet'
     },
     {
-      name: 'SHG App',
-      desc: 'Rural logistics & self-help group dispatch network',
-      image: getAssetUrl('/SHG Delivary and Transporter Logo 01.jpg'),
-      badge: 'Village Network'
+      id: 'gram-unnati',
+      name: 'GramUnnati',
+      tag: 'Agri-Commerce Platform',
+      image: getAssetUrl('/gramunnati-clean.png'),
+      badge: 'Agritech'
     },
     {
-      name: 'Transporter App',
-      desc: 'Middle-mile route logistics & cluster fleet tracking',
-      image: getAssetUrl('/SHG Delivary and Transporter Logo.jpg'),
-      badge: 'Logistics'
-    },
-    {
-      name: 'Task Management',
-      desc: 'Digital work orders & industrial shift collaboration',
-      image: getAssetUrl('/Task Management & Team Collaboration Logo 01.jpg'),
+      id: 'task-management',
+      name: 'SynkroBoard',
+      tag: 'Task Management & Collaboration',
+      image: getAssetUrl('/synkroboard-clean.png'),
       badge: 'Productivity'
     }
   ];
 
   return (
-    <div style={{ backgroundColor: '#e8e8e8', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Inter', sans-serif" }}>
+    <div className="w-full bg-[#FCFCFD] text-slate-900 font-['Plus_Jakarta_Sans',sans-serif] overflow-x-hidden selection:bg-purple-100 selection:text-purple-900">
+      
       {/* ========================================================================= */}
-      {/* 1. HERO HEADER (FIRST PAGE - WHITE WITH GREY CURVATURE ARC) */}
+      {/* 1. HERO SECTION (High-End SaaS Minimalist Atmosphere Inspired by Image 1)  */}
       {/* ========================================================================= */}
-      <section 
-        style={{ 
-          backgroundColor: '#FFFFFF', 
-          textAlign: 'center', 
-          paddingTop: 'clamp(1.25rem, 2.5vw, 2rem)', 
-          paddingBottom: 'clamp(2.5rem, 4vw, 3.75rem)', 
-          paddingLeft: '1.5rem', 
-          paddingRight: '1.5rem', 
-          position: 'relative',
-          overflow: 'hidden'
-        }}
-      >
-        {/* Subtle top subtle grid background */}
-        <div
-          className="absolute inset-0 opacity-70 pointer-events-none"
+      <section className="relative pt-10 sm:pt-16 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-white via-[#FCFCFD] to-slate-50/70 border-b border-slate-100">
+        
+        {/* Soft Ambient Radial Background Glows */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[360px] bg-gradient-to-b from-purple-100/40 via-rose-50/30 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+        <div className="absolute -top-12 right-10 w-96 h-96 bg-sky-50/60 rounded-full blur-3xl pointer-events-none -z-10" />
+        
+        {/* Subtle grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.03] pointer-events-none -z-10"
           style={{
-            backgroundImage: 'linear-gradient(to right, #f1f5f9 1px, transparent 1px), linear-gradient(to bottom, #f1f5f9 1px, transparent 1px)',
-            backgroundSize: '4rem 4rem'
+            backgroundImage: `radial-gradient(#0F172A 1px, transparent 1px)`,
+            backgroundSize: '24px 24px'
           }}
         />
 
-        {/* Horizon Curvature Arc in Grey (#e8e8e8) */}
-        <div
-          className="absolute left-1/2 top-[calc(100%-140px)] sm:top-[calc(100%-165px)] md:top-[calc(100%-190px)] lg:top-[calc(100%-210px)] 
-          h-[480px] w-[700px] md:h-[550px] md:w-[1100px] lg:h-[750px] lg:w-[140%] 
-          -translate-x-1/2 rounded-[100%] border-t border-slate-300/40 bg-[#e8e8e8] 
-          shadow-[0_-20px_50px_rgba(0,0,0,0.06)] pointer-events-none z-0"
-          style={{
-            backgroundColor: '#e8e8e8'
-          }}
-        />
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          
+          {/* Eyebrow Pill Tag */}
+          <motion.div 
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-xs mb-6"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#FC787D] animate-pulse" />
+            <span className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-widest">
+              Enterprise Resource Planning &amp; Automation
+            </span>
+          </motion.div>
 
-        <div style={{ maxWidth: '880px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
-
-
-          {/* Headline matching Lora handwriting font style and #00A3FF brush underline */}
-          <div className="relative inline-block">
+          {/* High-Impact Headline with Elegant Accent */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="relative inline-block mb-5 sm:mb-6"
+          >
             <h1 
-              className="text-balance text-slate-900"
-              style={{ 
-                fontFamily: "'Lora', serif",
-                fontSize: 'clamp(1.75rem, 4.5vw, 3.87rem)',
-                lineHeight: '1.18',
-                letterSpacing: '-0.01em',
-                paddingTop: '0.25rem',
-                paddingBottom: '0.75rem',
-                display: 'inline-block',
-                position: 'relative',
-                zIndex: 1,
-                fontWeight: 600
-              }}
+              className="text-slate-900 tracking-tight text-3xl sm:text-5xl lg:text-[62px] font-bold leading-[1.16]"
+              style={{ fontFamily: "'Lora', serif" }}
             >
               <span>Enterprise Resource </span>
               <br className="hidden sm:inline" />
               <span className="relative inline-block whitespace-nowrap">
-                <span className="relative z-10 font-semibold" style={{ color: '#FC787D' }}>
+                <span className="relative z-10 font-bold" style={{ color: '#FC787D' }}>
                   Planning
                 </span>
                 {/* Hand-drawn marker brush stroke highlight matching hero */}
@@ -326,31 +310,31 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                   <path
                     d="M 4,14 Q 130,5 256,12 Q 130,20 6,17"
                     fill="#00A3FF"
+                    opacity="0.8"
                   />
                 </svg>
               </span>
-              <span className="text-slate-900 font-semibold"> & Operations</span>
+              <span className="text-slate-900"> &amp; Operations</span>
             </h1>
 
-            {/* Floating App Logo Square Card with Hand-drawn Curved Arrow */}
-            <div className="hidden sm:flex absolute -right-28 md:-right-36 lg:-right-44 bottom-1 md:bottom-2 items-end z-20 pointer-events-none">
-              {/* Hand-drawn curved arrow pointing to the text */}
+            {/* Playful Hand-drawn curved arrow & Floating App Logo Card */}
+            <div className="hidden md:flex absolute -right-28 lg:-right-36 bottom-2 items-end z-20 pointer-events-none">
               <svg
-                className="w-14 h-10 md:w-16 md:h-12 lg:w-20 lg:h-14 pointer-events-none overflow-visible -mr-1 mb-2"
+                className="w-14 h-10 lg:w-16 lg:h-12 pointer-events-none overflow-visible -mr-1 mb-2 text-[#7B5872]"
                 viewBox="0 0 80 50"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M 76 38 C 55 46, 24 38, 8 14"
-                  stroke="#7B5872"
+                  stroke="currentColor"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   fill="none"
                 />
                 <path
                   d="M 6 24 L 8 12 L 20 16"
-                  stroke="#7B5872"
+                  stroke="currentColor"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -358,735 +342,650 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 />
               </svg>
 
-              {/* App Logo Square Card */}
-              <div 
-                style={{
-                  width: '92px',
-                  height: '92px',
-                  borderRadius: '22px',
-                  backgroundColor: '#FFFFFF',
-                  border: '1.5px solid #CBD5E1',
-                  padding: '8px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 12px 30px -4px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.04)',
-                  flexShrink: 0,
-                  overflow: 'hidden'
-                }}
-              >
+              <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-2xl bg-white border border-slate-200/90 p-2.5 flex items-center justify-center shadow-xl ring-1 ring-slate-900/5 rotate-3">
                 <img 
                   src={getAssetUrl("/ERP Logo.png")} 
                   alt="G Mark ERP Logo" 
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'contain',
-                    transform: 'scale(0.9)',
-                    borderRadius: '12px'
-                  }}
+                  className="w-full h-full object-contain"
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <p 
-            className="text-balance text-gray-600 font-normal"
-            style={{ 
-              fontSize: 'clamp(0.88rem, 1.58vw, 1.1rem)', 
-              lineHeight: '1.65', 
-              maxWidth: '760px',
-              margin: '1.25rem auto 2.25rem',
-              position: 'relative',
-              zIndex: 1,
-              fontWeight: 400
-            }}
+          {/* Subtitle / Paragraph (100% Exact Text Preserved) */}
+          <motion.p 
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed max-w-3xl mx-auto mb-8 font-normal text-balance"
           >
             Unified business operations platform for agricultural trading, industrial manufacturing, and procurement. Seamlessly connect customers, suppliers, inventory, tax compliance, and double-entry financial ledgers in one real-time cloud system.
-          </p>
+          </motion.p>
 
-          {/* Action Button */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '3.75rem', position: 'relative', zIndex: 1 }}>
+          {/* Action Buttons (High-End SaaS Pill Buttons) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-wrap items-center justify-center gap-3.5 mb-14"
+          >
             <button
+              type="button"
               onClick={onOpenExpertModal}
-              style={{
-                padding: '0.8rem 1.85rem',
-                borderRadius: '9999px',
-                fontSize: '0.95rem',
-                fontWeight: '500',
-                backgroundColor: '#7B5872',
-                color: '#FFFFFF',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
-              }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-semibold text-white bg-[#7B5872] hover:bg-[#684760] shadow-lg shadow-purple-900/15 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
             >
               <span>Request ERP Platform Demo</span>
               <ArrowRight size={16} />
             </button>
-          </div>
 
-          {/* Metric Highlights Ribbon */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
-              gap: '0.85rem',
-              maxWidth: '840px',
-              margin: '0 auto',
-              position: 'relative',
-              zIndex: 10,
-              paddingTop: '0.5rem'
-            }}
+            {onBack && (
+              <button
+                type="button"
+                onClick={onBack}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-xs hover:shadow-sm transition-all duration-200 cursor-pointer"
+              >
+                <ArrowLeft size={16} />
+                <span>Back to Solutions</span>
+              </button>
+            )}
+          </motion.div>
+
+          {/* ================================================================= */}
+          {/* FLOATING HERO DASHBOARD MOCKUP (Inspired by Image 1's Kanban hero) */}
+          {/* ================================================================= */}
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.35 }}
+            className="w-full max-w-4xl mx-auto rounded-3xl bg-white border border-slate-200/90 shadow-2xl ring-1 ring-slate-900/5 overflow-hidden text-left mb-12"
+          >
+            {/* macOS Browser Header Bar */}
+            <div className="bg-slate-50/90 border-b border-slate-100 px-4 py-3 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-1.5">
+                <span className="w-3 h-3 rounded-full bg-rose-400/90" />
+                <span className="w-3 h-3 rounded-full bg-amber-400/90" />
+                <span className="w-3 h-3 rounded-full bg-emerald-400/90" />
+              </div>
+              <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-slate-200/80 text-[11px] text-slate-500 font-mono">
+                <span>app.gmarkerp.com/dashboard/operations</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/80">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Live System</span>
+              </div>
+            </div>
+
+            {/* Dashboard Inner Quick-Action Pipeline Preview */}
+            <div className="p-4 sm:p-6 bg-gradient-to-b from-white to-slate-50/40">
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 border-b border-slate-100">
+                <div>
+                  <h3 className="text-sm sm:text-base font-bold text-slate-900">
+                    Enterprise Operations Flow &amp; Financial Ledger
+                  </h3>
+                  <p className="text-xs text-slate-500">
+                    Dual-cycle orchestration: Sales Fulfillment + Procurement Inward
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="px-2.5 py-1 rounded-md text-[11px] font-bold bg-[#7B5872]/10 text-[#7B5872] border border-[#7B5872]/20">
+                    Unified Cloud ERP
+                  </span>
+                </div>
+              </div>
+
+              {/* 5-Stage Visual Workflow Breadcrumb Ribbon */}
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs">
+                {[
+                  { step: '01', title: 'Master Setup', sub: 'Accounts & Taxes', color: 'border-slate-200 bg-white' },
+                  { step: '02', title: 'Order Booking', sub: 'SO / PO Lock', color: 'border-slate-200 bg-white' },
+                  { step: '03', title: 'Warehouse Dispatch', sub: 'Challan / GRN', color: 'border-slate-200 bg-white' },
+                  { step: '04', title: 'Tax Invoice', sub: 'Auto CGST/SGST/IGST', color: 'border-slate-200 bg-white' },
+                  { step: '05', title: 'Settlement', sub: 'Receipt / Payment', color: 'border-purple-200 bg-purple-50/60' }
+                ].map((s, idx) => (
+                  <div key={idx} className={`p-2.5 rounded-xl border ${s.color} shadow-2xs text-left`}>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[10px] font-mono font-bold text-slate-400">{s.step}</span>
+                      <CheckCircle2 size={12} className="text-emerald-500" />
+                    </div>
+                    <div className="font-bold text-slate-800 text-[11.5px] truncate">{s.title}</div>
+                    <div className="text-[10px] text-slate-500 truncate">{s.sub}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Metric Highlights Ribbon (100% Exact Metric Values & Text) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-5xl mx-auto"
           >
             {metricPills.map((pill, idx) => {
               const IconC = pill.icon;
               return (
                 <div 
                   key={idx}
-                  style={{
-                    backgroundColor: '#FFFFFF',
-                    border: '1px solid #CBD5E1',
-                    borderRadius: '16px',
-                    padding: '0.95rem 0.85rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.75rem',
-                    justifyContent: 'center',
-                    boxShadow: '0 4px 14px rgba(0, 0, 0, 0.05)',
-                    transition: 'transform 0.2s ease'
-                  }}
+                  className="rounded-2xl p-4 bg-white border border-slate-200/90 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-3.5 text-left"
                 >
-                  <div style={{ width: '34px', height: '34px', borderRadius: '8px', backgroundColor: '#F1F5F9', color: '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <IconC size={16} />
+                  <div 
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border"
+                    style={{ backgroundColor: `${pill.accent}12`, borderColor: `${pill.accent}30`, color: pill.accent }}
+                  >
+                    <IconC size={18} strokeWidth={2.2} />
                   </div>
-                  <div style={{ textAlign: 'left' }}>
-                    <div style={{ fontSize: '0.85rem', fontWeight: '400', color: '#0F172A', lineHeight: 1.15 }}>
+                  <div className="min-w-0">
+                    <div className="text-xs sm:text-[13px] font-bold text-slate-900 leading-tight">
                       {pill.label}
                     </div>
-                    <div style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: '400', marginTop: '2px' }}>
+                    <div className="text-[11px] text-slate-500 mt-0.5 truncate">
                       {pill.sub}
                     </div>
                   </div>
                 </div>
               );
             })}
-          </div>
-        </div>
-
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 2. PHASE 1: SALES & DISTRIBUTION CYCLE (WHITE CURVED CARD ON GREY BG) */}
-      {/* ========================================================================= */}
-      <section 
-        id="sales-flow-section"
-        style={{ 
-          backgroundColor: '#e8e8e8', 
-          padding: '2.5rem 0 3rem',
-          position: 'relative',
-          overflow: 'hidden',
-          display: 'flex',
-          justifyContent: 'flex-end',
-          width: '100%'
-        }}
-      >
-        <div 
-          style={{
-            position: 'relative',
-            width: '100%',
-            maxWidth: '1040px',
-            marginLeft: 'auto',
-            marginRight: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-end'
-          }}
-        >
-          {/* White Curved Background shape */}
-          <div 
-            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 right-0 left-0 bg-white rounded-l-[24px] sm:rounded-l-[90px] md:rounded-l-[150px] lg:rounded-l-[180px] border-l border-y border-slate-300/70 shadow-[0_12px_44px_rgba(0,0,0,0.04)] pointer-events-none z-0"
-            style={{ right: 0 }}
-          />
-
-          {/* Content inside white curved container */}
-          <div 
-            style={{
-              position: 'relative',
-              zIndex: 10,
-              width: '100%',
-              display: 'flex',
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              justifyContent: 'flex-end',
-              alignItems: 'flex-start'
-            }}
-            className="gap-6 sm:gap-8 lg:gap-10 py-5 sm:py-8 pl-4 sm:pl-14 md:pl-20 pr-3.5 sm:pr-6 md:pr-8"
-          >
-            
-            {/* LEFT: Sales Cycle Info */}
-            <div className="w-full lg:max-w-[370px] flex flex-col gap-[0.85rem] shrink-0">
-              <div>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', fontWeight: '500', color: '#0B3A70', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
-                  <Sparkles size={14} style={{ color: '#0B3A70' }} />
-                  <span>SALES & BILLING CYCLE</span>
-                </span>
-                
-                <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.07rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.25', marginTop: '2px', marginBottom: '0.75rem' }}>
-                  Customer Orders, <br className="hidden sm:inline" />
-                  Challans & Invoices
-                </h2>
-                
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.5rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
-                    <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Creates Customer master & sets credit/payment terms</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
-                    <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Books Sales Order (SO) with pricing & item discounts</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
-                    <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Dispatches goods via Delivery Challan & updates stock</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
-                    <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Auto-generates GST Tax Invoice & posts ledger debits</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
-                    <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Reconciles customer receipt voucher & settles outstanding</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* RIGHT: Sales Process Steps */}
-            <div className="relative w-full lg:max-w-[530px] shrink-0 min-w-0">
-              <div 
-                className="absolute left-[16px] sm:left-[20px] top-[20px] bottom-[20px] w-[2px] bg-slate-300 pointer-events-none" 
-              />
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-                {salesSteps.map((step, index) => {
-                  const isActive = activeStepSales === index;
-                  const IconComp = step.icon;
-
-                  return (
-                    <motion.div
-                      key={step.num}
-                      style={{ position: 'relative', display: 'flex', cursor: 'pointer', alignItems: 'flex-start' }}
-                      className="gap-2.5 sm:gap-4"
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.05 }}
-                      onClick={() => setActiveStepSales(prev => prev === index ? -1 : index)}
-                    >
-                      <div
-                        className="w-[34px] h-[34px] sm:w-[42px] sm:h-[42px] text-xs sm:text-sm font-medium"
-                        style={{
-                          position: 'relative',
-                          zIndex: 10,
-                          borderRadius: '50%',
-                          border: '2px solid',
-                          borderColor: isActive ? '#0F172A' : '#94A3B8',
-                          backgroundColor: isActive ? '#0F172A' : '#FFFFFF',
-                          color: isActive ? '#FFFFFF' : '#475569',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          flexShrink: 0,
-                          transition: 'all 0.25s ease',
-                          boxShadow: isActive ? '0 4px 12px rgba(15, 23, 42, 0.2)' : '0 2px 6px rgba(0,0,0,0.04)'
-                        }}
-                      >
-                        <span>{step.num}</span>
-                      </div>
-
-                      <div
-                        className="flex-1 min-w-0 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-200"
-                        style={{
-                          border: `1.5px solid ${isActive ? '#0F172A' : '#CBD5E1'}`,
-                          backgroundColor: '#F8FAFC',
-                          boxShadow: isActive ? '0 8px 24px -4px rgba(15, 23, 42, 0.12)' : '0 2px 8px rgba(0, 0, 0, 0.04)',
-                        }}
-                      >
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0, flex: 1 }}>
-                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg" style={{ backgroundColor: isActive ? '#0F172A' : '#F1F5F9', color: isActive ? '#FFFFFF' : '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                              <IconComp size={15} />
-                            </div>
-                            <div style={{ minWidth: 0, flex: 1 }}>
-                              <span style={{ fontSize: '0.65rem', color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: '500', display: 'block' }}>
-                                {step.tag}
-                              </span>
-                              <h3 style={{ fontSize: 'clamp(0.85rem, 2.2vw, 0.98rem)', fontWeight: 500, color: '#0F172A', margin: 0, lineHeight: '1.3', overflowWrap: 'break-word', wordBreak: 'break-word' }}>
-                                {step.title}
-                              </h3>
-                            </div>
-                          </div>
-
-                          <div 
-                            className="w-6 h-6 sm:w-[26px] sm:h-[26px]"
-                            style={{ 
-                              borderRadius: '50%', 
-                              backgroundColor: '#FFFFFF', 
-                              border: '1px solid #E2E8F0',
-                              display: 'flex', 
-                              alignItems: 'center', 
-                              justifyContent: 'center', 
-                              color: '#64748B',
-                              transform: isActive ? 'rotate(180deg)' : 'rotate(0deg)',
-                              transition: 'transform 0.25s ease',
-                              flexShrink: 0
-                            }}
-                          >
-                            <ChevronDown size={13} />
-                          </div>
-                        </div>
-
-                        <AnimatePresence initial={false}>
-                          {isActive && (
-                            <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: 'auto', opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                              style={{ overflow: 'hidden' }}
-                            >
-                              <div style={{ paddingTop: '0.75rem', marginTop: '0.7rem', borderTop: '1px solid #E2E8F0', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
-                                <p style={{ fontSize: '0.82rem', color: '#334155', lineHeight: '1.55', margin: 0, fontWeight: '400' }}>
-                                  {step.desc}
-                                </p>
-                                <p style={{ fontSize: '0.78rem', color: '#64748B', lineHeight: '1.5', margin: 0, fontWeight: '400' }}>
-                                  {step.desc2}
-                                </p>
-
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '6px', marginTop: '0.4rem', paddingTop: '0.45rem', borderTop: '1px dashed #CBD5E1' }}>
-                                  <span style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: '400' }}>
-                                    Document State:
-                                  </span>
-                                  <code style={{ fontSize: '0.7rem', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', padding: '2px 8px', borderRadius: '4px', color: '#0F172A', fontWeight: '500', wordBreak: 'break-all' }}>
-                                    {step.status}
-                                  </code>
-                                </div>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-
-          </div>
+          </motion.div>
 
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. PHASE 2: PROCUREMENT & GRN CYCLE (WHITE CURVED CARD ON GREY BG - LEFT) */}
+      {/* 2. PHASE 1: SALES & DISTRIBUTION CYCLE (Split Screen: Text Left, Mockup Right) */}
       {/* ========================================================================= */}
-      <section 
-        id="purchase-flow-section"
-        style={{ 
-          backgroundColor: '#e8e8e8', 
-          padding: '2.5rem 0 3.5rem',
-          position: 'relative',
-          overflow: 'hidden',
-          display: 'flex',
-          justifyContent: 'flex-start',
-          width: '100%'
-        }}
-      >
-        <div 
-          style={{
-            position: 'relative',
-            width: '100%',
-            maxWidth: '1040px',
-            marginRight: 'auto',
-            marginLeft: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start'
-          }}
-        >
-          {/* White Curved Background shape */}
-          <div 
-            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 left-0 right-0 bg-white rounded-r-[24px] sm:rounded-r-[90px] md:rounded-r-[150px] lg:rounded-r-[180px] border-r border-y border-slate-300/70 shadow-[0_12px_44px_rgba(0,0,0,0.04)] pointer-events-none z-0"
-            style={{ left: 0 }}
-          />
-
-          {/* Content inside white curved container */}
-          <div 
-            style={{
-              position: 'relative',
-              zIndex: 10,
-              width: '100%',
-              display: 'flex',
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              justifyContent: 'flex-start',
-              alignItems: 'flex-start'
-            }}
-            className="gap-6 sm:gap-8 lg:gap-10 py-5 sm:py-8 pr-4 sm:pr-14 md:pr-20 pl-3.5 sm:pl-6 md:pl-8"
-          >
-            
-            {/* LEFT: Purchase Process Steps */}
-            <div className="relative w-full lg:max-w-[540px] shrink-0 min-w-0 order-1">
-              <div 
-                className="absolute left-[16px] sm:left-[20px] top-[20px] bottom-[20px] w-[2px] bg-slate-300 pointer-events-none" 
-              />
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-                {procurementSteps.map((step, index) => {
-                  const isActive = activeStepProcure === index;
-                  const IconComp = step.icon;
-
-                  return (
-                    <motion.div
-                      key={step.num}
-                      style={{ position: 'relative', display: 'flex', cursor: 'pointer', alignItems: 'flex-start' }}
-                      className="gap-2.5 sm:gap-4"
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.05 }}
-                      onClick={() => setActiveStepProcure(prev => prev === index ? -1 : index)}
-                    >
-                      <div
-                        className="w-[34px] h-[34px] sm:w-[42px] sm:h-[42px] text-xs sm:text-sm font-medium"
-                        style={{
-                          position: 'relative',
-                          zIndex: 10,
-                          borderRadius: '50%',
-                          border: '2px solid',
-                          borderColor: isActive ? '#0F172A' : '#94A3B8',
-                          backgroundColor: isActive ? '#0F172A' : '#FFFFFF',
-                          color: isActive ? '#FFFFFF' : '#475569',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          flexShrink: 0,
-                          transition: 'all 0.25s ease',
-                          boxShadow: isActive ? '0 4px 12px rgba(15, 23, 42, 0.2)' : '0 2px 6px rgba(0,0,0,0.04)'
-                        }}
-                      >
-                        <span>{step.num}</span>
-                      </div>
-
-                      <div
-                        className="flex-1 min-w-0 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-200"
-                        style={{
-                          border: `1.5px solid ${isActive ? '#0F172A' : '#CBD5E1'}`,
-                          backgroundColor: '#F8FAFC',
-                          boxShadow: isActive ? '0 8px 24px -4px rgba(15, 23, 42, 0.12)' : '0 2px 8px rgba(0, 0, 0, 0.04)',
-                        }}
-                      >
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0, flex: 1 }}>
-                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg" style={{ backgroundColor: isActive ? '#0F172A' : '#F1F5F9', color: isActive ? '#FFFFFF' : '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                              <IconComp size={15} />
-                            </div>
-                            <div style={{ minWidth: 0, flex: 1 }}>
-                              <span style={{ fontSize: '0.65rem', color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: '500', display: 'block' }}>
-                                {step.tag}
-                              </span>
-                              <h3 style={{ fontSize: 'clamp(0.85rem, 2.2vw, 0.98rem)', fontWeight: 500, color: '#0F172A', margin: 0, lineHeight: '1.3', overflowWrap: 'break-word', wordBreak: 'break-word' }}>
-                                {step.title}
-                              </h3>
-                            </div>
-                          </div>
-
-                          <div 
-                            className="w-6 h-6 sm:w-[26px] sm:h-[26px]"
-                            style={{ 
-                              borderRadius: '50%', 
-                              backgroundColor: '#FFFFFF', 
-                              border: '1px solid #E2E8F0',
-                              display: 'flex', 
-                              alignItems: 'center', 
-                              justifyContent: 'center', 
-                              color: '#64748B',
-                              transform: isActive ? 'rotate(180deg)' : 'rotate(0deg)',
-                              transition: 'transform 0.25s ease',
-                              flexShrink: 0
-                            }}
-                          >
-                            <ChevronDown size={13} />
-                          </div>
-                        </div>
-
-                        <AnimatePresence initial={false}>
-                          {isActive && (
-                            <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: 'auto', opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                              style={{ overflow: 'hidden' }}
-                            >
-                              <div style={{ paddingTop: '0.75rem', marginTop: '0.7rem', borderTop: '1px solid #E2E8F0', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
-                                <p style={{ fontSize: '0.82rem', color: '#334155', lineHeight: '1.55', margin: 0, fontWeight: '400' }}>
-                                  {step.desc}
-                                </p>
-                                <p style={{ fontSize: '0.78rem', color: '#64748B', lineHeight: '1.5', margin: 0, fontWeight: '400' }}>
-                                  {step.desc2}
-                                </p>
-
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '6px', marginTop: '0.4rem', paddingTop: '0.45rem', borderTop: '1px dashed #CBD5E1' }}>
-                                  <span style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: '400' }}>
-                                    Document State:
-                                  </span>
-                                  <code style={{ fontSize: '0.7rem', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', padding: '2px 8px', borderRadius: '4px', color: '#0F172A', fontWeight: '500', wordBreak: 'break-all' }}>
-                                    {step.status}
-                                  </code>
-                                </div>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* RIGHT: Purchase Process Info */}
-            <div className="w-full lg:max-w-[380px] flex flex-col gap-[0.85rem] shrink-0 order-2">
-              <div>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', fontWeight: '500', color: '#0B3A70', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
-                  <Sparkles size={14} style={{ color: '#0B3A70' }} />
-                  <span>PROCUREMENT & GRN LIFECYCLE</span>
-                </span>
-                
-                <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.07rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.25', marginTop: '2px', marginBottom: '0.75rem' }}>
-                  Purchase Orders, <br className="hidden sm:inline" />
-                  GRNs & Inward Stock
-                </h2>
-                
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.5rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
-                    <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Onboards verified suppliers & associates HSN/SAC codes</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
-                    <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Issues official Purchase Orders with pricing and bulk Excel import</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
-                    <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Generates Goods Receipt Notes (GRN) with strict quantity tracking</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
-                    <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Verifies vendor Purchase Invoices against inward GRN logs</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5', fontWeight: '400' }}>
-                    <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Executes disbursement payment vouchers & updates ledger credits</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 4. DOUBLE-ENTRY FINANCE, VOUCHERS & GST RULES */}
-      {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#e8e8e8', padding: '4rem 0 4.5rem', borderTop: '1px solid #CBD5E1' }}>
-        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
+      <section id="sales-flow-section" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto">
           
-          <div style={{ marginBottom: '2.5rem', textAlign: 'center' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-              FINANCIAL CORE & TAX ENGINE
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-20 items-start">
+            
+            {/* LEFT COLUMN: Sales Cycle Typography & Value Propositions */}
+            <motion.div 
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-5 flex flex-col justify-center"
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/70 text-blue-800 text-xs font-bold uppercase tracking-wider mb-4 w-fit">
+                <Sparkles size={14} className="text-[#0B3A70]" />
+                <span>SALES &amp; BILLING CYCLE</span>
+              </div>
+              
+              <h2 
+                className="text-slate-900 tracking-tight text-2xl sm:text-4xl font-bold leading-tight mb-4"
+                style={{ fontFamily: "'Lora', serif" }}
+              >
+                Customer Orders, <br className="hidden sm:inline" />
+                <span className="text-[#0B3A70]">Challans &amp; Invoices</span>
+              </h2>
+
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                Seamlessly guide demand from initial customer contract booking to final payment settlement with automated tax rules and ledger reconciliation.
+              </p>
+
+              {/* Verified Checklist Points (100% Exact Text) */}
+              <div className="space-y-3 mb-8">
+                {[
+                  'Creates Customer master & sets credit/payment terms',
+                  'Books Sales Order (SO) with pricing & item discounts',
+                  'Dispatches goods via Delivery Challan & updates stock',
+                  'Auto-generates GST Tax Invoice & posts ledger debits',
+                  'Reconciles customer receipt voucher & settles outstanding'
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-700 leading-snug">
+                    <div className="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center shrink-0 mt-0.5">
+                      <Check size={12} strokeWidth={2.5} />
+                    </div>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Action Pill Badge */}
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
+                <div>
+                  <div className="text-xs font-bold text-slate-900">End-to-End Traceability</div>
+                  <div className="text-[11px] text-slate-500">Every invoice references order origin &amp; challan IDs</div>
+                </div>
+                <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-white text-slate-700 border border-slate-200 shadow-2xs">
+                  5-Step Pipeline
+                </span>
+              </div>
+            </motion.div>
+
+            {/* RIGHT COLUMN: Interactive Floating Sales Step Card */}
+            <motion.div 
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.65, delay: 0.1 }}
+              className="lg:col-span-7"
+            >
+              <div className="rounded-3xl bg-white border border-slate-200/90 shadow-xl ring-1 ring-slate-900/5 p-5 sm:p-7 relative">
+                
+                {/* Header Bar */}
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                      Sales Execution Flow
+                    </span>
+                  </div>
+                  <span className="text-[11px] text-slate-400">Click steps to inspect details</span>
+                </div>
+
+                {/* Connected Step Cards */}
+                <div className="space-y-3 relative">
+                  {salesSteps.map((step, index) => {
+                    const isActive = activeStepSales === index;
+                    const IconComp = step.icon;
+
+                    return (
+                      <div
+                        key={step.num}
+                        onClick={() => setActiveStepSales(prev => prev === index ? -1 : index)}
+                        className={`rounded-2xl p-4 sm:p-4.5 border transition-all duration-200 cursor-pointer ${
+                          isActive 
+                            ? 'bg-slate-50/80 border-slate-300 ring-2 ring-slate-900/5 shadow-sm' 
+                            : 'bg-white border-slate-200/80 hover:border-slate-300 hover:bg-slate-50/40'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between gap-3">
+                          <div className="flex items-center gap-3 min-w-0">
+                            <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 transition-colors ${
+                              isActive ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600'
+                            }`}>
+                              {step.num}
+                            </div>
+                            <div className="min-w-0">
+                              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                                {step.tag}
+                              </span>
+                              <h3 className="text-xs sm:text-sm font-bold text-slate-900 truncate">
+                                {step.title}
+                              </h3>
+                            </div>
+                          </div>
+
+                          <div className={`w-6 h-6 rounded-full flex items-center justify-center border border-slate-200 bg-white text-slate-400 shrink-0 transition-transform duration-200 ${
+                            isActive ? 'rotate-180 text-slate-900' : ''
+                          }`}>
+                            <ChevronDown size={14} />
+                          </div>
+                        </div>
+
+                        {/* Expandable Accordion Body */}
+                        <AnimatePresence initial={false}>
+                          {isActive && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.25, ease: "easeOut" }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pt-3.5 mt-3 border-t border-slate-200/80 space-y-2 text-xs">
+                                <p className="text-slate-700 leading-relaxed font-medium">
+                                  {step.desc}
+                                </p>
+                                <p className="text-slate-500 leading-relaxed">
+                                  {step.desc2}
+                                </p>
+
+                                <div className="flex items-center justify-between flex-wrap gap-2 pt-2 border-t border-dashed border-slate-200">
+                                  <span className="text-[11px] text-slate-500 font-medium">
+                                    Document State:
+                                  </span>
+                                  <code className="text-[10px] font-mono font-bold bg-white border border-slate-200 px-2 py-0.5 rounded text-slate-800">
+                                    {step.status}
+                                  </code>
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                </div>
+
+              </div>
+            </motion.div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3. PHASE 2: PROCUREMENT & GRN CYCLE (Alternating: Mockup Left, Text Right) */}
+      {/* ========================================================================= */}
+      <section id="purchase-flow-section" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/60 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-20 items-start">
+            
+            {/* LEFT COLUMN: Interactive Floating Procurement Step Card (Swapped Order on Desktop) */}
+            <motion.div 
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.65 }}
+              className="lg:col-span-7 order-2 lg:order-1"
+            >
+              <div className="rounded-3xl bg-white border border-slate-200/90 shadow-xl ring-1 ring-slate-900/5 p-5 sm:p-7 relative">
+                
+                {/* Header Bar */}
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse" />
+                    <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                      Procurement &amp; Inward Flow
+                    </span>
+                  </div>
+                  <span className="text-[11px] text-slate-400">Click steps to inspect details</span>
+                </div>
+
+                {/* Connected Step Cards */}
+                <div className="space-y-3 relative">
+                  {procurementSteps.map((step, index) => {
+                    const isActive = activeStepProcure === index;
+                    const IconComp = step.icon;
+
+                    return (
+                      <div
+                        key={step.num}
+                        onClick={() => setActiveStepProcure(prev => prev === index ? -1 : index)}
+                        className={`rounded-2xl p-4 sm:p-4.5 border transition-all duration-200 cursor-pointer ${
+                          isActive 
+                            ? 'bg-slate-50/80 border-slate-300 ring-2 ring-slate-900/5 shadow-sm' 
+                            : 'bg-white border-slate-200/80 hover:border-slate-300 hover:bg-slate-50/40'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between gap-3">
+                          <div className="flex items-center gap-3 min-w-0">
+                            <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 transition-colors ${
+                              isActive ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600'
+                            }`}>
+                              {step.num}
+                            </div>
+                            <div className="min-w-0">
+                              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                                {step.tag}
+                              </span>
+                              <h3 className="text-xs sm:text-sm font-bold text-slate-900 truncate">
+                                {step.title}
+                              </h3>
+                            </div>
+                          </div>
+
+                          <div className={`w-6 h-6 rounded-full flex items-center justify-center border border-slate-200 bg-white text-slate-400 shrink-0 transition-transform duration-200 ${
+                            isActive ? 'rotate-180 text-slate-900' : ''
+                          }`}>
+                            <ChevronDown size={14} />
+                          </div>
+                        </div>
+
+                        {/* Expandable Accordion Body */}
+                        <AnimatePresence initial={false}>
+                          {isActive && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.25, ease: "easeOut" }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pt-3.5 mt-3 border-t border-slate-200/80 space-y-2 text-xs">
+                                <p className="text-slate-700 leading-relaxed font-medium">
+                                  {step.desc}
+                                </p>
+                                <p className="text-slate-500 leading-relaxed">
+                                  {step.desc2}
+                                </p>
+
+                                <div className="flex items-center justify-between flex-wrap gap-2 pt-2 border-t border-dashed border-slate-200">
+                                  <span className="text-[11px] text-slate-500 font-medium">
+                                    Document State:
+                                  </span>
+                                  <code className="text-[10px] font-mono font-bold bg-white border border-slate-200 px-2 py-0.5 rounded text-slate-800">
+                                    {step.status}
+                                  </code>
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                </div>
+
+              </div>
+            </motion.div>
+
+            {/* RIGHT COLUMN: Procurement Cycle Typography & Value Propositions */}
+            <motion.div 
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-5 flex flex-col justify-center order-1 lg:order-2"
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/70 text-amber-800 text-xs font-bold uppercase tracking-wider mb-4 w-fit">
+                <Sparkles size={14} className="text-amber-700" />
+                <span>PROCUREMENT &amp; GRN LIFECYCLE</span>
+              </div>
+              
+              <h2 
+                className="text-slate-900 tracking-tight text-2xl sm:text-4xl font-bold leading-tight mb-4"
+                style={{ fontFamily: "'Lora', serif" }}
+              >
+                Purchase Orders, <br className="hidden sm:inline" />
+                <span className="text-[#0B3A70]">GRNs &amp; Inward Stock</span>
+              </h2>
+
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                Control vendor relations, manage purchase contracts with structured bulk imports, inward goods receipt notes with weight QC, and automate payable disbursements.
+              </p>
+
+              {/* Verified Checklist Points (100% Exact Text) */}
+              <div className="space-y-3 mb-8">
+                {[
+                  'Onboards verified suppliers & associates HSN/SAC codes',
+                  'Issues official Purchase Orders with pricing and bulk Excel import',
+                  'Generates Goods Receipt Notes (GRN) with strict quantity tracking',
+                  'Verifies vendor Purchase Invoices against inward GRN logs',
+                  'Executes disbursement payment vouchers & updates ledger credits'
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-700 leading-snug">
+                    <div className="w-5 h-5 rounded-full bg-amber-50 text-amber-600 border border-amber-200 flex items-center justify-center shrink-0 mt-0.5">
+                      <Check size={12} strokeWidth={2.5} />
+                    </div>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Action Pill Badge */}
+              <div className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between">
+                <div>
+                  <div className="text-xs font-bold text-slate-900">Multi-Tier Approval Matrix</div>
+                  <div className="text-[11px] text-slate-500">Supports managerial sign-offs before PO lock</div>
+                </div>
+                <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                  QC &amp; Gate Pass
+                </span>
+              </div>
+            </motion.div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 4. FINANCIAL CORE & TAX ENGINE (Double-Entry Vouchers & State Tax Rules)   */}
+      {/* ========================================================================= */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto">
+          
+          {/* Section Header */}
+          <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
+            <span className="text-xs font-bold text-[#0B3A70] uppercase tracking-widest block mb-2">
+              FINANCIAL CORE &amp; TAX ENGINE
             </span>
-            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px', lineHeight: '1.25' }}>
-              Double-Entry Accounting & Automated GST Engine
+            <h2 
+              className="text-slate-900 tracking-tight text-2xl sm:text-4xl lg:text-[42px] font-bold leading-tight mb-4"
+              style={{ fontFamily: "'Lora', serif" }}
+            >
+              Double-Entry Accounting &amp; Automated GST Engine
             </h2>
-            <p style={{ color: '#64748B', fontSize: '0.92rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
               Complete financial control with multi-voucher journals, automated Debit/Credit postings, intra vs inter-state tax logic, and real-time ledger histories.
             </p>
           </div>
 
-          {/* 4 Voucher Cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '1rem', marginBottom: '3rem' }}>
+          {/* 4 Voucher Cards Grid (Matching Image 1's Card Grid standard) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
             {financeVouchers.map((v, idx) => (
-              <div 
+              <motion.div 
                 key={idx}
-                style={{
-                  backgroundColor: '#FFFFFF',
-                  border: '1px solid #CBD5E1',
-                  borderRadius: '16px',
-                  padding: '1.25rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.85rem',
-                  boxShadow: '0 4px 14px rgba(0, 0, 0, 0.04)'
-                }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                className="rounded-3xl bg-white border border-slate-200/90 shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between"
               >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <h3 style={{ fontSize: '1.02rem', fontWeight: '500', color: '#0F172A', margin: 0 }}>
-                    {v.title}
-                  </h3>
-                  <span style={{ fontSize: '0.68rem', padding: '2px 8px', borderRadius: '100px', backgroundColor: '#F8FAFC', color: '#475569', border: '1px solid #CBD5E1' }}>
-                    {v.badge}
-                  </span>
-                </div>
-                
-                <p style={{ fontSize: '0.82rem', color: '#475569', margin: 0, lineHeight: '1.55' }}>
-                  {v.desc}
-                </p>
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <h3 className="text-base font-bold text-slate-900">
+                      {v.title}
+                    </h3>
+                    <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${v.badgeColor}`}>
+                      {v.badge}
+                    </span>
+                  </div>
 
-                <div style={{ backgroundColor: '#F8FAFC', border: '1px dashed #CBD5E1', borderRadius: '10px', padding: '0.65rem 0.75rem', fontSize: '0.75rem', color: '#0F172A', fontWeight: '500' }}>
-                  {v.flow}
-                </div>
+                  <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                    {v.desc}
+                  </p>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', marginTop: '0.25rem' }}>
-                  {v.points.map((pt, pIdx) => (
-                    <div key={pIdx} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.76rem', color: '#64748B' }}>
-                      <Check size={13} style={{ color: '#16A34A', flexShrink: 0 }} />
-                      <span>{pt}</span>
-                    </div>
-                  ))}
+                  {/* Flow Diagram Box */}
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 text-[11px] font-mono text-slate-800 font-bold mb-4 leading-snug">
+                    {v.flow}
+                  </div>
+
+                  {/* Bullet Checklist */}
+                  <div className="space-y-1.5">
+                    {v.points.map((pt, pIdx) => (
+                      <div key={pIdx} className="flex items-center gap-2 text-xs text-slate-600">
+                        <Check size={13} className="text-emerald-500 shrink-0" />
+                        <span>{pt}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-        </div>
-
-        {/* GST Rules & State Logic Comparison Card - Extended to Left Edge */}
-        <div 
-          style={{
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'flex-start'
-          }}
-        >
-          <div 
-            style={{
-              width: '100%',
-              maxWidth: 'calc(50vw + 560px)',
-              marginRight: 'auto',
-              marginLeft: 0,
-              backgroundColor: '#FFFFFF',
-              color: '#0F172A',
-              borderTop: '1px solid #CBD5E1',
-              borderBottom: '1px solid #CBD5E1',
-              borderRight: '1px solid #CBD5E1',
-              borderLeft: 'none',
-              borderTopRightRadius: '28px',
-              borderBottomRightRadius: '28px',
-              borderTopLeftRadius: 0,
-              borderBottomLeftRadius: 0,
-              boxShadow: '0 8px 30px rgba(0, 0, 0, 0.05)',
-              paddingTop: '2rem',
-              paddingBottom: '2rem',
-              paddingRight: '1.25rem',
-              paddingLeft: 'max(1.25rem, calc((100vw - 1120px) / 2 + 1.5rem))',
-              boxSizing: 'border-box'
-            }}
+          {/* State-Based GST Computation Comparison (Ultra-Clean Split SaaS Card) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="rounded-3xl bg-gradient-to-br from-slate-50 to-white border border-slate-200/90 shadow-lg p-6 sm:p-8 lg:p-10"
           >
-            <div 
-              style={{
-                maxWidth: '1072px',
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
-                gap: '1.5rem',
-                alignItems: 'center'
-              }}
-            >
-              <div>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', color: '#0B3A70', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.5rem', fontWeight: '500' }}>
-                  <Scale size={14} style={{ color: '#0B3A70' }} />
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              
+              <div className="lg:col-span-5">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-bold text-[#0B3A70] uppercase tracking-wider mb-3 shadow-2xs">
+                  <Scale size={14} />
                   <span>STATE-BASED GST COMPUTATION</span>
                 </div>
-                <h3 style={{ fontSize: '1.45rem', fontWeight: '400', color: '#0F172A', margin: 0, marginBottom: '0.75rem' }}>
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-tight mb-3">
                   Automated Intra-State vs Inter-State Tax Rules
                 </h3>
-                <p style={{ fontSize: '0.88rem', color: '#475569', lineHeight: '1.6', margin: 0 }}>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   G Mark ERP automatically inspects company registration state vs customer/supplier state to apply compliant statutory tax schedules without manual calculation errors.
                 </p>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-                <div style={{ backgroundColor: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '1rem', boxShadow: '0 1px 4px rgba(0,0,0,0.02)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
-                    <span style={{ fontSize: '0.85rem', fontWeight: '500', color: '#0284C7' }}>Intra-State Transaction (Same State)</span>
-                    <span style={{ fontSize: '0.72rem', backgroundColor: '#E0F2FE', color: '#0369A1', border: '1px solid #BAE6FD', padding: '2px 7px', borderRadius: '6px', fontWeight: '500' }}>CGST + SGST</span>
+              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                
+                {/* Intra-State Card */}
+                <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs hover:border-sky-300 transition-colors">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-bold text-sky-700">Intra-State Transaction</span>
+                    <span className="text-[10px] font-bold bg-sky-50 text-sky-700 border border-sky-200 px-2 py-0.5 rounded-full">
+                      CGST + SGST
+                    </span>
                   </div>
-                  <p style={{ fontSize: '0.78rem', color: '#64748B', margin: 0 }}>
-                    GST is split equally: e.g. 18% tax = <strong style={{ color: '#0F172A' }}>CGST 9%</strong> (Central) + <strong style={{ color: '#0F172A' }}>SGST 9%</strong> (State).
+                  <p className="text-xs text-slate-600 leading-relaxed mb-2">
+                    GST is split equally: e.g. 18% tax = <strong className="text-slate-900">CGST 9%</strong> (Central) + <strong className="text-slate-900">SGST 9%</strong> (State).
                   </p>
+                  <div className="text-[11px] text-slate-400 font-medium">Applied when Buyer &amp; Seller in same state</div>
                 </div>
 
-                <div style={{ backgroundColor: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '1rem', boxShadow: '0 1px 4px rgba(0,0,0,0.02)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
-                    <span style={{ fontSize: '0.85rem', fontWeight: '500', color: '#16A34A' }}>Inter-State Transaction (Different State)</span>
-                    <span style={{ fontSize: '0.72rem', backgroundColor: '#DCFCE7', color: '#15803D', border: '1px solid #BBF7D0', padding: '2px 7px', borderRadius: '6px', fontWeight: '500' }}>IGST</span>
+                {/* Inter-State Card */}
+                <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs hover:border-emerald-300 transition-colors">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-bold text-emerald-700">Inter-State Transaction</span>
+                    <span className="text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full">
+                      IGST
+                    </span>
                   </div>
-                  <p style={{ fontSize: '0.78rem', color: '#64748B', margin: 0 }}>
-                    Full statutory tax applies as integrated tax: e.g. 18% tax = <strong style={{ color: '#0F172A' }}>IGST 18%</strong>.
+                  <p className="text-xs text-slate-600 leading-relaxed mb-2">
+                    Full statutory tax applies as integrated tax: e.g. 18% tax = <strong className="text-slate-900">IGST 18%</strong>.
                   </p>
+                  <div className="text-[11px] text-slate-400 font-medium">Applied when crossing state boundaries</div>
                 </div>
+
               </div>
-            </div>
-          </div>
-        </div>
 
+            </div>
+          </motion.div>
+
+        </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 5. FINANCIAL REPORTING — PROFIT & LOSS REPORT */}
+      {/* 5. FINANCIAL REPORTING — PROFIT & LOSS REPORT (Split Screen)              */}
       {/* ========================================================================= */}
-      <section 
-        id="profit-loss-section"
-        style={{ 
-          backgroundColor: '#e8e8e8', 
-          padding: '4.5rem 0 5rem', 
-          borderTop: '1px solid #CBD5E1' 
-        }}
-      >
-        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <section id="profit-loss-section" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/50 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-20 items-center">
             
             {/* LEFT COLUMN: Content & Features */}
             <motion.div 
-              className="lg:col-span-5 flex flex-col justify-center"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-5 flex flex-col justify-center"
             >
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: '#0B3A70', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.5rem', fontWeight: '500' }}>
-                <BarChart3 size={15} style={{ color: '#0B3A70' }} />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200/70 text-purple-800 text-xs font-bold uppercase tracking-wider mb-4 w-fit">
+                <BarChart3 size={15} className="text-[#0B3A70]" />
                 <span>FINANCIAL REPORTING</span>
               </div>
 
-              <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.3rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.25', margin: '0 0 1rem' }}>
-                Profit & Loss Report
+              <h2 
+                className="text-slate-900 tracking-tight text-2xl sm:text-4xl font-bold leading-tight mb-4"
+                style={{ fontFamily: "'Lora', serif" }}
+              >
+                Profit &amp; Loss Report
               </h2>
 
-              <p style={{ color: '#475569', fontSize: '0.96rem', lineHeight: '1.65', margin: '0 0 1.75rem' }}>
-                The Profit & Loss Report displays the company's financial performance for a selected period. It provides a clear overview of revenue, expenditure, gross profit, and net profit.
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                The Profit &amp; Loss Report displays the company's financial performance for a selected period. It provides a clear overview of revenue, expenditure, gross profit, and net profit.
               </p>
 
-              {/* Key Features List */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
+              {/* Key Features List (100% Exact Text) */}
+              <div className="space-y-3">
                 {[
                   'View total revenue, total expenditure, gross profit, and net profit.',
                   'Review detailed income and expenditure entries, including Sales, Purchase, Direct Expenses, and Closing Stock.',
@@ -1094,281 +993,157 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                   'Use Expand All to view detailed account group information.',
                   'Export reports for accounting, financial review, and business analysis.'
                 ].map((feature, idx) => (
-                  <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-                    <div 
-                      style={{ 
-                        width: '22px', 
-                        height: '22px', 
-                        borderRadius: '50%', 
-                        backgroundColor: '#F1F5F9', 
-                        color: '#7B5872', 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        justifyContent: 'center', 
-                        flexShrink: 0,
-                        marginTop: '2px',
-                        border: '1px solid #CBD5E1'
-                      }}
-                    >
-                      <Check size={13} strokeWidth={2.5} />
+                  <div key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-700 leading-snug">
+                    <div className="w-5 h-5 rounded-full bg-purple-50 text-[#7B5872] border border-purple-200 flex items-center justify-center shrink-0 mt-0.5">
+                      <Check size={12} strokeWidth={2.5} />
                     </div>
-                    <span style={{ fontSize: '0.88rem', color: '#334155', lineHeight: '1.55', fontWeight: '400' }}>
-                      {feature}
-                    </span>
+                    <span>{feature}</span>
                   </div>
                 ))}
               </div>
             </motion.div>
 
-            {/* RIGHT COLUMN: Actual Screenshot Display */}
+            {/* RIGHT COLUMN: Actual Screenshot Display with macOS Browser Frame */}
             <motion.div 
-              className="lg:col-span-7"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.65, delay: 0.1 }}
+              className="lg:col-span-7"
             >
-              <div 
-                style={{
-                  backgroundColor: '#FFFFFF',
-                  border: '1px solid #CBD5E1',
-                  borderRadius: '16px',
-                  overflow: 'hidden',
-                  boxShadow: '0 12px 36px -6px rgba(15, 23, 42, 0.08), 0 4px 14px rgba(0, 0, 0, 0.04)',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
-                }}
-              >
-                {/* Clean Enterprise Top Window Header Bar */}
-                <div 
-                  style={{
-                    backgroundColor: '#F8FAFC',
-                    borderBottom: '1px solid #E2E8F0',
-                    padding: '9px 16px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    gap: '12px'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <div style={{ width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#CBD5E1' }} />
-                    <div style={{ width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#E2E8F0' }} />
-                    <div style={{ width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#E2E8F0' }} />
+              <div className="rounded-3xl bg-white border border-slate-200/90 shadow-2xl ring-1 ring-slate-900/5 overflow-hidden transition-all duration-300">
+                
+                {/* Clean macOS Top Window Header Bar */}
+                <div className="bg-slate-50/90 border-b border-slate-100 px-4 py-3 flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-3 h-3 rounded-full bg-rose-400" />
+                    <span className="w-3 h-3 rounded-full bg-amber-400" />
+                    <span className="w-3 h-3 rounded-full bg-emerald-400" />
                   </div>
                   
-                  <div 
-                    style={{
-                      fontSize: '0.72rem',
-                      color: '#475569',
-                      backgroundColor: '#FFFFFF',
-                      border: '1px solid #E2E8F0',
-                      borderRadius: '6px',
-                      padding: '2px 12px',
-                      fontWeight: '400',
-                      letterSpacing: '0.01em',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '6px'
-                    }}
-                  >
+                  <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-slate-200/80 text-[11px] text-slate-500 font-mono">
                     <span>app.gmarkerp.com/reports/profit-loss</span>
                   </div>
 
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#16A34A', display: 'inline-block' }} />
-                    <span style={{ fontSize: '0.7rem', color: '#16A34A', fontWeight: '500' }}>Live System</span>
+                  <div className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/80">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    <span>Live System</span>
                   </div>
                 </div>
 
                 {/* Screenshot Frame */}
-                <div style={{ padding: '8px', backgroundColor: '#F8FAFC' }}>
+                <div className="p-2 sm:p-3 bg-slate-50/50">
                   <img 
                     src={getAssetUrl('/Screenshot 2026-10-13 105644.png')}
-                    alt="G Mark ERP Profit & Loss Report"
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      display: 'block',
-                      borderRadius: '10px',
-                      border: '1px solid #E2E8F0',
-                      boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
-                    }}
+                    alt="G Mark ERP Profit &amp; Loss Report"
+                    className="w-full h-auto rounded-xl border border-slate-200/80 shadow-xs"
                     loading="lazy"
                   />
                 </div>
 
                 {/* Caption Bar */}
-                <div 
-                  style={{
-                    padding: '10px 16px',
-                    backgroundColor: '#FFFFFF',
-                    borderTop: '1px solid #F1F5F9',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    flexWrap: 'wrap',
-                    gap: '8px'
-                  }}
-                >
-                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: '#0F172A', fontWeight: '500' }}>
-                    <TrendingUp size={14} style={{ color: '#0B3A70' }} />
-                    Financial Reporting & Analysis
+                <div className="px-4 py-3 bg-white border-t border-slate-100 flex items-center justify-between flex-wrap gap-2 text-xs">
+                  <span className="inline-flex items-center gap-1.5 font-bold text-slate-800">
+                    <TrendingUp size={14} className="text-[#0B3A70]" />
+                    <span>Financial Reporting &amp; Analysis</span>
                   </span>
-                  <span style={{ fontSize: '0.72rem', color: '#64748B' }}>
-                    Trading Account, Income & Expenditure Ledger
+                  <span className="text-[11px] text-slate-500">
+                    Trading Account, Income &amp; Expenditure Ledger
                   </span>
                 </div>
               </div>
             </motion.div>
 
           </div>
+
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. MASTERS MODULE — YOUR ERP DATA FOUNDATION */}
+      {/* 6. MASTERS MODULE — YOUR ERP DATA FOUNDATION (Alternating: Mockup Left)  */}
       {/* ========================================================================= */}
-      <section 
-        id="masters-module-section"
-        style={{ 
-          backgroundColor: '#e8e8e8', 
-          padding: '4.5rem 0 5rem', 
-          borderTop: '1px solid #CBD5E1' 
-        }}
-      >
-        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <section id="masters-module-section" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-20 items-center">
             
-            {/* LEFT COLUMN: Actual Screenshot Display (Alternating order on desktop) */}
+            {/* LEFT COLUMN: Actual Screenshot Display with macOS Browser Frame */}
             <motion.div 
-              className="lg:col-span-7 order-2 lg:order-1"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.65 }}
+              className="lg:col-span-7 order-2 lg:order-1"
             >
-              <div 
-                style={{
-                  backgroundColor: '#FFFFFF',
-                  border: '1px solid #CBD5E1',
-                  borderRadius: '16px',
-                  overflow: 'hidden',
-                  boxShadow: '0 12px 36px -6px rgba(15, 23, 42, 0.08), 0 4px 14px rgba(0, 0, 0, 0.04)',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
-                }}
-              >
-                {/* Clean Enterprise Top Window Header Bar */}
-                <div 
-                  style={{
-                    backgroundColor: '#F8FAFC',
-                    borderBottom: '1px solid #E2E8F0',
-                    padding: '9px 16px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    gap: '12px'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <div style={{ width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#CBD5E1' }} />
-                    <div style={{ width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#E2E8F0' }} />
-                    <div style={{ width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#E2E8F0' }} />
+              <div className="rounded-3xl bg-white border border-slate-200/90 shadow-2xl ring-1 ring-slate-900/5 overflow-hidden transition-all duration-300">
+                
+                {/* Clean macOS Top Window Header Bar */}
+                <div className="bg-slate-50/90 border-b border-slate-100 px-4 py-3 flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-3 h-3 rounded-full bg-rose-400" />
+                    <span className="w-3 h-3 rounded-full bg-amber-400" />
+                    <span className="w-3 h-3 rounded-full bg-emerald-400" />
                   </div>
                   
-                  <div 
-                    style={{
-                      fontSize: '0.72rem',
-                      color: '#475569',
-                      backgroundColor: '#FFFFFF',
-                      border: '1px solid #E2E8F0',
-                      borderRadius: '6px',
-                      padding: '2px 12px',
-                      fontWeight: '400',
-                      letterSpacing: '0.01em',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '6px'
-                    }}
-                  >
+                  <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-slate-200/80 text-[11px] text-slate-500 font-mono">
                     <span>app.gmarkerp.com/masters/group-master</span>
                   </div>
 
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#16A34A', display: 'inline-block' }} />
-                    <span style={{ fontSize: '0.7rem', color: '#16A34A', fontWeight: '500' }}>Live System</span>
+                  <div className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/80">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    <span>Live System</span>
                   </div>
                 </div>
 
                 {/* Screenshot Frame */}
-                <div style={{ padding: '8px', backgroundColor: '#F8FAFC' }}>
+                <div className="p-2 sm:p-3 bg-slate-50/50">
                   <img 
                     src={getAssetUrl('/Screenshot 2026-10-13 105712.png')}
                     alt="G Mark ERP Masters Module"
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      display: 'block',
-                      borderRadius: '10px',
-                      border: '1px solid #E2E8F0',
-                      boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
-                    }}
+                    className="w-full h-auto rounded-xl border border-slate-200/80 shadow-xs"
                     loading="lazy"
                   />
                 </div>
 
                 {/* Caption Bar */}
-                <div 
-                  style={{
-                    padding: '10px 16px',
-                    backgroundColor: '#FFFFFF',
-                    borderTop: '1px solid #F1F5F9',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    flexWrap: 'wrap',
-                    gap: '8px'
-                  }}
-                >
-                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: '#0F172A', fontWeight: '500' }}>
-                    <FolderTree size={14} style={{ color: '#0B3A70' }} />
-                    ERP Master Directory & Data Foundation
+                <div className="px-4 py-3 bg-white border-t border-slate-100 flex items-center justify-between flex-wrap gap-2 text-xs">
+                  <span className="inline-flex items-center gap-1.5 font-bold text-slate-800">
+                    <FolderTree size={14} className="text-[#0B3A70]" />
+                    <span>ERP Master Directory &amp; Data Foundation</span>
                   </span>
-                  <span style={{ fontSize: '0.72rem', color: '#64748B' }}>
-                    Centralized Data Governance & Categories
+                  <span className="text-[11px] text-slate-500">
+                    Centralized Data Governance &amp; Categories
                   </span>
                 </div>
               </div>
             </motion.div>
 
-            {/* RIGHT COLUMN: Content & 6 Master Types (Alternating order on desktop) */}
+            {/* RIGHT COLUMN: Content & 6 Master Types */}
             <motion.div 
-              className="lg:col-span-5 flex flex-col justify-center order-1 lg:order-2"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-5 flex flex-col justify-center order-1 lg:order-2"
             >
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: '#0B3A70', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.5rem', fontWeight: '500' }}>
-                <Database size={15} style={{ color: '#0B3A70' }} />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/70 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-4 w-fit">
+                <Database size={15} className="text-[#0B3A70]" />
                 <span>SYSTEM MASTERS</span>
               </div>
 
-              <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.3rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.25', margin: '0 0 1rem' }}>
+              <h2 
+                className="text-slate-900 tracking-tight text-2xl sm:text-4xl font-bold leading-tight mb-4"
+                style={{ fontFamily: "'Lora', serif" }}
+              >
                 Masters — Your ERP Data Foundation
               </h2>
 
-              <p style={{ color: '#475569', fontSize: '0.96rem', lineHeight: '1.65', margin: '0 0 1.5rem' }}>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
                 The Masters module is used to create and manage the fundamental data required for day-to-day ERP operations. It provides a centralized foundation for managing financial accounts, products, categories, units, and tax classifications.
               </p>
 
-              {/* 6 Master Types Grid */}
-              <div 
-                style={{ 
-                  display: 'grid', 
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', 
-                  gap: '0.75rem' 
-                }}
-              >
+              {/* 6 Master Types Grid (100% Exact Text) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
                   { title: 'Group Master', desc: 'Organizes financial accounts into meaningful groups.', icon: FolderTree },
                   { title: 'Account Master', desc: 'Manages customer, supplier, and other account details.', icon: Building2 },
@@ -1381,26 +1156,17 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                   return (
                     <div 
                       key={idx}
-                      style={{
-                        backgroundColor: '#FFFFFF',
-                        border: '1px solid #CBD5E1',
-                        borderRadius: '12px',
-                        padding: '0.85rem 0.95rem',
-                        boxShadow: '0 1px 4px rgba(0,0,0,0.02)',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '4px'
-                      }}
+                      className="p-3.5 rounded-2xl bg-slate-50/80 border border-slate-200/80 shadow-2xs hover:shadow-xs hover:border-slate-300 transition-all"
                     >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
-                        <div style={{ width: '22px', height: '22px', borderRadius: '6px', backgroundColor: '#F1F5F9', color: '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <div className="flex items-center gap-2 mb-1">
+                        <div className="w-6 h-6 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-700 shrink-0">
                           <IconComp size={13} />
                         </div>
-                        <h4 style={{ fontSize: '0.86rem', fontWeight: '600', color: '#0F172A', margin: 0 }}>
+                        <h4 className="text-xs font-bold text-slate-900">
                           {master.title}
                         </h4>
                       </div>
-                      <p style={{ fontSize: '0.78rem', color: '#64748B', lineHeight: '1.45', margin: '2px 0 0', paddingLeft: '29px' }}>
+                      <p className="text-[11px] text-slate-500 leading-snug">
                         {master.desc}
                       </p>
                     </div>
@@ -1410,257 +1176,243 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
             </motion.div>
 
           </div>
+
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 7. MASTER DATA DIRECTORY & ROLES MATRIX */}
+      {/* 7. MASTER DATA DIRECTORY & ROLES MATRIX                                   */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#e8e8e8', padding: '4rem 0 4.5rem', borderTop: '1px solid #CBD5E1' }}>
-        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/60 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto">
           
-          <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-              SYSTEM MASTERS & SECURITY
+          {/* Section Header */}
+          <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
+            <span className="text-xs font-bold text-[#0B3A70] uppercase tracking-widest block mb-2">
+              SYSTEM MASTERS &amp; SECURITY
             </span>
-            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.07rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px', lineHeight: '1.25' }}>
-              Master Data Hierarchy & Role-Based Access (RBAC)
+            <h2 
+              className="text-slate-900 tracking-tight text-2xl sm:text-4xl lg:text-[42px] font-bold leading-tight"
+              style={{ fontFamily: "'Lora', serif" }}
+            >
+              Master Data Hierarchy &amp; Role-Based Access (RBAC)
             </h2>
           </div>
 
-          {/* Master Directory Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1rem', marginBottom: '2.75rem' }}>
+          {/* Master Directory Grid (6 Categories) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-16">
             {masterCategories.map((m, idx) => (
-              <div 
+              <motion.div 
                 key={idx}
-                style={{
-                  backgroundColor: '#FFFFFF',
-                  border: '1px solid #CBD5E1',
-                  borderRadius: '14px',
-                  padding: '1.25rem',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
-                }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: idx * 0.06 }}
+                className="rounded-3xl p-5 sm:p-6 bg-white border border-slate-200/90 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200"
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-                  <FolderTree size={16} style={{ color: '#0B3A70' }} />
-                  <h3 style={{ fontSize: '0.95rem', fontWeight: '500', color: '#0F172A', margin: 0 }}>
+                <div className="flex items-center gap-2.5 mb-2">
+                  <div className="w-8 h-8 rounded-xl bg-blue-50 border border-blue-200/60 text-[#0B3A70] flex items-center justify-center shrink-0">
+                    <FolderTree size={16} />
+                  </div>
+                  <h3 className="text-sm sm:text-base font-bold text-slate-900">
                     {m.title}
                   </h3>
                 </div>
-                <p style={{ fontSize: '0.8rem', color: '#64748B', margin: 0, lineHeight: '1.55' }}>
+                <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
                   {m.desc}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-        </div>
-
-        {/* User Roles & Permissions Matrix - Extended to Right Edge */}
-        <div 
-          style={{
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'flex-end'
-          }}
-        >
-          <div 
-            style={{
-              width: '100%',
-              maxWidth: 'calc(50vw + 560px)',
-              marginLeft: 'auto',
-              marginRight: 0,
-              backgroundColor: '#FFFFFF',
-              borderTop: '1px solid #CBD5E1',
-              borderBottom: '1px solid #CBD5E1',
-              borderLeft: '1px solid #CBD5E1',
-              borderRight: 'none',
-              borderTopLeftRadius: '28px',
-              borderBottomLeftRadius: '28px',
-              borderTopRightRadius: 0,
-              borderBottomRightRadius: 0,
-              boxShadow: '0 8px 30px rgba(0, 0, 0, 0.05)',
-              paddingTop: '2rem',
-              paddingBottom: '2rem',
-              paddingLeft: '1.25rem',
-              paddingRight: 'max(1.25rem, calc((100vw - 1120px) / 2 + 1.5rem))',
-              boxSizing: 'border-box'
-            }}
+          {/* User Roles & Permissions Matrix */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="rounded-3xl bg-white border border-slate-200/90 shadow-xl ring-1 ring-slate-900/5 p-6 sm:p-8"
           >
-            <div 
-              style={{
-                maxWidth: '1072px',
-                marginLeft: 'auto',
-                marginRight: 0
-              }}
-            >
-              <h3 style={{ fontSize: '1.15rem', fontWeight: '500', color: '#0F172A', margin: 0, marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Users size={18} style={{ color: '#0B3A70' }} />
-                <span>User Roles & Permission Boundaries</span>
-              </h3>
-
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 160px), 1fr))', gap: '0.85rem' }}>
-                {rolesMatrix.map((r, idx) => (
-                  <div 
-                    key={idx}
-                    style={{
-                      backgroundColor: '#F8FAFC',
-                      border: '1px solid #E2E8F0',
-                      borderRadius: '12px',
-                      padding: '1rem',
-                      borderLeft: `4px solid ${r.color}`
-                    }}
-                  >
-                    <div style={{ fontSize: '0.9rem', fontWeight: '500', color: '#0F172A', marginBottom: '4px' }}>
-                      {r.role}
-                    </div>
-                    <div style={{ fontSize: '0.76rem', color: '#64748B', lineHeight: '1.45' }}>
-                      {r.desc}
-                    </div>
-                  </div>
-                ))}
+            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-slate-100">
+              <div className="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center shrink-0">
+                <Users size={16} />
+              </div>
+              <div>
+                <h3 className="text-base sm:text-lg font-bold text-slate-900">
+                  User Roles &amp; Permission Boundaries
+                </h3>
+                <p className="text-xs text-slate-500">
+                  Granular administrative segregation of duties across supply chain actors
+                </p>
               </div>
             </div>
-          </div>
-        </div>
 
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4">
+              {rolesMatrix.map((r, idx) => (
+                <div 
+                  key={idx}
+                  className="rounded-2xl p-4 bg-slate-50/70 border border-slate-200/80 flex flex-col justify-between"
+                  style={{ borderLeftWidth: '4px', borderLeftColor: r.color }}
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-1.5 mb-1.5">
+                      <span className="text-xs sm:text-sm font-bold text-slate-900">{r.role}</span>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white border border-slate-200 text-slate-600">
+                        {r.badge}
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {r.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+        </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. TECHNICAL ARCHITECTURE & DEVELOPER SUITE */}
+      {/* 8. TECHNICAL ARCHITECTURE & DEVELOPER SUITE                              */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#e8e8e8', padding: '4rem 0 4.5rem', borderTop: '1px solid #CBD5E1' }}>
-        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto">
           
-          <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-              ARCHITECTURE & INFRASTRUCTURE
+          {/* Section Header */}
+          <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
+            <span className="text-xs font-bold text-[#0B3A70] uppercase tracking-widest block mb-2">
+              ARCHITECTURE &amp; INFRASTRUCTURE
             </span>
-            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.07rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px', lineHeight: '1.25' }}>
+            <h2 
+              className="text-slate-900 tracking-tight text-2xl sm:text-4xl lg:text-[42px] font-bold leading-tight"
+              style={{ fontFamily: "'Lora', serif" }}
+            >
               Enterprise Full-Stack Technology Architecture
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '1rem', marginBottom: '2.5rem' }}>
-            {techStack.map((stack, idx) => (
-              <div 
-                key={idx}
-                style={{
-                  backgroundColor: '#FFFFFF',
-                  border: '1px solid #CBD5E1',
-                  borderRadius: '16px',
-                  padding: '1.25rem',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
-                }}
-              >
-                <h3 style={{ fontSize: '0.9rem', fontWeight: '500', color: '#0B3A70', textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0, marginBottom: '0.75rem' }}>
-                  {stack.category}
-                </h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
-                  {stack.items.map((item, iIdx) => (
-                    <div key={iIdx} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.82rem', color: '#334155' }}>
-                      <Code2 size={14} style={{ color: '#0F172A', flexShrink: 0 }} />
-                      <span>{item}</span>
+          {/* 4 Tech Stack Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10">
+            {techStack.map((stack, idx) => {
+              const IconC = stack.icon;
+              return (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: idx * 0.08 }}
+                  className="rounded-3xl p-5 sm:p-6 bg-white border border-slate-200/90 shadow-md hover:shadow-lg transition-all"
+                >
+                  <div className="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
+                    <div className="w-8 h-8 rounded-xl bg-slate-100 text-[#0B3A70] flex items-center justify-center shrink-0">
+                      <IconC size={16} />
                     </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+                    <h3 className="text-xs sm:text-sm font-bold text-[#0B3A70] uppercase tracking-wider">
+                      {stack.category}
+                    </h3>
+                  </div>
+
+                  <div className="space-y-2">
+                    {stack.items.map((item, iIdx) => (
+                      <div key={iIdx} className="flex items-center gap-2 text-xs sm:text-[13px] text-slate-700 font-medium">
+                        <Code2 size={13} className="text-slate-400 shrink-0" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
 
           {/* Golden Rule Callout Banner */}
-          <div 
-            style={{
-              backgroundColor: '#FFFFFF',
-              border: '1.5px solid #93C5FD',
-              borderRadius: '16px',
-              padding: '1.25rem 1.5rem',
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: '1rem',
-              boxShadow: '0 4px 14px rgba(0,0,0,0.04)'
-            }}
+          <motion.div 
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55 }}
+            className="rounded-3xl p-6 sm:p-8 bg-gradient-to-r from-blue-50/80 via-sky-50/60 to-purple-50/40 border border-blue-200/80 shadow-sm flex items-start gap-4 sm:gap-5"
           >
-            <div style={{ width: '36px', height: '36px', borderRadius: '10px', backgroundColor: '#DBEAFE', color: '#1D4ED8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
-              <Zap size={18} />
+            <div className="w-10 h-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-blue-500/20">
+              <Zap size={20} />
             </div>
             <div>
-              <h4 style={{ fontSize: '0.95rem', fontWeight: '600', color: '#1E40AF', margin: 0, marginBottom: '4px' }}>
+              <h4 className="text-sm sm:text-base font-bold text-blue-950 mb-1.5">
                 The Golden Architectural Rule of G Mark ERP
               </h4>
-              <p style={{ fontSize: '0.85rem', color: '#1E3A8A', margin: 0, lineHeight: '1.6' }}>
+              <p className="text-xs sm:text-sm text-blue-900 leading-relaxed">
                 "Understand the business flow first → Understand the code → Make the smallest safe change → Test the complete affected downstream flow (Sales Order → Challan → Invoice → Receipt → Ledger)."
               </p>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 7. CONNECTED GMU PLATFORM ECOSYSTEM */}
+      {/* 9. CONNECTED GMU PLATFORM ECOSYSTEM (Inspired by Image 1: "One need, one app.") */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#e8e8e8', padding: '4rem 0 4.5rem', borderTop: '1px solid #CBD5E1' }}>
-        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/60 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto">
           
-          <div style={{ marginBottom: '1.75rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+          {/* Section Header */}
+          <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
+            <span className="text-xs font-bold text-[#0B3A70] uppercase tracking-widest block mb-2">
               INTEGRATED ECOSYSTEM
             </span>
-            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 1.98rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px', lineHeight: '1.25' }}>
+            <h2 
+              className="text-slate-900 tracking-tight text-2xl sm:text-4xl lg:text-[42px] font-bold leading-tight mb-3"
+              style={{ fontFamily: "'Lora', serif" }}
+            >
               Connected Enterprise Platforms
             </h2>
+            <p className="text-slate-600 text-xs sm:text-sm">
+              Unified cross-platform data pipeline with shared PostgreSQL &amp; Redis synchronization
+            </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '1rem' }}>
-            {[
-              { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', image: getAssetUrl('/g-nova-clean.png') },
-              { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', image: getAssetUrl('/G Track logo.png') },
-              { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: getAssetUrl('/gramunnati-clean.png') },
-              { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', image: getAssetUrl('/synkroboard-clean.png') }
-            ].map((app, idx) => (
-              <div 
+          {/* 4 Ecosystem Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {connectedApps.map((item, idx) => (
+              <motion.div 
                 key={idx}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: idx * 0.08 }}
                 onClick={() => {
                   if (onSelectApp) {
-                    const found = APPLICATIONS.find(a => a.id === app.id) || { id: app.id };
+                    const found = APPLICATIONS.find(a => a.id === item.id) || { id: item.id };
                     onSelectApp(found);
                   } else {
-                    window.history.pushState({ page: 'app-detail', appId: app.id }, '', `/app/${app.id}`);
+                    window.history.pushState({ page: 'app-detail', appId: item.id }, '', `/app/${item.id}`);
                     window.dispatchEvent(new PopStateEvent('popstate'));
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }
                 }}
-                style={{
-                  backgroundColor: '#FFFFFF',
-                  border: '1px solid #CBD5E1',
-                  borderRadius: '14px',
-                  padding: '1.15rem 1.25rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.85rem',
-                  cursor: 'pointer',
-                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-                  transition: 'all 0.2s ease'
-                }}
-                className="hover:-translate-y-1 hover:shadow-md transition-all duration-200"
+                className="rounded-3xl p-5 bg-white border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex items-center gap-4 group"
               >
-                <div style={{ width: '56px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <div className="w-14 h-12 flex items-center justify-center shrink-0">
                   <img 
-                    src={app.image} 
-                    alt={app.name} 
-                    style={{ maxWidth: '100%', maxHeight: '100%', width: 'auto', height: 'auto', objectFit: 'contain', display: 'block' }} 
+                    src={item.image} 
+                    alt={item.name} 
+                    className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform"
                   />
                 </div>
-                <div style={{ minWidth: 0 }}>
-                  <h3 style={{ fontSize: '0.95rem', fontWeight: '700', color: '#0F172A', margin: '0 0 2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                    {app.name}
+                <div className="min-w-0">
+                  <h3 className="text-sm font-bold text-slate-900 truncate group-hover:text-[#0B3A70] transition-colors">
+                    {item.name}
                   </h3>
-                  <p style={{ fontSize: '0.74rem', color: '#EA580C', fontWeight: '700', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                    {app.tag}
+                  <p className="text-[11px] font-bold text-orange-600 truncate mt-0.5">
+                    {item.tag}
                   </p>
+                  <span className="text-[10px] text-slate-400 block truncate mt-0.5">
+                    {item.badge}
+                  </span>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -1668,14 +1420,33 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       </section>
 
       {/* ========================================================================= */}
-      {/* 8. BOTTOM CTA CALLOUT */}
+      {/* 10. BOTTOM CTA CALLOUT (Inspired by Image 1's "Unleash growth potential") */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#FFFFFF', color: '#0F172A', padding: '4.5rem 1.5rem', textAlign: 'center', borderTop: '1px solid #CBD5E1' }}>
-        <div style={{ maxWidth: '680px', margin: '0 auto' }}>
-          <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.5rem, 3.17vw, 2.24rem)', fontWeight: 600, letterSpacing: '0', margin: 0, marginBottom: '1rem', color: '#0F172A', lineHeight: '1.3' }}>
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white text-center relative overflow-hidden">
+        
+        {/* Soft Radial Ambient Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r from-purple-100/40 via-sky-50/40 to-rose-50/40 rounded-full blur-3xl pointer-events-none -z-10" />
+
+        <div className="max-w-3xl mx-auto relative z-10">
+          
+          {/* Playful hand-drawn sunburst rays (Inspired by Image 1) */}
+          <div className="flex justify-center mb-4">
+            <svg className="w-12 h-8 text-amber-400" viewBox="0 0 50 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 25 25 L 25 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+              <path d="M 15 25 L 5 10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+              <path d="M 35 25 L 45 10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+              <path d="M 8 28 L 2 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              <path d="M 42 28 L 48 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </div>
+
+          <h2 
+            className="text-slate-900 tracking-tight text-3xl sm:text-5xl font-bold leading-tight mb-4"
+            style={{ fontFamily: "'Lora', serif" }}
+          >
             <span>Transform Your Enterprise Operations with </span>
             <span className="relative inline-block whitespace-nowrap">
-              <span className="relative z-10 text-slate-900 font-normal">
+              <span className="relative z-10 text-slate-900">
                 G Mark ERP
               </span>
               {/* Hand-drawn marker brush stroke highlight */}
@@ -1689,56 +1460,37 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 <path
                   d="M 4,14 Q 130,5 256,12 Q 130,20 6,17"
                   fill="#00A3FF"
+                  opacity="0.8"
                 />
               </svg>
             </span>
           </h2>
-          <p style={{ fontSize: '1rem', color: '#64748B', lineHeight: '1.6', margin: 0, marginBottom: '2rem' }}>
+
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-8 max-w-2xl mx-auto">
             Schedule an interactive product consultation with our engineering and deployment team to evaluate tailored ERP integration for your supply chain.
           </p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+
+          <div className="flex flex-wrap items-center justify-center gap-3.5">
             <button
+              type="button"
               onClick={onOpenExpertModal}
-              style={{
-                padding: '0.5rem 1.25rem',
-                borderRadius: '9999px',
-                fontSize: '0.85rem',
-                fontWeight: '500',
-                backgroundColor: '#7B5872',
-                color: '#FFFFFF',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                boxShadow: '0 2px 10px rgba(123, 88, 114, 0.28)'
-              }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-semibold text-white bg-[#7B5872] hover:bg-[#684760] shadow-lg shadow-purple-900/15 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
             >
               <span>Schedule Enterprise Consultation</span>
-              <ArrowRight size={14} />
+              <ArrowRight size={16} />
             </button>
-            <button
-              onClick={onBack}
-              style={{
-                padding: '0.5rem 1.15rem',
-                borderRadius: '9999px',
-                fontSize: '0.85rem',
-                fontWeight: '500',
-                backgroundColor: '#F1F5F9',
-                color: '#334155',
-                border: '1px solid #CBD5E1',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px'
-              }}
-              className="hover:bg-slate-100 hover:text-slate-900 transition-colors"
-            >
-              <ArrowLeft size={14} />
-              <span>Back to Solutions</span>
-            </button>
+            {onBack && (
+              <button
+                type="button"
+                onClick={onBack}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-xs hover:shadow-sm transition-all duration-200 cursor-pointer"
+              >
+                <ArrowLeft size={16} />
+                <span>Back to Solutions</span>
+              </button>
+            )}
           </div>
+
         </div>
       </section>
 

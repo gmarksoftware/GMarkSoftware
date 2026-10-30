@@ -464,7 +464,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
                 }}
               >
                 <img 
-                  src={getAssetUrl("/Final Logo-09.jpg.jpeg")} 
+                  src={getAssetUrl("/gramunnati-clean.png")} 
                   alt="GramUnnati Logo" 
                   style={{
                     width: '100%',

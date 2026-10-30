@@ -367,7 +367,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                 }}
               >
                 <img 
-                  src={getAssetUrl("/SHG Delivary and Transporter Logo.jpg")} 
+                  src={getAssetUrl("/transporter-clean.png")} 
                   alt="Transporter App Logo" 
                   style={{
                     width: '100%',
@@ -1709,7 +1709,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { id: 'shg-app', name: 'SHG App', tag: 'Village Collection & Doorstep', image: getAssetUrl('/SHG Delivary and Transporter Logo 01.jpg') },
+              { id: 'shg-app', name: 'SHG App', tag: 'Village Collection & Doorstep', image: getAssetUrl('/shg-clean.png') },
               { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: getAssetUrl('/gramunnati-clean.png') },
               { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', image: getAssetUrl('/G Track logo.png') },
               { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', image: getAssetUrl('/ERP Logo.png') }

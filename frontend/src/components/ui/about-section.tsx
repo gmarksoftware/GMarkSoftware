@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
+import type { Variants } from "framer-motion";
 import { TimelineContent } from "@/components/ui/timeline-animation";
 import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal";
 import { ArrowRight } from "lucide-react";
@@ -8,7 +9,7 @@ import { getAssetUrl } from "@/utils/asset";
 
 export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () => void }) {
   const heroRef = useRef<HTMLDivElement>(null);
-  const revealVariants = {
+  const revealVariants: Variants = {
     visible: (i: number) => ({
       y: 0,
       opacity: 1,
@@ -25,7 +26,7 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
       opacity: 0,
     },
   };
-  const scaleVariants = {
+  const scaleVariants: Variants = {
     visible: () => ({
       opacity: 1,
       filter: "blur(0px)",
@@ -184,16 +185,16 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
                 <span className="text-gray-600 font-medium">telemetry acquisition</span>
               </div>
             </TimelineContent>
-            <div className="lg:absolute right-1 sm:right-2 md:right-3 bottom-6 sm:bottom-8 md:bottom-10 lg:bottom-12 flex lg:flex-col flex-row-reverse lg:gap-0 gap-4 items-end text-right z-20">
+            <div className="lg:absolute right-2 sm:right-3 lg:right-4 xl:right-6 bottom-6 sm:bottom-8 md:bottom-10 lg:bottom-11 xl:bottom-13 flex lg:flex-col flex-row-reverse lg:gap-0.5 gap-4 items-end text-right z-20 max-w-[240px] xl:max-w-[280px]">
               <TimelineContent
                 as="div"
                 animationNum={6}
                 timelineRef={heroRef}
                 customVariants={revealVariants}
-                className="flex lg:text-3xl sm:text-2xl text-xl items-baseline gap-1.5 sm:gap-2 leading-none"
+                className="flex lg:flex-col flex-row items-baseline lg:items-end gap-1.5 lg:gap-0 leading-none"
               >
-                <span className="text-red-500 font-bold">100+</span>
-                <span className="text-gray-700 font-semibold uppercase tracking-tight">DEPLOYMENTS</span>
+                <span className="text-red-500 font-bold text-xl sm:text-2xl lg:text-3xl xl:text-4xl">100+</span>
+                <span className="text-gray-700 font-semibold uppercase tracking-tight text-xs sm:text-sm lg:text-[11px] xl:text-xs 2xl:text-sm mt-0.5">DEPLOYMENTS</span>
               </TimelineContent>
               <TimelineContent
                 as="div"

@@ -9,14 +9,9 @@ export default function CategoryModuleNavRibbon({ currentModule, onSelectApp }) 
 
   return (
     <div 
+      className="sticky-subnav-ribbon sticky top-[54px] sm:top-[58px] lg:top-[64px] z-35 w-full bg-white border-b border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)]"
       style={{
-        backgroundColor: '#FFFFFF',
-        borderBottom: '1px solid #E2E8F0',
-        padding: '0.65rem 1rem',
-        position: 'sticky',
-        top: '64px',
-        zIndex: 35,
-        boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+        padding: '0.65rem 1rem'
       }}
     >
       <div 

@@ -392,7 +392,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 }}
               >
                 <img 
-                  src={getAssetUrl("/G-Nova IOT logo 02.jpg")} 
+                  src={getAssetUrl("/g-nova-clean.png")} 
                   alt="G-Nova IoT Logo" 
                   style={{ width: '100%', height: '100%', objectFit: 'contain', transform: 'scale(1.4)' }}
                 />

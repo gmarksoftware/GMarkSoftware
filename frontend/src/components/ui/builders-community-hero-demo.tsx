@@ -32,7 +32,7 @@ const items: OrbitItem[] = [
     mobileAngle: 160,
     src: getAssetUrl('avatars/user-left.jpg'), 
     alt: 'Lead Frontend Developer', 
-    size: 68,
+    size: 56,
     statusDot: true
   },
   { 
@@ -40,10 +40,10 @@ const items: OrbitItem[] = [
     ring: 'outer', 
     angle: 116, 
     mobileAngle: 120,
-    icon: <Rocket size={20} className="text-blue-600" />, 
+    icon: <Rocket size={17} className="text-blue-600" />, 
     iconBg: 'bg-blue-50/90',
     badge: '12', 
-    badgeIcon: <TrendingUp size={11} strokeWidth={2.5} className="text-emerald-600" />,
+    badgeIcon: <TrendingUp size={10} strokeWidth={2.5} className="text-emerald-600" />,
     glow: 'rgba(37, 99, 235, 0.18)'
   },
   { 
@@ -51,7 +51,7 @@ const items: OrbitItem[] = [
     ring: 'outer', 
     angle: 90, 
     mobileAngle: 90,
-    icon: <Users size={14} strokeWidth={2.4} className="text-emerald-700" />, 
+    icon: <Users size={13} strokeWidth={2.4} className="text-emerald-700" />, 
     label: '8 New Threads' 
   },
   { 
@@ -59,7 +59,7 @@ const items: OrbitItem[] = [
     ring: 'outer', 
     angle: 65, 
     mobileAngle: 60,
-    icon: <Flame size={19} className="fill-orange-500 text-orange-500" />, 
+    icon: <Flame size={16} className="fill-orange-500 text-orange-500" />, 
     iconBg: 'bg-orange-50/90',
     label: '240',
     glow: 'rgba(249, 115, 22, 0.18)'
@@ -71,7 +71,7 @@ const items: OrbitItem[] = [
     mobileAngle: 20,
     src: getAssetUrl('avatars/user-right.jpg'), 
     alt: 'Senior Systems Architect', 
-    size: 70,
+    size: 58,
     statusDot: true
   },
   { 
@@ -79,7 +79,7 @@ const items: OrbitItem[] = [
     ring: 'outer', 
     angle: 24, 
     hideOnMobile: true,
-    icon: <FileText size={17} className="text-blue-600" />, 
+    icon: <FileText size={15} className="text-blue-600" />, 
     iconBg: 'bg-blue-50/90',
     label: '36',
     glow: 'rgba(37, 99, 235, 0.15)'
@@ -93,7 +93,7 @@ const items: OrbitItem[] = [
     ring: 'inner', 
     angle: 135, 
     mobileAngle: 140,
-    icon: <Sparkles size={18} className="text-purple-600 fill-purple-100" />, 
+    icon: <Sparkles size={16} className="text-purple-600 fill-purple-100" />, 
     iconBg: 'bg-purple-50/90',
     label: '18',
     glow: 'rgba(147, 51, 234, 0.16)'
@@ -105,7 +105,7 @@ const items: OrbitItem[] = [
     mobileAngle: 90,
     src: getAssetUrl('avatars/user-center.jpg'), 
     alt: 'VP of Engineering', 
-    size: 76,
+    size: 64,
     statusDot: true
   },
   { 
@@ -113,7 +113,7 @@ const items: OrbitItem[] = [
     ring: 'inner', 
     angle: 58, 
     hideOnMobile: true,
-    icon: <Code2 size={19} strokeWidth={2.2} className="text-indigo-600" />, 
+    icon: <Code2 size={16} strokeWidth={2.2} className="text-indigo-600" />, 
     iconBg: 'bg-indigo-50/90',
     glow: 'rgba(99, 102, 241, 0.16)'
   },
