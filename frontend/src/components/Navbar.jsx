@@ -544,11 +544,12 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
         ref={navRef}
         className="fixed top-0 left-0 right-0 z-50"
         style={{
+          fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
           backgroundColor: '#FFFFFF',
-          borderBottom: activeMenu || scrolled ? '1px solid #E2E8F0' : 'none',
+          borderBottom: '1px solid #E2E8F0',
           boxShadow: activeMenu 
             ? '0 16px 36px -4px rgba(15, 23, 42, 0.12)' 
-            : (scrolled ? '0 2px 8px rgba(15, 23, 42, 0.04)' : 'none'),
+            : (scrolled ? '0 4px 16px -2px rgba(15, 23, 42, 0.08)' : '0 1px 3px 0 rgba(15, 23, 42, 0.04)'),
           transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
           pointerEvents: isVisible ? 'auto' : 'none',
           transition: 'transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.25s ease',
@@ -648,21 +649,14 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
                 </button>
               </nav>
 
-              {/* Right Side: Odoo-Style Action Buttons */}
+              {/* Right Side: Contact Us Action Button */}
               <div className="desktop-nav-actions">
-                <button 
-                  type="button"
-                  onClick={() => handlePageNav('help')}
-                  className="nav-action-text-btn"
-                >
-                  Contact
-                </button>
                 <button 
                   type="button"
                   onClick={onOpenExpertModal}
                   className="nav-action-primary-btn"
                 >
-                  <span>Request Consultation</span>
+                  <span>Contact Us</span>
                 </button>
               </div>
 
@@ -1181,7 +1175,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
                 onClick={() => { setMobileMenuOpen(false); onOpenExpertModal?.(); }}
                 className="mobile-nav-action-btn"
               >
-                <span>Request Consultation</span>
+                <span>Contact Us</span>
               </button>
             </div>
           </div>
@@ -2237,38 +2231,41 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
           display: inline-flex;
           align-items: center;
           gap: 0.35rem;
-          padding: 0.5rem 0.65rem;
-          font-family: inherit;
+          padding: 0.5rem 0.75rem;
+          font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           font-size: 14.5px;
           font-weight: 500;
+          letter-spacing: -0.012em;
           color: #475569;
           background: transparent !important;
           border: none;
           outline: none;
-          border-radius: 0;
+          border-radius: 6px;
           cursor: pointer;
           user-select: none;
-          transition: color 0.15s ease;
+          transition: color 0.15s ease, background-color 0.15s ease;
           line-height: 1.25;
+          -webkit-font-smoothing: antialiased;
         }
 
         .nav-link-odoo:hover,
         .nav-link-odoo:focus,
         .nav-link-odoo:focus-visible {
-          color: #0F172A;
-          background: transparent !important;
+          color: #714B67;
+          background: rgba(113, 75, 103, 0.04) !important;
           outline: none;
         }
 
         .nav-link-odoo:active {
-          color: #0F172A;
-          background: transparent !important;
+          color: #5E3E55;
+          background: rgba(113, 75, 103, 0.08) !important;
         }
 
         .nav-link-odoo-active {
-          color: #0F172A !important;
+          color: #714B67 !important;
           font-weight: 600 !important;
-          background: transparent !important;
+          letter-spacing: -0.012em;
+          background: rgba(113, 75, 103, 0.06) !important;
         }
 
         /* Smooth Rotating Chevron for Dropdown Links */
@@ -2278,16 +2275,16 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
         }
 
         .nav-link-odoo:hover .nav-link-chevron {
-          color: #0F172A;
+          color: #714B67;
         }
 
         .nav-link-odoo-active .nav-link-chevron {
-          color: #0F172A;
+          color: #714B67;
         }
 
         .nav-link-chevron-open {
           transform: rotate(180deg);
-          color: #0F172A !important;
+          color: #714B67 !important;
         }
 
         /* Odoo Right Actions Group */
@@ -2301,24 +2298,26 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          padding: 0.45rem 0.65rem;
-          font-family: inherit;
+          padding: 0.45rem 0.75rem;
+          font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           font-size: 14px;
           font-weight: 500;
+          letter-spacing: -0.01em;
           color: #475569;
           background: transparent !important;
           border: none;
           outline: none;
-          border-radius: 0;
+          border-radius: 6px;
           cursor: pointer;
-          transition: color 0.15s ease;
+          transition: color 0.15s ease, background-color 0.15s ease;
+          -webkit-font-smoothing: antialiased;
         }
 
         .nav-action-text-btn:hover,
         .nav-action-text-btn:focus,
         .nav-action-text-btn:active {
-          color: #0F172A;
-          background: transparent !important;
+          color: #714B67;
+          background: rgba(113, 75, 103, 0.04) !important;
           outline: none;
         }
 
@@ -2327,10 +2326,11 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
           align-items: center;
           justify-content: center;
           gap: 0.375rem;
-          padding: 0.48rem 1.05rem;
-          font-family: inherit;
+          padding: 0.5rem 1.15rem;
+          font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           font-size: 13.5px;
           font-weight: 600;
+          letter-spacing: -0.01em;
           color: #FFFFFF;
           background-color: #714B67; /* Odoo signature enterprise purple */
           border: 1px solid transparent;
@@ -2338,6 +2338,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
           cursor: pointer;
           transition: background-color 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
           box-shadow: 0 1px 2px rgba(113, 75, 103, 0.15);
+          -webkit-font-smoothing: antialiased;
         }
 
         .nav-action-primary-btn:hover {

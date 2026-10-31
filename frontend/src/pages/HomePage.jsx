@@ -1,8 +1,9 @@
 import React from 'react';
 import { Hero } from '@/components/ui/hero-1';
 import ApplicationsGridSection from '@/components/ApplicationsGridSection';
+import OdooValuePropositionSection from '@/components/OdooValuePropositionSection';
+import OdooComparisonSection from '@/components/OdooComparisonSection';
 import DataVisionSection from '@/components/DataVisionSection';
-import CommunityOrbitDemo from '@/components/ui/builders-community-hero-demo';
 
 export default function HomePage({ onOpenExpertModal, onNavigate, onSelectApp }) {
   const scrollToApplications = (e) => {
@@ -14,25 +15,32 @@ export default function HomePage({ onOpenExpertModal, onNavigate, onSelectApp })
   };
 
   return (
-    <div className="w-full max-w-full flex flex-col bg-white text-slate-900 overflow-x-hidden" style={{ backgroundColor: '#ffffff' }}>
-      {/* 1st Page: Hero Section */}
+    <div 
+      className="w-full max-w-full flex flex-col bg-white text-slate-900 overflow-x-hidden" 
+      style={{ 
+        backgroundColor: '#ffffff',
+        fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+      }}
+    >
+      {/* 1. Odoo-Style Hero Section with App Squircle Tiles */}
       <Hero
-        title="The New Standard of"
-        highlightText="Digital Industry"
-        subtitle="Use Accurate Data to Get a 360-Degree View of Your Business. Accelerate decisions with industrial-grade intelligence."
-        ctaLabel="Learn More"
+        title="All your enterprise software"
+        highlightText="on one platform."
+        subtitle="Run your entire operations with proprietary applications for ERP & Finance, 4M Industrial Maintenance, G-Nova IoT Telemetry, and Field Logistics."
+        ctaLabel="Explore All Applications"
         ctaHref="#applications-section"
         onCtaClick={scrollToApplications}
-        secondaryCtaLabel="Explore what we can build for you"
+        secondaryCtaLabel="Schedule a Demo"
         secondaryCtaHref="#applications-section"
         onSecondaryCtaClick={onOpenExpertModal || scrollToApplications}
+        onSelectApp={onSelectApp}
         showMarquee={true}
       />
 
-      {/* 2nd Page: Applications & Platforms Grid (Odoo Style) */}
+      {/* 2. Odoo-Style Applications & Platforms Directory with Category Filter */}
       <section
         id="applications-section"
-        className="w-full min-h-0 bg-white flex flex-col items-center justify-center overflow-x-hidden"
+        className="w-full min-h-0 bg-white flex flex-col items-center justify-center overflow-x-hidden border-t border-slate-100"
         style={{ backgroundColor: '#ffffff' }}
       >
         <ApplicationsGridSection
@@ -41,7 +49,18 @@ export default function HomePage({ onOpenExpertModal, onNavigate, onSelectApp })
         />
       </section>
 
-      {/* 3rd Page: Data Vision / Higher Grounds Section */}
+      {/* 3. Odoo-Style "A Unique Value Proposition" (Interactive 4-Pillar Tabs) */}
+      <section
+        id="value-proposition-section"
+        className="w-full min-h-0 flex flex-col items-center overflow-x-hidden"
+      >
+        <OdooValuePropositionSection 
+          onOpenExpertModal={onOpenExpertModal}
+          onSelectApp={onSelectApp}
+        />
+      </section>
+
+      {/* 4. Odoo-Style Telemetry & Enterprise Privacy Ingestion */}
       <section
         id="data-vision-section"
         className="w-full min-h-0 bg-white flex flex-col items-center overflow-x-hidden"
@@ -50,15 +69,17 @@ export default function HomePage({ onOpenExpertModal, onNavigate, onSelectApp })
         <DataVisionSection />
       </section>
 
-      {/* 4th Page: Builders Community Orbit Hero */}
+      {/* 5. Odoo-Style "No More Integration Headaches" Comparison & Final CTA */}
       <section
-        id="community-section"
-        className="w-full min-h-0 py-8 sm:py-10 lg:py-14 flex flex-col overflow-hidden bg-white"
+        id="comparison-section"
+        className="w-full min-h-0 flex flex-col items-center overflow-x-hidden bg-white"
         style={{ backgroundColor: '#ffffff' }}
       >
-        <CommunityOrbitDemo />
+        <OdooComparisonSection 
+          onOpenExpertModal={onOpenExpertModal}
+          onExploreApps={scrollToApplications}
+        />
       </section>
     </div>
   );
 }
-

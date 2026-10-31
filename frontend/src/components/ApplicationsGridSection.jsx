@@ -192,7 +192,7 @@ export const APPLICATIONS = [
     name: 'Task Management',
     category: 'Core Platforms',
     tagline: 'All-in-one collaborative workspace & agile project governance',
-    image: getAssetUrl('/synkroboard-clean.png'),
+    image: getAssetUrl('/SynkroBoard.png'),
     fallbackIcon: Users,
     badge: 'SynkroBoard',
     accent: '#F97316',
@@ -218,7 +218,27 @@ export const findAppOrModule = (id) => {
 
 export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp }) {
   const [selectedApp, setSelectedApp] = useState(null);
+  const [activeCategory, setActiveCategory] = useState('all');
   const prefersReduced = useReducedMotion();
+
+  // Combine applications with ERP modules for comprehensive showcase
+  const ALL_APPS_COMBINED = [
+    ...APPLICATIONS,
+    ...ERP_MODULES.filter(m => !APPLICATIONS.some(a => a.id === m.id))
+  ];
+
+  const CATEGORIES = [
+    { id: 'all', label: 'All Applications' },
+    { id: 'ERP & Finance', label: 'ERP & Finance' },
+    { id: 'Operations & IoT', label: 'Industrial & IoT' },
+    { id: 'Field & Fleet', label: 'Field & Fleet' },
+    { id: 'Agri & Rural', label: 'Agri & Rural' },
+    { id: 'Core Platforms', label: 'Collaboration' }
+  ];
+
+  const filteredApps = activeCategory === 'all'
+    ? ALL_APPS_COMBINED
+    : ALL_APPS_COMBINED.filter(app => app.category === activeCategory);
 
   const handleAppClick = (app) => {
     if (onSelectApp) {
@@ -229,150 +249,188 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
   };
 
   return (
-    <div className="w-full flex flex-col items-center bg-white">
-      
-      {/* ========================================================================= */}
-      {/* 1. ELEGANT CONVEX DOME UPPER BOUNDARY                                     */}
-      {/* ========================================================================= */}
-      <div className="w-full overflow-hidden leading-none pointer-events-none select-none bg-white">
-        <svg 
-          className="w-full h-5 sm:h-6 md:h-8 lg:h-9 block text-[#F4F5F7]"
-          viewBox="0 0 1440 90" 
-          preserveAspectRatio="none" 
-          fill="currentColor"
-          aria-hidden="true"
+    <div 
+      className="w-full flex flex-col items-center bg-white py-16 sm:py-20 lg:py-24"
+      style={{
+        backgroundColor: '#ffffff',
+        fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+      }}
+    >
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+        
+        {/* Section Heading: Authentic Odoo Style with Smooth Slow Slide Up */}
+        <motion.div 
+          initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 55 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1.05, ease: ENTERPRISE_EASING }}
+          className="text-center mb-8 sm:mb-10 max-w-2xl mx-auto flex flex-col items-center"
         >
-          <path d="M 0 90 C 380 0, 1060 0, 1440 90 L 1440 90 L 0 90 Z" />
-        </svg>
-      </div>
-
-      {/* ========================================================================= */}
-      {/* 2. LIGHT-GRAY CONTENT SECTION (#F4F5F7)                                   */}
-      {/* ========================================================================= */}
-      <div className="w-full bg-[#F4F5F7] px-4 sm:px-6 lg:px-8 pt-0 pb-8 sm:pb-10 lg:pb-12 flex flex-col items-center">
-        <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
-          {/* Section Heading: "Integrated Applications & Platforms" with clean underlined accent style */}
-          <motion.div 
-            initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, ease: ENTERPRISE_EASING }}
-            className="text-center mb-5 sm:mb-6 lg:mb-7 max-w-xl mx-auto flex flex-col items-center"
+          <span 
+            className="text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full mb-3 inline-block"
+            style={{
+              backgroundColor: '#F9F5F8',
+              color: '#714B67',
+              border: '1px solid #E3D4DF'
+            }}
           >
-            <h2 
-              className="text-balance text-slate-900 font-bold tracking-tight text-[1.55rem] sm:text-[1.85rem] lg:text-[2.15rem] leading-tight text-center"
-              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-            >
-              Integrated Applications{' '}
-              <span className="relative inline-block whitespace-nowrap">
-                & Platforms
-                {/* Curved blue accent underline */}
-                <svg 
-                  className="absolute -bottom-1 sm:-bottom-1.5 left-0 w-full h-2 sm:h-2.5 text-[#00A3E0] pointer-events-none" 
-                  viewBox="0 0 160 12" 
-                  fill="none" 
-                  preserveAspectRatio="none" 
-                  aria-hidden="true" 
-                >
-                  <path 
-                    d="M 3 8 Q 80 2, 157 7" 
-                    stroke="#00A3E0" 
-                    strokeWidth="3" 
-                    strokeLinecap="round" 
-                  />
-                </svg>
-              </span>
-            </h2>
-            <p className="mt-1.5 sm:mt-2 text-xs sm:text-[13px] text-slate-500 font-medium max-w-md mx-auto">
-              Empower your enterprise with seamless connectivity across operations, commerce, finance, and IoT.
-            </p>
-          </motion.div>
-
-          {/* ======================================================================= */}
-          {/* 3. RESPONSIVE GRID (2 on mobile, 4 on desktops)                        */}
-          {/* ======================================================================= */}
-          <div 
-            className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-x-5 sm:gap-x-8 lg:gap-x-12 gap-y-6 sm:gap-y-7 lg:gap-y-8 justify-items-center w-full max-w-4xl mx-auto"
+            Modular &amp; Fully Integrated
+          </span>
+          <h2 
+            className="text-3xl sm:text-4xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight text-center"
+            style={{ color: '#1E293B' }}
           >
-            {APPLICATIONS.map((app, index) => {
-              const FallbackIcon = app.fallbackIcon || Layers;
-              return (
-                <motion.div
-                  key={app.id}
-                  onClick={() => handleAppClick(app)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      handleAppClick(app);
-                    }
-                  }}
-                  role="button"
-                  tabIndex={0}
-                  initial={prefersReduced ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 18, scale: 0.97 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, amount: 0.08 }}
-                  transition={{ 
-                    duration: 0.5, 
-                    delay: (index % 4) * 0.06 + Math.floor(index / 4) * 0.03, 
-                    ease: ENTERPRISE_EASING 
-                  }}
-                  className="group flex flex-col items-center text-center cursor-pointer select-none w-full max-w-[130px] sm:max-w-[150px] lg:max-w-[165px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-900 rounded-xl p-1 sm:p-1.5 bg-transparent"
-                  title={`${app.name} — Click to explore`}
-                >
-                  {/* Logo Display Directly on Section Background (No cards, no white boxes, no shadows) */}
-                  <div 
-                    className="w-full h-10 sm:h-14 md:h-16 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 group-hover:-translate-y-0.5 bg-transparent px-2"
-                  >
-                    {app.isAccountingIcon ? (
-                      /* Stylized Modern Odoo-Style Accounting Icon */
-                      <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 sm:w-11 sm:h-11">
-                        <circle cx="28" cy="22" r="11" fill="#F59E0B" />
-                        <circle cx="44" cy="48" r="11" fill="#0D9488" />
-                        <rect 
-                          x="18" 
-                          y="48" 
-                          width="46" 
-                          height="12" 
-                          rx="6" 
-                          transform="rotate(-45 18 48)" 
-                          fill="#714B67" 
-                          fillOpacity="0.88" 
+            Integrated Applications{' '}
+            <span style={{ color: '#714B67' }}>&amp; Platforms</span>
+          </h2>
+          <p 
+            className="mt-3 text-sm sm:text-base text-slate-600 font-normal max-w-lg mx-auto leading-relaxed"
+            style={{ color: '#4B5563' }}
+          >
+            Seamlessly connected proprietary software products sharing a single relational database, eliminating duplicate data entry and manual sync.
+          </p>
+        </motion.div>
+
+        {/* Odoo Category Filter Tabs with Smooth Slow Slide Up */}
+        <motion.div 
+          initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.95, delay: 0.15, ease: ENTERPRISE_EASING }}
+          className="flex flex-wrap items-center justify-center gap-2 mb-10 sm:mb-12 max-w-4xl mx-auto"
+        >
+          {CATEGORIES.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => setActiveCategory(cat.id)}
+                className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                  isActive
+                    ? 'text-white shadow-sm'
+                    : 'text-slate-600 bg-slate-100 hover:bg-slate-200 hover:text-slate-900'
+                }`}
+                style={isActive ? { backgroundColor: '#714B67' } : undefined}
+              >
+                {cat.label}
+              </button>
+            );
+          })}
+        </motion.div>
+
+        {/* Responsive Grid of Odoo Application Cards: Smooth Slow Slide Up from Bottom */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 w-full max-w-6xl mx-auto">
+          {filteredApps.map((app, index) => {
+            const FallbackIcon = app.fallbackIcon || Layers;
+
+            return (
+              <motion.div
+                key={app.id}
+                onClick={() => handleAppClick(app)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleAppClick(app);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 55 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.12 }}
+                transition={{ 
+                  duration: 0.95, 
+                  delay: (index % 3) * 0.12, 
+                  ease: ENTERPRISE_EASING 
+                }}
+                className="group flex flex-col justify-between p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#714B67]/40 hover:shadow-lg transition-all duration-300 cursor-pointer text-left focus-visible:outline-2 focus-visible:outline-[#714B67]"
+                title={`${app.name} — Click to explore`}
+              >
+                <div>
+                  {/* Top Header with Squircle Icon & Category Pill */}
+                  <div className="flex items-start justify-between gap-3 mb-4">
+                    <div 
+                      className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center p-2.5 transition-transform duration-300 group-hover:scale-105 shrink-0"
+                      style={{ 
+                        backgroundColor: `${app.accent || '#714B67'}12`,
+                        border: `1px solid ${app.accent || '#714B67'}25`
+                      }}
+                    >
+                      {app.image ? (
+                        <img
+                          src={app.image}
+                          alt={app.name}
+                          className="w-full h-full object-contain pointer-events-none select-none"
+                          loading="lazy"
                         />
-                      </svg>
-                    ) : app.image ? (
-                      <img
-                        src={app.image}
-                        alt={app.name}
-                        className={`max-h-[36px] sm:max-h-[52px] md:max-h-[58px] max-w-[88px] sm:max-w-[115px] md:max-w-[125px] w-auto h-auto object-contain pointer-events-none select-none bg-transparent transition-transform duration-300 ${app.imageClassName || ''}`}
-                        loading="lazy"
-                        draggable={false}
-                      />
-                    ) : (
-                      <div 
-                        className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg flex items-center justify-center transition-transform duration-200"
-                        style={{ backgroundColor: `${app.accent || '#0D9488'}15` }}
-                      >
+                      ) : (
                         <FallbackIcon 
-                          className="w-4 h-4 sm:w-6 sm:h-6" 
-                          style={{ color: app.accent || '#0D9488' }} 
+                          className="w-7 h-7" 
+                          style={{ color: app.accent || '#714B67' }} 
                         />
-                      </div>
+                      )}
+                    </div>
+
+                    {app.badge && (
+                      <span 
+                        className="text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shrink-0"
+                        style={{
+                          backgroundColor: `${app.accent || '#714B67'}15`,
+                          color: app.accent || '#714B67'
+                        }}
+                      >
+                        {app.badge}
+                      </span>
                     )}
                   </div>
 
-                  {/* Centered Application Name Directly on Section Background */}
-                  <span 
-                    className="mt-2 text-[13px] sm:text-[14px] lg:text-[14.5px] font-bold text-slate-800 text-center leading-snug tracking-tight group-hover:text-sky-600 transition-colors w-full px-1"
-                    style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-                  >
-                    {app.name}
-                  </span>
-                </motion.div>
-              );
-            })}
-          </div>
+                  {/* App Name & Category */}
+                  <div className="mb-2">
+                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#714B67] transition-colors">
+                      {app.name}
+                    </h3>
+                    <p className="text-xs font-semibold text-slate-400 mt-0.5">
+                      {app.category}
+                    </p>
+                  </div>
 
+                  {/* Tagline / Description */}
+                  <p className="text-xs sm:text-[13px] text-slate-600 line-clamp-2 leading-relaxed mb-4">
+                    {app.tagline || app.description}
+                  </p>
+
+                  {/* Key Capabilities */}
+                  {app.features && app.features.length > 0 && (
+                    <div className="space-y-1.5 pt-3 border-t border-slate-100 mb-4">
+                      {app.features.slice(0, 2).map((feat, idx) => (
+                        <div key={idx} className="flex items-start gap-1.5 text-xs text-slate-600">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981] shrink-0 mt-0.5" />
+                          <span className="truncate">{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Card Action Link */}
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                  <span 
+                    className="text-xs font-bold flex items-center gap-1 group-hover:gap-1.5 transition-all"
+                    style={{ color: '#714B67' }}
+                  >
+                    Explore Module
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                  <span className="text-[10px] font-semibold text-slate-400 group-hover:text-slate-600">
+                    Production Ready
+                  </span>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
+
       </div>
 
       {/* ========================================================================= */}

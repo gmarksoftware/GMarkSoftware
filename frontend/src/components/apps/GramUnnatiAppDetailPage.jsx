@@ -352,7 +352,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
     { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', desc: 'Double-entry accounting, GST engine & inventory', image: getAssetUrl('/ERP Logo.png') },
     { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', desc: 'Industrial telemetry and facility monitoring', image: getAssetUrl('/g-nova-clean.png') },
     { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', desc: 'Real-time vehicle tracking & cold-chain monitoring', image: getAssetUrl('/G Track logo.png') },
-    { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', desc: 'Enterprise sprint, kanban & RACI workflows', image: getAssetUrl('/synkroboard-clean.png') }
+    { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', desc: 'Enterprise sprint, kanban & RACI workflows', image: getAssetUrl('/SynkroBoard.png') }
   ];
 
   const handleAppClick = (targetId) => {

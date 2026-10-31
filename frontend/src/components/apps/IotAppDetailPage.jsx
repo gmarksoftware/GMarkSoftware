@@ -1620,7 +1620,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', image: getAssetUrl('/ERP Logo.png') },
                 { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', image: getAssetUrl('/G Track logo.png') },
                 { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: getAssetUrl('/gramunnati-clean.png') },
-                { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', image: getAssetUrl('/synkroboard-clean.png') }
+                { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', image: getAssetUrl('/SynkroBoard.png') }
               ].map((app, idx) => (
                 <div 
                   key={idx}

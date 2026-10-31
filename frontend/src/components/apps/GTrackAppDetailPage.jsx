@@ -201,7 +201,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
     { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', desc: 'Double-entry accounting, order fulfillment & billing', image: getAssetUrl('/ERP Logo.png') },
     { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', desc: 'Industrial telemetry & facility asset governance', image: getAssetUrl('/g-nova-clean.png') },
     { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', desc: 'Digital marketplace for farmers & rural enterprises', image: getAssetUrl('/gramunnati-clean.png') },
-    { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', desc: 'Enterprise sprint, kanban & RACI workflows', image: getAssetUrl('/synkroboard-clean.png') }
+    { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', desc: 'Enterprise sprint, kanban & RACI workflows', image: getAssetUrl('/SynkroBoard.png') }
   ];
 
   const handleAppClick = (targetId) => {

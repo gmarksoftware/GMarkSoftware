@@ -330,12 +330,12 @@ export default function DataVisionSection() {
         {/* ========================================================================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-14 xl:gap-20 items-center">
           
-          {/* LEFT COLUMN: Fluid Typography, High-Impact Heading, Generous Whitespace */}
+          {/* LEFT COLUMN: Fluid Typography, High-Impact Heading (Smooth Slow Slide Up from Bottom) */}
           <motion.div 
-            initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+            initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 55 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.7, ease: ENTERPRISE_EASING }}
+            transition={{ duration: 1.05, ease: ENTERPRISE_EASING }}
             className="lg:col-span-5 xl:col-span-6 flex flex-col justify-center text-left"
           >
             
@@ -399,12 +399,12 @@ export default function DataVisionSection() {
 
           </motion.div>
 
-          {/* RIGHT COLUMN: Responsive Presentation (Desktop Multi-Layer vs Mobile Interactive Tabbed View) */}
+          {/* RIGHT COLUMN: Responsive Presentation (Smooth Slow Slide Up from Bottom) */}
           <motion.div 
-            initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
+            initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 65 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.75, delay: 0.1, ease: ENTERPRISE_EASING }}
+            transition={{ duration: 1.1, delay: 0.15, ease: ENTERPRISE_EASING }}
             className="lg:col-span-7 xl:col-span-6 relative w-full pt-1 sm:pt-4 lg:pt-0"
           >
             {/* =================================================================== */}
@@ -534,12 +534,12 @@ export default function DataVisionSection() {
                 <motion.div
                   key={item.id}
                   onClick={() => setActiveFeatureId(item.id)}
-                  initial={prefersReduced ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 24, scale: 0.98 }}
+                  initial={prefersReduced ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 55, scale: 0.98 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, amount: 0.12 }}
                   transition={{ 
-                    duration: 0.55, 
-                    delay: index * 0.08, 
+                    duration: 0.95, 
+                    delay: index * 0.12, 
                     ease: ENTERPRISE_EASING 
                   }}
                   className={`group relative rounded-2xl p-4 sm:p-4.5 border transition-all duration-300 cursor-pointer flex flex-col justify-between select-none ${

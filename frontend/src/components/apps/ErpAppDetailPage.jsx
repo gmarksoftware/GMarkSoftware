@@ -241,7 +241,7 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
       id: 'task-management',
       name: 'SynkroBoard',
       tag: 'Task Management & Collaboration',
-      image: getAssetUrl('/synkroboard-clean.png'),
+      image: getAssetUrl('/SynkroBoard.png'),
       badge: 'Productivity'
     }
   ];

@@ -269,7 +269,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                   }}
                 >
                   <img 
-                    src={getAssetUrl("/synkroboard-clean.png")} 
+                    src={getAssetUrl("/SynkroBoard.png")} 
                     alt="SynkroBoard Logo" 
                     style={{
                       width: '100%',
