@@ -3,11 +3,91 @@
 import React, { useState } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 import { ENTERPRISE_EASING } from "@/components/ui/scroll-reveal"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Settings, Package, Wifi, BarChart3, Users } from "lucide-react"
 import { getAssetUrl } from "@/utils/asset"
+import { MarqueeDemo } from "@/components/ui/demo"
 
 // Silky smooth, slow deceleration curve for luxurious enterprise feel
 const SMOOTH_SLOW_EASING = [0.16, 1, 0.3, 1] as const;
+
+// Floating Feature Badges on Left and Right orbital paths (matching reference screenshot)
+const FLOATING_CARDS_LEFT = [
+  {
+    id: 'erp',
+    title: 'ERP & Finance',
+    subtitle: 'Business Operations',
+    top: '10%',
+    left: 'clamp(0.75rem, 4vw, 3.8rem)',
+    iconBg: '#F7F1F6',
+    iconColor: '#714B67',
+    iconType: 'chart',
+    floatDelay: 0,
+    floatDuration: 5.2,
+  },
+  {
+    id: 'cmms',
+    title: 'Industrial Maintenance',
+    subtitle: 'Asset Management',
+    top: '40%',
+    left: 'clamp(0.5rem, 2.5vw, 2.6rem)',
+    iconBg: '#F7F1F6',
+    iconColor: '#714B67',
+    iconType: 'gear',
+    floatDelay: 0.6,
+    floatDuration: 5.8,
+  },
+  {
+    id: 'logistics',
+    title: 'Field Logistics',
+    subtitle: 'Track & Manage',
+    top: '70%',
+    left: 'clamp(1.5rem, 4.8vw, 4.8rem)',
+    iconBg: '#F7F1F6',
+    iconColor: '#714B67',
+    iconType: 'box',
+    floatDelay: 1.2,
+    floatDuration: 5.0,
+  },
+];
+
+const FLOATING_CARDS_RIGHT = [
+  {
+    id: 'telemetry',
+    title: 'IoT Telemetry',
+    subtitle: 'Live Monitoring',
+    top: '12%',
+    right: 'clamp(1rem, 4vw, 3.8rem)',
+    iconBg: '#E6F8F0',
+    iconColor: '#10B981',
+    iconType: 'wifi',
+    floatDelay: 0.3,
+    floatDuration: 5.4,
+  },
+  {
+    id: 'analytics',
+    title: 'Analytics',
+    subtitle: 'Data Insights',
+    top: '42%',
+    right: 'clamp(0.5rem, 2.2vw, 2.4rem)',
+    iconBg: '#EEF4FF',
+    iconColor: '#2563EB',
+    iconType: 'analytics',
+    floatDelay: 0.9,
+    floatDuration: 6.0,
+  },
+  {
+    id: 'operations',
+    title: 'Operations',
+    subtitle: 'Unified Platform',
+    top: '70%',
+    right: 'clamp(1.5rem, 4.8vw, 4.8rem)',
+    iconBg: '#E6F8F0',
+    iconColor: '#10B981',
+    iconType: 'users',
+    floatDelay: 1.5,
+    floatDuration: 5.5,
+  },
+];
 
 // Odoo-style proprietary apps showcase - BIG LOGO & SOFTWARE NAME ONLY
 const HERO_APPS = [
@@ -69,266 +149,15 @@ const HERO_APPS = [
   }
 ];
 
-// =============================================================================
-// FLOWING DATA RAYS (Left & Right Flank Animated Enterprise Beams)
-// =============================================================================
-function FlowingDataRaysLeft({ prefersReduced }: { prefersReduced: boolean | null }) {
-  return (
-    <div 
-      className="absolute left-0 top-16 sm:top-20 bottom-12 w-64 md:w-80 lg:w-[420px] pointer-events-none overflow-hidden select-none z-0 hidden md:block"
-      aria-hidden="true"
-    >
-      <svg 
-        viewBox="0 0 420 500" 
-        className="w-full h-full" 
-        fill="none" 
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <linearGradient id="ray-grad-left-plum" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#714B67" stopOpacity="0.45" />
-            <stop offset="60%" stopColor="#714B67" stopOpacity="0.22" />
-            <stop offset="100%" stopColor="#714B67" stopOpacity="0.01" />
-          </linearGradient>
-          <linearGradient id="ray-grad-left-teal" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#0D9488" stopOpacity="0.4" />
-            <stop offset="60%" stopColor="#0D9488" stopOpacity="0.18" />
-            <stop offset="100%" stopColor="#0D9488" stopOpacity="0.01" />
-          </linearGradient>
-          <linearGradient id="pulse-beam-plum" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#714B67" stopOpacity="0" />
-            <stop offset="50%" stopColor="#714B67" stopOpacity="0.85" />
-            <stop offset="100%" stopColor="#714B67" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient id="pulse-beam-teal" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#0D9488" stopOpacity="0" />
-            <stop offset="50%" stopColor="#0D9488" stopOpacity="0.85" />
-            <stop offset="100%" stopColor="#0D9488" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-
-        {/* Ray 1: Top Curve */}
-        <path
-          d="M 0 110 C 160 110, 260 210, 420 220"
-          stroke="url(#ray-grad-left-plum)"
-          strokeWidth="1.5"
-          strokeDasharray="4 6"
-        />
-        {!prefersReduced && (
-          <motion.path
-            d="M 0 110 C 160 110, 260 210, 420 220"
-            stroke="url(#pulse-beam-plum)"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            initial={{ strokeDashoffset: 500, strokeDasharray: "70 430" }}
-            animate={{ strokeDashoffset: -500 }}
-            transition={{ duration: 7, repeat: Infinity, ease: "linear", delay: 0.5 }}
-          />
-        )}
-
-        {/* Ray 2: Middle Arc */}
-        <path
-          d="M 0 240 C 150 240, 270 250, 420 255"
-          stroke="url(#ray-grad-left-teal)"
-          strokeWidth="1.5"
-        />
-        {!prefersReduced && (
-          <motion.path
-            d="M 0 240 C 150 240, 270 250, 420 255"
-            stroke="url(#pulse-beam-teal)"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            initial={{ strokeDashoffset: 450, strokeDasharray: "60 390" }}
-            animate={{ strokeDashoffset: -450 }}
-            transition={{ duration: 8.5, repeat: Infinity, ease: "linear", delay: 2 }}
-          />
-        )}
-
-        {/* Ray 3: Bottom Upward Arc */}
-        <path
-          d="M 0 380 C 170 380, 280 290, 420 280"
-          stroke="url(#ray-grad-left-plum)"
-          strokeWidth="1.5"
-          strokeDasharray="4 6"
-        />
-        {!prefersReduced && (
-          <motion.path
-            d="M 0 380 C 170 380, 280 290, 420 280"
-            stroke="url(#pulse-beam-plum)"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            initial={{ strokeDashoffset: 500, strokeDasharray: "80 420" }}
-            animate={{ strokeDashoffset: -500 }}
-            transition={{ duration: 9, repeat: Infinity, ease: "linear", delay: 3.5 }}
-          />
-        )}
-
-        {/* Ray 4: Upper diagonal stream */}
-        <path
-          d="M 20 60 C 180 120, 290 230, 420 235"
-          stroke="url(#ray-grad-left-teal)"
-          strokeWidth="1.25"
-          strokeDasharray="3 5"
-          opacity="0.5"
-        />
-
-        {/* Glowing Network Telemetry Nodes on Left */}
-        <g>
-          <circle cx="90" cy="110" r="3.5" fill="#714B67" />
-          <circle cx="90" cy="110" r="8" fill="#714B67" opacity="0.18" className="animate-pulse" />
-          <text x="105" y="114" fill="#714B67" fontSize="10" fontWeight="700" letterSpacing="0.06em" opacity="0.8">
-            50Hz TELEMETRY
-          </text>
-
-          <circle cx="130" cy="240" r="3.5" fill="#0D9488" />
-          <circle cx="130" cy="240" r="8" fill="#0D9488" opacity="0.18" className="animate-pulse" />
-          <text x="145" y="244" fill="#0D9488" fontSize="10" fontWeight="700" letterSpacing="0.06em" opacity="0.8">
-            MQTT v5 BROKER
-          </text>
-
-          <circle cx="120" cy="355" r="3" fill="#714B67" opacity="0.7" />
-          <text x="135" y="359" fill="#714B67" fontSize="9.5" fontWeight="700" letterSpacing="0.06em" opacity="0.65">
-            PRISMA RELATIONAL
-          </text>
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function FlowingDataRaysRight({ prefersReduced }: { prefersReduced: boolean | null }) {
-  return (
-    <div 
-      className="absolute right-0 top-16 sm:top-20 bottom-12 w-64 md:w-80 lg:w-[420px] pointer-events-none overflow-hidden select-none z-0 hidden md:block"
-      aria-hidden="true"
-    >
-      <svg 
-        viewBox="0 0 420 500" 
-        className="w-full h-full" 
-        fill="none" 
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <linearGradient id="ray-grad-right-plum" x1="100%" y1="0%" x2="0%" y2="0%">
-            <stop offset="0%" stopColor="#714B67" stopOpacity="0.45" />
-            <stop offset="60%" stopColor="#714B67" stopOpacity="0.22" />
-            <stop offset="100%" stopColor="#714B67" stopOpacity="0.01" />
-          </linearGradient>
-          <linearGradient id="ray-grad-right-teal" x1="100%" y1="0%" x2="0%" y2="0%">
-            <stop offset="0%" stopColor="#0D9488" stopOpacity="0.4" />
-            <stop offset="60%" stopColor="#0D9488" stopOpacity="0.18" />
-            <stop offset="100%" stopColor="#0D9488" stopOpacity="0.01" />
-          </linearGradient>
-          <linearGradient id="pulse-beam-right-plum" x1="100%" y1="0%" x2="0%" y2="0%">
-            <stop offset="0%" stopColor="#714B67" stopOpacity="0" />
-            <stop offset="50%" stopColor="#714B67" stopOpacity="0.85" />
-            <stop offset="100%" stopColor="#714B67" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient id="pulse-beam-right-teal" x1="100%" y1="0%" x2="0%" y2="0%">
-            <stop offset="0%" stopColor="#0D9488" stopOpacity="0" />
-            <stop offset="50%" stopColor="#0D9488" stopOpacity="0.85" />
-            <stop offset="100%" stopColor="#0D9488" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-
-        {/* Ray 1: Top Curve from Right */}
-        <path
-          d="M 420 110 C 260 110, 160 210, 0 220"
-          stroke="url(#ray-grad-right-plum)"
-          strokeWidth="1.5"
-          strokeDasharray="4 6"
-        />
-        {!prefersReduced && (
-          <motion.path
-            d="M 420 110 C 260 110, 160 210, 0 220"
-            stroke="url(#pulse-beam-right-plum)"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            initial={{ strokeDashoffset: -500, strokeDasharray: "70 430" }}
-            animate={{ strokeDashoffset: 500 }}
-            transition={{ duration: 7.5, repeat: Infinity, ease: "linear", delay: 1 }}
-          />
-        )}
-
-        {/* Ray 2: Middle Arc from Right */}
-        <path
-          d="M 420 240 C 270 240, 150 250, 0 255"
-          stroke="url(#ray-grad-right-teal)"
-          strokeWidth="1.5"
-        />
-        {!prefersReduced && (
-          <motion.path
-            d="M 420 240 C 270 240, 150 250, 0 255"
-            stroke="url(#pulse-beam-right-teal)"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            initial={{ strokeDashoffset: -450, strokeDasharray: "60 390" }}
-            animate={{ strokeDashoffset: 450 }}
-            transition={{ duration: 8, repeat: Infinity, ease: "linear", delay: 2.5 }}
-          />
-        )}
-
-        {/* Ray 3: Bottom Upward Arc from Right */}
-        <path
-          d="M 420 380 C 250 380, 140 290, 0 280"
-          stroke="url(#ray-grad-right-plum)"
-          strokeWidth="1.5"
-          strokeDasharray="4 6"
-        />
-        {!prefersReduced && (
-          <motion.path
-            d="M 420 380 C 250 380, 140 290, 0 280"
-            stroke="url(#pulse-beam-right-plum)"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            initial={{ strokeDashoffset: -500, strokeDasharray: "80 420" }}
-            animate={{ strokeDashoffset: 500 }}
-            transition={{ duration: 9.5, repeat: Infinity, ease: "linear", delay: 4 }}
-          />
-        )}
-
-        {/* Ray 4: Upper diagonal stream from Right */}
-        <path
-          d="M 400 60 C 240 120, 130 230, 0 235"
-          stroke="url(#ray-grad-right-teal)"
-          strokeWidth="1.25"
-          strokeDasharray="3 5"
-          opacity="0.5"
-        />
-
-        {/* Glowing Network Telemetry Nodes on Right */}
-        <g>
-          <circle cx="330" cy="110" r="3.5" fill="#714B67" />
-          <circle cx="330" cy="110" r="8" fill="#714B67" opacity="0.18" className="animate-pulse" />
-          <text x="230" y="114" fill="#714B67" fontSize="10" fontWeight="700" letterSpacing="0.06em" opacity="0.8">
-            SUB-SECOND SYNC
-          </text>
-
-          <circle cx="290" cy="240" r="3.5" fill="#0D9488" />
-          <circle cx="290" cy="240" r="8" fill="#0D9488" opacity="0.18" className="animate-pulse" />
-          <text x="175" y="244" fill="#0D9488" fontSize="10" fontWeight="700" letterSpacing="0.06em" opacity="0.8">
-            POSTGRESQL 16 CLOUD
-          </text>
-
-          <circle cx="300" cy="355" r="3" fill="#714B67" opacity="0.7" />
-          <text x="205" y="359" fill="#714B67" fontSize="9.5" fontWeight="700" letterSpacing="0.06em" opacity="0.65">
-            MULTI-TENANT RBAC
-          </text>
-        </g>
-      </svg>
-    </div>
-  );
-}
-
 export function Hero({
   title = "All your enterprise software",
   highlightText = "on one platform.",
-  subtitle = "Run your entire operations with proprietary applications for ERP & Finance, 4M Industrial Maintenance, G-Nova IoT Telemetry, and Field Logistics.",
-  ctaLabel = "Explore All Applications",
-  ctaHref = "#applications-section",
+  subtitle = "Simple, efficient, yet fully integrated. Run your entire operations with proprietary applications for ERP & Finance, 4M Industrial Maintenance, G-Nova IoT Telemetry, and Field Logistics.",
+  ctaLabel = "Explore Solutions",
+  ctaHref = "#value-proposition-section",
   onCtaClick,
   secondaryCtaLabel = "Schedule a Demo",
-  secondaryCtaHref = "#applications-section",
+  secondaryCtaHref = "#value-proposition-section",
   onSecondaryCtaClick,
   onSelectApp,
   showMarquee = true,
@@ -356,122 +185,441 @@ export function Hero({
     }
   };
 
+  const renderCardIcon = (type: string, color: string) => {
+    switch (type) {
+      case 'chart':
+        return (
+          <svg className="w-5 h-5" style={{ color }} viewBox="0 0 24 24" fill="currentColor">
+            <rect x="3" y="12" width="4" height="9" rx="1.5" />
+            <rect x="10" y="7" width="4" height="14" rx="1.5" />
+            <rect x="17" y="3" width="4" height="18" rx="1.5" />
+          </svg>
+        );
+      case 'gear':
+        return <Settings className="w-5 h-5" style={{ color }} />;
+      case 'box':
+        return <Package className="w-5 h-5" style={{ color }} />;
+      case 'wifi':
+        return <Wifi className="w-5 h-5" style={{ color }} />;
+      case 'analytics':
+        return <BarChart3 className="w-5 h-5" style={{ color }} />;
+      case 'users':
+        return <Users className="w-5 h-5" style={{ color }} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <section
       id="hero"
-      className="relative w-full overflow-hidden bg-white text-center pt-32 sm:pt-36 lg:pt-40 pb-12 sm:pb-16 lg:pb-20"
+      className="relative w-full bg-white text-center"
       style={{
         backgroundColor: '#ffffff',
         fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
       }}
     >
-      {/* Subtle Odoo ambient background glow */}
-      <div
-        className="absolute inset-0 -z-10 w-full h-[680px] pointer-events-none"
+      {/* ========================================================================= */}
+      {/* 1. HERO BANNER: EXACT 1:1 REPLICA OF THE REFERENCE SCREENSHOT              */}
+      {/* ========================================================================= */}
+      <div 
+        className="relative w-full overflow-hidden text-center pt-8 sm:pt-12 lg:pt-14 pb-8 sm:pb-10"
         style={{
-          background: 'radial-gradient(ellipse 80% 50% at 50% -15%, rgba(113, 75, 103, 0.09) 0%, rgba(255, 255, 255, 0) 70%)'
+          background: 'radial-gradient(circle at 0% 100%, #ECE4F2 0%, rgba(246, 240, 251, 0.75) 30%, rgba(255, 255, 255, 0) 65%), radial-gradient(circle at 100% 0%, #ECE4F2 0%, rgba(246, 240, 251, 0.75) 30%, rgba(255, 255, 255, 0) 65%), #FFFFFF'
         }}
-        aria-hidden="true"
-      />
-
-      {/* Flowing Data Rays Background Animation (Left & Right Flanks) */}
-      <FlowingDataRaysLeft prefersReduced={prefersReduced} />
-      <FlowingDataRaysRight prefersReduced={prefersReduced} />
-
-      {/* Main Centered Content Container */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-
-        {/* 1. Main Headline: Smooth Slow Slide Up from Bottom (y: 50 -> 0, duration: 1.1s) */}
-        <motion.h1
-          initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, delay: 0.1, ease: SMOOTH_SLOW_EASING }}
-          className="text-slate-900 tracking-tight text-center max-w-4xl mx-auto font-extrabold"
-          style={{
-            fontSize: 'clamp(2.35rem, 4.8vw, 4.15rem)',
-            lineHeight: '1.16',
-            color: '#1E293B',
-          }}
+      >
+        {/* LEFT WING: BOTTOM-LEFT ABSTRACT WAVES, ORBITAL RINGS & PURPLE ACCENT DOTS */}
+        <div 
+          className="absolute left-0 top-0 bottom-0 w-[30vw] max-w-[380px] min-w-[160px] sm:min-w-[220px] pointer-events-none select-none overflow-hidden z-[1] opacity-50 sm:opacity-100 transition-opacity" 
+          aria-hidden="true"
         >
-          <span>{title || "All your enterprise software"} </span>
-          <span 
-            className="block sm:inline"
-            style={{ color: '#714B67' }}
+          <svg 
+            className="w-full h-full"
+            viewBox="0 0 340 480"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMinYMax meet"
           >
-            {highlightText || "on one platform."}
-          </span>
-        </motion.h1>
+            {/* Layered Bottom-Left Lavender Arcs (Concentric Waves) */}
+            <circle 
+              cx="0" 
+              cy="480" 
+              r="380" 
+              fill="url(#blGrad1)" 
+              stroke="#D8C7DD" 
+              strokeWidth="1.15" 
+            />
+            <circle 
+              cx="0" 
+              cy="480" 
+              r="250" 
+              fill="url(#blGrad2)" 
+              stroke="#CEBCCD" 
+              strokeWidth="1.25" 
+            />
+            <circle 
+              cx="0" 
+              cy="480" 
+              r="135" 
+              fill="url(#blGrad3)" 
+              stroke="#C4ADC2" 
+              strokeWidth="1.25" 
+            />
 
-        {/* 2. Subtitle: Smooth Slow Slide Up from Bottom (y: 45 -> 0, duration: 1.1s, delay: 0.25s) */}
-        <motion.div
-          initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 45 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, delay: 0.25, ease: SMOOTH_SLOW_EASING }}
-          className="px-3 sm:px-0 mt-5 sm:mt-6 mb-7 sm:mb-8 w-full max-w-3xl mx-auto text-center"
+            {/* Orbital Paths (Left) - Gentle curves framing left cards */}
+            <path 
+              d="M 60 -10 C 145 100, 205 180, 205 240 C 205 300, 150 380, 80 490" 
+              stroke="#CFBDCE" 
+              strokeWidth="1.35" 
+            />
+            <path 
+              d="M 10 -10 C 75 90, 125 180, 125 240 C 125 300, 85 390, 15 490" 
+              stroke="#DCCCDC" 
+              strokeWidth="1.2" 
+            />
+            <path 
+              d="M -30 20 C 25 110, 65 190, 65 250 C 65 310, 35 390, -30 470" 
+              stroke="#E6DAE6" 
+              strokeWidth="1.1" 
+            />
+
+            {/* Purple Accent Dots (Solid Plum #714B67 Matching Reference) */}
+            <circle cx="55" cy="105" r="4" fill="#714B67" />
+            <circle cx="28" cy="175" r="3.5" fill="#714B67" />
+            <circle cx="205" cy="240" r="4.5" fill="#714B67" />
+            <circle cx="95" cy="295" r="4" fill="#714B67" />
+            <circle cx="145" cy="385" r="3.5" fill="#714B67" />
+            <circle cx="50" cy="445" r="3" fill="#714B67" />
+
+            <defs>
+              <radialGradient id="blGrad1" cx="0" cy="480" r="380" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#ECE4F1" stopOpacity="0.8" />
+                <stop offset="65%" stopColor="#F5EEF7" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#FAF6FB" stopOpacity="0.05" />
+              </radialGradient>
+              <radialGradient id="blGrad2" cx="0" cy="480" r="250" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#E3D7EA" stopOpacity="0.85" />
+                <stop offset="70%" stopColor="#EFE5F3" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#FAF6FB" stopOpacity="0.1" />
+              </radialGradient>
+              <radialGradient id="blGrad3" cx="0" cy="480" r="135" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#D9C7E2" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#E5D6ED" stopOpacity="0.65" />
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+
+        {/* RIGHT WING: TOP-RIGHT ABSTRACT WAVES, ORBITAL RINGS & PURPLE ACCENT DOTS */}
+        <div 
+          className="absolute right-0 top-0 bottom-0 w-[30vw] max-w-[380px] min-w-[160px] sm:min-w-[220px] pointer-events-none select-none overflow-hidden z-[1] opacity-50 sm:opacity-100 transition-opacity" 
+          aria-hidden="true"
         >
-          <p 
-            className="text-base sm:text-lg lg:text-[1.2rem] text-slate-600 leading-relaxed font-normal"
-            style={{ color: '#4B5563' }}
+          <svg 
+            className="w-full h-full"
+            viewBox="0 0 340 480"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMaxYMin meet"
           >
-            <strong className="text-slate-800 font-semibold">Simple, efficient, yet fully integrated.</strong>{' '}
-            {subtitle || "Run your entire business with proprietary applications for ERP & Finance, 4M Industrial Maintenance, G-Nova IoT Telemetry, and Field Logistics."}
-          </p>
-        </motion.div>
+            {/* Layered Top-Right Lavender Arcs (Concentric Waves) */}
+            <circle 
+              cx="340" 
+              cy="0" 
+              r="380" 
+              fill="url(#trGrad1)" 
+              stroke="#D8C7DD" 
+              strokeWidth="1.15" 
+            />
+            <circle 
+              cx="340" 
+              cy="0" 
+              r="250" 
+              fill="url(#trGrad2)" 
+              stroke="#CEBCCD" 
+              strokeWidth="1.25" 
+            />
+            <circle 
+              cx="340" 
+              cy="0" 
+              r="135" 
+              fill="url(#trGrad3)" 
+              stroke="#C4ADC2" 
+              strokeWidth="1.25" 
+            />
 
-        {/* 3. Action Buttons: Smooth Slow Slide Up from Bottom (y: 40 -> 0, duration: 1.05s, delay: 0.4s) */}
-        <motion.div 
-          initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.05, delay: 0.4, ease: SMOOTH_SLOW_EASING }}
-          className="relative flex flex-col items-center justify-center z-20 w-full mb-8 sm:mb-10"
-        >
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 w-full max-w-sm sm:max-w-none mx-auto">
-            
-            {/* Primary Button: Odoo Plum #714B67 */}
-            {ctaLabel && (
-              <a
-                href={ctaHref}
-                onClick={onCtaClick}
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-[15px] sm:text-[16px] font-bold text-white rounded-lg transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md hover:bg-[#5E3E55] active:scale-[0.98] select-none text-center w-full sm:w-auto"
-                style={{
-                  backgroundColor: '#714B67',
-                  fontFamily: "'Plus Jakarta Sans', sans-serif"
-                }}
-              >
-                <span>{ctaLabel}</span>
-                <ArrowRight className="w-4 h-4 ml-0.5" />
-              </a>
-            )}
+            {/* Orbital Paths (Right) - Gentle curves framing right cards */}
+            <path 
+              d="M 280 -10 C 195 100, 135 180, 135 240 C 135 300, 190 380, 260 490" 
+              stroke="#CFBDCE" 
+              strokeWidth="1.35" 
+            />
+            <path 
+              d="M 330 -10 C 265 90, 215 180, 215 240 C 215 300, 255 390, 325 490" 
+              stroke="#DCCCDC" 
+              strokeWidth="1.2" 
+            />
+            <path 
+              d="M 370 20 C 315 110, 275 190, 275 250 C 275 310, 305 390, 370 470" 
+              stroke="#E6DAE6" 
+              strokeWidth="1.1" 
+            />
 
-            {/* Secondary Button: Clean white with subtle border & Odoo text */}
-            {secondaryCtaLabel && (
-              <button
-                type="button"
-                onClick={onSecondaryCtaClick || onCtaClick}
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-[15px] sm:text-[16px] font-semibold rounded-lg transition-all duration-200 cursor-pointer bg-white border border-slate-300 hover:bg-slate-50 hover:border-slate-400 active:scale-[0.98] select-none text-center w-full sm:w-auto shadow-2xs"
-                style={{
-                  color: '#714B67',
-                  fontFamily: "'Plus Jakarta Sans', sans-serif"
-                }}
+            {/* Purple Accent Dots (Solid Plum #714B67 Matching Reference) */}
+            <circle cx="145" cy="90" r="4" fill="#714B67" />
+            <circle cx="135" cy="240" r="4.5" fill="#714B67" />
+            <circle cx="165" cy="305" r="4" fill="#714B67" />
+            <circle cx="312" cy="190" r="3.5" fill="#714B67" />
+            <circle cx="235" cy="390" r="3.5" fill="#714B67" />
+            <circle cx="290" cy="445" r="3" fill="#714B67" />
+
+            <defs>
+              <radialGradient id="trGrad1" cx="340" cy="0" r="380" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#ECE4F1" stopOpacity="0.8" />
+                <stop offset="65%" stopColor="#F5EEF7" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#FAF6FB" stopOpacity="0.05" />
+              </radialGradient>
+              <radialGradient id="trGrad2" cx="340" cy="0" r="250" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#E3D7EA" stopOpacity="0.85" />
+                <stop offset="70%" stopColor="#EFE5F3" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#FAF6FB" stopOpacity="0.1" />
+              </radialGradient>
+              <radialGradient id="trGrad3" cx="340" cy="0" r="135" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#D9C7E2" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#E5D6ED" stopOpacity="0.65" />
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+
+        {/* HERO STAGE WITH FLOATING FEATURE CARDS ON LEFT & RIGHT */}
+        <div className="relative w-full max-w-[1240px] mx-auto min-h-[350px] sm:min-h-[370px] lg:min-h-[390px] flex items-center justify-center px-4">
+          
+          {/* LEFT FLOATING CARDS */}
+          {FLOATING_CARDS_LEFT.map((card) => (
+            <motion.div
+              key={card.id}
+              initial={prefersReduced ? { opacity: 1 } : { opacity: 0, scale: 0.95 }}
+              animate={
+                prefersReduced
+                  ? { opacity: 1 }
+                  : {
+                      opacity: 1,
+                      scale: 1,
+                      y: [0, -5, 0],
+                    }
+              }
+              transition={{
+                opacity: { duration: 0.7, delay: 0.15 },
+                scale: { duration: 0.7, delay: 0.15 },
+                y: prefersReduced
+                  ? undefined
+                  : {
+                      repeat: Infinity,
+                      duration: card.floatDuration,
+                      ease: "easeInOut",
+                      delay: card.floatDelay,
+                    },
+              }}
+              whileHover={{ scale: 1.05, y: -2, transition: { duration: 0.2 } }}
+              onClick={() => handleAppClick({ id: card.id, name: card.title })}
+              className="hidden lg:flex absolute items-center gap-2.5 bg-white/95 backdrop-blur-xs px-3 py-2 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05),0_1px_3px_rgba(0,0,0,0.03)] border border-slate-100/90 hover:border-purple-200 hover:shadow-md transition-all duration-300 cursor-pointer z-20 group scale-[0.88] xl:scale-100"
+              style={{
+                top: card.top,
+                left: card.left,
+                transformOrigin: 'left center',
+              }}
+            >
+              <div 
+                className="w-8.5 h-8.5 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105"
+                style={{ backgroundColor: card.iconBg }}
               >
-                <span>{secondaryCtaLabel}</span>
-              </button>
-            )}
+                {renderCardIcon(card.iconType, card.iconColor)}
+              </div>
+              <div className="text-left select-none pr-1">
+                <div className="text-[12.5px] font-bold text-slate-800 tracking-tight leading-snug group-hover:text-[#714B67] transition-colors whitespace-nowrap">
+                  {card.title}
+                </div>
+                <div className="text-[10px] font-medium text-slate-400 leading-snug whitespace-nowrap">
+                  {card.subtitle}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+
+          {/* RIGHT FLOATING CARDS */}
+          {FLOATING_CARDS_RIGHT.map((card) => (
+            <motion.div
+              key={card.id}
+              initial={prefersReduced ? { opacity: 1 } : { opacity: 0, scale: 0.95 }}
+              animate={
+                prefersReduced
+                  ? { opacity: 1 }
+                  : {
+                      opacity: 1,
+                      scale: 1,
+                      y: [0, 5, 0],
+                    }
+              }
+              transition={{
+                opacity: { duration: 0.7, delay: 0.2 },
+                scale: { duration: 0.7, delay: 0.2 },
+                y: prefersReduced
+                  ? undefined
+                  : {
+                      repeat: Infinity,
+                      duration: card.floatDuration,
+                      ease: "easeInOut",
+                      delay: card.floatDelay,
+                    },
+              }}
+              whileHover={{ scale: 1.05, y: -2, transition: { duration: 0.2 } }}
+              onClick={() => handleAppClick({ id: card.id, name: card.title })}
+              className="hidden lg:flex absolute items-center gap-2.5 bg-white/95 backdrop-blur-xs px-3 py-2 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05),0_1px_3px_rgba(0,0,0,0.03)] border border-slate-100/90 hover:border-emerald-200 hover:shadow-md transition-all duration-300 cursor-pointer z-20 group scale-[0.88] xl:scale-100"
+              style={{
+                top: card.top,
+                right: card.right,
+                transformOrigin: 'right center',
+              }}
+            >
+              <div 
+                className="w-8.5 h-8.5 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105"
+                style={{ backgroundColor: card.iconBg }}
+              >
+                {renderCardIcon(card.iconType, card.iconColor)}
+              </div>
+              <div className="text-left select-none pr-1">
+                <div className="text-[12.5px] font-bold text-slate-800 tracking-tight leading-snug group-hover:text-[#714B67] transition-colors whitespace-nowrap">
+                  {card.title}
+                </div>
+                <div className="text-[10px] font-medium text-slate-400 leading-snug whitespace-nowrap">
+                  {card.subtitle}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+
+          {/* CENTERED HERO HEADLINE, SUBTITLE & ACTION BUTTONS */}
+          <div className="relative z-10 w-full max-w-2xl lg:max-w-[680px] mx-auto px-4 flex flex-col items-center">
+
+            {/* Headline: Clean 2-Line Heading (Matching Reference Screenshot) */}
+            <motion.h1
+              initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.05, ease: SMOOTH_SLOW_EASING }}
+              className="text-center font-extrabold tracking-tight select-none w-full"
+              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+            >
+              <span className="block text-slate-900 text-[23px] sm:text-[34px] md:text-[40px] lg:text-[44px] leading-[1.15] sm:whitespace-nowrap">
+                {title || "All your enterprise software"}
+              </span>
+              <span 
+                className="block text-[23px] sm:text-[34px] md:text-[40px] lg:text-[44px] leading-[1.15] mt-1 font-extrabold"
+                style={{ color: '#714B67' }}
+              >
+                {highlightText || "on one platform."}
+              </span>
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.div
+              initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1, ease: SMOOTH_SLOW_EASING }}
+              className="px-2 mt-3 sm:mt-3.5 mb-4 sm:mb-5 w-full max-w-xl mx-auto text-center"
+            >
+              <p 
+                className="text-xs sm:text-[13px] md:text-[14px] text-slate-500 leading-relaxed font-normal"
+                style={{ color: '#64748B' }}
+              >
+                {subtitle}
+              </p>
+            </motion.div>
+
+            {/* Action Buttons */}
+            <motion.div 
+              initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15, ease: SMOOTH_SLOW_EASING }}
+              className="relative flex flex-col items-center justify-center z-20 w-full"
+            >
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3.5 w-full max-w-sm sm:max-w-none mx-auto">
+                
+                {/* Primary Button: Odoo Plum #714B67 */}
+                {ctaLabel && (
+                  <a
+                    href={ctaHref}
+                    onClick={onCtaClick}
+                    className="inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:px-7 sm:py-2.5 text-[14px] sm:text-[14.5px] font-bold text-white rounded-xl transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md hover:bg-[#5E3E55] active:scale-[0.98] select-none text-center w-full sm:w-auto"
+                    style={{
+                      backgroundColor: '#714B67',
+                      fontFamily: "'Plus Jakarta Sans', sans-serif"
+                    }}
+                  >
+                    <span>{ctaLabel}</span>
+                    <ArrowRight className="w-4 h-4 ml-0.5" />
+                  </a>
+                )}
+
+                {/* Secondary Button: Clean white with subtle border & Odoo text */}
+                {secondaryCtaLabel && (
+                  <button
+                    type="button"
+                    onClick={onSecondaryCtaClick || onCtaClick}
+                    className="inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:px-7 sm:py-2.5 text-[14px] sm:text-[14.5px] font-semibold rounded-xl transition-all duration-200 cursor-pointer bg-white border border-slate-300 hover:bg-slate-50 hover:border-slate-400 active:scale-[0.98] select-none text-center w-full sm:w-auto shadow-2xs"
+                    style={{
+                      color: '#714B67',
+                      fontFamily: "'Plus Jakarta Sans', sans-serif"
+                    }}
+                  >
+                    <span>{secondaryCtaLabel}</span>
+                  </button>
+                )}
+
+              </div>
+            </motion.div>
 
           </div>
-        </motion.div>
 
+        </div>
+
+        {/* ENTERPRISE GRADE TECH LOGOS (FULL SCREEN WIDTH) */}
+        {showMarquee && (
+          <motion.div
+            initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.45, ease: SMOOTH_SLOW_EASING }}
+            className="relative z-20 w-full max-w-full overflow-hidden mt-4 sm:mt-5 mb-1 px-0"
+          >
+            <MarqueeDemo title="Enterprise Grade • Built With Resilient Technologies" />
+          </motion.div>
+        )}
+
+        {/* PROPRIETARY PRODUCT SUITE BADGE (MATCHING EXACT REFERENCE BOTTOM ANCHOR) */}
+        <div className="relative z-20 flex items-center justify-center mt-3 sm:mt-4">
+          <span 
+            className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-2xs select-none"
+            style={{
+              backgroundColor: '#FAF5F9',
+              color: '#714B67',
+              border: '1px solid #E8DAE4'
+            }}
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#714B67]" />
+            Proprietary Product Suite
+          </span>
+        </div>
       </div>
 
       {/* ========================================================================= */}
-      {/* 4. FULL-WIDTH PROPRIETARY SOFTWARE ECOSYSTEM SHOWCASE SECTION            */}
+      {/* 2. FULL-WIDTH PROPRIETARY SOFTWARE ECOSYSTEM SHOWCASE SECTION            */}
       {/* ========================================================================= */}
       <motion.div
-        initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 55 }}
+        initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 45 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.15 }}
-        transition={{ duration: 1.1, delay: 0.2, ease: SMOOTH_SLOW_EASING }}
-        className="w-full bg-[#FAFAFC] border-y border-slate-200/80 py-16 sm:py-20 mt-6 sm:mt-8 relative overflow-hidden"
+        transition={{ duration: 1.0, delay: 0.15, ease: SMOOTH_SLOW_EASING }}
+        className="w-full bg-[#FAFAFC]/60 pt-8 sm:pt-10 pb-16 sm:pb-20 relative overflow-hidden"
       >
         {/* Subtle ambient radial background glow */}
         <div 
@@ -484,19 +632,8 @@ export function Hero({
 
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Centered Distinctive Section Header */}
+          {/* Centered Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-            <span 
-              className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full mb-3"
-              style={{
-                backgroundColor: '#F9F5F8',
-                color: '#714B67',
-                border: '1px solid #E3D4DF'
-              }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#714B67]" />
-              Proprietary Product Suite
-            </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
               Explore Our Software Products
             </h2>
@@ -564,43 +701,6 @@ export function Hero({
 
         </div>
       </motion.div>
-
-      {/* 5. Enterprise Platform Integrations & Technology Strip */}
-      {showMarquee && (
-        <motion.div
-          initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 45 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 1.05, delay: 0.15, ease: SMOOTH_SLOW_EASING }}
-          className="relative z-20 w-full max-w-5xl mx-auto mt-12 sm:mt-14 px-4"
-        >
-          <div className="pt-6">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4 text-center">
-              Enterprise Grade • Built With Resilient Technologies
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm font-semibold text-slate-500">
-              <span className="flex items-center gap-1.5 hover:text-slate-800 transition-colors">
-                <span className="font-extrabold text-slate-800">NEXT.js</span> App Engine
-              </span>
-              <span className="flex items-center gap-1.5 hover:text-slate-800 transition-colors">
-                <span className="font-extrabold text-slate-800">PostgreSQL</span> 16
-              </span>
-              <span className="flex items-center gap-1.5 hover:text-slate-800 transition-colors">
-                <span className="font-extrabold text-slate-800">TimescaleDB</span> 50Hz
-              </span>
-              <span className="flex items-center gap-1.5 hover:text-slate-800 transition-colors">
-                <span className="font-extrabold text-slate-800">AWS</span> Cloud Native
-              </span>
-              <span className="flex items-center gap-1.5 hover:text-slate-800 transition-colors">
-                <span className="font-extrabold text-slate-800">MQTT v5</span> Telemetry
-              </span>
-              <span className="flex items-center gap-1.5 hover:text-slate-800 transition-colors">
-                <span className="font-extrabold text-slate-800">TailwindCSS</span>
-              </span>
-            </div>
-          </div>
-        </motion.div>
-      )}
     </section>
   )
 }

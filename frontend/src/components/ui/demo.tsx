@@ -4,7 +4,7 @@ import { Marquee } from "@/components/ui/marquee";
 export const Logos = {
   tailwindcss: () => (
     <svg
-      className="h-6 sm:h-8 w-auto transition-transform duration-300 hover:scale-110"
+      className="h-4 sm:h-5 md:h-5.5 w-auto transition-transform duration-300 hover:scale-108 shrink-0"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 262 33"
@@ -25,7 +25,7 @@ export const Logos = {
   ),
   nextjs: () => (
     <svg
-      className="h-4.5 sm:h-6 w-auto fill-[#0F172A] transition-transform duration-300 hover:scale-110"
+      className="h-3.5 sm:h-4.5 md:h-5 w-auto fill-[#0F172A] transition-transform duration-300 hover:scale-108 shrink-0"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 394 79"
     >
@@ -44,11 +44,11 @@ export const Logos = {
     </svg>
   ),
   framer: () => (
-    <div className="h-fit flex items-center justify-start font-bold text-sm sm:text-lg text-[#0F172A] gap-1.5 sm:gap-2 transition-transform duration-300 hover:scale-110">
+    <div className="h-fit flex items-center justify-start font-bold text-xs sm:text-[13px] md:text-sm text-[#0F172A] gap-1.5 transition-transform duration-300 hover:scale-108 shrink-0">
       <svg
         viewBox="0 0 14 21"
         role="presentation"
-        className="h-4.5 sm:h-6 fill-current text-[#0F172A]"
+        className="h-3 sm:h-3.5 md:h-4 fill-current text-[#0F172A] shrink-0"
       >
         <path d="M0 0h14v7H7zm0 7h7l7 7H7v7l-7-7z" fill="currentColor"></path>
       </svg>
@@ -57,7 +57,7 @@ export const Logos = {
   ),
   aws: () => (
     <svg
-      className="h-6 sm:h-8 w-auto transition-transform duration-300 hover:scale-110"
+      className="h-4 sm:h-5 md:h-5.5 w-auto transition-transform duration-300 hover:scale-108 shrink-0"
       version="1.1"
       viewBox="-45.101 -44.95 390.872 269.7"
     >
@@ -82,19 +82,27 @@ export const Logos = {
   ),
 };
 
-export function MarqueeDemo({ className = "" }: { className?: string }) {
+export function MarqueeDemo({ 
+  className = "",
+  title = "Enterprise Grade • Built With Resilient Technologies"
+}: { 
+  className?: string;
+  title?: string;
+}) {
   const arr = [Logos.tailwindcss, Logos.framer, Logos.nextjs, Logos.aws];
 
   return (
-    <div className={`w-full flex flex-col items-center justify-center ${className}`}>
-      <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] sm:tracking-[0.28em] text-slate-500 mb-6 sm:mb-8 text-center px-4 w-full mx-auto leading-relaxed">
-        Integrated with Industry-Leading Technologies
-      </p>
-      <Marquee pauseOnHover={true} speed={36} className="!mt-0 !pt-0 !pb-0">
-        {arr.map((Logo, index) => (
+    <div className={`w-full max-w-full overflow-hidden flex flex-col items-center justify-center ${className}`}>
+      {title && (
+        <p className="text-[10px] xs:text-[10.5px] sm:text-[11.5px] font-bold uppercase tracking-[0.16em] sm:tracking-[0.24em] text-slate-400 mb-3.5 sm:mb-5 text-center px-4 w-full mx-auto leading-normal select-none">
+          {title}
+        </p>
+      )}
+      <Marquee pauseOnHover={true} speed={28} className="!mt-0 !pt-0 !pb-0 w-full max-w-full">
+        {[...arr, ...arr, ...arr, ...arr].map((Logo, index) => (
           <div
             key={index}
-            className="relative h-full cursor-pointer transition-transform duration-300 hover:scale-105 inline-flex items-center justify-center shrink-0 px-8 sm:px-14 md:px-18 mx-3 sm:mx-6"
+            className="relative h-full cursor-pointer transition-transform duration-300 hover:scale-105 inline-flex items-center justify-center shrink-0 px-3 sm:px-6 md:px-10 mx-1.5 sm:mx-3"
           >
             <Logo />
           </div>

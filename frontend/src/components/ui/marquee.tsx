@@ -10,21 +10,27 @@ interface MarqueeProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function Marquee({
   children,
-  pauseOnHover = false,
+  pauseOnHover = true,
   direction = "left",
-  speed = 30,
+  speed = 28,
   className,
   ...props
 }: MarqueeProps) {
   return (
     <div
       className={cn(
-        "w-full overflow-hidden z-20 flex justify-center",
+        "w-full max-w-full overflow-hidden z-20 flex justify-center",
         className
       )}
       {...props}
     >
-      <div className="relative flex w-full max-w-7xl overflow-hidden py-3 [mask-image:linear-gradient(to_right,transparent,white_12%,white_88%,transparent)]">
+      <div 
+        className="relative flex w-full max-w-full overflow-hidden py-2"
+        style={{
+          WebkitMaskImage: "linear-gradient(to right, transparent 0px, black 24px, black calc(100% - 24px), transparent 100%)",
+          maskImage: "linear-gradient(to right, transparent 0px, black 24px, black calc(100% - 24px), transparent 100%)",
+        }}
+      >
         <div
           className={cn(
             "flex w-max items-center animate-marquee",
@@ -33,8 +39,12 @@ export function Marquee({
           )}
           style={{ "--duration": `${speed}s` } as React.CSSProperties}
         >
-          {children}
-          {children}
+          <div className="flex shrink-0 items-center">
+            {children}
+          </div>
+          <div className="flex shrink-0 items-center">
+            {children}
+          </div>
         </div>
       </div>
     </div>

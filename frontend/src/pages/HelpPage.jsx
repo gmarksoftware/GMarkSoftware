@@ -206,67 +206,82 @@ export default function HelpPage({ onOpenExpertModal }) {
   ];
 
   return (
-    <div style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', paddingTop: '4.25rem', paddingBottom: '3.5rem', overflowX: 'hidden' }}>
+    <div 
+      className="w-full max-w-full flex flex-col bg-white text-slate-900 overflow-x-hidden"
+      style={{ 
+        backgroundColor: '#FFFFFF', 
+        minHeight: '100vh', 
+        paddingTop: '5rem', 
+        paddingBottom: '4rem', 
+        overflowX: 'hidden',
+        fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+      }}
+    >
       
       {/* ========================================================================= */}
       {/* 1. HERO HEADER WITH SMOOTH ENTRANCE MOTION */}
       {/* ========================================================================= */}
-      <section style={{ textAlign: 'center', padding: '2rem 1.5rem 2.25rem', maxWidth: '880px', margin: '0 auto', position: 'relative' }}>
+      <section style={{ textAlign: 'center', padding: '2.5rem 1.5rem 2.75rem', maxWidth: '900px', margin: '0 auto', position: 'relative' }}>
         
-        {/* Ambient subtle glow background */}
+        {/* Ambient subtle glow background matching Home Page */}
         <div 
           style={{
             position: 'absolute',
-            top: '-15%',
+            top: '-20%',
             left: '50%',
             transform: 'translateX(-50%)',
-            width: '560px',
-            height: '320px',
-            background: 'radial-gradient(circle, rgba(11, 58, 112, 0.08) 0%, rgba(22, 163, 74, 0.04) 50%, transparent 70%)',
-            filter: 'blur(40px)',
+            width: '680px',
+            height: '380px',
+            background: 'radial-gradient(ellipse 80% 50% at 50% -15%, rgba(113, 75, 103, 0.09) 0%, rgba(255, 255, 255, 0) 70%)',
             pointerEvents: 'none',
             zIndex: 0
           }}
+          aria-hidden="true"
         />
 
-        {/* Eyebrow badge */}
+        {/* Eyebrow badge matching Home Page pill style */}
         <div
           style={{
             opacity: heroMounted ? 1 : 0,
             transform: heroMounted ? 'translateY(0)' : 'translateY(16px)',
             transition: 'opacity 0.6s ease-out 0.1s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
-            marginBottom: '1rem',
+            marginBottom: '1.25rem',
             position: 'relative',
             zIndex: 1
           }}
         >
           <div 
-            className="eyebrow-tag"
             style={{
-              padding: '6px 14px',
-              backgroundColor: '#F1F5F9',
-              border: '1px solid #E2E8F0',
+              padding: '6px 16px',
+              backgroundColor: '#F9F5F8',
+              border: '1px solid #E3D4DF',
               borderRadius: '100px',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
-              boxShadow: '0 2px 8px rgba(15, 23, 42, 0.04)'
+              boxShadow: '0 2px 8px rgba(113, 75, 103, 0.04)',
+              fontSize: '0.75rem',
+              fontWeight: '700',
+              letterSpacing: '0.08em',
+              color: '#714B67',
+              textTransform: 'uppercase',
+              fontFamily: "'Plus Jakarta Sans', sans-serif"
             }}
           >
-            <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#16A34A', animation: 'pulseDot 2s infinite' }} />
-            G-MARK SUPPORT & HELP CENTER
+            <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#714B67', animation: 'pulseDot 2s infinite' }} />
+            G-MARK SUPPORT &amp; HELP CENTER
           </div>
         </div>
 
-        {/* Headline */}
+        {/* Headline matching Home Page Hero Typography */}
         <h1 
           style={{ 
-            fontFamily: "'Lora', serif",
-            fontSize: 'clamp(2.24rem, 4.49vw, 3.61rem)', 
-            fontWeight: 600, 
-            letterSpacing: '0', 
-            color: '#0F172A',
-            lineHeight: 1.15,
+            fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+            fontSize: 'clamp(2.35rem, 4.8vw, 3.85rem)', 
+            fontWeight: 800, 
+            letterSpacing: '-0.025em', 
+            color: '#1E293B',
+            lineHeight: 1.16,
             marginBottom: '1.25rem',
             opacity: heroMounted ? 1 : 0,
             transform: heroMounted ? 'translateY(0)' : 'translateY(24px)',
@@ -275,31 +290,27 @@ export default function HelpPage({ onOpenExpertModal }) {
             zIndex: 1
           }}
         >
-          How can we <span style={{ 
-            background: 'linear-gradient(135deg, #0B3A70 0%, #0284C7 50%, #16A34A 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            textDecoration: 'underline',
-            textDecorationColor: '#16A34A',
-            textUnderlineOffset: '8px'
-          }}>help you?</span>
+          <span>How can we </span>
+          <span style={{ color: '#714B67' }}>help you?</span>
         </h1>
 
         <p 
           style={{ 
-            fontSize: 'clamp(0.88rem, 1.76vw, 1.01rem)', 
+            fontSize: 'clamp(0.95rem, 1.8vw, 1.15rem)', 
             lineHeight: '1.7', 
-            color: '#475569',
-            maxWidth: '680px',
-            margin: '0 auto 1.75rem',
+            color: '#4B5563',
+            maxWidth: '720px',
+            margin: '0 auto 1.85rem',
             opacity: heroMounted ? 1 : 0,
             transform: heroMounted ? 'translateY(0)' : 'translateY(20px)',
             transition: 'opacity 0.8s ease-out 0.35s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s',
             position: 'relative',
-            zIndex: 1
+            zIndex: 1,
+            fontFamily: "'Plus Jakarta Sans', sans-serif"
           }}
         >
-          Access our engineering desk, request system customizations, or speak directly with our industrial IoT & CMMS specialists.
+          <strong style={{ color: '#1E293B', fontWeight: '600' }}>Direct engineering support &amp; solutions.</strong>{' '}
+          Access our engineering desk, request system customizations, or speak directly with our industrial IoT &amp; CMMS specialists.
         </p>
 
         {/* Search Bar + Ask a Human CTA */}
@@ -324,11 +335,11 @@ export default function HelpPage({ onOpenExpertModal }) {
               alignItems: 'center',
               backgroundColor: '#FFFFFF',
               border: '1.5px solid #CBD5E1',
-              borderRadius: '12px',
-              padding: '0.65rem 1.25rem',
+              borderRadius: '10px',
+              padding: '0.7rem 1.25rem',
               width: '100%',
               maxWidth: '480px',
-              boxShadow: '0 4px 16px rgba(15, 23, 42, 0.05)',
+              boxShadow: '0 2px 10px rgba(15, 23, 42, 0.04)',
               transition: 'all 0.25s ease'
             }}
           >
@@ -342,20 +353,20 @@ export default function HelpPage({ onOpenExpertModal }) {
                 border: 'none',
                 outline: 'none',
                 width: '100%',
-                fontSize: '0.95rem',
-                fontFamily: 'inherit',
-                color: '#0F172A',
+                fontSize: '0.92rem',
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                color: '#1E293B',
                 backgroundColor: 'transparent'
               }}
             />
             <button 
               type="button" 
               style={{ 
-                background: '#EBF3FC', 
+                background: 'rgba(113, 75, 103, 0.08)', 
                 border: 'none', 
-                color: '#0B3A70', 
+                color: '#714B67', 
                 cursor: 'pointer', 
-                padding: '6px 10px', 
+                padding: '7px 11px', 
                 borderRadius: '8px',
                 display: 'flex',
                 alignItems: 'center',
@@ -363,25 +374,32 @@ export default function HelpPage({ onOpenExpertModal }) {
                 transition: 'background-color 0.2s ease'
               }}
               aria-label="Search"
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(113, 75, 103, 0.16)'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(113, 75, 103, 0.08)'}
             >
               <Send size={15} />
             </button>
           </div>
 
-          <span style={{ fontSize: '0.92rem', color: '#64748B', fontWeight: '600' }}>or</span>
+          <span style={{ fontSize: '0.92rem', color: '#64748B', fontWeight: '600', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>or</span>
 
           <button
             onClick={() => {
               const el = document.getElementById('contact-section');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="btn-primary"
+            className="inline-flex items-center justify-center gap-2 text-white font-bold transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md active:scale-[0.98] select-none text-center"
             style={{
-              padding: '0.8rem 1.65rem',
-              borderRadius: '12px',
+              backgroundColor: '#714B67',
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              padding: '0.8rem 1.75rem',
+              borderRadius: '10px',
               fontSize: '0.95rem',
-              fontWeight: '700'
+              border: 'none',
+              boxShadow: '0 2px 6px rgba(113, 75, 103, 0.25)'
             }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#5E3E55'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#714B67'}
           >
             <span>Ask a Human</span>
             <ArrowRight size={16} />
@@ -410,25 +428,26 @@ export default function HelpPage({ onOpenExpertModal }) {
                 key={idx}
                 className="support-pill"
                 style={{
-                  backgroundColor: '#F8FAFC',
+                  backgroundColor: '#FFFFFF',
                   border: '1px solid #E2E8F0',
                   borderRadius: '12px',
-                  padding: '0.75rem 0.5rem',
+                  padding: '0.75rem 0.65rem',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.6rem',
+                  gap: '0.65rem',
                   justifyContent: 'center',
-                  transition: 'all 0.3s ease'
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 2px 6px rgba(15, 23, 42, 0.02)'
                 }}
               >
-                <div style={{ width: '28px', height: '28px', borderRadius: '6px', backgroundColor: '#EBF3FC', color: '#0B3A70', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <IconC size={15} />
+                <div style={{ width: '30px', height: '30px', borderRadius: '8px', backgroundColor: 'rgba(113, 75, 103, 0.08)', color: '#714B67', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <IconC size={16} />
                 </div>
                 <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontSize: '0.82rem', fontWeight: '800', color: '#0F172A', lineHeight: 1.1 }}>
+                  <div style={{ fontSize: '0.84rem', fontWeight: '800', color: '#1E293B', lineHeight: 1.15, fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                     {pill.label}
                   </div>
-                  <div style={{ fontSize: '0.7rem', color: '#64748B' }}>
+                  <div style={{ fontSize: '0.7rem', color: '#64748B', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                     {pill.sub}
                   </div>
                 </div>
@@ -454,30 +473,41 @@ export default function HelpPage({ onOpenExpertModal }) {
         <div className="container-enterprise">
           
           <Reveal direction="up" delay={0}>
-            <div style={{ marginBottom: '1.5rem' }}>
-              <span style={{ fontSize: '0.78rem', fontFamily: 'var(--font-mono)', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <div style={{ marginBottom: '1.75rem' }}>
+              <span 
+                className="text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full mb-3 inline-block"
+                style={{
+                  backgroundColor: '#F9F5F8',
+                  color: '#714B67',
+                  border: '1px solid #E3D4DF',
+                  fontFamily: "'Plus Jakarta Sans', sans-serif"
+                }}
+              >
                 DIRECT ACTION PATHWAYS
               </span>
               <h2 style={{ 
-                fontFamily: "'Lora', serif",
-                fontSize: 'clamp(1.63rem, 2.82vw, 2.07rem)', 
-                fontWeight: 600, 
-                color: '#0F172A',
-                letterSpacing: '0',
-                display: 'block',
+                fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+                fontSize: 'clamp(1.85rem, 3.2vw, 2.45rem)', 
+                fontWeight: 800, 
+                color: '#1E293B',
+                letterSpacing: '-0.025em',
+                lineHeight: 1.2,
                 marginTop: '4px',
-                position: 'relative'
+                marginBottom: '0.4rem'
               }}>
-                Contact Us & Inquiries
-                <span style={{ 
-                  display: 'block', 
-                  height: '4px', 
-                  backgroundColor: '#D97706', 
-                  borderRadius: '2px', 
-                  width: '60px', 
-                  marginTop: '6px' 
-                }} />
+                <span>Contact Us &amp; </span>
+                <span style={{ color: '#714B67' }}>Inquiries</span>
               </h2>
+              <p style={{
+                fontSize: 'clamp(0.88rem, 1.5vw, 1rem)',
+                color: '#4B5563',
+                lineHeight: '1.6',
+                maxWidth: '650px',
+                marginBottom: '0',
+                fontFamily: "'Plus Jakarta Sans', sans-serif"
+              }}>
+                Select your preferred engagement channel below to connect directly with our engineering desk or schedule an advisory session.
+              </p>
             </div>
           </Reveal>
 
@@ -502,11 +532,11 @@ export default function HelpPage({ onOpenExpertModal }) {
                       className={`help-select-card ${isSelected ? 'selected' : ''}`}
                       style={{
                         backgroundColor: '#FFFFFF',
-                        border: `1.5px solid ${isSelected ? '#0B3A70' : '#E2E8F0'}`,
+                        border: `1.5px solid ${isSelected ? '#714B67' : '#E2E8F0'}`,
                         borderRadius: '16px',
                         padding: '1.5rem 1.35rem',
                         cursor: 'pointer',
-                        boxShadow: isSelected ? '0 12px 28px -6px rgba(11, 58, 112, 0.15)' : '0 2px 8px rgba(15, 23, 42, 0.03)',
+                        boxShadow: isSelected ? '0 12px 28px -6px rgba(113, 75, 103, 0.16)' : '0 2px 8px rgba(15, 23, 42, 0.03)',
                         transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                         transform: isSelected ? 'translateY(-3px)' : 'none',
                         position: 'relative',
@@ -524,8 +554,8 @@ export default function HelpPage({ onOpenExpertModal }) {
                               width: '42px', 
                               height: '42px', 
                               borderRadius: '10px', 
-                              backgroundColor: isSelected ? '#0B3A70' : '#F1F5F9',
-                              color: isSelected ? '#FFFFFF' : '#0B3A70',
+                              backgroundColor: isSelected ? '#714B67' : '#F9F5F8',
+                              color: isSelected ? '#FFFFFF' : '#714B67',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
@@ -538,27 +568,28 @@ export default function HelpPage({ onOpenExpertModal }) {
                           <span 
                             style={{ 
                               fontSize: '0.7rem', 
-                              fontFamily: 'var(--font-mono)', 
-                              color: isSelected ? '#0B3A70' : '#64748B', 
+                              fontFamily: "'Plus Jakarta Sans', sans-serif", 
+                              color: '#714B67', 
                               fontWeight: '700',
-                              backgroundColor: isSelected ? '#EBF3FC' : '#F8FAFC',
+                              backgroundColor: isSelected ? 'rgba(113, 75, 103, 0.1)' : '#F9F5F8',
+                              border: isSelected ? '1px solid #E3D4DF' : '1px solid #E2E8F0',
                               padding: '3px 8px',
-                              borderRadius: '4px'
+                              borderRadius: '6px'
                             }}
                           >
                             {card.badge}
                           </span>
                         </div>
 
-                        <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0F172A', marginBottom: '0.4rem', letterSpacing: '-0.01em' }}>
+                        <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#1E293B', marginBottom: '0.4rem', letterSpacing: '-0.015em', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                           {card.title}
                         </h3>
-                        <p style={{ fontSize: '0.86rem', color: '#64748B', lineHeight: '1.5' }}>
+                        <p style={{ fontSize: '0.86rem', color: '#4B5563', lineHeight: '1.5', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                           {card.desc}
                         </p>
                       </div>
 
-                      <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.8rem', fontWeight: '700', color: isSelected ? '#0B3A70' : '#94A3B8' }}>
+                      <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.8rem', fontWeight: '700', color: isSelected ? '#714B67' : '#94A3B8', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                         <span>{isSelected ? 'Active Selection' : 'Select category'}</span>
                         <ArrowRight size={13} />
                       </div>
@@ -578,35 +609,36 @@ export default function HelpPage({ onOpenExpertModal }) {
                   border: '1px solid #E2E8F0',
                   padding: '1.75rem',
                   boxShadow: '0 8px 24px -4px rgba(15, 23, 42, 0.05)',
-                  position: 'relative'
+                  position: 'relative',
+                  fontFamily: "'Plus Jakarta Sans', sans-serif"
                 }}
               >
-                <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0F172A', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                  <div style={{ width: '32px', height: '32px', borderRadius: '8px', backgroundColor: '#EBF3FC', color: '#0B3A70', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#1E293B', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.6rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  <div style={{ width: '32px', height: '32px', borderRadius: '8px', backgroundColor: 'rgba(113, 75, 103, 0.08)', color: '#714B67', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <Headphones size={18} />
                   </div>
-                  Support & Emergency Lines
+                  Support &amp; Emergency Lines
                 </h3>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem', borderBottom: '1px solid #F1F5F9', paddingBottom: '1.25rem', marginBottom: '1.25rem' }}>
                   
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.9rem' }}>
                     <span style={{ color: '#64748B', fontWeight: '500' }}>Direct Helpline</span>
-                    <a href="tel:+919657363967" style={{ color: '#0B3A70', fontWeight: '700', textDecoration: 'none' }} className="contact-link">
+                    <a href="tel:+919657363967" style={{ color: '#714B67', fontWeight: '700', textDecoration: 'none' }} className="contact-link">
                       +91 9657363967
                     </a>
                   </div>
 
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.9rem' }}>
                     <span style={{ color: '#64748B', fontWeight: '500' }}>Technical Desk</span>
-                    <a href="mailto:gmarksoftware@gmail.com" style={{ color: '#0B3A70', fontWeight: '700', textDecoration: 'none' }} className="contact-link">
+                    <a href="mailto:gmarksoftware@gmail.com" style={{ color: '#714B67', fontWeight: '700', textDecoration: 'none' }} className="contact-link">
                       gmarksoftware@gmail.com
                     </a>
                   </div>
 
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.9rem' }}>
                     <span style={{ color: '#64748B', fontWeight: '500' }}>Operating Hours</span>
-                    <span style={{ color: '#0F172A', fontWeight: '600' }}>Mon - Sat (9am - 7pm IST)</span>
+                    <span style={{ color: '#1E293B', fontWeight: '600' }}>Mon - Sat (9am - 7pm IST)</span>
                   </div>
 
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.9rem' }}>
@@ -619,10 +651,10 @@ export default function HelpPage({ onOpenExpertModal }) {
 
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontSize: '0.85rem', color: '#475569', backgroundColor: '#F8FAFC', padding: '0.85rem 1rem', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
-                  <MapPin size={18} style={{ color: '#0B3A70', flexShrink: 0, marginTop: '2px' }} />
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontSize: '0.85rem', color: '#4B5563', backgroundColor: '#F8FAFC', padding: '0.85rem 1rem', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
+                  <MapPin size={18} style={{ color: '#714B67', flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <strong style={{ color: '#0F172A', display: 'block' }}>G Mark Software Private Limited</strong>
+                    <strong style={{ color: '#1E293B', display: 'block' }}>G Mark Software Private Limited</strong>
                     <div style={{ color: '#64748B' }}>Moshi, Pune, Maharashtra, India - 412105</div>
                   </div>
                 </div>
@@ -641,30 +673,52 @@ export default function HelpPage({ onOpenExpertModal }) {
                 borderRadius: '20px',
                 border: '1px solid #CBD5E1',
                 padding: 'clamp(1.75rem, 3.5vw, 2.5rem)',
-                boxShadow: '0 12px 36px -6px rgba(15, 23, 42, 0.06)'
+                boxShadow: '0 12px 36px -6px rgba(15, 23, 42, 0.06)',
+                fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
               }}
             >
               <div style={{ marginBottom: '1.5rem' }}>
-                <span style={{ fontSize: '0.78rem', fontFamily: 'var(--font-mono)', color: '#0B3A70', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                  ONLINE INQUIRY & SUPPORT DESK
+                <span 
+                  className="text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full mb-3 inline-block"
+                  style={{
+                    backgroundColor: '#F9F5F8',
+                    color: '#714B67',
+                    border: '1px solid #E3D4DF',
+                    fontFamily: "'Plus Jakarta Sans', sans-serif"
+                  }}
+                >
+                  ONLINE INQUIRY &amp; SUPPORT DESK
                 </span>
-                <h3 style={{ fontSize: '1.55rem', fontWeight: '800', color: '#0F172A', marginTop: '4px', letterSpacing: '-0.02em' }}>
-                  {activeTab === 'advisor' && 'Schedule Consultation with an Advisor'}
-                  {activeTab === 'developments' && 'Request Custom Telemetry & Software Development'}
-                  {activeTab === 'partner' && 'Inquire About Partner & FPO Programs'}
-                  {activeTab === 'bug' && 'Submit an Engineering Support Ticket'}
+                <h3 style={{ fontSize: '1.65rem', fontWeight: '800', color: '#1E293B', marginTop: '4px', letterSpacing: '-0.025em', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  <span>
+                    {activeTab === 'advisor' && 'Schedule Consultation with an '}
+                    {activeTab === 'developments' && 'Request Custom Telemetry & Software '}
+                    {activeTab === 'partner' && 'Inquire About Partner & FPO '}
+                    {activeTab === 'bug' && 'Submit an Engineering Support '}
+                  </span>
+                  <span style={{ color: '#714B67' }}>
+                    {activeTab === 'advisor' && 'Advisor'}
+                    {activeTab === 'developments' && 'Development'}
+                    {activeTab === 'partner' && 'Programs'}
+                    {activeTab === 'bug' && 'Ticket'}
+                  </span>
                 </h3>
+                <p style={{ fontSize: '0.88rem', color: '#4B5563', marginTop: '0.35rem', marginBottom: 0, fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  <strong style={{ color: '#1E293B', fontWeight: '600' }}>Simple, efficient, yet fully integrated.</strong>{' '}
+                  Connect directly with our engineering specialists.
+                </p>
               </div>
 
               {submitted ? (
                 <div style={{ textAlign: 'center', padding: '3rem 1rem', animation: 'fadeInUp 0.5s ease-out' }}>
-                  <div style={{ width: '60px', height: '60px', borderRadius: '50%', backgroundColor: '#DCFCE7', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem', boxShadow: '0 6px 18px rgba(22, 163, 74, 0.2)' }}>
+                  <div style={{ width: '60px', height: '60px', borderRadius: '50%', backgroundColor: 'rgba(113, 75, 103, 0.12)', color: '#714B67', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem', boxShadow: '0 6px 18px rgba(113, 75, 103, 0.2)' }}>
                     <CheckCircle2 size={36} />
                   </div>
-                  <h4 style={{ fontSize: '1.45rem', fontWeight: '800', color: '#0F172A', marginBottom: '0.5rem' }}>
-                    Inquiry Dispatched Successfully!
+                  <h4 style={{ fontSize: '1.45rem', fontWeight: '800', color: '#1E293B', marginBottom: '0.5rem', fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: '-0.02em' }}>
+                    <span>Inquiry Dispatched </span>
+                    <span style={{ color: '#714B67' }}>Successfully!</span>
                   </h4>
-                  <p style={{ color: '#64748B', maxWidth: '460px', margin: '0 auto', lineHeight: '1.6' }}>
+                  <p style={{ color: '#4B5563', maxWidth: '460px', margin: '0 auto', lineHeight: '1.6', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                     A G-Mark systems specialist will review your ticket and connect with you within 2-4 business hours.
                   </p>
                 </div>
@@ -680,7 +734,8 @@ export default function HelpPage({ onOpenExpertModal }) {
                       fontSize: '0.9rem',
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '0.65rem'
+                      gap: '0.65rem',
+                      fontFamily: "'Plus Jakarta Sans', sans-serif"
                     }}>
                       <AlertCircle size={18} style={{ color: '#DC2626', flexShrink: 0 }} />
                       <span>{errorMessage}</span>
@@ -689,7 +744,7 @@ export default function HelpPage({ onOpenExpertModal }) {
                   
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '700', color: '#334155', marginBottom: '0.4rem' }}>
+                      <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '700', color: '#1E293B', marginBottom: '0.4rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                         Your Name *
                       </label>
                       <input 
@@ -704,8 +759,9 @@ export default function HelpPage({ onOpenExpertModal }) {
                           padding: '0.8rem 1rem',
                           borderRadius: '10px',
                           border: '1.5px solid #CBD5E1',
-                          fontSize: '0.95rem',
-                          fontFamily: 'inherit',
+                          fontSize: '0.92rem',
+                          fontFamily: "'Plus Jakarta Sans', sans-serif",
+                          color: '#1E293B',
                           transition: 'all 0.2s ease',
                           outline: 'none'
                         }}
@@ -713,7 +769,7 @@ export default function HelpPage({ onOpenExpertModal }) {
                     </div>
 
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '700', color: '#334155', marginBottom: '0.4rem' }}>
+                      <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '700', color: '#1E293B', marginBottom: '0.4rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                         Work Email *
                       </label>
                       <input 
@@ -728,8 +784,9 @@ export default function HelpPage({ onOpenExpertModal }) {
                           padding: '0.8rem 1rem',
                           borderRadius: '10px',
                           border: '1.5px solid #CBD5E1',
-                          fontSize: '0.95rem',
-                          fontFamily: 'inherit',
+                          fontSize: '0.92rem',
+                          fontFamily: "'Plus Jakarta Sans', sans-serif",
+                          color: '#1E293B',
                           transition: 'all 0.2s ease',
                           outline: 'none'
                         }}
@@ -737,7 +794,7 @@ export default function HelpPage({ onOpenExpertModal }) {
                     </div>
 
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '700', color: '#334155', marginBottom: '0.4rem' }}>
+                      <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '700', color: '#1E293B', marginBottom: '0.4rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                         Contact Number
                       </label>
                       <input 
@@ -751,8 +808,9 @@ export default function HelpPage({ onOpenExpertModal }) {
                           padding: '0.8rem 1rem',
                           borderRadius: '10px',
                           border: '1.5px solid #CBD5E1',
-                          fontSize: '0.95rem',
-                          fontFamily: 'inherit',
+                          fontSize: '0.92rem',
+                          fontFamily: "'Plus Jakarta Sans', sans-serif",
+                          color: '#1E293B',
                           transition: 'all 0.2s ease',
                           outline: 'none'
                         }}
@@ -761,7 +819,7 @@ export default function HelpPage({ onOpenExpertModal }) {
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '700', color: '#334155', marginBottom: '0.4rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '700', color: '#1E293B', marginBottom: '0.4rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                       Subject / Project Reference
                     </label>
                     <input 
@@ -775,8 +833,9 @@ export default function HelpPage({ onOpenExpertModal }) {
                         padding: '0.8rem 1rem',
                         borderRadius: '10px',
                         border: '1.5px solid #CBD5E1',
-                        fontSize: '0.95rem',
-                        fontFamily: 'inherit',
+                        fontSize: '0.92rem',
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                        color: '#1E293B',
                         transition: 'all 0.2s ease',
                         outline: 'none'
                       }}
@@ -784,7 +843,7 @@ export default function HelpPage({ onOpenExpertModal }) {
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '700', color: '#334155', marginBottom: '0.4rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '700', color: '#1E293B', marginBottom: '0.4rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                       Message Details *
                     </label>
                     <textarea 
@@ -799,8 +858,9 @@ export default function HelpPage({ onOpenExpertModal }) {
                         padding: '0.8rem 1rem',
                         borderRadius: '10px',
                         border: '1.5px solid #CBD5E1',
-                        fontSize: '0.95rem',
-                        fontFamily: 'inherit',
+                        fontSize: '0.92rem',
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                        color: '#1E293B',
                         resize: 'vertical',
                         transition: 'all 0.2s ease',
                         outline: 'none'
@@ -809,22 +869,28 @@ export default function HelpPage({ onOpenExpertModal }) {
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '0.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.82rem', color: '#64748B' }}>
-                      <ShieldCheck size={18} style={{ color: '#0B3A70' }} />
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.82rem', color: '#64748B', fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: '500' }}>
+                      <ShieldCheck size={18} style={{ color: '#714B67' }} />
                       <span>Protected by G-Mark Enterprise NDA standards</span>
                     </div>
 
                     <button 
                       type="submit"
                       disabled={submitting}
-                      className="btn-primary"
+                      className="inline-flex items-center justify-center gap-2 text-white font-bold transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md active:scale-[0.98] select-none"
                       style={{
+                        backgroundColor: '#714B67',
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
                         padding: '0.85rem 2.2rem',
                         fontSize: '0.98rem',
                         borderRadius: '10px',
+                        border: 'none',
                         opacity: submitting ? 0.75 : 1,
-                        cursor: submitting ? 'not-allowed' : 'pointer'
+                        cursor: submitting ? 'not-allowed' : 'pointer',
+                        boxShadow: '0 2px 6px rgba(113, 75, 103, 0.25)'
                       }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#5E3E55'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#714B67'}
                     >
                       {submitting ? (
                         <>
@@ -854,52 +920,52 @@ export default function HelpPage({ onOpenExpertModal }) {
         @keyframes pulseDot {
           0% {
             transform: scale(0.95);
-            box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.5);
+            box-shadow: 0 0 0 0 rgba(113, 75, 103, 0.5);
           }
           70% {
             transform: scale(1.05);
-            box-shadow: 0 0 0 7px rgba(22, 163, 74, 0);
+            box-shadow: 0 0 0 7px rgba(113, 75, 103, 0);
           }
           100% {
             transform: scale(0.95);
-            box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+            box-shadow: 0 0 0 0 rgba(113, 75, 103, 0);
           }
         }
 
         .help-search-input-box:focus-within {
-          border-color: #0B3A70 !important;
-          box-shadow: 0 0 0 3px rgba(11, 58, 112, 0.12), 0 4px 16px rgba(15, 23, 42, 0.06) !important;
+          border-color: #714B67 !important;
+          box-shadow: 0 0 0 3px rgba(113, 75, 103, 0.12), 0 4px 16px rgba(113, 75, 103, 0.08) !important;
         }
 
         .support-pill:hover {
           transform: translateY(-2px);
           background-color: #FFFFFF !important;
           border-color: #CBD5E1 !important;
-          box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+          box-shadow: 0 6px 18px rgba(113, 75, 103, 0.08);
         }
 
         .help-select-card:hover {
           transform: translateY(-4px);
-          box-shadow: 0 14px 30px -6px rgba(11, 58, 112, 0.12) !important;
-          border-color: #93C5FD !important;
+          box-shadow: 0 14px 30px -6px rgba(113, 75, 103, 0.16) !important;
+          border-color: #714B67 !important;
         }
 
         .help-select-card:hover .card-icon-box {
-          transform: scale(1.1);
+          transform: scale(1.08);
         }
 
         .emergency-lines-box:hover {
-          border-color: #93C5FD !important;
-          box-shadow: 0 12px 28px -6px rgba(11, 58, 112, 0.08) !important;
+          border-color: #E3D4DF !important;
+          box-shadow: 0 12px 28px -6px rgba(113, 75, 103, 0.08) !important;
         }
 
         .form-control-input:focus {
-          border-color: #0B3A70 !important;
-          box-shadow: 0 0 0 3px rgba(11, 58, 112, 0.12) !important;
+          border-color: #714B67 !important;
+          box-shadow: 0 0 0 3px rgba(113, 75, 103, 0.12) !important;
         }
 
         .contact-link:hover {
-          color: #15803D !important;
+          color: #5E3E55 !important;
           text-decoration: underline !important;
         }
 

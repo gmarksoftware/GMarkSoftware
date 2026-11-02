@@ -1,14 +1,13 @@
 import React from 'react';
 import { Hero } from '@/components/ui/hero-1';
-import ApplicationsGridSection from '@/components/ApplicationsGridSection';
 import OdooValuePropositionSection from '@/components/OdooValuePropositionSection';
 import OdooComparisonSection from '@/components/OdooComparisonSection';
 import DataVisionSection from '@/components/DataVisionSection';
 
 export default function HomePage({ onOpenExpertModal, onNavigate, onSelectApp }) {
-  const scrollToApplications = (e) => {
+  const scrollToSolutions = (e) => {
     if (e && e.preventDefault) e.preventDefault();
-    const section = document.getElementById('applications-section');
+    const section = document.getElementById('value-proposition-section');
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
@@ -26,28 +25,16 @@ export default function HomePage({ onOpenExpertModal, onNavigate, onSelectApp })
       <Hero
         title="All your enterprise software"
         highlightText="on one platform."
-        subtitle="Run your entire operations with proprietary applications for ERP & Finance, 4M Industrial Maintenance, G-Nova IoT Telemetry, and Field Logistics."
-        ctaLabel="Explore All Applications"
-        ctaHref="#applications-section"
-        onCtaClick={scrollToApplications}
+        subtitle="Simple, efficient, yet fully integrated. Run your entire operations with proprietary applications for ERP & Finance, 4M Industrial Maintenance, G-Nova IoT Telemetry, and Field Logistics."
+        ctaLabel="Explore Solutions"
+        ctaHref="#value-proposition-section"
+        onCtaClick={scrollToSolutions}
         secondaryCtaLabel="Schedule a Demo"
-        secondaryCtaHref="#applications-section"
-        onSecondaryCtaClick={onOpenExpertModal || scrollToApplications}
+        secondaryCtaHref="#value-proposition-section"
+        onSecondaryCtaClick={onOpenExpertModal || scrollToSolutions}
         onSelectApp={onSelectApp}
         showMarquee={true}
       />
-
-      {/* 2. Odoo-Style Applications & Platforms Directory with Category Filter */}
-      <section
-        id="applications-section"
-        className="w-full min-h-0 bg-white flex flex-col items-center justify-center overflow-x-hidden border-t border-slate-100"
-        style={{ backgroundColor: '#ffffff' }}
-      >
-        <ApplicationsGridSection
-          onOpenExpertModal={onOpenExpertModal}
-          onSelectApp={onSelectApp}
-        />
-      </section>
 
       {/* 3. Odoo-Style "A Unique Value Proposition" (Interactive 4-Pillar Tabs) */}
       <section
@@ -77,7 +64,7 @@ export default function HomePage({ onOpenExpertModal, onNavigate, onSelectApp })
       >
         <OdooComparisonSection 
           onOpenExpertModal={onOpenExpertModal}
-          onExploreApps={scrollToApplications}
+          onExploreApps={scrollToSolutions}
         />
       </section>
     </div>

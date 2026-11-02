@@ -148,7 +148,7 @@ export default function OdooValuePropositionSection({ onOpenExpertModal, onSelec
 
   return (
     <section 
-      className="w-full bg-[#F8FAFC] py-20 sm:py-24 border-y border-slate-200/80"
+      className="w-full bg-[#F8FAFC] py-18 sm:py-24"
       style={{
         fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
       }}

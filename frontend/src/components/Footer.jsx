@@ -92,7 +92,7 @@ export default function Footer({ onSelectTab, onNavigate, onOpenExpertModal }) {
               <li>
                 <button
                   type="button"
-                  onClick={() => handleNav('home', 'applications-section')}
+                  onClick={() => handleNav('home', 'value-proposition-section')}
                   className="hover:text-white hover:translate-x-0.5 transition-all text-left cursor-pointer py-0.5 md:py-0 min-h-[26px] md:min-h-0 flex items-center"
                 >
                   4M Maintenance CMMS
@@ -101,7 +101,7 @@ export default function Footer({ onSelectTab, onNavigate, onOpenExpertModal }) {
               <li>
                 <button
                   type="button"
-                  onClick={() => handleNav('home', 'applications-section')}
+                  onClick={() => handleNav('home', 'value-proposition-section')}
                   className="hover:text-white hover:translate-x-0.5 transition-all text-left cursor-pointer py-0.5 md:py-0 min-h-[26px] md:min-h-0 flex items-center"
                 >
                   Industrial IoT Telemetry
@@ -110,7 +110,7 @@ export default function Footer({ onSelectTab, onNavigate, onOpenExpertModal }) {
               <li>
                 <button
                   type="button"
-                  onClick={() => handleNav('home', 'applications-section')}
+                  onClick={() => handleNav('home', 'value-proposition-section')}
                   className="hover:text-white hover:translate-x-0.5 transition-all text-left cursor-pointer py-0.5 md:py-0 min-h-[26px] md:min-h-0 flex items-center"
                 >
                   GramUnnati Smart Agri-Tech

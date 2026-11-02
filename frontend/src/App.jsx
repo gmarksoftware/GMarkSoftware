@@ -133,12 +133,10 @@ export default function App() {
       </main>
 
       {/* Enterprise Footer Component */}
-      {currentPage !== 'about' && (
-        <Footer 
-          onNavigate={handleNavigate}
-          onOpenExpertModal={() => setIsExpertModalOpen(true)}
-        />
-      )}
+      <Footer 
+        onNavigate={handleNavigate}
+        onOpenExpertModal={() => setIsExpertModalOpen(true)}
+      />
 
       {/* Interactive Consultation Modal */}
       <ExpertModal 
