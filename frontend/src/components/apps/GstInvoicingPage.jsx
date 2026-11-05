@@ -117,28 +117,6 @@ export default function GstInvoicingPage({ app, onBack, onOpenExpertModal, onSel
         />
 
         <div style={{ maxWidth: '880px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
-          {/* Eyebrow Badge */}
-          <div style={{ marginBottom: '1rem', position: 'relative', zIndex: 1 }}>
-            <span style={{ 
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              gap: '6px', 
-              padding: '6px 14px', 
-              borderRadius: '9999px', 
-              backgroundColor: '#FFF1F2', 
-              color: '#FC787D', 
-              fontSize: '0.76rem', 
-              fontWeight: '600', 
-              letterSpacing: '0.06em', 
-              textTransform: 'uppercase',
-              border: '1px solid #FED7D9',
-              boxShadow: '0 1px 3px rgba(252, 120, 125, 0.04)'
-            }}>
-              <Receipt size={13} style={{ color: '#FC787D' }} />
-              <span>CORE ERP &amp; FINANCE • STATUTORY TAX ENGINE</span>
-            </span>
-          </div>
-
           <h1 
             className="text-balance text-slate-900 font-extrabold tracking-tight"
             style={{ 

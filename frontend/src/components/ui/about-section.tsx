@@ -199,35 +199,8 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
       <div className="relative z-10 w-full max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1536px] mx-auto">
         <div className="relative max-w-5xl xl:max-w-[1040px] mx-auto">
           {/* Header Bar: WHO WE ARE badge + Social Media Icons */}
-          <div className="flex flex-wrap sm:flex-nowrap justify-between items-center gap-3 w-full mb-3 sm:mb-3.5 px-1 z-20">
-            <div className="flex items-center gap-2">
-              <div 
-                style={{
-                  padding: '5px 14px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.88)',
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
-                  border: '1px solid #FED7D9',
-                  borderRadius: '100px',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '7px',
-                  boxShadow: '0 2px 10px rgba(252, 120, 125, 0.05)'
-                }}
-              >
-                <span style={{ color: '#FC787D' }} className="animate-spin text-sm leading-none">✱</span>
-                <TimelineContent
-                  as="span"
-                  animationNum={0}
-                  timelineRef={heroRef}
-                  customVariants={revealVariants}
-                  className="text-xs font-bold tracking-wider uppercase"
-                  style={{ color: '#FC787D', fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-                >
-                  WHO WE ARE
-                </TimelineContent>
-              </div>
-            </div>
+          <div className="flex justify-end items-center gap-3 w-full mb-3 sm:mb-3.5 px-1 z-20">
+            
 
             <div className="flex items-center gap-2 sm:gap-2.5">
               <TimelineContent

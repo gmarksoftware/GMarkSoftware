@@ -239,39 +239,7 @@ export default function HelpPage({ onOpenExpertModal }) {
           aria-hidden="true"
         />
 
-        {/* Eyebrow badge matching Home Page pill style */}
-        <div
-          style={{
-            opacity: heroMounted ? 1 : 0,
-            transform: heroMounted ? 'translateY(0)' : 'translateY(16px)',
-            transition: 'opacity 0.6s ease-out 0.1s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
-            marginBottom: '1.25rem',
-            position: 'relative',
-            zIndex: 1
-          }}
-        >
-          <div 
-            style={{
-              padding: '6px 16px',
-              backgroundColor: '#FFF1F2',
-              border: '1px solid #FED7D9',
-              borderRadius: '100px',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              boxShadow: '0 2px 8px rgba(252, 120, 125, 0.04)',
-              fontSize: '0.75rem',
-              fontWeight: '700',
-              letterSpacing: '0.08em',
-              color: '#FC787D',
-              textTransform: 'uppercase',
-              fontFamily: "'Plus Jakarta Sans', sans-serif"
-            }}
-          >
-            <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#FC787D', animation: 'pulseDot 2s infinite' }} />
-            G-MARK SUPPORT &amp; HELP CENTER
-          </div>
-        </div>
+        
 
         {/* Headline matching Home Page Hero Typography */}
         <h1 
@@ -474,17 +442,7 @@ export default function HelpPage({ onOpenExpertModal }) {
           
           <Reveal direction="up" delay={0}>
             <div style={{ marginBottom: '1.75rem' }}>
-              <span 
-                className="text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full mb-3 inline-block"
-                style={{
-                  backgroundColor: '#FFF1F2',
-                  color: '#FC787D',
-                  border: '1px solid #FED7D9',
-                  fontFamily: "'Plus Jakarta Sans', sans-serif"
-                }}
-              >
-                DIRECT ACTION PATHWAYS
-              </span>
+              
               <h2 style={{ 
                 fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
                 fontSize: 'clamp(1.85rem, 3.2vw, 2.45rem)', 
@@ -678,17 +636,7 @@ export default function HelpPage({ onOpenExpertModal }) {
               }}
             >
               <div style={{ marginBottom: '1.5rem' }}>
-                <span 
-                  className="text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full mb-3 inline-block"
-                  style={{
-                    backgroundColor: '#FFF1F2',
-                    color: '#FC787D',
-                    border: '1px solid #FED7D9',
-                    fontFamily: "'Plus Jakarta Sans', sans-serif"
-                  }}
-                >
-                  ONLINE INQUIRY &amp; SUPPORT DESK
-                </span>
+                
                 <h3 style={{ fontSize: '1.65rem', fontWeight: '800', color: '#1E293B', marginTop: '4px', letterSpacing: '-0.025em', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                   <span>
                     {activeTab === 'advisor' && 'Schedule Consultation with an '}

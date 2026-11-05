@@ -163,16 +163,7 @@ export default function OdooValuePropositionSection({ onOpenExpertModal, onSelec
           transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto mb-6 sm:mb-16"
         >
-          <span 
-            className="text-[11px] sm:text-xs font-bold uppercase tracking-wider px-3 sm:px-3.5 py-0.5 sm:py-1 rounded-full mb-2 sm:mb-3 inline-block"
-            style={{
-              backgroundColor: '#FFF1F2',
-              color: '#FC787D',
-              border: '1px solid #FED7D9'
-            }}
-          >
-            A Unique Value Proposition
-          </span>
+          
           <h2 
             className="text-[22px] xs:text-[25px] sm:text-4xl lg:text-[2.65rem] font-extrabold text-slate-900 tracking-tight leading-tight"
             style={{ color: '#1E293B' }}

@@ -151,34 +151,14 @@ export default function SoftwareProductsSection({ onSelectApp }) {
 
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6">
         
-        {/* Centered Section Header with 4-square Grid Pill Badge */}
+        {/* Centered Section Header */}
         <motion.div 
-          initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.85, ease: SMOOTH_SLOW_EASING }}
-          className="text-center max-w-2xl mx-auto mb-8 sm:mb-10"
+          transition={{ duration: 0.6, ease: SMOOTH_SLOW_EASING }}
+          className="text-center max-w-2xl mx-auto mb-6 sm:mb-8"
         >
-          <div className="flex items-center justify-center mb-2.5 sm:mb-3">
-            <span 
-              className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full select-none"
-              style={{
-                backgroundColor: '#FFF1F2',
-                color: '#FC787D',
-                border: '1px solid #FED7D9'
-              }}
-            >
-              {/* 4-Square Grid Icon */}
-              <svg className="w-3 h-3 text-[#FC787D]" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="1.5" y="1.5" width="4.2" height="4.2" rx="1.2" />
-                <rect x="8.3" y="1.5" width="4.2" height="4.2" rx="1.2" />
-                <rect x="1.5" y="8.3" width="4.2" height="4.2" rx="1.2" />
-                <rect x="8.3" y="8.3" width="4.2" height="4.2" rx="1.2" />
-              </svg>
-              OUR PRODUCT SUITE
-            </span>
-          </div>
-
           <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-[#0F172A] tracking-tight">
             Explore Our <span className="text-[#FC787D]">Software Products</span>
           </h2>

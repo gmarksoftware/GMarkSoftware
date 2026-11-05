@@ -223,28 +223,7 @@ export default function AppDetailPage({ app, onBack, onOpenExpertModal, onSelect
           />
 
           <div style={{ maxWidth: '880px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
-            {/* Eyebrow badge */}
-            <div style={{ marginBottom: '1.25rem', position: 'relative', zIndex: 1 }}>
-              <div 
-                style={{
-                  padding: '6px 14px',
-                  backgroundColor: '#FFF1F2',
-                  border: '1px solid #FED7D9',
-                  borderRadius: '100px',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  boxShadow: '0 2px 8px rgba(252, 120, 125, 0.04)',
-                  fontSize: '0.78rem',
-                  fontWeight: '600',
-                  color: '#FC787D',
-                  letterSpacing: '0.04em'
-                }}
-              >
-                <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#FC787D' }} />
-                {app?.category?.toUpperCase() || 'ENTERPRISE PLATFORM'} • {app?.badge || 'ENTERPRISE'}
-              </div>
-            </div>
+            
 
             {/* Headline matching homepage design language */}
             <h1 

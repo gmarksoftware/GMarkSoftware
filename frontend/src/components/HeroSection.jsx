@@ -42,29 +42,7 @@ export default function HeroSection({ onOpenExpertModal, onExploreSolutions }) {
           {/* LEFT COLUMN: Dominant Enterprise Value Proposition */}
           <div style={{ maxWidth: '640px' }}>
             
-            {/* Eyebrow badge */}
-            <div style={{ marginBottom: '1.5rem' }}>
-              <div 
-                className="eyebrow-tag"
-                style={{
-                  backgroundColor: '#F1F5F9',
-                  border: '1px solid #E2E8F0',
-                  padding: '0.4rem 0.9rem',
-                  borderRadius: '24px',
-                  display: 'inline-flex'
-                }}
-              >
-                <span 
-                  style={{
-                    width: '7px',
-                    height: '7px',
-                    borderRadius: '50%',
-                    backgroundColor: '#0B3A70'
-                  }}
-                  className="animate-ping-subtle"
-                />
-                SMART TECHNOLOGY FOR REAL-WORLD OPERATIONS
-              </div>
+            
             </div>
 
             {/* Main Headline */}

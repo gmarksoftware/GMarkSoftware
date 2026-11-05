@@ -16,40 +16,40 @@ const FLOATING_CARDS_LEFT = [
     id: 'erp',
     title: 'ERP & Finance',
     subtitle: 'Business Operations',
-    top: '8%',
-    left: 'clamp(0.5rem, 2.5vw, 2.5rem)',
+    top: '12%',
+    left: 'clamp(0.75rem, 3.2vw, 3.5rem)',
     iconBg: '#FEF2F2',
     iconColor: '#EF3A3E',
     iconType: 'chart',
     floatDelay: 0,
     floatDuration: 5.2,
-    rotate: 3.0,
+    rotate: 0,
   },
   {
     id: 'cmms',
     title: 'Industrial Maintenance',
     subtitle: 'Asset Management',
-    top: '38%',
-    left: 'clamp(0.1rem, 1vw, 1.2rem)',
+    top: '41%',
+    left: 'clamp(0.5rem, 2vw, 2rem)',
     iconBg: '#FEF2F2',
     iconColor: '#EF3A3E',
     iconType: 'gear',
     floatDelay: 0.6,
     floatDuration: 5.8,
-    rotate: 1.8,
+    rotate: 0,
   },
   {
     id: 'logistics',
     title: 'Field Logistics',
     subtitle: 'Track & Manage',
-    top: '72%',
-    left: 'clamp(0.8rem, 3vw, 3.2rem)',
+    top: '70%',
+    left: 'clamp(1rem, 3.8vw, 4rem)',
     iconBg: '#FEF2F2',
     iconColor: '#EF3A3E',
     iconType: 'box',
     floatDelay: 1.2,
     floatDuration: 5.0,
-    rotate: 0.8,
+    rotate: 0,
   },
 ];
 
@@ -58,40 +58,40 @@ const FLOATING_CARDS_RIGHT = [
     id: 'telemetry',
     title: 'IoT Telemetry',
     subtitle: 'Live Monitoring',
-    top: '8%',
-    right: 'clamp(0.5rem, 2.5vw, 2.5rem)',
+    top: '12%',
+    right: 'clamp(0.75rem, 3.2vw, 3.5rem)',
     iconBg: '#E8F8F0',
     iconColor: '#10B981',
     iconType: 'wifi',
     floatDelay: 0.3,
     floatDuration: 5.4,
-    rotate: -3.0,
+    rotate: 0,
   },
   {
     id: 'analytics',
     title: 'Analytics',
     subtitle: 'Data Insights',
-    top: '38%',
-    right: 'clamp(0.1rem, 1vw, 1.2rem)',
+    top: '41%',
+    right: 'clamp(0.5rem, 2vw, 2rem)',
     iconBg: '#EEF2FF',
     iconColor: '#4F46E5',
     iconType: 'analytics',
     floatDelay: 0.9,
     floatDuration: 6.0,
-    rotate: -1.8,
+    rotate: 0,
   },
   {
     id: 'operations',
     title: 'Operations',
     subtitle: 'Unified Platform',
-    top: '72%',
-    right: 'clamp(0.8rem, 3vw, 3.2rem)',
+    top: '70%',
+    right: 'clamp(1rem, 3.8vw, 4rem)',
     iconBg: '#E8F8F0',
     iconColor: '#10B981',
     iconType: 'users',
     floatDelay: 1.5,
     floatDuration: 5.5,
-    rotate: -0.8,
+    rotate: 0,
   },
 ];
 
@@ -600,7 +600,7 @@ export function Hero({
       `}</style>
 
       <div
-        className="relative w-full overflow-hidden text-center pt-12 sm:pt-16 lg:pt-16 pb-2 sm:pb-6 bg-gradient-to-b from-[#FEF2F2] via-[#FFF1F1] to-white min-h-[100svh] md:min-h-0 flex flex-col justify-between"
+        className="relative w-full overflow-hidden text-center pt-14 sm:pt-16 lg:pt-20 pb-2 sm:pb-4 lg:pb-6 bg-gradient-to-b from-[#FEF2F2] via-[#FFF1F1] to-white min-h-[100svh] lg:min-h-screen flex flex-col justify-between"
         style={{
           background: 'linear-gradient(to bottom, #FEF2F2 0%, #FEF5F5 25%, #FFF8F8 50%, #FFFAFA 70%, #FFFDFD 85%, #FFFFFF 95%, #FFFFFF 100%)'
         }}
@@ -807,7 +807,7 @@ export function Hero({
           {FLOATING_CARDS_LEFT.map((card) => (
             <div
               key={card.id}
-              className="hidden lg:inline-flex w-fit absolute z-20 scale-[0.74] xl:scale-[0.85] 2xl:scale-[0.92]"
+              className="hidden lg:inline-flex w-fit absolute z-20 scale-[0.80] xl:scale-[0.88] 2xl:scale-[0.96]"
               style={{
                 top: card.top,
                 left: card.left,
@@ -818,20 +818,19 @@ export function Hero({
                 initial={prefersReduced ? { opacity: 1 } : { opacity: 0, y: 18, scale: 0.94 }}
                 animate={
                   prefersReduced
-                    ? { opacity: 1, rotate: card.rotate }
+                    ? { opacity: 1 }
                     : {
                       opacity: 1,
                       scale: 1,
-                      rotate: [card.rotate - 0.4, card.rotate + 0.4, card.rotate - 0.4],
-                      y: [0, -8, 0],
+                      y: [0, -7, 0],
                     }
                 }
                 whileHover={
                   prefersReduced
                     ? undefined
                     : {
-                      y: -5,
-                      scale: 1.035,
+                      y: -4,
+                      scale: 1.03,
                       boxShadow: "0 20px 30px -10px rgba(239, 58, 62, 0.16)",
                       transition: { duration: 0.25, ease: "easeOut" },
                     }
@@ -844,14 +843,6 @@ export function Hero({
                     : {
                       repeat: Infinity,
                       duration: card.floatDuration,
-                      ease: "easeInOut",
-                      delay: card.floatDelay,
-                    },
-                  rotate: prefersReduced
-                    ? undefined
-                    : {
-                      repeat: Infinity,
-                      duration: card.floatDuration * 1.25,
                       ease: "easeInOut",
                       delay: card.floatDelay,
                     },
@@ -880,7 +871,7 @@ export function Hero({
           {FLOATING_CARDS_RIGHT.map((card) => (
             <div
               key={card.id}
-              className="hidden lg:inline-flex w-fit absolute z-20 scale-[0.74] xl:scale-[0.85] 2xl:scale-[0.92]"
+              className="hidden lg:inline-flex w-fit absolute z-20 scale-[0.80] xl:scale-[0.88] 2xl:scale-[0.96]"
               style={{
                 top: card.top,
                 right: card.right,
@@ -891,20 +882,19 @@ export function Hero({
                 initial={prefersReduced ? { opacity: 1 } : { opacity: 0, y: 18, scale: 0.94 }}
                 animate={
                   prefersReduced
-                    ? { opacity: 1, rotate: card.rotate }
+                    ? { opacity: 1 }
                     : {
                       opacity: 1,
                       scale: 1,
-                      rotate: [card.rotate + 0.4, card.rotate - 0.4, card.rotate + 0.4],
-                      y: [0, 8, 0],
+                      y: [0, 7, 0],
                     }
                 }
                 whileHover={
                   prefersReduced
                     ? undefined
                     : {
-                      y: -5,
-                      scale: 1.035,
+                      y: -4,
+                      scale: 1.03,
                       boxShadow: "0 20px 30px -10px rgba(239, 58, 62, 0.16)",
                       transition: { duration: 0.25, ease: "easeOut" },
                     }
@@ -917,14 +907,6 @@ export function Hero({
                     : {
                       repeat: Infinity,
                       duration: card.floatDuration,
-                      ease: "easeInOut",
-                      delay: card.floatDelay,
-                    },
-                  rotate: prefersReduced
-                    ? undefined
-                    : {
-                      repeat: Infinity,
-                      duration: card.floatDuration * 1.25,
                       ease: "easeInOut",
                       delay: card.floatDelay,
                     },
@@ -950,37 +932,36 @@ export function Hero({
           ))}
 
           {/* CENTERED HERO HEADLINE, SUBTITLE & ACTION BUTTONS */}
-          <div className="relative z-10 w-full max-w-2xl lg:max-w-[740px] xl:max-w-[840px] 2xl:max-w-[940px] mx-auto px-3 sm:px-4 flex flex-col items-center justify-center my-auto pt-1 pb-2 sm:py-2">
+          <div className="relative z-10 w-full max-w-2xl lg:max-w-[760px] xl:max-w-[860px] 2xl:max-w-[940px] mx-auto px-3 sm:px-4 flex flex-col items-center justify-center my-auto pt-1 pb-2 sm:py-2">
 
-            {/* Headline: Clean 2-Line Heading with Bold, Prominent Mobile Typography - Moved up per red arrow */}
+            {/* Headline: Clean 2-Line Heading matching Reference Image 1 */}
             <h1
               className="text-center font-extrabold tracking-tight select-none w-full"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
-              <span className="block text-slate-900 text-[33px] xs:text-[37px] sm:text-[41px] md:text-[45px] lg:text-[48px] xl:text-[54px] 2xl:text-[62px] leading-[1.16]">
+              <span className="block text-slate-900 text-[32px] xs:text-[36px] sm:text-[40px] md:text-[44px] lg:text-[48px] xl:text-[54px] 2xl:text-[60px] leading-[1.12]">
                 {title || "All your enterprise"}
               </span>
               <span
-                className="block text-[33px] xs:text-[37px] sm:text-[41px] md:text-[45px] lg:text-[48px] xl:text-[54px] 2xl:text-[62px] leading-[1.16] mt-2 sm:mt-2.5 font-extrabold text-balance"
+                className="block text-[32px] xs:text-[36px] sm:text-[40px] md:text-[44px] lg:text-[48px] xl:text-[54px] 2xl:text-[60px] leading-[1.12] mt-1.5 sm:mt-2 font-extrabold"
                 style={{ color: '#FC787D' }}
               >
                 {(highlightText || "software on one platform.").trim()}
               </span>
             </h1>
 
-            {/* Subtitle with Increased Legibility, Spacing & Centralization */}
-            <div className="px-2 mt-3 xs:mt-3.5 sm:mt-4 mb-0 w-full max-w-[340px] xs:max-w-md sm:max-w-xl mx-auto text-center">
+            {/* Subtitle: 3-line balanced layout without hyphenation break */}
+            <div className="px-2 mt-3.5 sm:mt-4 mb-0 w-full max-w-[340px] xs:max-w-md sm:max-w-xl lg:max-w-[660px] xl:max-w-[670px] mx-auto text-center">
               <p
-                className="text-[14.5px] xs:text-[15px] sm:text-[16px] text-slate-600 leading-relaxed font-normal"
+                className="text-[14px] xs:text-[14.5px] sm:text-[15px] lg:text-[15.5px] text-slate-600 leading-relaxed font-normal"
                 style={{ color: '#64748B' }}
               >
                 {subtitle}
               </p>
             </div>
 
-            {/* DESKTOP ACTION BUTTONS (lg+) */}
             {/* ACTION BUTTONS: Desktop (lg+) horizontal, Mobile (<lg) stacked with perfectly managed gaps */}
-            <div className="hidden lg:flex flex-col items-center justify-center z-20 w-full mt-5 sm:mt-6 mb-0">
+            <div className="hidden lg:flex flex-row items-center justify-center z-20 w-full mt-6 sm:mt-7 mb-0">
               {renderActionButtons(false)}
             </div>
             <div className="lg:hidden flex flex-col items-center justify-center z-20 w-full max-w-sm mx-auto px-2 mt-6 xs:mt-7 sm:mt-8 mb-2">

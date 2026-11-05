@@ -344,20 +344,7 @@ export default function DataVisionSection() {
             className="lg:col-span-5 xl:col-span-6 flex flex-col justify-center text-left"
           >
             
-            {/* Eyebrow Pill Badge: Official Odoo Signature Style */}
-            <div 
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-3.5 sm:mb-5 w-fit shadow-2xs select-none"
-              style={{
-                backgroundColor: '#FFF1F2',
-                color: '#FC787D',
-                border: '1px solid #FED7D9'
-              }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FC787D]" />
-              <span className="text-[11px] font-bold uppercase tracking-wider">
-                Data Vision &amp; Intelligence
-              </span>
-            </div>
+            
 
             {/* Authentic Enterprise Official Headline */}
             <h2

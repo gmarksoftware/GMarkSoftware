@@ -266,16 +266,7 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
           transition={{ duration: 1.05, ease: ENTERPRISE_EASING }}
           className="text-center mb-8 sm:mb-10 max-w-2xl mx-auto flex flex-col items-center"
         >
-          <span 
-            className="text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full mb-3 inline-block"
-            style={{
-              backgroundColor: '#FFF1F2',
-              color: '#FC787D',
-              border: '1px solid #FED7D9'
-            }}
-          >
-            Modular &amp; Fully Integrated
-          </span>
+          
           <h2 
             className="text-3xl sm:text-4xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight text-center"
             style={{ color: '#1E293B' }}

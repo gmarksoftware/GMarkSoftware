@@ -267,20 +267,9 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
           }}
         />
 
-        <div className="max-w-5xl mx-auto text-center relative z-10">
+        <div className="max-w-5xl mx-auto text-center relative z-10 pt-2 sm:pt-4">
           
-          {/* Eyebrow Pill Tag */}
-          <motion.div 
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF1F2] border border-[#FED7D9] shadow-xs mb-6"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#FC787D] animate-pulse" />
-            <span className="text-[11px] sm:text-xs font-bold text-[#FC787D] uppercase tracking-widest">
-              Enterprise Resource Planning &amp; Automation
-            </span>
-          </motion.div>
+          
 
           {/* High-Impact Headline with Elegant Accent */}
           <motion.div 

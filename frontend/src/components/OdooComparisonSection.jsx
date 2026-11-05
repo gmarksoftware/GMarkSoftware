@@ -166,16 +166,7 @@ export default function OdooComparisonSection({ onOpenExpertModal, onExploreApps
           transition={{ duration: 1.05, ease: SMOOTH_SLOW_EASING }}
           className="text-center max-w-3xl mx-auto mb-14 sm:mb-16"
         >
-          <span 
-            className="text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full mb-3 inline-block"
-            style={{
-              backgroundColor: '#FFF1F2',
-              color: '#FC787D',
-              border: '1px solid #FED7D9'
-            }}
-          >
-            The Unified Advantage
-          </span>
+          
           <h2 
             className="text-3xl sm:text-4xl lg:text-[2.65rem] font-extrabold text-slate-900 tracking-tight leading-tight"
             style={{ color: '#1E293B' }}

@@ -88,9 +88,7 @@ export default function ThreeCoreSolutionsSection({ onOpenExpertModal }) {
       
       {/* Section Header */}
       <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 3.5rem' }}>
-        <div className="eyebrow-tag" style={{ marginBottom: '0.75rem' }}>
-          OUR CORE CAPABILITIES
-        </div>
+        
         <h2 className="section-headline" style={{ marginBottom: '1.25rem' }}>
           Three Areas. One Connected Technology Vision.
         </h2>

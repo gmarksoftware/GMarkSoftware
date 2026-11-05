@@ -58,27 +58,7 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
         />
 
         <div style={{ maxWidth: '1000px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
-          {/* Eyebrow Category & Badge Pill */}
-          <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
-            <span style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontSize: '0.76rem',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.06em',
-              padding: '6px 14px',
-              borderRadius: '9999px',
-              backgroundColor: '#FFF1F2',
-              color: '#FC787D',
-              border: '1px solid #FED7D9',
-              boxShadow: '0 1px 3px rgba(252, 120, 125, 0.04)'
-            }}>
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#FC787D' }}></span>
-              {module.category} • {module.badge || 'ENTERPRISE MODULE'}
-            </span>
-          </div>
+          
 
           {/* Heading */}
           <motion.h1

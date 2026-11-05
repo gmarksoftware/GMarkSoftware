@@ -17,9 +17,7 @@ export default function TechnologyOverviewSection({ onOpenExpertModal }) {
         {/* Section Introduction */}
         <div style={{ maxWidth: '820px', marginBottom: '1.5rem' }}>
           
-          <div className="eyebrow-tag" style={{ marginBottom: '1rem' }}>
-            OUR TECHNOLOGY
-          </div>
+          
 
           <h2 
             className="section-headline"

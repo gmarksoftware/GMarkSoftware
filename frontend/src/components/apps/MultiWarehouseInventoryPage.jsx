@@ -149,27 +149,7 @@ export default function MultiWarehouseInventoryPage({ app, onBack, onOpenExpertM
         />
 
         <div style={{ maxWidth: '1000px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
-          {/* Eyebrow Badge */}
-          <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
-            <span style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontSize: '0.76rem',
-              fontWeight: '600',
-              textTransform: 'uppercase',
-              letterSpacing: '0.06em',
-              padding: '6px 14px',
-              borderRadius: '9999px',
-              backgroundColor: '#FFF1F2',
-              color: '#FC787D',
-              border: '1px solid #FED7D9',
-              boxShadow: '0 1px 3px rgba(252, 120, 125, 0.04)'
-            }}>
-              <Warehouse size={13} style={{ color: '#FC787D' }} />
-              <span>CORE ERP &amp; FINANCE • INVENTORY MANAGEMENT MODULE</span>
-            </span>
-          </div>
+          
 
           {/* Heading */}
           <h1 

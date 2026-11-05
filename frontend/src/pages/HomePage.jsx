@@ -24,9 +24,9 @@ export default function HomePage({ onOpenExpertModal, onNavigate, onSelectApp })
     >
       {/* 1. Odoo-Style Hero Section with Marquee */}
       <Hero
-        title="All your Enterprise"
-        highlightText=" Software on One Platform."
-        subtitle="Simple, efficient, yet fully integrated. Run your entire operations with proprietary applications for ERP & Finance, 4M Industrial Maintenance, G-Nova IoT Telemetry, and Field Logistics."
+        title="All your enterprise"
+        highlightText="software on one platform."
+        subtitle={"Simple, efficient, yet fully integrated. Run your entire operations with proprietary applications for ERP & Finance, 4M Industrial Maintenance, G\u2011Nova IoT Telemetry, and Field Logistics."}
         ctaLabel="Explore Solutions"
         ctaHref="#software-products-section"
         onCtaClick={scrollToSolutions}
