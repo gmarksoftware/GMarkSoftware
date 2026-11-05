@@ -53,10 +53,10 @@ export default function ErpModuleNavRibbon({ currentModuleId, onSelectApp }) {
                 key={mod.id}
                 type="button"
                 onClick={() => handleModuleClick(mod)}
-                className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all shrink-0 cursor-pointer border ${
+                className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-medium whitespace-nowrap transition-all shrink-0 cursor-pointer border ${
                   isActive
-                    ? 'bg-slate-900 text-white border-slate-900 shadow-sm'
-                    : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 hover:text-slate-900 hover:border-slate-300'
+                    ? 'bg-[#FC787D] text-white border-[#FC787D] shadow-sm font-semibold'
+                    : 'bg-white text-slate-700 border-slate-200 hover:bg-[#FFF1F2] hover:text-[#FC787D] hover:border-[#FED7D9]'
                 }`}
                 title={mod.name}
               >

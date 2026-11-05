@@ -89,54 +89,57 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900" style={{ fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
-      {/* Sticky Enterprise Navigation Bar */}
-      <Navbar 
-        currentPage={currentPage}
-        onNavigate={handleNavigate}
-        onOpenExpertModal={() => setIsExpertModalOpen(true)}
-        onSelectApp={handleSelectApp}
-      />
+    <div className="min-h-screen bg-white text-slate-900 w-full overflow-x-hidden" style={{ fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+      {/* Fixed 1440px Desktop Viewport Container */}
+      <div className="w-full max-w-[1440px] mx-auto min-h-screen relative flex flex-col bg-white">
+        {/* Sticky Enterprise Navigation Bar */}
+        <Navbar 
+          currentPage={currentPage}
+          onNavigate={handleNavigate}
+          onOpenExpertModal={() => setIsExpertModalOpen(true)}
+          onSelectApp={handleSelectApp}
+        />
 
-      {/* Main View Router */}
-      <main style={{ minHeight: '100vh' }}>
-        {currentPage === 'home' && (
-          <HomePage 
-            onOpenExpertModal={() => setIsExpertModalOpen(true)}
-            onNavigate={handleNavigate}
-            onSelectApp={handleSelectApp}
-          />
-        )}
+        {/* Main View Router */}
+        <main style={{ minHeight: '100vh' }}>
+          {currentPage === 'home' && (
+            <HomePage 
+              onOpenExpertModal={() => setIsExpertModalOpen(true)}
+              onNavigate={handleNavigate}
+              onSelectApp={handleSelectApp}
+            />
+          )}
 
-        {currentPage === 'app-detail' && (
-          <AppDetailPage 
-            app={selectedApp}
-            onBack={() => handleNavigate('home')}
-            onNavigate={handleNavigate}
-            onOpenExpertModal={() => setIsExpertModalOpen(true)}
-            onSelectApp={handleSelectApp}
-          />
-        )}
+          {currentPage === 'app-detail' && (
+            <AppDetailPage 
+              app={selectedApp}
+              onBack={() => handleNavigate('home')}
+              onNavigate={handleNavigate}
+              onOpenExpertModal={() => setIsExpertModalOpen(true)}
+              onSelectApp={handleSelectApp}
+            />
+          )}
 
-        {currentPage === 'about' && (
-          <AboutPage 
-            onOpenExpertModal={() => setIsExpertModalOpen(true)}
-            onExploreSolutions={() => {}}
-          />
-        )}
+          {currentPage === 'about' && (
+            <AboutPage 
+              onOpenExpertModal={() => setIsExpertModalOpen(true)}
+              onExploreSolutions={() => {}}
+            />
+          )}
 
-        {currentPage === 'help' && (
-          <HelpPage 
-            onOpenExpertModal={() => setIsExpertModalOpen(true)}
-          />
-        )}
-      </main>
+          {currentPage === 'help' && (
+            <HelpPage 
+              onOpenExpertModal={() => setIsExpertModalOpen(true)}
+            />
+          )}
+        </main>
 
-      {/* Enterprise Footer Component */}
-      <Footer 
-        onNavigate={handleNavigate}
-        onOpenExpertModal={() => setIsExpertModalOpen(true)}
-      />
+        {/* Enterprise Footer Component */}
+        <Footer 
+          onNavigate={handleNavigate}
+          onOpenExpertModal={() => setIsExpertModalOpen(true)}
+        />
+      </div>
 
       {/* Interactive Consultation Modal */}
       <ExpertModal 

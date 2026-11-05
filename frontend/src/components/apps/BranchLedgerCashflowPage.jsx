@@ -72,7 +72,7 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
   const currentBranchData = branches.find(b => b.id === selectedBranch) || branches[0];
 
   return (
-    <div style={{ backgroundColor: '#e8e8e8', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ backgroundColor: '#F8FAFC', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
       {/* ========================================================================= */}
       {/* 1. HERO HEADER */}
       {/* ========================================================================= */}
@@ -80,16 +80,23 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
         style={{ 
           backgroundColor: '#FFFFFF', 
           textAlign: 'center', 
-          paddingTop: 'clamp(1.25rem, 2.5vw, 2rem)', 
-          paddingBottom: 'clamp(2.5rem, 4vw, 3.75rem)', 
+          paddingTop: 'clamp(1.5rem, 3vw, 2.5rem)', 
+          paddingBottom: 'clamp(2.5rem, 4vw, 4rem)', 
           paddingLeft: '1.5rem', 
           paddingRight: '1.5rem',
           borderRadius: '0 0 1.5rem 1.5rem',
-          boxShadow: '0 4px 20px -2px rgba(0,0,0,0.04)',
-          position: 'relative'
+          boxShadow: '0 4px 20px -2px rgba(0,0,0,0.03)',
+          position: 'relative',
+          overflow: 'hidden'
         }}
       >
-        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+        {/* Ambient top radial gradient glow */}
+        <div 
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[360px] bg-gradient-to-b from-red-100/40 via-rose-50/20 to-transparent rounded-full blur-3xl pointer-events-none -z-0" 
+          aria-hidden="true"
+        />
+
+        <div style={{ maxWidth: '1000px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
           {/* Eyebrow Badge */}
           <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
             <span style={{
@@ -100,60 +107,45 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
               fontWeight: '600',
               textTransform: 'uppercase',
               letterSpacing: '0.06em',
-              padding: '4px 12px',
+              padding: '6px 14px',
               borderRadius: '9999px',
-              backgroundColor: '#F8FAFC',
-              color: '#475569',
-              border: '1px solid #E2E8F0',
-              boxShadow: '0 1px 3px rgba(15, 23, 42, 0.04)'
+              backgroundColor: '#FFF1F2',
+              color: '#FC787D',
+              border: '1px solid #FED7D9',
+              boxShadow: '0 1px 3px rgba(252, 120, 125, 0.04)'
             }}>
-              <Building2 size={13} style={{ color: '#64748B' }} />
-              <span>CORE ERP & FINANCE • BRANCH LEDGER MODULE</span>
+              <Building2 size={13} style={{ color: '#FC787D' }} />
+              <span>CORE ERP &amp; FINANCE • BRANCH LEDGER MODULE</span>
             </span>
           </div>
 
           {/* Heading */}
           <h1 
-            className="text-balance text-slate-900"
+            className="text-balance text-slate-900 font-extrabold tracking-tight"
             style={{ 
-              fontFamily: "'Lora', serif",
-              fontSize: 'clamp(1.75rem, 4.5vw, 3.87rem)',
-              lineHeight: '1.18',
-              letterSpacing: '-0.01em',
+              fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+              fontSize: 'clamp(2rem, 4.5vw, 3.87rem)',
+              lineHeight: '1.15',
+              letterSpacing: '-0.025em',
               paddingTop: '0.25rem',
-              paddingBottom: '0.75rem',
-              fontWeight: 600
+              paddingBottom: '0.75rem'
             }}
           >
-            <span>Branch Ledger & </span>
-            <span className="relative inline-block whitespace-nowrap">
-              <span className="relative z-10 font-semibold" style={{ color: '#FC787D' }}>
-                Cashflow
-              </span>
-              <svg
-                className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3 sm:h-4.5 pointer-events-none z-0 overflow-visible"
-                viewBox="0 0 260 22"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M 4,14 Q 130,5 256,12 Q 130,20 6,17"
-                  fill="#00A3FF"
-                />
-              </svg>
+            <span>Branch Ledger &amp; </span>
+            <span className="text-[#FC787D]">
+              Cashflow
             </span>
           </h1>
 
           <p style={{
-            fontSize: 'clamp(0.92rem, 1.58vw, 1.1rem)',
+            fontSize: 'clamp(0.95rem, 1.6vw, 1.125rem)',
             color: '#4B5563',
             maxWidth: '820px',
             margin: '0 auto 2.5rem',
             lineHeight: 1.65
           }}>
             Multi-branch distributed ledger accounting with instantaneous financial consolidation, daily bank reconciliation (BRS), 
-            and real-time Profit & Loss reporting across your entire corporate hierarchy.
+            and real-time Profit &amp; Loss reporting across your entire corporate hierarchy.
           </p>
 
           {/* Metric Bar */}
@@ -164,47 +156,47 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
             maxWidth: '920px',
             margin: '0 auto 2.5rem'
           }}>
-            <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: '16px', padding: '1rem', boxShadow: '0 4px 14px rgba(0,0,0,0.04)' }}>
+            <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '1rem', boxShadow: '0 4px 14px rgba(0,0,0,0.03)' }}>
               <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748B', textTransform: 'uppercase' }}>Consolidation Lag</div>
               <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#16A34A', marginTop: '0.25rem' }}>0 Seconds</div>
               <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>Real-time GL posting</div>
             </div>
-            <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: '16px', padding: '1rem', boxShadow: '0 4px 14px rgba(0,0,0,0.04)' }}>
+            <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '1rem', boxShadow: '0 4px 14px rgba(0,0,0,0.03)' }}>
               <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748B', textTransform: 'uppercase' }}>Inter-Branch Transfers</div>
-              <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#7B5872', marginTop: '0.25rem' }}>Auto-Contra</div>
+              <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#FC787D', marginTop: '0.25rem' }}>Auto-Contra</div>
               <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>Zero double-counting</div>
             </div>
-            <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: '16px', padding: '1rem', boxShadow: '0 4px 14px rgba(0,0,0,0.04)' }}>
+            <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '1rem', boxShadow: '0 4px 14px rgba(0,0,0,0.03)' }}>
               <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748B', textTransform: 'uppercase' }}>Bank Reconciliations</div>
               <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#D97706', marginTop: '0.25rem' }}>Daily BRS</div>
-              <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>Cheque & ECS verification</div>
+              <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>Cheque &amp; ECS verification</div>
             </div>
-            <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: '16px', padding: '1rem', boxShadow: '0 4px 14px rgba(0,0,0,0.04)' }}>
+            <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '1rem', boxShadow: '0 4px 14px rgba(0,0,0,0.03)' }}>
               <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748B', textTransform: 'uppercase' }}>Statutory Reporting</div>
-              <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0F172A', marginTop: '0.25rem' }}>P&L & Bal Sheet</div>
+              <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#0F172A', marginTop: '0.25rem' }}>P&amp;L &amp; Bal Sheet</div>
               <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>Schedule III Compliant</div>
             </div>
           </div>
 
           {/* Action Button */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
             <button
               onClick={onOpenExpertModal}
               style={{
-                backgroundColor: '#7B5872',
+                backgroundColor: '#FC787D',
                 color: '#FFFFFF',
-                padding: '0.8rem 1.85rem',
-                borderRadius: '9999px',
-                fontWeight: 500,
-                fontSize: '0.95rem',
+                padding: '0.75rem 1.75rem',
+                borderRadius: '6px',
+                fontWeight: 600,
+                fontSize: '0.9rem',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+                boxShadow: '0 4px 16px rgba(252, 120, 125, 0.25)'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-[#E86368] active:scale-[0.98] transition-all"
             >
               <span>Schedule Financial System Demo</span>
               <ArrowRight size={16} />
@@ -221,7 +213,7 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
           backgroundColor: '#FFFFFF',
           borderRadius: '2rem',
           padding: '2.5rem',
-          boxShadow: '0 20px 40px -15px rgba(0,0,0,0.08)',
+          boxShadow: '0 20px 40px -15px rgba(0,0,0,0.06)',
           border: '1px solid #E5E7EB'
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.75rem' }}>
@@ -230,11 +222,11 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                fontSize: '0.8rem',
+                fontSize: '0.76rem',
                 fontWeight: 700,
-                color: '#7B5872',
-                backgroundColor: '#F1F5F9',
-                border: '1px solid #E2E8F0',
+                color: '#FC787D',
+                backgroundColor: '#FFF1F2',
+                border: '1px solid #FED7D9',
                 padding: '0.35rem 0.85rem',
                 borderRadius: '9999px',
                 marginBottom: '0.5rem'
@@ -242,8 +234,8 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
                 <FileSpreadsheet size={14} />
                 Live Financial Intelligence
               </div>
-              <h2 style={{ fontFamily: "'Lora', serif", fontSize: '1.75rem', fontWeight: 600, color: '#111827', margin: 0 }}>
-                Profit & Loss Statement & Ledger Architecture
+              <h2 style={{ fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontSize: '1.75rem', fontWeight: 700, color: '#111827', margin: 0, letterSpacing: '-0.02em' }}>
+                Profit &amp; Loss Statement &amp; Ledger Architecture
               </h2>
               <p style={{ color: '#6B7280', fontSize: '0.95rem', marginTop: '0.25rem', margin: 0 }}>
                 Real-time computation of Trading Accounts, Gross Margins, Indirect Overhead Allocations, and Net Operating Profit.
@@ -334,12 +326,12 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
               fontSize: '0.75rem',
               fontWeight: 700,
               textTransform: 'uppercase',
-              color: '#1E3A8A',
+              color: '#FC787D',
               letterSpacing: '0.05em'
             }}>
               Corporate Balance Sheet & Ledger Network
             </span>
-            <h2 style={{ fontFamily: "'Lora', serif", fontSize: '1.75rem', fontWeight: 600, color: '#111827', margin: '0.5rem 0 0.75rem' }}>
+            <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: '1.875rem', fontWeight: 800, color: '#111827', margin: '0.5rem 0 0.75rem', letterSpacing: '-0.025em' }}>
               Branch Financial Breakdown & Working Capital
             </h2>
             <p style={{ color: '#6B7280', fontSize: '0.95rem', margin: 0, lineHeight: 1.6 }}>
@@ -363,16 +355,16 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
                   key={branch.id}
                   onClick={() => setSelectedBranch(branch.id)}
                   style={{
-                    backgroundColor: isSelected ? '#1E3A8A' : '#F9FAFB',
+                    backgroundColor: isSelected ? '#FC787D' : '#F9FAFB',
                     color: isSelected ? '#FFFFFF' : '#374151',
-                    border: isSelected ? '1px solid #1E3A8A' : '1px solid #E5E7EB',
-                    borderRadius: '9999px',
+                    border: isSelected ? '1px solid #FC787D' : '1px solid #E5E7EB',
+                    borderRadius: '6px',
                     padding: '0.65rem 1.25rem',
                     fontSize: '0.85rem',
                     fontWeight: 600,
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
-                    boxShadow: isSelected ? '0 4px 12px rgba(30, 58, 138, 0.25)' : 'none'
+                    boxShadow: isSelected ? '0 4px 12px rgba(252, 120, 125, 0.25)' : 'none'
                   }}
                 >
                   {branch.name}
@@ -391,7 +383,7 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
             <div style={{ backgroundColor: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: '1rem', padding: '1.5rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
                 <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#6B7280', textTransform: 'uppercase' }}>Cash & Bank Balance</span>
-                <Wallet size={18} style={{ color: '#1E3A8A' }} />
+                <Wallet size={18} style={{ color: '#FC787D' }} />
               </div>
               <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#111827' }}>{currentBranchData.cashBalance}</div>
               <div style={{ fontSize: '0.75rem', color: '#10B981', marginTop: '0.25rem', fontWeight: 600 }}>Reconciled to Date</div>
@@ -468,7 +460,7 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
                           backgroundColor: 
                             idx === 0 ? '#ECFDF5' :
                             idx === 1 ? '#EFF6FF' :
-                            idx === 2 ? '#FFFBEB' : '#FEF2F2',
+                            idx === 2 ? '#FFFBEB' : '#FFF1F2',
                           color:
                             idx === 0 ? '#065F46' :
                             idx === 1 ? '#1E40AF' :
@@ -491,7 +483,7 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
       {/* ========================================================================= */}
       <section style={{ maxWidth: '1240px', margin: '0 auto 4rem', padding: '0 1.5rem' }}>
         <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-          <h2 style={{ fontFamily: "'Lora', serif", fontSize: '2rem', fontWeight: 600, color: '#111827', margin: '0 0 0.5rem' }}>
+          <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: '2rem', fontWeight: 800, color: '#111827', margin: '0 0 0.5rem', letterSpacing: '-0.025em' }}>
             Multi-Tier Financial Governance
           </h2>
           <p style={{ color: '#6B7280', fontSize: '1rem', maxWidth: '680px', margin: '0 auto' }}>
@@ -526,11 +518,11 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
                       width: '48px',
                       height: '48px',
                       borderRadius: '0.75rem',
-                      backgroundColor: '#EFF6FF',
+                      backgroundColor: '#FFF1F2',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: '#1E3A8A'
+                      color: '#FC787D'
                     }}>
                       <Icon size={24} />
                     </div>
@@ -540,8 +532,9 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
                       textTransform: 'uppercase',
                       padding: '0.25rem 0.6rem',
                       borderRadius: '9999px',
-                      backgroundColor: '#F3F4F6',
-                      color: '#374151'
+                      backgroundColor: '#FFF1F2',
+                      color: '#FC787D',
+                      border: '1px solid #FED7D9'
                     }}>
                       {feat.tag}
                     </span>
@@ -573,7 +566,7 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
           textAlign: 'center',
           boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.25)'
         }}>
-          <h2 style={{ fontFamily: "'Lora', serif", fontSize: '2rem', fontWeight: 600, marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: '2rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.025em' }}>
             Consolidate Your Branch Accounts Without Lag
           </h2>
           <p style={{ color: '#94A3B8', fontSize: '1.05rem', maxWidth: '650px', margin: '0 auto 2rem', lineHeight: 1.6 }}>
@@ -583,17 +576,17 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
             <button
               onClick={onOpenExpertModal}
               style={{
-                backgroundColor: '#7B5872',
+                backgroundColor: '#FC787D',
                 color: '#FFFFFF',
                 fontWeight: 600,
                 padding: '0.85rem 2rem',
-                borderRadius: '9999px',
+                borderRadius: '6px',
                 border: 'none',
                 cursor: 'pointer',
                 fontSize: '0.95rem',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+                boxShadow: '0 4px 16px rgba(252, 120, 125, 0.35)'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-[#E86368] transition-colors"
             >
               Consult an ERP Architect
             </button>
@@ -604,12 +597,12 @@ export default function BranchLedgerCashflowPage({ app, onBack, onOpenExpertModa
                 color: '#FFFFFF',
                 fontWeight: 500,
                 padding: '0.85rem 1.75rem',
-                borderRadius: '9999px',
+                borderRadius: '6px',
                 border: '1px solid rgba(255,255,255,0.3)',
                 cursor: 'pointer',
                 fontSize: '0.95rem'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-white/10 transition-colors"
             >
               Explore Other ERP Modules
             </button>

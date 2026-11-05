@@ -85,7 +85,7 @@ export default function GstInvoicingPage({ app, onBack, onOpenExpertModal, onSel
   ];
 
   return (
-    <div style={{ backgroundColor: '#e8e8e8', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ backgroundColor: '#F8FAFC', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
       {/* ========================================================================= */}
       {/* 1. HERO HEADER */}
       {/* ========================================================================= */}
@@ -93,28 +93,27 @@ export default function GstInvoicingPage({ app, onBack, onOpenExpertModal, onSel
         style={{ 
           backgroundColor: '#FFFFFF', 
           textAlign: 'center', 
-          paddingTop: 'clamp(1.25rem, 2.5vw, 2rem)', 
-          paddingBottom: 'clamp(2.5rem, 4vw, 3.75rem)', 
+          paddingTop: 'clamp(1.5rem, 3vw, 2.5rem)', 
+          paddingBottom: 'clamp(2.5rem, 4vw, 4rem)', 
           paddingLeft: '1.5rem', 
           paddingRight: '1.5rem', 
           position: 'relative',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          borderBottom: '1px solid #F1F5F9'
         }}
       >
+        {/* Ambient top radial gradient glow */}
+        <div 
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[360px] bg-gradient-to-b from-red-100/40 via-rose-50/20 to-transparent rounded-full blur-3xl pointer-events-none -z-0" 
+          aria-hidden="true"
+        />
+
         <div
-          className="absolute inset-0 opacity-70 pointer-events-none"
+          className="absolute inset-0 opacity-40 pointer-events-none"
           style={{
             backgroundImage: 'linear-gradient(to right, #f1f5f9 1px, transparent 1px), linear-gradient(to bottom, #f1f5f9 1px, transparent 1px)',
             backgroundSize: '4rem 4rem'
           }}
-        />
-
-        {/* Horizon Curvature Arc in Grey (#e8e8e8) */}
-        <div
-          className="absolute left-1/2 top-[calc(100%-140px)] sm:top-[calc(100%-165px)] md:top-[calc(100%-190px)] lg:top-[calc(100%-210px)] 
-          h-[480px] w-[700px] md:h-[550px] md:w-[1100px] lg:h-[750px] lg:w-[140%] 
-          -translate-x-1/2 rounded-[100%] border-t border-slate-300/40 bg-[#e8e8e8] 
-          shadow-[0_-20px_50px_rgba(0,0,0,0.06)] pointer-events-none z-0"
         />
 
         <div style={{ maxWidth: '880px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
@@ -124,88 +123,73 @@ export default function GstInvoicingPage({ app, onBack, onOpenExpertModal, onSel
               display: 'inline-flex', 
               alignItems: 'center', 
               gap: '6px', 
-              padding: '4px 12px', 
+              padding: '6px 14px', 
               borderRadius: '9999px', 
-              backgroundColor: '#F8FAFC', 
-              color: '#475569', 
+              backgroundColor: '#FFF1F2', 
+              color: '#FC787D', 
               fontSize: '0.76rem', 
               fontWeight: '600', 
               letterSpacing: '0.06em', 
               textTransform: 'uppercase',
-              border: '1px solid #E2E8F0',
-              boxShadow: '0 1px 3px rgba(15, 23, 42, 0.04)'
+              border: '1px solid #FED7D9',
+              boxShadow: '0 1px 3px rgba(252, 120, 125, 0.04)'
             }}>
-              <Receipt size={13} style={{ color: '#64748B' }} />
-              <span>CORE ERP & FINANCE • STATUTORY TAX ENGINE</span>
+              <Receipt size={13} style={{ color: '#FC787D' }} />
+              <span>CORE ERP &amp; FINANCE • STATUTORY TAX ENGINE</span>
             </span>
           </div>
 
           <h1 
-            className="text-balance text-slate-900"
+            className="text-balance text-slate-900 font-extrabold tracking-tight"
             style={{ 
-              fontFamily: "'Lora', serif",
-              fontSize: 'clamp(1.75rem, 4.5vw, 3.87rem)',
-              lineHeight: '1.18',
-              letterSpacing: '-0.01em',
+              fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+              fontSize: 'clamp(2rem, 4.5vw, 3.87rem)',
+              lineHeight: '1.15',
+              letterSpacing: '-0.025em',
               paddingTop: '0.25rem',
-              paddingBottom: '0.75rem',
-              fontWeight: 600
+              paddingBottom: '0.75rem'
             }}
           >
-            <span>GST & </span>
-            <span className="relative inline-block whitespace-nowrap">
-              <span className="relative z-10 font-semibold" style={{ color: '#FC787D' }}>
-                E-Way Invoicing
-              </span>
-              <svg
-                className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3 sm:h-4.5 pointer-events-none z-0 overflow-visible"
-                viewBox="0 0 260 22"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M 4,14 Q 130,5 256,12 Q 130,20 6,17"
-                  fill="#00A3FF"
-                />
-              </svg>
+            <span>GST &amp; </span>
+            <span className="text-[#FC787D]">
+              E-Way Invoicing
             </span>
             <br className="hidden sm:inline" />
-            <span>Engine</span>
+            <span> Engine</span>
           </h1>
 
           <p 
-            className="text-balance text-gray-600 font-normal"
+            className="text-balance text-slate-600 font-normal"
             style={{ 
-              fontSize: 'clamp(0.92rem, 1.58vw, 1.1rem)', 
+              fontSize: 'clamp(0.95rem, 1.6vw, 1.125rem)', 
               lineHeight: '1.65', 
               maxWidth: '760px',
               margin: '1.25rem auto 2.25rem'
             }}
           >
-            Automated statutory tax compliance with state-based CGST, SGST, and IGST computation. Comprehensive HSN & SAC directories, digital E-Way Bill generation, and immutable invoice locking for complete audit readiness.
+            Automated statutory tax compliance with state-based CGST, SGST, and IGST computation. Comprehensive HSN &amp; SAC directories, digital E-Way Bill generation, and immutable invoice locking for complete audit readiness.
           </p>
 
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '3.75rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.85rem', marginBottom: '3.75rem', flexWrap: 'wrap' }}>
             <button
               onClick={onOpenExpertModal}
               style={{
-                padding: '0.8rem 1.85rem',
-                borderRadius: '9999px',
-                fontSize: '0.95rem',
-                fontWeight: '500',
-                backgroundColor: '#7B5872',
+                padding: '0.75rem 1.75rem',
+                borderRadius: '6px',
+                fontSize: '0.9rem',
+                fontWeight: '600',
+                backgroundColor: '#FC787D',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+                boxShadow: '0 4px 16px rgba(252, 120, 125, 0.25)'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-[#E86368] active:scale-[0.98] transition-all"
             >
-              <span>Request GST & E-Way Demo</span>
+              <span>Request GST &amp; E-Way Demo</span>
               <ArrowRight size={16} />
             </button>
           </div>
@@ -227,22 +211,22 @@ export default function GstInvoicingPage({ app, onBack, onOpenExpertModal, onSel
                   key={idx}
                   style={{
                     backgroundColor: '#FFFFFF',
-                    border: '1px solid #CBD5E1',
+                    border: '1px solid #E2E8F0',
                     borderRadius: '16px',
                     padding: '0.95rem 0.85rem',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.75rem',
                     justifyContent: 'center',
-                    boxShadow: '0 4px 14px rgba(0, 0, 0, 0.05)',
+                    boxShadow: '0 4px 14px rgba(0, 0, 0, 0.03)',
                     transition: 'transform 0.2s ease'
                   }}
                 >
-                  <div style={{ width: '34px', height: '34px', borderRadius: '8px', backgroundColor: '#F1F5F9', color: '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '34px', height: '34px', borderRadius: '8px', backgroundColor: '#FFF1F2', color: '#FC787D', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <IconC size={16} />
                   </div>
                   <div style={{ textAlign: 'left' }}>
-                    <div style={{ fontSize: '0.85rem', fontWeight: '500', color: '#0F172A', lineHeight: 1.15 }}>
+                    <div style={{ fontSize: '0.85rem', fontWeight: '600', color: '#0F172A', lineHeight: 1.15 }}>
                       {pill.label}
                     </div>
                     <div style={{ fontSize: '0.72rem', color: '#64748B', marginTop: '2px' }}>
@@ -259,14 +243,14 @@ export default function GstInvoicingPage({ app, onBack, onOpenExpertModal, onSel
       {/* ========================================================================= */}
       {/* 2. INTRA-STATE VS INTER-STATE TAX LOGIC CARD */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#e8e8e8', padding: '3.5rem 0 4.5rem' }}>
+      <section style={{ backgroundColor: '#F8FAFC', padding: '3.5rem 0 4.5rem', borderBottom: '1px solid #E2E8F0' }}>
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.75rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               AUTOMATED STATUTORY COMPUTATION
             </span>
-            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.4rem, 3.5vw, 2.2rem)', fontWeight: 600, color: '#0F172A', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontSize: 'clamp(1.4rem, 3.5vw, 2.2rem)', fontWeight: 700, color: '#0F172A', marginTop: '4px', letterSpacing: '-0.02em' }}>
               State-Based Tax Rule Comparison
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.94rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -280,22 +264,22 @@ export default function GstInvoicingPage({ app, onBack, onOpenExpertModal, onSel
             <div 
               style={{
                 backgroundColor: '#FFFFFF',
-                border: '1px solid #CBD5E1',
+                border: '1px solid #E2E8F0',
                 borderRadius: '16px',
                 padding: '1.75rem',
-                borderTop: '5px solid #7B5872',
-                boxShadow: '0 4px 14px rgba(0,0,0,0.04)'
+                borderTop: '5px solid #FC787D',
+                boxShadow: '0 4px 14px rgba(0,0,0,0.03)'
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
-                <span style={{ fontSize: '0.75rem', fontWeight: '700', color: '#7B5872', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                <span style={{ fontSize: '0.75rem', fontWeight: '700', color: '#FC787D', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                   INTRA-STATE TRANSACTION
                 </span>
-                <span style={{ fontSize: '0.74rem', padding: '3px 9px', borderRadius: '9999px', backgroundColor: '#F1F5F9', color: '#475569', fontWeight: '600', border: '1px solid #E2E8F0' }}>
+                <span style={{ fontSize: '0.74rem', padding: '3px 9px', borderRadius: '9999px', backgroundColor: '#FFF1F2', color: '#FC787D', fontWeight: '600', border: '1px solid #FED7D9' }}>
                   Same State (e.g. 27-MH)
                 </span>
               </div>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: '600', color: '#0F172A', margin: '0 0 0.5rem' }}>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: '700', color: '#0F172A', margin: '0 0 0.5rem' }}>
                 CGST 9% + SGST 9% Equal Split
               </h3>
               <p style={{ fontSize: '0.86rem', color: '#475569', lineHeight: '1.55', margin: '0 0 1rem' }}>
@@ -306,15 +290,15 @@ export default function GstInvoicingPage({ app, onBack, onOpenExpertModal, onSel
                   <span>Taxable Base Value:</span>
                   <strong>₹1,00,000</strong>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#7B5872', marginBottom: '4px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#FC787D', marginBottom: '4px', fontWeight: '600' }}>
                   <span>Central GST (9%):</span>
                   <span>+ ₹9,000</span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#7B5872', marginBottom: '6px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#FC787D', marginBottom: '6px', fontWeight: '600' }}>
                   <span>State GST (9%):</span>
                   <span>+ ₹9,000</span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid #CBD5E1', paddingTop: '6px', fontWeight: '700', color: '#0F172A' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid #E2E8F0', paddingTop: '6px', fontWeight: '700', color: '#0F172A' }}>
                   <span>Total Invoice Amount:</span>
                   <span>₹1,18,000</span>
                 </div>
@@ -325,11 +309,11 @@ export default function GstInvoicingPage({ app, onBack, onOpenExpertModal, onSel
             <div 
               style={{
                 backgroundColor: '#FFFFFF',
-                border: '1px solid #CBD5E1',
+                border: '1px solid #E2E8F0',
                 borderRadius: '16px',
                 padding: '1.75rem',
                 borderTop: '5px solid #16A34A',
-                boxShadow: '0 4px 14px rgba(0,0,0,0.04)'
+                boxShadow: '0 4px 14px rgba(0,0,0,0.03)'
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
@@ -340,7 +324,7 @@ export default function GstInvoicingPage({ app, onBack, onOpenExpertModal, onSel
                   Cross State (e.g. MH to GJ)
                 </span>
               </div>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: '600', color: '#0F172A', margin: '0 0 0.5rem' }}>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: '700', color: '#0F172A', margin: '0 0 0.5rem' }}>
                 IGST 18% Integrated Statutory Tax
               </h3>
               <p style={{ fontSize: '0.86rem', color: '#475569', lineHeight: '1.55', margin: '0 0 1rem' }}>
@@ -351,11 +335,11 @@ export default function GstInvoicingPage({ app, onBack, onOpenExpertModal, onSel
                   <span>Taxable Base Value:</span>
                   <strong>₹1,00,000</strong>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#16A34A', marginBottom: '6px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#16A34A', marginBottom: '6px', fontWeight: '600' }}>
                   <span>Integrated GST (18%):</span>
                   <span>+ ₹18,000</span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid #CBD5E1', paddingTop: '6px', fontWeight: '700', color: '#0F172A' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid #E2E8F0', paddingTop: '6px', fontWeight: '700', color: '#0F172A' }}>
                   <span>Total Invoice Amount:</span>
                   <span>₹1,18,000</span>
                 </div>
@@ -370,14 +354,14 @@ export default function GstInvoicingPage({ app, onBack, onOpenExpertModal, onSel
       {/* ========================================================================= */}
       {/* 3. E-WAY BILL LIFECYCLE WORKFLOW */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#FFFFFF', padding: '4rem 0 4.5rem', borderTop: '1px solid #CBD5E1' }}>
+      <section style={{ backgroundColor: '#FFFFFF', padding: '4rem 0 4.5rem' }}>
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-              LOGISTICS COMPLIANCE & GATE PASS
+            <span style={{ fontSize: '0.75rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+              LOGISTICS COMPLIANCE &amp; GATE PASS
             </span>
-            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.4rem, 3.5vw, 2.1rem)', fontWeight: 600, color: '#0F172A', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontSize: 'clamp(1.4rem, 3.5vw, 2.1rem)', fontWeight: 700, color: '#0F172A', marginTop: '4px', letterSpacing: '-0.02em' }}>
               Automated E-Way Bill Dispatch Workflow
             </h2>
           </div>
@@ -387,22 +371,23 @@ export default function GstInvoicingPage({ app, onBack, onOpenExpertModal, onSel
               <div 
                 key={step.step}
                 style={{
-                  backgroundColor: '#F8FAFC',
+                  backgroundColor: '#FFFFFF',
                   border: '1px solid #E2E8F0',
-                  borderRadius: '14px',
+                  borderRadius: '16px',
                   padding: '1.25rem',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '0.5rem'
+                  gap: '0.5rem',
+                  boxShadow: '0 4px 14px rgba(0,0,0,0.02)'
                 }}
               >
-                <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#0F172A', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.82rem', fontWeight: '700' }}>
+                <div style={{ width: '32px', height: '32px', borderRadius: '50%', backgroundColor: '#FC787D', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem', fontWeight: '700' }}>
                   {step.step}
                 </div>
-                <h4 style={{ fontSize: '0.96rem', fontWeight: '600', color: '#0F172A', margin: 0 }}>
+                <h4 style={{ fontSize: '0.98rem', fontWeight: '700', color: '#0F172A', margin: 0 }}>
                   {step.title}
                 </h4>
-                <p style={{ fontSize: '0.8rem', color: '#64748B', lineHeight: '1.5', margin: 0 }}>
+                <p style={{ fontSize: '0.82rem', color: '#64748B', lineHeight: '1.55', margin: 0 }}>
                   {step.desc}
                 </p>
               </div>
@@ -415,32 +400,39 @@ export default function GstInvoicingPage({ app, onBack, onOpenExpertModal, onSel
       {/* ========================================================================= */}
       {/* 4. BOTTOM CTA */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#e8e8e8', color: '#0F172A', padding: '4rem 1.5rem', textAlign: 'center', borderTop: '1px solid #CBD5E1' }}>
-        <div style={{ maxWidth: '680px', margin: '0 auto' }}>
-          <h3 style={{ fontFamily: "'Lora', serif", fontSize: '1.75rem', fontWeight: 600, color: '#0F172A', marginBottom: '0.75rem' }}>
+      <section style={{ maxWidth: '1240px', margin: '0 auto 4rem', padding: '0 1.5rem' }}>
+        <div style={{
+          backgroundColor: '#0F172A',
+          borderRadius: '2rem',
+          padding: '3.5rem 2rem',
+          color: '#FFFFFF',
+          textAlign: 'center',
+          boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.25)'
+        }}>
+          <h3 style={{ fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontSize: '1.85rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.75rem', letterSpacing: '-0.02em' }}>
             Automate Your Statutory Tax Invoicing
           </h3>
-          <p style={{ fontSize: '0.95rem', color: '#64748B', lineHeight: '1.6', marginBottom: '1.75rem' }}>
+          <p style={{ fontSize: '0.98rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.6', marginBottom: '1.75rem', maxWidth: '620px', margin: '0 auto 1.75rem' }}>
             Deploy G Mark ERP's statutory tax calculation and automated E-Way generation today.
           </p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
             <button
               onClick={onOpenExpertModal}
               style={{
-                padding: '0.65rem 1.5rem',
-                borderRadius: '9999px',
-                fontSize: '0.88rem',
-                fontWeight: '500',
-                backgroundColor: '#7B5872',
+                padding: '0.75rem 1.75rem',
+                borderRadius: '6px',
+                fontSize: '0.9rem',
+                fontWeight: '600',
+                backgroundColor: '#FC787D',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+                boxShadow: '0 4px 16px rgba(252, 120, 125, 0.35)'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-[#E86368] active:scale-[0.98] transition-all"
             >
               <span>Schedule Tax Engine Consultation</span>
               <ArrowRight size={14} />
@@ -448,18 +440,19 @@ export default function GstInvoicingPage({ app, onBack, onOpenExpertModal, onSel
             <button
               onClick={onBack}
               style={{
-                padding: '0.65rem 1.35rem',
-                borderRadius: '9999px',
-                fontSize: '0.88rem',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '6px',
+                fontSize: '0.9rem',
                 fontWeight: '500',
-                backgroundColor: '#FFFFFF',
-                color: '#334155',
-                border: '1px solid #CBD5E1',
+                backgroundColor: 'transparent',
+                color: '#FFFFFF',
+                border: '1px solid rgba(255,255,255,0.3)',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px'
               }}
+              className="hover:bg-white/10 active:scale-[0.98] transition-all"
             >
               <ArrowLeft size={14} />
               <span>Back to Solutions</span>

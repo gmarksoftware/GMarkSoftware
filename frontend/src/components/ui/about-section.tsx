@@ -65,7 +65,7 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
         <div 
           className="absolute inset-0"
           style={{
-            backgroundImage: 'radial-gradient(rgba(113, 75, 103, 0.13) 1.25px, transparent 1.25px)',
+            backgroundImage: 'radial-gradient(rgba(252, 120, 125, 0.13) 1.25px, transparent 1.25px)',
             backgroundSize: '28px 28px',
             maskImage: 'radial-gradient(ellipse 85% 70% at 50% 42%, black 28%, transparent 88%)',
             WebkitMaskImage: 'radial-gradient(ellipse 85% 70% at 50% 42%, black 28%, transparent 88%)',
@@ -99,7 +99,7 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
         <div
           className="about-floating-orb absolute top-1/2 -left-32 w-[380px] sm:w-[500px] h-[380px] sm:h-[500px] rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(113, 75, 103, 0.11) 0%, rgba(244, 114, 182, 0.06) 50%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(252, 120, 125, 0.11) 0%, rgba(244, 114, 182, 0.06) 50%, transparent 70%)',
             filter: 'blur(70px)',
             animation: 'aboutOrbFloat3 17s ease-in-out infinite alternate',
             willChange: 'transform'
@@ -128,7 +128,7 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
 
         {/* Subtle Decorative Geometric Circles (Modern Tech accents) */}
         <div 
-          className="about-floating-wave absolute top-12 right-[8%] w-32 h-32 rounded-full border border-purple-200/40 pointer-events-none hidden md:block"
+          className="about-floating-wave absolute top-12 right-[8%] w-32 h-32 rounded-full border border-red-200/40 pointer-events-none hidden md:block"
           style={{ animation: 'aboutWaveMotion1 14s ease-in-out infinite' }}
         />
         <div 
@@ -150,7 +150,7 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
         >
           <defs>
             <linearGradient id="about-wave-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#714B67" stopOpacity="0.4" />
+              <stop offset="0%" stopColor="#FC787D" stopOpacity="0.4" />
               <stop offset="35%" stopColor="#A855F7" stopOpacity="0.32" />
               <stop offset="70%" stopColor="#38BDF8" stopOpacity="0.38" />
               <stop offset="100%" stopColor="#818CF8" stopOpacity="0.12" />
@@ -158,7 +158,7 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
             <linearGradient id="about-wave-grad-2" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#38BDF8" stopOpacity="0.12" />
               <stop offset="50%" stopColor="#C084FC" stopOpacity="0.28" />
-              <stop offset="100%" stopColor="#714B67" stopOpacity="0.38" />
+              <stop offset="100%" stopColor="#FC787D" stopOpacity="0.38" />
             </linearGradient>
           </defs>
 
@@ -207,22 +207,22 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
                   backgroundColor: 'rgba(255, 255, 255, 0.88)',
                   backdropFilter: 'blur(10px)',
                   WebkitBackdropFilter: 'blur(10px)',
-                  border: '1px solid #E3D4DF',
+                  border: '1px solid #FED7D9',
                   borderRadius: '100px',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '7px',
-                  boxShadow: '0 2px 10px rgba(113, 75, 103, 0.05)'
+                  boxShadow: '0 2px 10px rgba(252, 120, 125, 0.05)'
                 }}
               >
-                <span style={{ color: '#714B67' }} className="animate-spin text-sm leading-none">✱</span>
+                <span style={{ color: '#FC787D' }} className="animate-spin text-sm leading-none">✱</span>
                 <TimelineContent
                   as="span"
                   animationNum={0}
                   timelineRef={heroRef}
                   customVariants={revealVariants}
                   className="text-xs font-bold tracking-wider uppercase"
-                  style={{ color: '#714B67', fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                  style={{ color: '#FC787D', fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
                   WHO WE ARE
                 </TimelineContent>
@@ -319,7 +319,7 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
                 background: 'linear-gradient(135deg, rgba(233, 213, 255, 0.95) 0%, rgba(192, 132, 252, 0.85) 22%, rgba(165, 180, 252, 0.8) 45%, rgba(125, 211, 252, 0.9) 70%, rgba(244, 114, 182, 0.65) 88%, rgba(233, 213, 255, 0.95) 100%)',
                 backgroundSize: '250% 250%',
                 animation: 'aboutBorderShift 12s ease-in-out infinite',
-                boxShadow: '0 16px 40px -10px rgba(113, 75, 103, 0.14), 0 0 30px -4px rgba(147, 197, 253, 0.38), 0 0 16px -2px rgba(192, 132, 252, 0.26)'
+                boxShadow: '0 16px 40px -10px rgba(252, 120, 125, 0.14), 0 0 30px -4px rgba(147, 197, 253, 0.38), 0 0 16px -2px rgba(192, 132, 252, 0.26)'
               }}
             >
               {/* Inner Clipped Container with Matching Organic Radii */}
@@ -353,12 +353,12 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
               className="flex flex-wrap gap-2.5 sm:gap-4 items-center"
             >
               <div className="flex items-center gap-1.5 sm:gap-2 sm:text-base text-xs font-sans">
-                <span className="font-extrabold" style={{ color: '#714B67' }}>99.98%</span>
+                <span className="font-extrabold" style={{ color: '#FC787D' }}>99.98%</span>
                 <span className="text-slate-600 font-medium">platform availability</span>
                 <span className="text-slate-300 hidden sm:inline">|</span>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-2 sm:text-base text-xs font-sans">
-                <span className="font-extrabold" style={{ color: '#714B67' }}>50Hz</span>
+                <span className="font-extrabold" style={{ color: '#FC787D' }}>50Hz</span>
                 <span className="text-slate-600 font-medium">telemetry acquisition</span>
               </div>
             </TimelineContent>
@@ -371,7 +371,7 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
                 customVariants={revealVariants}
                 className="flex items-center gap-1.5 leading-none"
               >
-                <span className="font-extrabold text-base sm:text-lg lg:text-xl" style={{ color: '#714B67' }}>100+</span>
+                <span className="font-extrabold text-base sm:text-lg lg:text-xl" style={{ color: '#FC787D' }}>100+</span>
                 <span className="text-slate-900 font-bold uppercase tracking-tight text-xs sm:text-sm">DEPLOYMENTS</span>
                 <span className="text-slate-300 inline">|</span>
               </TimelineContent>
@@ -382,7 +382,7 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
                 customVariants={revealVariants}
                 className="flex items-center gap-1.5 sm:text-sm text-xs text-slate-600 font-medium"
               >
-                <span className="font-extrabold" style={{ color: '#714B67' }}>42%</span>
+                <span className="font-extrabold" style={{ color: '#FC787D' }}>42%</span>
                 <span>downtime reduction</span>
               </TimelineContent>
             </div>
@@ -416,7 +416,7 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
               >
                 Engineering Intelligent Systems
               </VerticalCutReveal>{' '}
-              <span style={{ color: '#714B67' }}>
+              <span style={{ color: '#FC787D' }}>
                 <VerticalCutReveal
                   splitBy="words"
                   staggerDuration={0.04}
@@ -514,13 +514,13 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
                 onClick={onCollaborateClick}
                 className="inline-flex items-center justify-center gap-2 text-white font-bold transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md active:scale-[0.98] select-none text-center min-w-[240px] sm:min-w-[280px] px-8 py-3.5 rounded-lg mx-auto"
                 style={{
-                  backgroundColor: '#714B67',
+                  backgroundColor: '#FC787D',
                   fontFamily: "'Plus Jakarta Sans', sans-serif",
                   fontSize: '15px',
-                  boxShadow: '0 2px 6px rgba(113, 75, 103, 0.25)'
+                  boxShadow: '0 2px 6px rgba(252, 120, 125, 0.25)'
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#5E3E55')}
-                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#714B67')}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#E86368')}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#FC787D')}
               >
                 <span>LET'S COLLABORATE</span>
                 <ArrowRight className="w-4 h-4 ml-0.5 inline-block" />

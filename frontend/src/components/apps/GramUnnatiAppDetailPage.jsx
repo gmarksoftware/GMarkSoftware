@@ -132,7 +132,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
     farmers: {
       title: 'Farmers (Producers & Buyers)',
       tagline: 'Direct marketplace access, transparent price discovery & yield maximization',
-      accentColor: '#7B5872',
+      accentColor: '#FC787D',
       bgColor: '#F8FAFC',
       borderColor: '#E2E8F0',
       icon: Sprout,
@@ -157,7 +157,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
     industries: {
       title: 'Rural Micro-Industries & Entrepreneurs',
       tagline: 'Empowering village-level manufacturing, packaging & national trade',
-      accentColor: '#7B5872',
+      accentColor: '#FC787D',
       bgColor: '#F8FAFC',
       borderColor: '#E2E8F0',
       icon: Store,
@@ -182,7 +182,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
     shg: {
       title: 'Women Self-Help Groups (SHGs)',
       tagline: 'Financial self-reliance, regular product creation & zero distress migration',
-      accentColor: '#7B5872',
+      accentColor: '#FC787D',
       bgColor: '#F8FAFC',
       borderColor: '#E2E8F0',
       icon: Users,
@@ -370,37 +370,44 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
   const StakeholderIcon = currentStakeholder.icon;
 
   return (
-    <div style={{ backgroundColor: '#e8e8e8', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ backgroundColor: '#F8FAFC', minHeight: '100vh', overflowX: 'hidden', fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)" }}>
       
       {/* ========================================================================= */}
       {/* 2. HERO SECTION */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#e8e8e8', paddingTop: 'clamp(1.25rem, 2.5vw, 2rem)', paddingBottom: 'clamp(2.5rem, 4vw, 3.5rem)', position: 'relative' }}>
-        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem', textAlign: 'center' }}>
+      <section style={{ backgroundColor: '#FFFFFF', paddingTop: 'clamp(1.25rem, 2.5vw, 2rem)', paddingBottom: 'clamp(2.5rem, 4vw, 3.5rem)', position: 'relative', overflow: 'hidden' }}>
+        {/* Ambient Top Glow */}
+        <div 
+          className="pointer-events-none absolute inset-x-0 top-0 h-96 z-0"
+          style={{
+            background: 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(252, 120, 125, 0.08) 0%, rgba(255, 255, 255, 0) 70%)'
+          }}
+        />
+        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           
 
 
-          {/* Headline matching Lora handwriting font style with #00A3FF brush underline */}
+          {/* Headline matching modern bold font style with plum highlight */}
           <div className="relative inline-block">
             <h1 
               className="text-balance text-slate-900"
               style={{ 
-                fontFamily: "'Lora', serif",
+                fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)",
                 fontSize: 'clamp(1.75rem, 4.5vw, 3.87rem)',
                 lineHeight: '1.15',
-                letterSpacing: '0',
+                letterSpacing: '-0.025em',
                 paddingTop: '0.25rem',
                 paddingBottom: '0.75rem',
                 display: 'inline-block',
                 position: 'relative',
                 zIndex: 1,
-                fontWeight: 600
+                fontWeight: 800
               }}
             >
               <span>GramUnnati Agricultural </span>
               <br className="hidden sm:inline" />
               <span className="relative inline-block whitespace-nowrap">
-                <span className="relative z-10 font-semibold" style={{ color: '#FC787D' }}>
+                <span className="relative z-10 font-extrabold" style={{ color: '#FC787D' }}>
                   E-Commerce
                 </span>
                 {/* Hand-drawn marker brush stroke highlight */}
@@ -413,16 +420,17 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
                 >
                   <path
                     d="M 4,14 Q 130,5 256,12 Q 130,20 6,17"
-                    fill="#00A3FF"
+                    fill="#FC787D"
+                    fillOpacity="0.2"
                   />
                 </svg>
               </span>
-              <span className="text-slate-900 font-semibold"> & Rural Marketplace</span>
+              <span className="text-slate-900 font-extrabold"> & Rural Marketplace</span>
             </h1>
 
             {/* Floating App Logo Square Card with Hand-drawn Curved Arrow */}
             <div className="hidden sm:flex absolute -right-28 md:-right-36 lg:-right-44 bottom-1 md:bottom-2 items-end z-20 pointer-events-none">
-              {/* Hand-drawn curved arrow pointing to the text in #7B5872 */}
+              {/* Hand-drawn curved arrow pointing to the text in #FC787D */}
               <svg
                 className="w-14 h-10 md:w-16 md:h-12 lg:w-20 lg:h-14 pointer-events-none overflow-visible -mr-1 mb-2"
                 viewBox="0 0 80 50"
@@ -431,14 +439,14 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
               >
                 <path
                   d="M 76 38 C 55 46, 24 38, 8 14"
-                  stroke="#7B5872"
+                  stroke="#FC787D"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   fill="none"
                 />
                 <path
                   d="M 6 24 L 8 12 L 20 16"
-                  stroke="#7B5872"
+                  stroke="#FC787D"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -493,25 +501,26 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
             All-in-one agricultural e-commerce ecosystem connecting farmers, rural micro-enterprises, and Self-Help Groups with verified buyers, quality agri-inputs, transparent pricing, and direct bank payouts.
           </p>
 
-          {/* Action Button styled in #7B5872 with matching pill radius */}
+          {/* Action Button styled in #FC787D with matching enterprise radius */}
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '3.75rem', position: 'relative', zIndex: 1 }}>
             <button
               onClick={onOpenExpertModal}
               style={{
                 padding: '0.85rem 2.15rem',
-                borderRadius: '9999px',
+                borderRadius: '6px',
                 fontSize: '0.95rem',
-                fontWeight: '500',
-                backgroundColor: '#7B5872',
+                fontWeight: '600',
+                backgroundColor: '#FC787D',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+                boxShadow: '0 4px 14px rgba(252, 120, 125, 0.25)',
+                transition: 'all 0.2s ease'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-[#E86368] hover:shadow-lg transition-all"
             >
               <span>Request Platform Demo</span>
               <ArrowRight size={16} />
@@ -592,11 +601,11 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
                 </span>
                 <h3 
                   style={{ 
-                    fontFamily: "'Lora', serif", 
+                    fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)", 
                     fontSize: 'clamp(1.35rem, 2.5vw, 1.85rem)', 
-                    fontWeight: 600, 
+                    fontWeight: 800, 
                     color: '#0F172A', 
-                    letterSpacing: '0',
+                    letterSpacing: '-0.025em',
                     lineHeight: '1.25',
                     marginBottom: '1rem' 
                   }}
@@ -675,11 +684,11 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
               EXECUTIVE OVERVIEW & PROBLEM STATEMENT
             </span>
             <h2 style={{ 
-              fontFamily: "'Lora', serif", 
+              fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)", 
               fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
-              fontWeight: 600, 
+              fontWeight: 800, 
               color: '#0F172A', 
-              letterSpacing: '0', 
+              letterSpacing: '-0.025em', 
               display: 'block', 
               marginTop: '4px' 
             }}>
@@ -821,14 +830,14 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
       {/* ========================================================================= */}
       {/* 4. THE 3 CORE STAKEHOLDER TRANSFORMATIONS (TABS & DEEP-DIVE) */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#e8e8e8', padding: '4.5rem 0 5rem', borderBottom: '1px solid #CBD5E1' }}>
+      <section style={{ backgroundColor: '#F8FAFC', padding: '4.5rem 0 5rem', borderBottom: '1px solid #CBD5E1' }}>
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               STAKEHOLDER GOALS & VALUE CREATION
             </span>
-            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.025em', marginTop: '4px' }}>
               Tailored Impact Across the Rural Value Chain
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -854,14 +863,14 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
                     alignItems: 'center',
                     gap: '8px',
                     padding: '0.75rem 1.4rem',
-                    borderRadius: '9999px',
-                    border: isSelected ? '1.5px solid #0F172A' : '1px solid #CBD5E1',
-                    backgroundColor: isSelected ? '#0F172A' : '#FFFFFF',
+                    borderRadius: '6px',
+                    border: isSelected ? '1.5px solid #FC787D' : '1px solid #CBD5E1',
+                    backgroundColor: isSelected ? '#FC787D' : '#FFFFFF',
                     color: isSelected ? '#FFFFFF' : '#334155',
                     fontSize: '0.88rem',
                     fontWeight: isSelected ? '600' : '500',
                     cursor: 'pointer',
-                    boxShadow: isSelected ? '0 4px 14px rgba(15, 23, 42, 0.15)' : 'none',
+                    boxShadow: isSelected ? '0 4px 14px rgba(252, 120, 125, 0.2)' : 'none',
                     transition: 'all 0.2s ease'
                   }}
                 >
@@ -981,11 +990,11 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
                 </span>
                 <h3 
                   style={{ 
-                    fontFamily: "'Lora', serif", 
+                    fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)", 
                     fontSize: 'clamp(1.35rem, 2.5vw, 1.85rem)', 
-                    fontWeight: 600, 
+                    fontWeight: 800, 
                     color: '#0F172A', 
-                    letterSpacing: '0',
+                    letterSpacing: '-0.025em',
                     lineHeight: '1.25',
                     marginBottom: '1rem' 
                   }}
@@ -1050,10 +1059,10 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               END-TO-END APPLICATION ECOSYSTEM
             </span>
-            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.025em', marginTop: '4px' }}>
               3 Specialized Interfaces. One Connected Platform.
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -1098,11 +1107,11 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
 
                 <h3 
                   style={{ 
-                    fontFamily: "'Lora', serif", 
+                    fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)", 
                     fontSize: 'clamp(1.35rem, 2.5vw, 1.85rem)', 
-                    fontWeight: 600, 
+                    fontWeight: 800, 
                     color: '#0F172A', 
-                    letterSpacing: '0',
+                    letterSpacing: '-0.025em',
                     lineHeight: '1.25',
                     marginBottom: '1rem' 
                   }}
@@ -1172,11 +1181,11 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
 
                 <h3 
                   style={{ 
-                    fontFamily: "'Lora', serif", 
+                    fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)", 
                     fontSize: 'clamp(1.35rem, 2.5vw, 1.85rem)', 
-                    fontWeight: 600, 
+                    fontWeight: 800, 
                     color: '#0F172A', 
-                    letterSpacing: '0',
+                    letterSpacing: '-0.025em',
                     lineHeight: '1.25',
                     marginBottom: '1rem' 
                   }}
@@ -1242,7 +1251,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
               padding: '2.25rem 2rem',
               boxShadow: '0 4px 16px rgba(0, 0, 0, 0.03)'
             }}
-            className="hover:border-purple-300 transition-colors"
+            className="hover:border-red-300 transition-colors"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
               <div className="lg:col-span-5">
@@ -1289,14 +1298,14 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
       {/* ========================================================================= */}
       {/* 6. THE 9 FUNCTIONAL MODULES MATRIX (DIRECT FROM PDF SECTION 7 & 9) */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#e8e8e8', padding: '4.5rem 0 5rem', borderBottom: '1px solid #CBD5E1' }}>
+      <section style={{ backgroundColor: '#F8FAFC', padding: '4.5rem 0 5rem', borderBottom: '1px solid #CBD5E1' }}>
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               PLATFORM SPECIFICATIONS & CORE CAPABILITIES
             </span>
-            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.025em', marginTop: '4px' }}>
               The 9 Core Architectural Functional Modules
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -1364,7 +1373,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
             <span style={{ fontSize: '0.78rem', color: '#15803D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               TRANSFORMATION BENCHMARKS
             </span>
-            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)", fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.025em', marginTop: '4px' }}>
               Traditional Rural Trade vs. GramUnnati Digital Platform
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -1386,7 +1395,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
                 <thead>
                   <tr style={{ backgroundColor: '#0F172A', color: '#FFFFFF' }}>
                     <th style={{ padding: '1rem 1.25rem', fontWeight: '600' }}>Operational Dimension</th>
-                    <th style={{ padding: '1rem 1.25rem', fontWeight: '600', color: '#FCA5A5' }}>Traditional Village Mandi</th>
+                    <th style={{ padding: '1rem 1.25rem', fontWeight: '600', color: '#FDB4B7' }}>Traditional Village Mandi</th>
                     <th style={{ padding: '1rem 1.25rem', fontWeight: '600', color: '#86EFAC' }}>GramUnnati Digital Platform</th>
                     <th style={{ padding: '1rem 1.25rem', fontWeight: '600', color: '#93C5FD' }}>Direct Impact</th>
                   </tr>
@@ -1410,7 +1419,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
                       <td style={{ padding: '1rem 1.25rem', fontWeight: '700', color: '#0F172A' }}>{row.dim}</td>
                       <td style={{ padding: '1rem 1.25rem', color: '#991B1B' }}>✕ {row.old}</td>
                       <td style={{ padding: '1rem 1.25rem', color: '#166534', fontWeight: '600' }}>✓ {row.neu}</td>
-                      <td style={{ padding: '1rem 1.25rem', color: '#7B5872', fontWeight: '700' }}>{row.imp}</td>
+                      <td style={{ padding: '1rem 1.25rem', color: '#FC787D', fontWeight: '700' }}>{row.imp}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -1424,14 +1433,14 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
       {/* ========================================================================= */}
       {/* 8. CONNECTED ECOSYSTEM APPLICATIONS */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#e8e8e8', padding: '4rem 0 4.5rem', borderBottom: '1px solid #CBD5E1' }}>
+      <section style={{ backgroundColor: '#F8FAFC', padding: '4rem 0 4.5rem', borderBottom: '1px solid #CBD5E1' }}>
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               INTEGRATED PLATFORM ARCHITECTURE
             </span>
-            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 2.64vw, 1.98rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)", fontSize: 'clamp(1.35rem, 2.64vw, 1.98rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.025em', marginTop: '4px' }}>
               Seamlessly Connected to the G Mark Ecosystem
             </h2>
           </div>
@@ -1524,17 +1533,17 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
           </div>
 
           <h2 style={{ 
-            fontFamily: "'Lora', serif", 
+            fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)", 
             fontSize: 'clamp(1.5rem, 3.7vw, 2.64rem)', 
-            fontWeight: 600, 
+            fontWeight: 800, 
             color: '#0F172A', 
-            letterSpacing: '0', 
+            letterSpacing: '-0.025em', 
             lineHeight: 1.15,
             marginBottom: '1rem' 
           }}>
             <span>Empower Farmers, Rural Enterprises & </span>
             <span className="relative inline-block whitespace-nowrap">
-              <span className="relative z-10 text-slate-900 font-semibold">
+              <span className="relative z-10 text-[#FC787D] font-extrabold">
                 Self-Help Groups
               </span>
               <svg
@@ -1546,7 +1555,8 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
               >
                 <path
                   d="M 4,14 Q 130,5 256,12 Q 130,20 6,17"
-                  fill="#00A3FF"
+                  fill="#FC787D"
+                  fillOpacity="0.2"
                 />
               </svg>
             </span>
@@ -1560,20 +1570,21 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
             <button
               onClick={onOpenExpertModal}
               style={{
-                padding: '0.5rem 1.25rem',
-                borderRadius: '9999px',
-                fontSize: '0.85rem',
-                fontWeight: '500',
-                backgroundColor: '#7B5872',
+                padding: '0.75rem 1.6rem',
+                borderRadius: '6px',
+                fontSize: '0.9rem',
+                fontWeight: '600',
+                backgroundColor: '#FC787D',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px',
-                boxShadow: '0 2px 10px rgba(123, 88, 114, 0.28)'
+                gap: '8px',
+                boxShadow: '0 4px 14px rgba(252, 120, 125, 0.25)',
+                transition: 'all 0.2s ease'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-[#E86368] hover:shadow-lg transition-all"
             >
               <span>Schedule Platform Consultation</span>
               <ArrowRight size={14} />
@@ -1581,9 +1592,9 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
             <button
               onClick={onBack}
               style={{
-                padding: '0.5rem 1.15rem',
-                borderRadius: '9999px',
-                fontSize: '0.85rem',
+                padding: '0.75rem 1.4rem',
+                borderRadius: '6px',
+                fontSize: '0.9rem',
                 fontWeight: '500',
                 backgroundColor: '#F1F5F9',
                 color: '#334155',
@@ -1591,7 +1602,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px'
+                gap: '8px'
               }}
               className="hover:bg-slate-100 hover:text-slate-900 transition-colors"
             >

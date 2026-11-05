@@ -55,11 +55,11 @@ export default function CategoryModuleNavRibbon({ currentModule, onSelectApp }) 
                 style={{
                   fontSize: '0.78rem',
                   fontWeight: isActive ? 700 : 500,
-                  color: isActive ? '#FFFFFF' : '#4B5563',
-                  backgroundColor: isActive ? '#0F172A' : '#F3F4F6',
+                  color: isActive ? '#FFFFFF' : '#475569',
+                  backgroundColor: isActive ? '#FC787D' : '#FFFFFF',
                   padding: '0.32rem 0.8rem',
-                  borderRadius: '9999px',
-                  border: isActive ? '1px solid #0F172A' : '1px solid #E5E7EB',
+                  borderRadius: '6px',
+                  border: isActive ? '1px solid #FC787D' : '1px solid #E2E8F0',
                   cursor: 'pointer',
                   whiteSpace: 'nowrap',
                   transition: 'all 0.2s ease',
@@ -67,14 +67,16 @@ export default function CategoryModuleNavRibbon({ currentModule, onSelectApp }) 
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive) {
-                    e.currentTarget.style.backgroundColor = '#E5E7EB';
-                    e.currentTarget.style.color = '#111827';
+                    e.currentTarget.style.backgroundColor = '#FFF1F2';
+                    e.currentTarget.style.color = '#FC787D';
+                    e.currentTarget.style.borderColor = '#FED7D9';
                   }
                 }}
                 onMouseLeave={(e) => {
                   if (!isActive) {
-                    e.currentTarget.style.backgroundColor = '#F3F4F6';
-                    e.currentTarget.style.color = '#4B5563';
+                    e.currentTarget.style.backgroundColor = '#FFFFFF';
+                    e.currentTarget.style.color = '#475569';
+                    e.currentTarget.style.borderColor = '#E2E8F0';
                   }
                 }}
               >

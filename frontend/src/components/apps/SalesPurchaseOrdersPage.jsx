@@ -130,13 +130,14 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
   ];
 
   return (
-    <div style={{ backgroundColor: '#e8e8e8', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ backgroundColor: '#F8FAFC', minHeight: '100vh', overflowX: 'hidden', fontFamily: 'var(--font-sans)' }}>
       {/* ========================================================================= */}
       {/* 1. HERO HEADER */}
       {/* ========================================================================= */}
       <section 
         style={{ 
           backgroundColor: '#FFFFFF', 
+          backgroundImage: 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(252, 120, 125, 0.08) 0%, rgba(255, 255, 255, 0) 70%)',
           textAlign: 'center', 
           paddingTop: 'clamp(1.25rem, 2.5vw, 2rem)', 
           paddingBottom: 'clamp(2.5rem, 4vw, 3.75rem)', 
@@ -157,8 +158,8 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
         <div
           className="absolute left-1/2 top-[calc(100%-140px)] sm:top-[calc(100%-165px)] md:top-[calc(100%-190px)] lg:top-[calc(100%-210px)] 
           h-[480px] w-[700px] md:h-[550px] md:w-[1100px] lg:h-[750px] lg:w-[140%] 
-          -translate-x-1/2 rounded-[100%] border-t border-slate-300/40 bg-[#e8e8e8] 
-          shadow-[0_-20px_50px_rgba(0,0,0,0.06)] pointer-events-none z-0"
+          -translate-x-1/2 rounded-[100%] border-t border-slate-200/80 bg-[#F8FAFC] 
+          shadow-[0_-20px_50px_rgba(0,0,0,0.03)] pointer-events-none z-0"
         />
 
         <div style={{ maxWidth: '880px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
@@ -168,18 +169,18 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
               display: 'inline-flex', 
               alignItems: 'center', 
               gap: '6px', 
-              padding: '4px 12px', 
+              padding: '6px 14px', 
               borderRadius: '9999px', 
-              backgroundColor: '#F8FAFC', 
-              color: '#475569', 
+              backgroundColor: '#FFF1F2', 
+              color: '#FC787D', 
               fontSize: '0.76rem', 
-              fontWeight: '600', 
+              fontWeight: '700', 
               letterSpacing: '0.06em', 
               textTransform: 'uppercase',
-              border: '1px solid #E2E8F0',
-              boxShadow: '0 1px 3px rgba(15, 23, 42, 0.04)'
+              border: '1px solid #FED7D9',
+              boxShadow: '0 1px 3px rgba(252, 120, 125, 0.05)'
             }}>
-              <ShoppingCart size={13} style={{ color: '#64748B' }} />
+              <ShoppingCart size={13} style={{ color: '#FC787D' }} />
               <span>CORE ERP & FINANCE • ORDER MANAGEMENT MODULE</span>
             </span>
           </div>
@@ -187,18 +188,18 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
           <h1 
             className="text-balance text-slate-900"
             style={{ 
-              fontFamily: "'Lora', serif",
-              fontSize: 'clamp(1.75rem, 4.5vw, 3.87rem)',
-              lineHeight: '1.18',
-              letterSpacing: '-0.01em',
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(2rem, 5vw, 4rem)',
+              lineHeight: '1.15',
+              letterSpacing: '-0.025em',
               paddingTop: '0.25rem',
               paddingBottom: '0.75rem',
-              fontWeight: 600
+              fontWeight: 800
             }}
           >
             <span>Sales & </span>
             <span className="relative inline-block whitespace-nowrap">
-              <span className="relative z-10 font-semibold" style={{ color: '#FC787D' }}>
+              <span className="relative z-10 font-extrabold" style={{ color: '#FC787D' }}>
                 Purchase Orders
               </span>
               <svg
@@ -210,16 +211,17 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
               >
                 <path
                   d="M 4,14 Q 130,5 256,12 Q 130,20 6,17"
-                  fill="#00A3FF"
+                  fill="#FC787D"
+                  fillOpacity="0.25"
                 />
               </svg>
             </span>
             <br className="hidden sm:inline" />
-            <span>Lifecycle</span>
+            <span> Lifecycle</span>
           </h1>
 
           <p 
-            className="text-balance text-gray-600 font-normal"
+            className="text-balance text-slate-600 font-normal"
             style={{ 
               fontSize: 'clamp(0.92rem, 1.58vw, 1.1rem)', 
               lineHeight: '1.65', 
@@ -235,19 +237,19 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
               onClick={onOpenExpertModal}
               style={{
                 padding: '0.8rem 1.85rem',
-                borderRadius: '9999px',
+                borderRadius: '6px',
                 fontSize: '0.95rem',
-                fontWeight: '500',
-                backgroundColor: '#7B5872',
+                fontWeight: '600',
+                backgroundColor: '#FC787D',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+                boxShadow: '0 4px 16px rgba(252, 120, 125, 0.35)'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-[#E86368] transition-colors"
             >
               <span>Request SO & PO Lifecycle Demo</span>
               <ArrowRight size={16} />
@@ -301,11 +303,11 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. PHASE 1: SALES & DISTRIBUTION CYCLE (WHITE CURVED CARD ON GREY BG) */}
+      {/* 2. PHASE 1: SALES & DISTRIBUTION CYCLE (WHITE CURVED CARD ON SAAS BG) */}
       {/* ========================================================================= */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
+          backgroundColor: '#F8FAFC', 
           padding: '2.5rem 0 3rem',
           position: 'relative',
           overflow: 'hidden',
@@ -327,7 +329,7 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
           }}
         >
           <div 
-            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 right-0 left-0 bg-white rounded-l-[24px] sm:rounded-l-[90px] md:rounded-l-[150px] lg:rounded-l-[180px] border-l border-y border-slate-300/70 shadow-[0_12px_44px_rgba(0,0,0,0.04)] pointer-events-none z-0"
+            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 right-0 left-0 bg-white rounded-l-[24px] sm:rounded-l-[90px] md:rounded-l-[150px] lg:rounded-l-[180px] border-l border-y border-slate-200/80 shadow-[0_12px_44px_rgba(0,0,0,0.03)] pointer-events-none z-0"
             style={{ right: 0 }}
           />
 
@@ -346,12 +348,12 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
           >
             {/* Left Info */}
             <div className="w-full lg:max-w-[370px] flex flex-col gap-[0.85rem] shrink-0">
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', fontWeight: '500', color: '#7B5872', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                <Sparkles size={14} style={{ color: '#7B5872' }} />
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', fontWeight: '700', color: '#FC787D', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                <Sparkles size={14} style={{ color: '#FC787D' }} />
                 <span>PHASE 1: SALES CYCLE</span>
               </span>
               
-              <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.07rem)', fontWeight: 600, color: '#0F172A', lineHeight: '1.25', margin: 0 }}>
+              <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)', fontWeight: 800, color: '#0F172A', lineHeight: '1.2', letterSpacing: '-0.025em', margin: 0 }}>
                 Customer Orders, Challans & Invoices
               </h2>
               
@@ -364,7 +366,7 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
                   'Receipt voucher reconciliation & bill-by-bill settlement'
                 ].map((item, idx) => (
                   <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5' }}>
-                    <span style={{ color: '#7B5872', marginTop: '2px' }}>•</span>
+                    <span style={{ color: '#FC787D', marginTop: '2px' }}>•</span>
                     <span>{item}</span>
                   </div>
                 ))}
@@ -373,7 +375,7 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
 
             {/* Right Interactive Steps */}
             <div className="relative w-full lg:max-w-[530px] shrink-0 min-w-0">
-              <div className="absolute left-[16px] sm:left-[20px] top-[20px] bottom-[20px] w-[2px] bg-slate-300 pointer-events-none" />
+              <div className="absolute left-[16px] sm:left-[20px] top-[20px] bottom-[20px] w-[2px] bg-slate-200 pointer-events-none" />
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                 {salesSteps.map((step, index) => {
@@ -388,19 +390,20 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
                       onClick={() => setActiveStepSales(prev => prev === index ? -1 : index)}
                     >
                       <div
-                        className="w-[34px] h-[34px] sm:w-[42px] sm:h-[42px] text-xs sm:text-sm font-medium"
+                        className="w-[34px] h-[34px] sm:w-[42px] sm:h-[42px] text-xs sm:text-sm font-bold"
                         style={{
                           position: 'relative',
                           zIndex: 10,
                           borderRadius: '50%',
                           border: '2px solid',
-                          borderColor: isActive ? '#0F172A' : '#94A3B8',
-                          backgroundColor: isActive ? '#0F172A' : '#FFFFFF',
+                          borderColor: isActive ? '#FC787D' : '#CBD5E1',
+                          backgroundColor: isActive ? '#FC787D' : '#FFFFFF',
                           color: isActive ? '#FFFFFF' : '#475569',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          flexShrink: 0
+                          flexShrink: 0,
+                          boxShadow: isActive ? '0 2px 10px rgba(252, 120, 125, 0.3)' : 'none'
                         }}
                       >
                         <span>{step.num}</span>
@@ -409,21 +412,21 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
                       <div
                         className="flex-1 min-w-0 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-200"
                         style={{
-                          border: `1.5px solid ${isActive ? '#0F172A' : '#CBD5E1'}`,
+                          border: `1.5px solid ${isActive ? '#FC787D' : '#E2E8F0'}`,
                           backgroundColor: '#F8FAFC',
-                          boxShadow: isActive ? '0 8px 24px -4px rgba(15, 23, 42, 0.12)' : '0 2px 8px rgba(0, 0, 0, 0.04)',
+                          boxShadow: isActive ? '0 8px 24px -4px rgba(252, 120, 125, 0.12)' : '0 2px 8px rgba(0, 0, 0, 0.02)',
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0, flex: 1 }}>
-                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg" style={{ backgroundColor: isActive ? '#0F172A' : '#F1F5F9', color: isActive ? '#FFFFFF' : '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg" style={{ backgroundColor: isActive ? '#FC787D' : '#FFF1F2', color: isActive ? '#FFFFFF' : '#FC787D', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                               <IconComp size={15} />
                             </div>
                             <div style={{ minWidth: 0, flex: 1 }}>
-                              <span style={{ fontSize: '0.65rem', color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: '500', display: 'block' }}>
+                              <span style={{ fontSize: '0.65rem', color: '#FC787D', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: '700', display: 'block' }}>
                                 {step.tag}
                               </span>
-                              <h3 style={{ fontSize: 'clamp(0.85rem, 2.2vw, 0.98rem)', fontWeight: 500, color: '#0F172A', margin: 0, lineHeight: '1.3' }}>
+                              <h3 style={{ fontSize: 'clamp(0.85rem, 2.2vw, 0.98rem)', fontWeight: 600, color: '#0F172A', margin: 0, lineHeight: '1.3' }}>
                                 {step.title}
                               </h3>
                             </div>
@@ -466,7 +469,7 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
                                 </p>
                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '6px', marginTop: '0.4rem', paddingTop: '0.45rem', borderTop: '1px dashed #CBD5E1' }}>
                                   <span style={{ fontSize: '0.72rem', color: '#64748B' }}>Document State:</span>
-                                  <code style={{ fontSize: '0.7rem', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', padding: '2px 8px', borderRadius: '4px', color: '#0F172A', fontWeight: '500' }}>
+                                  <code style={{ fontSize: '0.7rem', backgroundColor: '#FFFFFF', border: '1px solid #FED7D9', padding: '2px 8px', borderRadius: '4px', color: '#FC787D', fontWeight: '600' }}>
                                     {step.status}
                                   </code>
                                 </div>
@@ -489,7 +492,7 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
       {/* ========================================================================= */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
+          backgroundColor: '#F8FAFC', 
           padding: '2.5rem 0 3.5rem',
           position: 'relative',
           overflow: 'hidden',
@@ -511,7 +514,7 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
           }}
         >
           <div 
-            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 left-0 right-0 bg-white rounded-r-[24px] sm:rounded-r-[90px] md:rounded-r-[150px] lg:rounded-r-[180px] border-r border-y border-slate-300/70 shadow-[0_12px_44px_rgba(0,0,0,0.04)] pointer-events-none z-0"
+            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 left-0 right-0 bg-white rounded-r-[24px] sm:rounded-r-[90px] md:rounded-r-[150px] lg:rounded-r-[180px] border-r border-y border-slate-200/80 shadow-[0_12px_44px_rgba(0,0,0,0.03)] pointer-events-none z-0"
             style={{ left: 0 }}
           />
 
@@ -530,7 +533,7 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
           >
             {/* Left Steps */}
             <div className="relative w-full lg:max-w-[540px] shrink-0 min-w-0 order-1">
-              <div className="absolute left-[16px] sm:left-[20px] top-[20px] bottom-[20px] w-[2px] bg-slate-300 pointer-events-none" />
+              <div className="absolute left-[16px] sm:left-[20px] top-[20px] bottom-[20px] w-[2px] bg-slate-200 pointer-events-none" />
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                 {procurementSteps.map((step, index) => {
@@ -545,19 +548,20 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
                       onClick={() => setActiveStepProcure(prev => prev === index ? -1 : index)}
                     >
                       <div
-                        className="w-[34px] h-[34px] sm:w-[42px] sm:h-[42px] text-xs sm:text-sm font-medium"
+                        className="w-[34px] h-[34px] sm:w-[42px] sm:h-[42px] text-xs sm:text-sm font-bold"
                         style={{
                           position: 'relative',
                           zIndex: 10,
                           borderRadius: '50%',
                           border: '2px solid',
-                          borderColor: isActive ? '#0F172A' : '#94A3B8',
-                          backgroundColor: isActive ? '#0F172A' : '#FFFFFF',
+                          borderColor: isActive ? '#FC787D' : '#CBD5E1',
+                          backgroundColor: isActive ? '#FC787D' : '#FFFFFF',
                           color: isActive ? '#FFFFFF' : '#475569',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          flexShrink: 0
+                          flexShrink: 0,
+                          boxShadow: isActive ? '0 2px 10px rgba(252, 120, 125, 0.3)' : 'none'
                         }}
                       >
                         <span>{step.num}</span>
@@ -566,21 +570,21 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
                       <div
                         className="flex-1 min-w-0 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-200"
                         style={{
-                          border: `1.5px solid ${isActive ? '#0F172A' : '#CBD5E1'}`,
+                          border: `1.5px solid ${isActive ? '#FC787D' : '#E2E8F0'}`,
                           backgroundColor: '#F8FAFC',
-                          boxShadow: isActive ? '0 8px 24px -4px rgba(15, 23, 42, 0.12)' : '0 2px 8px rgba(0, 0, 0, 0.04)',
+                          boxShadow: isActive ? '0 8px 24px -4px rgba(252, 120, 125, 0.12)' : '0 2px 8px rgba(0, 0, 0, 0.02)',
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0, flex: 1 }}>
-                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg" style={{ backgroundColor: isActive ? '#0F172A' : '#F1F5F9', color: isActive ? '#FFFFFF' : '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg" style={{ backgroundColor: isActive ? '#FC787D' : '#FFF1F2', color: isActive ? '#FFFFFF' : '#FC787D', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                               <IconComp size={15} />
                             </div>
                             <div style={{ minWidth: 0, flex: 1 }}>
-                              <span style={{ fontSize: '0.65rem', color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: '500', display: 'block' }}>
+                              <span style={{ fontSize: '0.65rem', color: '#FC787D', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: '700', display: 'block' }}>
                                 {step.tag}
                               </span>
-                              <h3 style={{ fontSize: 'clamp(0.85rem, 2.2vw, 0.98rem)', fontWeight: 500, color: '#0F172A', margin: 0, lineHeight: '1.3' }}>
+                              <h3 style={{ fontSize: 'clamp(0.85rem, 2.2vw, 0.98rem)', fontWeight: 600, color: '#0F172A', margin: 0, lineHeight: '1.3' }}>
                                 {step.title}
                               </h3>
                             </div>
@@ -623,7 +627,7 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
                                 </p>
                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '6px', marginTop: '0.4rem', paddingTop: '0.45rem', borderTop: '1px dashed #CBD5E1' }}>
                                   <span style={{ fontSize: '0.72rem', color: '#64748B' }}>Document State:</span>
-                                  <code style={{ fontSize: '0.7rem', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', padding: '2px 8px', borderRadius: '4px', color: '#0F172A', fontWeight: '500' }}>
+                                  <code style={{ fontSize: '0.7rem', backgroundColor: '#FFFFFF', border: '1px solid #FED7D9', padding: '2px 8px', borderRadius: '4px', color: '#FC787D', fontWeight: '600' }}>
                                     {step.status}
                                   </code>
                                 </div>
@@ -640,12 +644,12 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
 
             {/* Right Info */}
             <div className="w-full lg:max-w-[380px] flex flex-col gap-[0.85rem] shrink-0 order-2">
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', fontWeight: '500', color: '#7B5872', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                <Sparkles size={14} style={{ color: '#7B5872' }} />
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', fontWeight: '700', color: '#FC787D', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                <Sparkles size={14} style={{ color: '#FC787D' }} />
                 <span>PHASE 2: PROCUREMENT & GRN</span>
               </span>
               
-              <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.07rem)', fontWeight: 600, color: '#0F172A', lineHeight: '1.25', margin: 0 }}>
+              <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)', fontWeight: 800, color: '#0F172A', lineHeight: '1.2', letterSpacing: '-0.025em', margin: 0 }}>
                 Purchase Orders, GRNs & Inward Stock
               </h2>
               
@@ -658,7 +662,7 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
                   'Supplier disbursement payment vouchers with ledger credit'
                 ].map((item, idx) => (
                   <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.86rem', lineHeight: '1.5' }}>
-                    <span style={{ color: '#7B5872', marginTop: '2px' }}>•</span>
+                    <span style={{ color: '#FC787D', marginTop: '2px' }}>•</span>
                     <span>{item}</span>
                   </div>
                 ))}
@@ -671,9 +675,9 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
       {/* ========================================================================= */}
       {/* 4. BOTTOM CTA */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#FFFFFF', color: '#0F172A', padding: '4rem 1.5rem', textAlign: 'center', borderTop: '1px solid #CBD5E1' }}>
+      <section style={{ backgroundColor: '#FFFFFF', color: '#0F172A', padding: '4rem 1.5rem', textAlign: 'center', borderTop: '1px solid #E2E8F0' }}>
         <div style={{ maxWidth: '680px', margin: '0 auto' }}>
-          <h3 style={{ fontFamily: "'Lora', serif", fontSize: '1.75rem', fontWeight: 600, color: '#0F172A', marginBottom: '0.75rem' }}>
+          <h3 style={{ fontFamily: 'var(--font-sans)', fontSize: '2rem', fontWeight: 800, color: '#0F172A', marginBottom: '0.75rem', letterSpacing: '-0.025em' }}>
             Scale Your Commercial Trade Operations
           </h3>
           <p style={{ fontSize: '0.95rem', color: '#64748B', lineHeight: '1.6', marginBottom: '1.75rem' }}>
@@ -683,20 +687,20 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
             <button
               onClick={onOpenExpertModal}
               style={{
-                padding: '0.65rem 1.5rem',
-                borderRadius: '9999px',
-                fontSize: '0.88rem',
-                fontWeight: '500',
-                backgroundColor: '#7B5872',
+                padding: '0.75rem 1.75rem',
+                borderRadius: '6px',
+                fontSize: '0.92rem',
+                fontWeight: '600',
+                backgroundColor: '#FC787D',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+                gap: '8px',
+                boxShadow: '0 4px 16px rgba(252, 120, 125, 0.35)'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-[#E86368] transition-colors"
             >
               <span>Schedule Order Engine Consultation</span>
               <ArrowRight size={14} />
@@ -704,18 +708,19 @@ export default function SalesPurchaseOrdersPage({ app, onBack, onOpenExpertModal
             <button
               onClick={onBack}
               style={{
-                padding: '0.65rem 1.35rem',
-                borderRadius: '9999px',
-                fontSize: '0.88rem',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '6px',
+                fontSize: '0.92rem',
                 fontWeight: '500',
-                backgroundColor: '#F1F5F9',
+                backgroundColor: '#FFFFFF',
                 color: '#334155',
                 border: '1px solid #CBD5E1',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px'
+                gap: '8px'
               }}
+              className="hover:bg-slate-50 transition-colors"
             >
               <ArrowLeft size={14} />
               <span>Back to Solutions</span>

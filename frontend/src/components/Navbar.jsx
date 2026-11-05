@@ -542,21 +542,34 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
 
       <header 
         ref={navRef}
-        className="fixed top-0 left-0 right-0 z-50"
+        className="fixed top-0 left-0 right-0 z-50 max-w-[1440px] mx-auto"
         style={{
           fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-          backgroundColor: '#FFFFFF',
-          borderBottom: '1px solid #E2E8F0',
+          backgroundColor: (activeMenu || mobileMenuOpen)
+            ? '#FFFFFF'
+            : (scrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent'),
+          backdropFilter: (scrolled && !activeMenu && !mobileMenuOpen) ? 'blur(12px)' : 'none',
+          WebkitBackdropFilter: (scrolled && !activeMenu && !mobileMenuOpen) ? 'blur(12px)' : 'none',
+          borderBottom: (activeMenu || mobileMenuOpen)
+            ? '1px solid #E2E8F0'
+            : (scrolled ? '1px solid rgba(226, 232, 240, 0.8)' : '1px solid transparent'),
           boxShadow: activeMenu 
             ? '0 16px 36px -4px rgba(15, 23, 42, 0.12)' 
-            : (scrolled ? '0 4px 16px -2px rgba(15, 23, 42, 0.08)' : '0 1px 3px 0 rgba(15, 23, 42, 0.04)'),
+            : (scrolled ? '0 4px 16px -2px rgba(15, 23, 42, 0.08)' : 'none'),
           transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
           pointerEvents: isVisible ? 'auto' : 'none',
-          transition: 'transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.25s ease',
+          transition: 'transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease',
           zIndex: 60
         }}
       >
-        <div style={{ backgroundColor: '#FFFFFF', position: 'relative', zIndex: 61 }}>
+        <div 
+          style={{ 
+            backgroundColor: (activeMenu || mobileMenuOpen) ? '#FFFFFF' : 'transparent', 
+            position: 'relative', 
+            zIndex: 61,
+            transition: 'background-color 0.25s ease'
+          }}
+        >
           <div className="nav-header-full">
             <div className="nav-header-inner">
               
@@ -743,8 +756,8 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
                     </button>
                   </div>
 
-                  {/* Flat Clean Minimalist Grid Layout */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-7 sm:gap-y-8 lg:gap-x-10 lg:gap-y-9 py-2">
+                  {/* Flat Clean Minimalist Grid Layout - 2 columns on mobile (4 rows of 2 sections), responsive on sm/lg */}
+                  <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-2 xs:gap-x-3 sm:gap-x-8 gap-y-3.5 sm:gap-y-8 lg:gap-x-10 lg:gap-y-9 py-1 sm:py-2">
                     {SOLUTION_CATEGORIES.map((cat, catIdx) => {
                       const config = SOLUTION_CATEGORY_CONFIG[cat.title] || {
                         icon: Layers,
@@ -756,19 +769,19 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
                       return (
                         <div 
                           key={catIdx} 
-                          className="flex flex-col group/category"
+                          className="flex flex-col group/category min-w-0"
                         >
                           {/* Category Header */}
-                          <div className="flex items-center justify-between pb-2.5 mb-2 border-b border-slate-200/70">
-                            <div className="flex items-center gap-2.5 min-w-0">
-                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 border ${config.bg} ${config.color} transition-transform group-hover/category:scale-105 duration-200`}>
-                                <CatIcon size={15} />
+                          <div className="flex items-center justify-between pb-1 sm:pb-2.5 mb-1 sm:mb-2 border-b border-slate-200/70 gap-1">
+                            <div className="flex items-center gap-1 sm:gap-2.5 min-w-0 flex-1">
+                              <div className={`w-[18px] h-[18px] xs:w-[20px] xs:h-[20px] sm:w-7 sm:h-7 rounded-md sm:rounded-lg flex items-center justify-center shrink-0 border ${config.bg} ${config.color} transition-transform group-hover/category:scale-105 duration-200`}>
+                                <CatIcon className="w-2.5 h-2.5 xs:w-3 xs:h-3 sm:w-[15px] sm:h-[15px]" />
                               </div>
-                              <h3 className="text-xs sm:text-[13px] font-bold tracking-wider text-slate-900 uppercase truncate font-sans">
+                              <h3 className="text-[9px] xs:text-[10px] sm:text-[13px] font-bold tracking-tight sm:tracking-wider text-slate-900 uppercase truncate font-sans">
                                 {cat.title}
                               </h3>
                             </div>
-                            <span className="text-[11px] font-semibold text-slate-500 bg-slate-100/90 border border-slate-200/70 px-2 py-0.5 rounded-full shrink-0 ml-2">
+                            <span className="text-[7.5px] xs:text-[8.5px] sm:text-[11px] font-semibold text-slate-500 bg-slate-100/90 border border-slate-200/70 px-1 py-0.2 sm:px-2 sm:py-0.5 rounded-full shrink-0">
                               {cat.items.length} Apps
                             </span>
                           </div>
@@ -785,12 +798,12 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
                                     handleAppItemClick(item.appId, 'solutions');
                                   }
                                 }}
-                                className="group/item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer select-none transition-colors duration-150 hover:bg-slate-50 active:bg-slate-100"
+                                className="group/item flex items-center gap-1 sm:gap-2 px-0.5 sm:px-2 py-0.5 sm:py-1.5 rounded-md sm:rounded-lg cursor-pointer select-none transition-colors duration-150 hover:bg-slate-50 active:bg-slate-100 min-w-0"
                                 role="button"
                                 tabIndex={0}
                               >
-                                <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover/item:bg-blue-600 transition-colors shrink-0" />
-                                <span className="text-[13px] font-medium text-slate-700 group-hover/item:text-slate-950 truncate transition-colors">
+                                <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-slate-300 group-hover/item:bg-blue-600 transition-colors shrink-0" />
+                                <span className="text-[10px] xs:text-[11px] sm:text-[13px] font-medium text-slate-700 group-hover/item:text-slate-950 truncate transition-colors leading-tight">
                                   {item.name}
                                 </span>
                               </div>
@@ -1281,8 +1294,8 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
           overscroll-behavior: contain;
           -webkit-overflow-scrolling: touch;
           touch-action: pan-y;
-          padding: 1.15rem 1.25rem max(1.75rem, calc(1.25rem + env(safe-area-inset-bottom, 0px)));
-          gap: 0.55rem;
+          padding: 0.75rem 1rem max(1.25rem, calc(0.85rem + env(safe-area-inset-bottom, 0px)));
+          gap: 0.3rem;
           animation: mobileNavDrawerSlideDown 0.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
 
@@ -1312,10 +1325,10 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 0.75rem 1rem;
-          border-radius: 10px;
+          padding: 0.5rem 0.8rem;
+          border-radius: 8px;
           font-weight: 600;
-          font-size: 1rem;
+          font-size: 0.875rem;
           color: #1E293B;
           background-color: transparent;
           border: none;
@@ -1342,9 +1355,9 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
         }
 
         .mobile-nav-badge {
-          font-size: 0.75rem;
-          font-weight: 700;
-          padding: 2px 8px;
+          font-size: 0.6875rem;
+          font-weight: 600;
+          padding: 1.5px 7px;
           border-radius: 9999px;
           background-color: #EBF3FC;
           color: #0B3A70;
@@ -1352,19 +1365,19 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
         }
 
         .mobile-nav-action-wrap {
-          padding-top: 0.5rem;
+          padding-top: 0.35rem;
           border-top: 1px solid #F1F5F9;
           margin-top: 0.25rem;
         }
 
         .mobile-nav-action-btn {
           width: 100%;
-          padding: 0.75rem 1rem;
+          padding: 0.55rem 1rem;
           border-radius: 9999px;
-          background-color: #7B5872;
+          background-color: #FC787D;
           color: #FFFFFF;
           font-weight: 600;
-          font-size: 0.95rem;
+          font-size: 0.875rem;
           border: none;
           cursor: pointer;
           box-shadow: 0 4px 14px rgba(123, 88, 114, 0.35);
@@ -2093,7 +2106,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
           .solutions-mega-menu-inner,
           .technology-mega-menu-inner,
           .industries-mega-menu-inner {
-            padding: 1rem 0.85rem 2rem;
+            padding: 0.65rem 0.6rem 1.5rem;
           }
 
           .category-accordion-container {
@@ -2174,8 +2187,9 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
         /* Navbar Header & Brand Logo Responsive Styling */
         .nav-header-full {
           width: 100%;
+          max-width: 1440px;
+          margin: 0 auto;
           padding: 0 1.75rem;
-          margin: 0;
           box-sizing: border-box;
         }
 
@@ -2251,21 +2265,21 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
         .nav-link-odoo:hover,
         .nav-link-odoo:focus,
         .nav-link-odoo:focus-visible {
-          color: #714B67;
-          background: rgba(113, 75, 103, 0.04) !important;
+          color: #FC787D;
+          background: rgba(252, 120, 125, 0.04) !important;
           outline: none;
         }
 
         .nav-link-odoo:active {
-          color: #5E3E55;
-          background: rgba(113, 75, 103, 0.08) !important;
+          color: #E86368;
+          background: rgba(252, 120, 125, 0.08) !important;
         }
 
         .nav-link-odoo-active {
-          color: #714B67 !important;
+          color: #FC787D !important;
           font-weight: 600 !important;
           letter-spacing: -0.012em;
-          background: rgba(113, 75, 103, 0.06) !important;
+          background: rgba(252, 120, 125, 0.06) !important;
         }
 
         /* Smooth Rotating Chevron for Dropdown Links */
@@ -2275,16 +2289,16 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
         }
 
         .nav-link-odoo:hover .nav-link-chevron {
-          color: #714B67;
+          color: #FC787D;
         }
 
         .nav-link-odoo-active .nav-link-chevron {
-          color: #714B67;
+          color: #FC787D;
         }
 
         .nav-link-chevron-open {
           transform: rotate(180deg);
-          color: #714B67 !important;
+          color: #FC787D !important;
         }
 
         /* Odoo Right Actions Group */
@@ -2316,8 +2330,8 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
         .nav-action-text-btn:hover,
         .nav-action-text-btn:focus,
         .nav-action-text-btn:active {
-          color: #714B67;
-          background: rgba(113, 75, 103, 0.04) !important;
+          color: #FC787D;
+          background: rgba(252, 120, 125, 0.04) !important;
           outline: none;
         }
 
@@ -2332,18 +2346,18 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
           font-weight: 600;
           letter-spacing: -0.01em;
           color: #FFFFFF;
-          background-color: #714B67; /* Odoo signature enterprise purple */
+          background-color: #FC787D; /* Primary brand red */
           border: 1px solid transparent;
           border-radius: 6px;
           cursor: pointer;
           transition: background-color 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
-          box-shadow: 0 1px 2px rgba(113, 75, 103, 0.15);
+          box-shadow: 0 1px 2px rgba(252, 120, 125, 0.15);
           -webkit-font-smoothing: antialiased;
         }
 
         .nav-action-primary-btn:hover {
-          background-color: #5E3E55;
-          box-shadow: 0 2px 6px rgba(113, 75, 103, 0.25);
+          background-color: #E86368;
+          box-shadow: 0 2px 6px rgba(252, 120, 125, 0.25);
         }
 
         .nav-action-primary-btn:active {

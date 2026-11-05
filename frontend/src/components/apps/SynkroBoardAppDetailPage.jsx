@@ -199,19 +199,20 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
   };
 
   return (
-    <div style={{ backgroundColor: '#e8e8e8', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ backgroundColor: '#F8FAFC', minHeight: '100vh', overflowX: 'hidden', fontFamily: 'var(--font-sans)' }}>
       
       {/* ========================================================================= */}
       {/* 1. TOP NAVIGATION / HEADER */}
 
 
       {/* ========================================================================= */}
-      {/* 2. HERO SECTION WITH Lora HEADING & FLOATING SYNKROBOARD LOGO BADGE */}
+      {/* 2. HERO SECTION WITH Plus Jakarta Sans HEADING & FLOATING SYNKROBOARD LOGO BADGE */}
       {/* ========================================================================= */}
       <section 
         style={{
-          backgroundColor: '#e8e8e8',
-          borderBottom: '1px solid #CBD5E1',
+          backgroundColor: '#FFFFFF',
+          backgroundImage: 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(252, 120, 125, 0.08) 0%, rgba(255, 255, 255, 0) 70%)',
+          borderBottom: '1px solid #E2E8F0',
           paddingTop: 'clamp(1.25rem, 2.5vw, 2.25rem)',
           paddingBottom: 'clamp(2.5rem, 4vw, 3.5rem)'
         }}
@@ -220,7 +221,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
           
           <div style={{ textAlign: 'center', maxWidth: '880px', margin: '0 auto 3rem' }}>
             
-            {/* Headline with 'Lora', serif and floating logo card with hand-drawn arrow */}
+            {/* Headline with Plus Jakarta Sans and floating logo card with hand-drawn arrow */}
             <div className="relative inline-block w-full">
               
               {/* Floating SynkroBoard Logo Square Card with Curved Arrow */}
@@ -229,21 +230,21 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
               >
                 {/* Hand-drawn Curved Arrow pointing to the headline */}
                 <svg
-                  className="w-16 h-12 text-[#7B5872] transform -rotate-12"
+                  className="w-16 h-12 text-[#FC787D] transform -rotate-12"
                   viewBox="0 0 100 70"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     d="M 85,15 C 65,45 35,50 15,35"
-                    stroke="#7B5872"
+                    stroke="#FC787D"
                     strokeWidth="2.75"
                     strokeLinecap="round"
                     fill="none"
                   />
                   <path
                     d="M 12,27 L 15,35 L 25,32"
-                    stroke="#7B5872"
+                    stroke="#FC787D"
                     strokeWidth="2.75"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -284,18 +285,18 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
               {/* Main Headline */}
               <h1 
                 style={{ 
-                  fontFamily: "'Lora', serif",
-                  fontSize: 'clamp(1.65rem, 3.7vw, 2.82rem)', 
-                  fontWeight: 600, 
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: 'clamp(2rem, 4vw, 3.25rem)', 
+                  fontWeight: 800, 
                   color: '#0F172A',
-                  letterSpacing: '0',
-                  lineHeight: '1.2',
+                  letterSpacing: '-0.025em',
+                  lineHeight: '1.15',
                   margin: '0 0 1rem'
                 }}
               >
                 All-in-One Enterprise{' '}
                 <span className="relative inline-block whitespace-nowrap">
-                  <span className="relative z-10" style={{ color: '#FC787D' }}>
+                  <span className="relative z-10 font-extrabold" style={{ color: '#FC787D' }}>
                     Task Management
                   </span>
                   <svg
@@ -307,7 +308,8 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                   >
                     <path
                       d="M 4,14 Q 130,5 256,12 Q 130,20 6,17"
-                      fill="#00A3FF"
+                      fill="#FC787D"
+                      fillOpacity="0.25"
                     />
                   </svg>
                 </span>
@@ -325,19 +327,19 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                 onClick={onOpenExpertModal}
                 style={{
                   padding: '0.85rem 2.25rem',
-                  borderRadius: '9999px',
+                  borderRadius: '6px',
                   fontSize: '0.95rem',
-                  fontWeight: '500',
-                  backgroundColor: '#7B5872',
+                  fontWeight: '600',
+                  backgroundColor: '#FC787D',
                   color: '#FFFFFF',
                   border: 'none',
                   cursor: 'pointer',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+                  boxShadow: '0 4px 16px rgba(252, 120, 125, 0.35)'
                 }}
-                className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+                className="hover:bg-[#E86368] transition-colors"
               >
                 <span>Request SynkroBoard Demo</span>
                 <ArrowRight size={16} />
@@ -390,7 +392,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
       {/* ========================================================================= */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
+          backgroundColor: '#F8FAFC', 
           borderBottom: '1px solid #CBD5E1', 
           padding: '4rem 0 4.5rem' 
         }}
@@ -398,15 +400,15 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               EXECUTIVE CONTEXT
             </span>
             <h2 style={{ 
-              fontFamily: "'Lora', serif",
-              fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
-              fontWeight: 600, 
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)', 
+              fontWeight: 800, 
               color: '#0F172A',
-              letterSpacing: '0',
+              letterSpacing: '-0.025em',
               display: 'block',
               marginTop: '4px'
             }}>
@@ -435,7 +437,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '1rem' }}>
-                <span style={{ fontSize: '0.75rem', fontWeight: '700', color: '#DC2626', backgroundColor: '#FEE2E2', padding: '3px 10px', borderRadius: '100px', letterSpacing: '0.04em' }}>
+                <span style={{ fontSize: '0.75rem', fontWeight: '700', color: '#DC2626', backgroundColor: '#FEE7E8', padding: '3px 10px', borderRadius: '100px', letterSpacing: '0.04em' }}>
                   THE CORE PROBLEM
                 </span>
               </div>
@@ -480,7 +482,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
       {/* ========================================================================= */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
+          backgroundColor: '#F8FAFC', 
           borderBottom: '1px solid #CBD5E1', 
           padding: '4.5rem 0 5.5rem' 
         }}
@@ -522,7 +524,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                         boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
                       }}
                     >
-                      <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#7B5872', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>
+                      <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#FC787D', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>
                         <span style={{ fontSize: '13px' }}>⚡</span>
                       </div>
                       <div style={{ textAlign: 'left' }}>
@@ -540,11 +542,11 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
 
               {/* Main Headline */}
               <h2 style={{ 
-                fontFamily: "'Lora', serif",
-                fontSize: 'clamp(1.4rem, 3.5vw, 2.82rem)', 
-                fontWeight: 700, 
+                fontFamily: 'var(--font-sans)',
+                fontSize: 'clamp(1.5rem, 3.5vw, 2.82rem)', 
+                fontWeight: 800, 
                 color: '#0F172A',
-                letterSpacing: '0',
+                letterSpacing: '-0.025em',
                 lineHeight: 1.2,
                 margin: 0,
                 display: 'inline-flex',
@@ -689,7 +691,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                   width: '26px',
                   height: '26px',
                   borderRadius: '50%',
-                  backgroundColor: '#FEE2E2',
+                  backgroundColor: '#FEE7E8',
                   border: '2px solid #EF4444',
                   color: '#DC2626',
                   display: 'inline-flex',
@@ -703,11 +705,11 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                 ✕
               </span>
               <h2 style={{ 
-                fontFamily: "'Lora', serif",
+                fontFamily: 'var(--font-sans)',
                 fontSize: 'clamp(1.25rem, 3.34vw, 2.55rem)', 
-                fontWeight: 600, 
+                fontWeight: 800, 
                 color: '#0F172A',
-                letterSpacing: '0',
+                letterSpacing: '-0.025em',
                 lineHeight: 1.1,
                 margin: 0
               }}>
@@ -715,9 +717,9 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
               </h2>
             </div>
 
-            {/* Wavy blue brush stroke */}
+            {/* Wavy plum brush stroke */}
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '-4px', marginBottom: '4px' }}>
-              <svg className="w-56 h-3 text-[#00A3FF]" viewBox="0 0 200 12" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
+              <svg className="w-56 h-3 text-[#FC787D]" viewBox="0 0 200 12" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
                 <path d="M 4,6 Q 28,1 54,6 T 104,6 T 154,6 T 196,6" />
               </svg>
             </div>
@@ -725,11 +727,11 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
             {/* Line 2: Just live automation & boards */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
               <h2 style={{ 
-                fontFamily: "'Lora', serif",
+                fontFamily: 'var(--font-sans)',
                 fontSize: 'clamp(1.25rem, 3.34vw, 2.55rem)', 
-                fontWeight: 600, 
+                fontWeight: 800, 
                 color: '#0F172A',
-                letterSpacing: '0',
+                letterSpacing: '-0.025em',
                 lineHeight: 1.1,
                 margin: 0
               }}>
@@ -764,7 +766,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
           {/* Overlapping Dual-Card Layout with Hand-Drawn Curved Arrow (Exact Odoo Reference 2) */}
           <div className="relative w-full max-w-5xl mx-auto mt-8">
             
-            {/* Prominent Curved Hand-Drawn Arrow in Berry Plum (#7B5872) pointing from floating card to main board */}
+            {/* Prominent Curved Hand-Drawn Arrow in Berry Plum (#FC787D) pointing from floating card to main board */}
             <div className="hidden lg:block absolute top-6 right-64 z-30 pointer-events-none">
               <svg 
                 width="90" 
@@ -775,14 +777,14 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
               >
                 <path 
                   d="M 75,5 C 25,10 15,55 35,70" 
-                  stroke="#7B5872" 
+                  stroke="#FC787D" 
                   strokeWidth="3.5" 
                   strokeLinecap="round" 
                   fill="none"
                 />
                 <path 
                   d="M 23,60 L 35,70 L 40,55" 
-                  stroke="#7B5872" 
+                  stroke="#FC787D" 
                   strokeWidth="3.5" 
                   strokeLinecap="round" 
                   strokeLinejoin="round" 
@@ -905,7 +907,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
       {/* ========================================================================= */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
+          backgroundColor: '#F8FAFC', 
           borderBottom: '1px solid #CBD5E1', 
           padding: '4rem 0 4.5rem' 
         }}
@@ -913,15 +915,15 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               VERSATILE PROJECT VISUALIZATION
             </span>
             <h2 style={{ 
-              fontFamily: "'Lora', serif",
-              fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
-              fontWeight: 600, 
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)', 
+              fontWeight: 800, 
               color: '#0F172A',
-              letterSpacing: '0',
+              letterSpacing: '-0.025em',
               display: 'block',
               marginTop: '4px'
             }}>
@@ -1015,7 +1017,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                 </p>
 
                 <div style={{ borderTop: '1px solid #F1F5F9', paddingTop: '1.5rem' }}>
-                  <h4 style={{ fontSize: '0.85rem', fontWeight: '700', color: '#7B5872', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem' }}>
+                  <h4 style={{ fontSize: '0.85rem', fontWeight: '700', color: '#FC787D', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem' }}>
                     Core Architectural Capabilities
                   </h4>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '0.85rem' }}>
@@ -1040,23 +1042,23 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
       {/* ========================================================================= */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
-          borderBottom: '1px solid #CBD5E1', 
+          backgroundColor: '#F8FAFC', 
+          borderBottom: '1px solid #E2E8F0', 
           padding: '4rem 0 4.5rem' 
         }}
       >
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               SYSTEM CAPABILITIES
             </span>
             <h2 style={{ 
-              fontFamily: "'Lora', serif",
-              fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
-              fontWeight: 600, 
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)', 
+              fontWeight: 800, 
               color: '#0F172A',
-              letterSpacing: '0',
+              letterSpacing: '-0.025em',
               display: 'block',
               marginTop: '4px'
             }}>
@@ -1128,23 +1130,23 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
       {/* ========================================================================= */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
-          borderBottom: '1px solid #CBD5E1', 
+          backgroundColor: '#F8FAFC', 
+          borderBottom: '1px solid #E2E8F0', 
           padding: '4rem 0 4.5rem' 
         }}
       >
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               ORGANIZATIONAL GOALS & ROLES
             </span>
             <h2 style={{ 
-              fontFamily: "'Lora', serif",
-              fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
-              fontWeight: 600, 
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)', 
+              fontWeight: 800, 
               color: '#0F172A',
-              letterSpacing: '0',
+              letterSpacing: '-0.025em',
               display: 'block',
               marginTop: '4px'
             }}>
@@ -1226,23 +1228,23 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
       {/* ========================================================================= */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
-          borderBottom: '1px solid #CBD5E1', 
+          backgroundColor: '#F8FAFC', 
+          borderBottom: '1px solid #E2E8F0', 
           padding: '4rem 0 4.5rem' 
         }}
       >
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               ENTERPRISE ARCHITECTURE
             </span>
             <h2 style={{ 
-              fontFamily: "'Lora', serif",
-              fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
-              fontWeight: 600, 
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)', 
+              fontWeight: 800, 
               color: '#0F172A',
-              letterSpacing: '0',
+              letterSpacing: '-0.025em',
               display: 'block',
               marginTop: '4px'
             }}>
@@ -1330,23 +1332,23 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
       {/* ========================================================================= */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
-          borderBottom: '1px solid #CBD5E1', 
+          backgroundColor: '#F8FAFC', 
+          borderBottom: '1px solid #E2E8F0', 
           padding: '4rem 0 4.5rem' 
         }}
       >
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               OUR VALUES & VISION
             </span>
             <h2 style={{ 
-              fontFamily: "'Lora', serif",
-              fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
-              fontWeight: 600, 
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)', 
+              fontWeight: 800, 
               color: '#0F172A',
-              letterSpacing: '0',
+              letterSpacing: '-0.025em',
               display: 'block',
               marginTop: '4px'
             }}>
@@ -1395,18 +1397,18 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
       {/* ========================================================================= */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
-          borderBottom: '1px solid #CBD5E1', 
+          backgroundColor: '#F8FAFC', 
+          borderBottom: '1px solid #E2E8F0', 
           padding: '4rem 0 4.5rem' 
         }}
       >
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               INTEGRATED PLATFORM ARCHITECTURE
             </span>
-            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 2.64vw, 1.98rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.5rem, 2.64vw, 2.25rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.025em', marginTop: '4px' }}>
               Seamlessly Connected to the G Mark Ecosystem
             </h2>
           </div>
@@ -1502,7 +1504,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
           <span 
             style={{ 
               fontSize: '0.78rem', 
-              color: '#7B5872', 
+              color: '#FC787D', 
               fontWeight: '400', 
               letterSpacing: '0.12em', 
               textTransform: 'uppercase',
@@ -1515,11 +1517,11 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
 
           <h2 
             style={{ 
-              fontFamily: "'Lora', serif",
-              fontSize: 'clamp(1.5rem, 3.17vw, 2.42rem)', 
-              fontWeight: 600, 
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(1.75rem, 3.17vw, 2.5rem)', 
+              fontWeight: 800, 
               color: '#0F172A', 
-              letterSpacing: '0',
+              letterSpacing: '-0.025em',
               margin: '0 0 1rem' 
             }}
           >
@@ -1542,20 +1544,20 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
             <button
               onClick={onOpenExpertModal}
               style={{
-                padding: '0.5rem 1.25rem',
-                borderRadius: '9999px',
-                fontSize: '0.85rem',
-                fontWeight: '500',
-                backgroundColor: '#7B5872',
+                padding: '0.65rem 1.5rem',
+                borderRadius: '6px',
+                fontSize: '0.88rem',
+                fontWeight: '600',
+                backgroundColor: '#FC787D',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
-                boxShadow: '0 2px 10px rgba(123, 88, 114, 0.28)'
+                boxShadow: '0 4px 16px rgba(252, 120, 125, 0.35)'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-[#E86368] transition-colors"
             >
               <span>Schedule Live SynkroBoard Demo</span>
               <ArrowRight size={14} />
@@ -1563,11 +1565,11 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
             <button
               onClick={onBack}
               style={{
-                padding: '0.5rem 1.15rem',
-                borderRadius: '9999px',
-                fontSize: '0.85rem',
+                padding: '0.65rem 1.35rem',
+                borderRadius: '6px',
+                fontSize: '0.88rem',
                 fontWeight: '500',
-                backgroundColor: '#F1F5F9',
+                backgroundColor: '#FFFFFF',
                 color: '#334155',
                 border: '1px solid #CBD5E1',
                 cursor: 'pointer',
@@ -1575,7 +1577,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                 alignItems: 'center',
                 gap: '6px'
               }}
-              className="hover:bg-slate-100 hover:text-slate-900 transition-colors"
+              className="hover:bg-slate-50 transition-colors"
             >
               <ArrowLeft size={14} />
               <span>Back to Solutions</span>

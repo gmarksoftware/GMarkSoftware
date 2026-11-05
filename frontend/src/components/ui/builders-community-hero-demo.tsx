@@ -94,7 +94,7 @@ const items: OrbitItem[] = [
     angle: 135, 
     mobileAngle: 140,
     icon: <Sparkles size={16} className="text-purple-600 fill-purple-100" />, 
-    iconBg: 'bg-purple-50/90',
+    iconBg: 'bg-red-50/90',
     label: '18',
     glow: 'rgba(147, 51, 234, 0.16)'
   },

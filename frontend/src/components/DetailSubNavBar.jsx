@@ -31,7 +31,7 @@ export default function DetailSubNavBar({ app, onSelectApp, onNavigate }) {
   return (
     <div 
       className="sticky-subnav-ribbon sticky top-[54px] sm:top-[58px] lg:top-[64px] z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-[0_1px_3px_rgba(15,23,42,0.03)]"
-      style={{ fontFamily: "'Inter', sans-serif" }}
+      style={{ fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
     >
       <div className="px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2">
         <div 
@@ -49,10 +49,10 @@ export default function DetailSubNavBar({ app, onSelectApp, onNavigate }) {
                   key={mod.id}
                   type="button"
                   onClick={() => handleModuleSelect(mod)}
-                  className={`text-[0.74rem] sm:text-[0.78rem] font-medium px-2.5 sm:px-3 py-1 rounded-full whitespace-nowrap transition-all cursor-pointer border ${
+                  className={`text-[0.74rem] sm:text-[0.78rem] font-medium px-2.5 sm:px-3 py-1 rounded-md whitespace-nowrap transition-all cursor-pointer border ${
                     isActive
-                      ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-xs font-semibold'
-                      : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100 hover:text-slate-900 hover:border-slate-300'
+                      ? 'bg-[#FC787D] text-white border-[#FC787D] shadow-xs font-semibold'
+                      : 'bg-white text-slate-700 border-slate-200 hover:bg-[#FFF1F2] hover:text-[#FC787D] hover:border-[#FED7D9]'
                   }`}
                 >
                   {mod.name}

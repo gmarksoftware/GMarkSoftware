@@ -269,9 +269,9 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
           <span 
             className="text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full mb-3 inline-block"
             style={{
-              backgroundColor: '#F9F5F8',
-              color: '#714B67',
-              border: '1px solid #E3D4DF'
+              backgroundColor: '#FFF1F2',
+              color: '#FC787D',
+              border: '1px solid #FED7D9'
             }}
           >
             Modular &amp; Fully Integrated
@@ -281,7 +281,7 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
             style={{ color: '#1E293B' }}
           >
             Integrated Applications{' '}
-            <span style={{ color: '#714B67' }}>&amp; Platforms</span>
+            <span style={{ color: '#FC787D' }}>&amp; Platforms</span>
           </h2>
           <p 
             className="mt-3 text-sm sm:text-base text-slate-600 font-normal max-w-lg mx-auto leading-relaxed"
@@ -311,7 +311,7 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
                     ? 'text-white shadow-sm'
                     : 'text-slate-600 bg-slate-100 hover:bg-slate-200 hover:text-slate-900'
                 }`}
-                style={isActive ? { backgroundColor: '#714B67' } : undefined}
+                style={isActive ? { backgroundColor: '#FC787D' } : undefined}
               >
                 {cat.label}
               </button>
@@ -344,7 +344,7 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
                   delay: (index % 3) * 0.12, 
                   ease: ENTERPRISE_EASING 
                 }}
-                className="group flex flex-col justify-between p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#714B67]/40 hover:shadow-lg transition-all duration-300 cursor-pointer text-left focus-visible:outline-2 focus-visible:outline-[#714B67]"
+                className="group flex flex-col justify-between p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#FC787D]/40 hover:shadow-lg transition-all duration-300 cursor-pointer text-left focus-visible:outline-2 focus-visible:outline-[#FC787D]"
                 title={`${app.name} — Click to explore`}
               >
                 <div>
@@ -353,8 +353,8 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
                     <div 
                       className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center p-2.5 transition-transform duration-300 group-hover:scale-105 shrink-0"
                       style={{ 
-                        backgroundColor: `${app.accent || '#714B67'}12`,
-                        border: `1px solid ${app.accent || '#714B67'}25`
+                        backgroundColor: `${app.accent || '#FC787D'}12`,
+                        border: `1px solid ${app.accent || '#FC787D'}25`
                       }}
                     >
                       {app.image ? (
@@ -367,7 +367,7 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
                       ) : (
                         <FallbackIcon 
                           className="w-7 h-7" 
-                          style={{ color: app.accent || '#714B67' }} 
+                          style={{ color: app.accent || '#FC787D' }} 
                         />
                       )}
                     </div>
@@ -376,8 +376,8 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
                       <span 
                         className="text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shrink-0"
                         style={{
-                          backgroundColor: `${app.accent || '#714B67'}15`,
-                          color: app.accent || '#714B67'
+                          backgroundColor: `${app.accent || '#FC787D'}15`,
+                          color: app.accent || '#FC787D'
                         }}
                       >
                         {app.badge}
@@ -387,7 +387,7 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
 
                   {/* App Name & Category */}
                   <div className="mb-2">
-                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#714B67] transition-colors">
+                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#FC787D] transition-colors">
                       {app.name}
                     </h3>
                     <p className="text-xs font-semibold text-slate-400 mt-0.5">
@@ -417,7 +417,7 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
                 <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
                   <span 
                     className="text-xs font-bold flex items-center gap-1 group-hover:gap-1.5 transition-all"
-                    style={{ color: '#714B67' }}
+                    style={{ color: '#FC787D' }}
                   >
                     Explore Module
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -514,7 +514,7 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
                     setSelectedApp(null);
                     if (onOpenExpertModal) onOpenExpertModal();
                   }}
-                  style={{ backgroundColor: '#714B67' }}
+                  style={{ backgroundColor: '#FC787D' }}
                   className="flex-1 py-3 text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:opacity-95 active:scale-[0.98] transition-all text-center cursor-pointer shadow-sm"
                 >
                   Request Platform Demo

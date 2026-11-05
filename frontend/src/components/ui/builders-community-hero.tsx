@@ -532,11 +532,11 @@ export default function CommunityOrbit({
               <h2 
                 className="w-full max-w-[800px] text-center text-[#0f172a] mx-auto px-2"
                 style={{
-                  fontFamily: "'Lora', serif",
+                  fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
                   fontSize: 'clamp(1.35rem, 2.6vw, 2.25rem)',
                   lineHeight: '1.25',
-                  letterSpacing: '-0.01em',
-                  fontWeight: 600,
+                  letterSpacing: '-0.02em',
+                  fontWeight: 700,
                 }}
               >
                 {headline}

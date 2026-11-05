@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useInView, animate, useReducedMotion } from 'framer-motion';
 import { 
   X, 
   Check, 
@@ -16,7 +16,86 @@ import {
 
 const SMOOTH_SLOW_EASING = [0.16, 1, 0.3, 1];
 
+/**
+ * Smooth, high-precision scroll-triggered count-up metric component
+ */
+function MetricCounter({
+  targetValue,
+  prefix = '',
+  suffix = '',
+  decimals = 0,
+  appendSuffixAtEnd = false,
+  inView = false,
+  duration = 1.8,
+  prefersReduced = false,
+}) {
+  const [displayValue, setDisplayValue] = useState(() => {
+    if (prefersReduced) {
+      return decimals > 0 ? targetValue.toFixed(decimals) : Math.floor(targetValue).toString();
+    }
+    return decimals > 0 ? (0).toFixed(decimals) : '0';
+  });
+  const [isCompleted, setIsCompleted] = useState(Boolean(prefersReduced));
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    if (prefersReduced) {
+      setDisplayValue(decimals > 0 ? targetValue.toFixed(decimals) : Math.floor(targetValue).toString());
+      setIsCompleted(true);
+      return;
+    }
+
+    if (!inView || hasAnimated.current) return;
+    hasAnimated.current = true;
+
+    const controls = animate(0, targetValue, {
+      duration: duration,
+      ease: SMOOTH_SLOW_EASING,
+      onUpdate: (latest) => {
+        if (decimals > 0) {
+          setDisplayValue(latest.toFixed(decimals));
+        } else {
+          setDisplayValue(Math.floor(latest).toString());
+        }
+      },
+      onComplete: () => {
+        if (decimals > 0) {
+          setDisplayValue(targetValue.toFixed(decimals));
+        } else {
+          setDisplayValue(Math.floor(targetValue).toString());
+        }
+        setIsCompleted(true);
+      },
+    });
+
+    return () => controls.stop();
+  }, [inView, targetValue, decimals, duration, prefersReduced]);
+
+  const activeSuffix = appendSuffixAtEnd ? (isCompleted ? suffix : '') : suffix;
+
+  return (
+    <span className="inline-flex items-baseline tabular-nums">
+      {prefix && <span className="select-none">{prefix}</span>}
+      <span>{displayValue}</span>
+      {activeSuffix && (
+        <motion.span
+          initial={appendSuffixAtEnd ? { opacity: 0, scale: 0.85 } : false}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          className="select-none"
+        >
+          {activeSuffix}
+        </motion.span>
+      )}
+    </span>
+  );
+}
+
 export default function OdooComparisonSection({ onOpenExpertModal, onExploreApps }) {
+  const statsRef = useRef(null);
+  const isStatsInView = useInView(statsRef, { once: true, amount: 0.25 });
+  const prefersReduced = useReducedMotion();
+
   const PAIN_POINTS = [
     { title: 'Multiple Expensive Subscriptions', desc: '5-8 separate software vendors with independent monthly license fees, per-user premiums, and disjointed renewal dates.' },
     { title: 'Painful Manual CSV Imports', desc: 'Staff forced to spend hours downloading Excel sheets from one system to upload into another, creating errors.' },
@@ -32,10 +111,42 @@ export default function OdooComparisonSection({ onOpenExpertModal, onExploreApps
   ];
 
   const STATS = [
-    { value: '10+', label: 'Integrated Platforms', sub: 'Single Relational Core' },
-    { value: '< 50ms', label: 'Telemetry Latency', sub: '50Hz Sub-Second Stream' },
-    { value: '100%', label: 'Statutory GST & Ind AS', sub: 'Dual-Entry Mathematical Match' },
-    { value: '99.99%', label: 'High Availability', sub: 'Enterprise SLA Guarantee' }
+    { 
+      targetValue: 10,
+      prefix: '',
+      suffix: '+',
+      decimals: 0,
+      appendSuffixAtEnd: true,
+      label: 'Integrated Platforms', 
+      sub: 'Single Relational Core' 
+    },
+    { 
+      targetValue: 50,
+      prefix: '< ',
+      suffix: 'ms',
+      decimals: 0,
+      appendSuffixAtEnd: false,
+      label: 'Telemetry Latency', 
+      sub: '50Hz Sub-Second Stream' 
+    },
+    { 
+      targetValue: 100,
+      prefix: '',
+      suffix: '%',
+      decimals: 0,
+      appendSuffixAtEnd: false,
+      label: 'Statutory GST & Ind AS', 
+      sub: 'Dual-Entry Mathematical Match' 
+    },
+    { 
+      targetValue: 99.99,
+      prefix: '',
+      suffix: '%',
+      decimals: 2,
+      appendSuffixAtEnd: false,
+      label: 'High Availability', 
+      sub: 'Enterprise SLA Guarantee' 
+    }
   ];
 
   return (
@@ -58,9 +169,9 @@ export default function OdooComparisonSection({ onOpenExpertModal, onExploreApps
           <span 
             className="text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full mb-3 inline-block"
             style={{
-              backgroundColor: '#F9F5F8',
-              color: '#714B67',
-              border: '1px solid #E3D4DF'
+              backgroundColor: '#FFF1F2',
+              color: '#FC787D',
+              border: '1px solid #FED7D9'
             }}
           >
             The Unified Advantage
@@ -125,11 +236,11 @@ export default function OdooComparisonSection({ onOpenExpertModal, onExploreApps
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 1.05, delay: 0.15, ease: SMOOTH_SLOW_EASING }}
             className="p-6 sm:p-8 rounded-3xl bg-white border-2 shadow-lg relative overflow-hidden"
-            style={{ borderColor: '#714B67' }}
+            style={{ borderColor: '#FC787D' }}
           >
             <div 
               className="absolute top-0 right-0 px-4 py-1 text-[11px] font-bold text-white rounded-bl-xl uppercase tracking-wider"
-              style={{ backgroundColor: '#714B67' }}
+              style={{ backgroundColor: '#FC787D' }}
             >
               Recommended Architecture
             </div>
@@ -164,30 +275,45 @@ export default function OdooComparisonSection({ onOpenExpertModal, onExploreApps
 
         </div>
 
-        {/* Odoo Key Enterprise Numbers Strip: Smooth Slow Slide Up from Bottom */}
+        {/* Odoo Key Enterprise Numbers Strip: Scroll-Triggered Animated Count-Up */}
         <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
+          ref={statsRef}
+          initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          animate={isStatsInView ? { opacity: 1, y: 0 } : (prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 })}
           transition={{ duration: 1.0, ease: SMOOTH_SLOW_EASING }}
-          className="p-8 sm:p-10 rounded-3xl bg-[#F8FAFC] border border-slate-200/90 mb-16 sm:mb-20"
+          className="p-8 sm:p-10 rounded-3xl bg-[#F8FAFC] border border-slate-200/90 mb-16 sm:mb-20 shadow-[0_2px_16px_rgba(0,0,0,0.03)]"
         >
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center">
             {STATS.map((stat, i) => (
-              <div key={i} className="flex flex-col items-center">
+              <motion.div 
+                key={i} 
+                initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                animate={isStatsInView ? { opacity: 1, y: 0 } : (prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 })}
+                transition={{ duration: 0.8, delay: i * 0.1, ease: SMOOTH_SLOW_EASING }}
+                className="flex flex-col items-center group cursor-default"
+              >
                 <span 
-                  className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight"
-                  style={{ color: '#714B67' }}
+                  className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight select-none"
+                  style={{ color: '#FC787D' }}
                 >
-                  {stat.value}
+                  <MetricCounter
+                    targetValue={stat.targetValue}
+                    prefix={stat.prefix}
+                    suffix={stat.suffix}
+                    decimals={stat.decimals}
+                    appendSuffixAtEnd={stat.appendSuffixAtEnd}
+                    inView={isStatsInView}
+                    duration={1.8}
+                    prefersReduced={prefersReduced}
+                  />
                 </span>
-                <span className="text-sm font-bold text-slate-800 mt-1">
+                <span className="text-sm font-bold text-slate-800 mt-2 group-hover:text-[#FC787D] transition-colors duration-200">
                   {stat.label}
                 </span>
-                <span className="text-xs text-slate-500 mt-0.5">
+                <span className="text-xs text-slate-500 mt-0.5 leading-relaxed">
                   {stat.sub}
                 </span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
@@ -199,7 +325,7 @@ export default function OdooComparisonSection({ onOpenExpertModal, onExploreApps
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 1.15, ease: SMOOTH_SLOW_EASING }}
           className="rounded-3xl p-8 sm:p-12 text-center text-white relative overflow-hidden shadow-xl"
-          style={{ backgroundColor: '#714B67' }}
+          style={{ backgroundColor: '#FC787D' }}
         >
           {/* Subtle decorative circles */}
           <div 
@@ -223,7 +349,7 @@ export default function OdooComparisonSection({ onOpenExpertModal, onExploreApps
               <button
                 type="button"
                 onClick={onOpenExpertModal}
-                className="w-full sm:w-auto px-8 py-3.5 bg-white text-[#714B67] hover:bg-slate-100 font-bold text-sm sm:text-base rounded-lg shadow-md transition-all cursor-pointer"
+                className="w-full sm:w-auto px-8 py-3.5 bg-white text-[#FC787D] hover:bg-slate-100 font-bold text-sm sm:text-base rounded-lg shadow-md transition-all cursor-pointer"
               >
                 Request Free Consultation
               </button>

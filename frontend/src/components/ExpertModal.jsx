@@ -118,7 +118,7 @@ export default function ExpertModal({ isOpen, onClose }) {
                 fontWeight: '700', 
                 letterSpacing: '0.12em', 
                 textTransform: 'uppercase',
-                color: '#714B67',
+                color: '#FC787D',
                 marginBottom: '0.25rem' 
               }}
             >
@@ -136,7 +136,7 @@ export default function ExpertModal({ isOpen, onClose }) {
               }}
             >
               <span>Talk to a </span>
-              <span style={{ color: '#714B67' }}>Solutions Architect</span>
+              <span style={{ color: '#FC787D' }}>Solutions Architect</span>
             </h3>
             <p 
               style={{ 
@@ -175,12 +175,12 @@ export default function ExpertModal({ isOpen, onClose }) {
         <div className="p-4 sm:p-7 overflow-y-auto">
           {submitted ? (
             <div style={{ textAlign: 'center', padding: '2.5rem 1rem' }}>
-              <div style={{ width: '56px', height: '56px', borderRadius: '50%', backgroundColor: 'rgba(113, 75, 103, 0.12)', color: '#714B67', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem' }}>
+              <div style={{ width: '56px', height: '56px', borderRadius: '50%', backgroundColor: 'rgba(252, 120, 125, 0.12)', color: '#FC787D', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem' }}>
                 <CheckCircle2 size={32} />
               </div>
               <h4 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: '1.3rem', fontWeight: '800', color: '#1E293B', marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>
                 <span>Consultation Request </span>
-                <span style={{ color: '#714B67' }}>Received</span>
+                <span style={{ color: '#FC787D' }}>Received</span>
               </h4>
               <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: '0.9rem', color: '#4B5563', lineHeight: '1.6', maxWidth: '380px', margin: '0 auto' }}>
                 Our systems engineering lead will review your operational requirements and connect with you within 4 business hours.
@@ -192,8 +192,8 @@ export default function ExpertModal({ isOpen, onClose }) {
                 <div style={{
                   padding: '0.75rem 1rem',
                   borderRadius: '8px',
-                  backgroundColor: '#FEF2F2',
-                  border: '1.5px solid #FCA5A5',
+                  backgroundColor: '#FFF1F2',
+                  border: '1.5px solid #FDB4B7',
                   color: '#991B1B',
                   fontSize: '0.85rem',
                   display: 'flex',
@@ -340,7 +340,7 @@ export default function ExpertModal({ isOpen, onClose }) {
 
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '0.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#64748B', fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: '500' }}>
-                  <Shield size={15} style={{ color: '#714B67' }} />
+                  <Shield size={15} style={{ color: '#FC787D' }} />
                   <span>Enterprise NDA protected</span>
                 </div>
 
@@ -349,7 +349,7 @@ export default function ExpertModal({ isOpen, onClose }) {
                   disabled={isSubmitting}
                   className="inline-flex items-center justify-center gap-2 text-white font-bold transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md active:scale-[0.98] select-none"
                   style={{
-                    backgroundColor: '#714B67',
+                    backgroundColor: '#FC787D',
                     fontFamily: "'Plus Jakarta Sans', sans-serif",
                     fontSize: '0.92rem',
                     fontWeight: '700',
@@ -358,10 +358,10 @@ export default function ExpertModal({ isOpen, onClose }) {
                     border: 'none',
                     opacity: isSubmitting ? 0.7 : 1,
                     cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                    boxShadow: '0 2px 6px rgba(113, 75, 103, 0.25)'
+                    boxShadow: '0 2px 6px rgba(252, 120, 125, 0.25)'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#5E3E55'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#714B67'}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#E86368'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FC787D'}
                 >
                   {isSubmitting ? (
                     <>
@@ -388,8 +388,8 @@ export default function ExpertModal({ isOpen, onClose }) {
           to { opacity: 1; transform: scale(1); }
         }
         .modal-form-field:focus {
-          border-color: #714B67 !important;
-          box-shadow: 0 0 0 3px rgba(113, 75, 103, 0.12) !important;
+          border-color: #FC787D !important;
+          box-shadow: 0 0 0 3px rgba(252, 120, 125, 0.12) !important;
         }
       `}</style>
     </div>

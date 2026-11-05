@@ -232,7 +232,7 @@ export default function HelpPage({ onOpenExpertModal }) {
             transform: 'translateX(-50%)',
             width: '680px',
             height: '380px',
-            background: 'radial-gradient(ellipse 80% 50% at 50% -15%, rgba(113, 75, 103, 0.09) 0%, rgba(255, 255, 255, 0) 70%)',
+            background: 'radial-gradient(ellipse 80% 50% at 50% -15%, rgba(252, 120, 125, 0.09) 0%, rgba(255, 255, 255, 0) 70%)',
             pointerEvents: 'none',
             zIndex: 0
           }}
@@ -253,22 +253,22 @@ export default function HelpPage({ onOpenExpertModal }) {
           <div 
             style={{
               padding: '6px 16px',
-              backgroundColor: '#F9F5F8',
-              border: '1px solid #E3D4DF',
+              backgroundColor: '#FFF1F2',
+              border: '1px solid #FED7D9',
               borderRadius: '100px',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
-              boxShadow: '0 2px 8px rgba(113, 75, 103, 0.04)',
+              boxShadow: '0 2px 8px rgba(252, 120, 125, 0.04)',
               fontSize: '0.75rem',
               fontWeight: '700',
               letterSpacing: '0.08em',
-              color: '#714B67',
+              color: '#FC787D',
               textTransform: 'uppercase',
               fontFamily: "'Plus Jakarta Sans', sans-serif"
             }}
           >
-            <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#714B67', animation: 'pulseDot 2s infinite' }} />
+            <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#FC787D', animation: 'pulseDot 2s infinite' }} />
             G-MARK SUPPORT &amp; HELP CENTER
           </div>
         </div>
@@ -291,7 +291,7 @@ export default function HelpPage({ onOpenExpertModal }) {
           }}
         >
           <span>How can we </span>
-          <span style={{ color: '#714B67' }}>help you?</span>
+          <span style={{ color: '#FC787D' }}>help you?</span>
         </h1>
 
         <p 
@@ -362,9 +362,9 @@ export default function HelpPage({ onOpenExpertModal }) {
             <button 
               type="button" 
               style={{ 
-                background: 'rgba(113, 75, 103, 0.08)', 
+                background: 'rgba(252, 120, 125, 0.08)', 
                 border: 'none', 
-                color: '#714B67', 
+                color: '#FC787D', 
                 cursor: 'pointer', 
                 padding: '7px 11px', 
                 borderRadius: '8px',
@@ -374,8 +374,8 @@ export default function HelpPage({ onOpenExpertModal }) {
                 transition: 'background-color 0.2s ease'
               }}
               aria-label="Search"
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(113, 75, 103, 0.16)'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(113, 75, 103, 0.08)'}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(252, 120, 125, 0.16)'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(252, 120, 125, 0.08)'}
             >
               <Send size={15} />
             </button>
@@ -390,16 +390,16 @@ export default function HelpPage({ onOpenExpertModal }) {
             }}
             className="inline-flex items-center justify-center gap-2 text-white font-bold transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md active:scale-[0.98] select-none text-center"
             style={{
-              backgroundColor: '#714B67',
+              backgroundColor: '#FC787D',
               fontFamily: "'Plus Jakarta Sans', sans-serif",
               padding: '0.8rem 1.75rem',
               borderRadius: '10px',
               fontSize: '0.95rem',
               border: 'none',
-              boxShadow: '0 2px 6px rgba(113, 75, 103, 0.25)'
+              boxShadow: '0 2px 6px rgba(252, 120, 125, 0.25)'
             }}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#5E3E55'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#714B67'}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#E86368'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FC787D'}
           >
             <span>Ask a Human</span>
             <ArrowRight size={16} />
@@ -440,7 +440,7 @@ export default function HelpPage({ onOpenExpertModal }) {
                   boxShadow: '0 2px 6px rgba(15, 23, 42, 0.02)'
                 }}
               >
-                <div style={{ width: '30px', height: '30px', borderRadius: '8px', backgroundColor: 'rgba(113, 75, 103, 0.08)', color: '#714B67', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <div style={{ width: '30px', height: '30px', borderRadius: '8px', backgroundColor: 'rgba(252, 120, 125, 0.08)', color: '#FC787D', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <IconC size={16} />
                 </div>
                 <div style={{ textAlign: 'left' }}>
@@ -477,9 +477,9 @@ export default function HelpPage({ onOpenExpertModal }) {
               <span 
                 className="text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full mb-3 inline-block"
                 style={{
-                  backgroundColor: '#F9F5F8',
-                  color: '#714B67',
-                  border: '1px solid #E3D4DF',
+                  backgroundColor: '#FFF1F2',
+                  color: '#FC787D',
+                  border: '1px solid #FED7D9',
                   fontFamily: "'Plus Jakarta Sans', sans-serif"
                 }}
               >
@@ -496,7 +496,7 @@ export default function HelpPage({ onOpenExpertModal }) {
                 marginBottom: '0.4rem'
               }}>
                 <span>Contact Us &amp; </span>
-                <span style={{ color: '#714B67' }}>Inquiries</span>
+                <span style={{ color: '#FC787D' }}>Inquiries</span>
               </h2>
               <p style={{
                 fontSize: 'clamp(0.88rem, 1.5vw, 1rem)',
@@ -532,11 +532,11 @@ export default function HelpPage({ onOpenExpertModal }) {
                       className={`help-select-card ${isSelected ? 'selected' : ''}`}
                       style={{
                         backgroundColor: '#FFFFFF',
-                        border: `1.5px solid ${isSelected ? '#714B67' : '#E2E8F0'}`,
+                        border: `1.5px solid ${isSelected ? '#FC787D' : '#E2E8F0'}`,
                         borderRadius: '16px',
                         padding: '1.5rem 1.35rem',
                         cursor: 'pointer',
-                        boxShadow: isSelected ? '0 12px 28px -6px rgba(113, 75, 103, 0.16)' : '0 2px 8px rgba(15, 23, 42, 0.03)',
+                        boxShadow: isSelected ? '0 12px 28px -6px rgba(252, 120, 125, 0.16)' : '0 2px 8px rgba(15, 23, 42, 0.03)',
                         transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                         transform: isSelected ? 'translateY(-3px)' : 'none',
                         position: 'relative',
@@ -554,8 +554,8 @@ export default function HelpPage({ onOpenExpertModal }) {
                               width: '42px', 
                               height: '42px', 
                               borderRadius: '10px', 
-                              backgroundColor: isSelected ? '#714B67' : '#F9F5F8',
-                              color: isSelected ? '#FFFFFF' : '#714B67',
+                              backgroundColor: isSelected ? '#FC787D' : '#FFF1F2',
+                              color: isSelected ? '#FFFFFF' : '#FC787D',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
@@ -569,10 +569,10 @@ export default function HelpPage({ onOpenExpertModal }) {
                             style={{ 
                               fontSize: '0.7rem', 
                               fontFamily: "'Plus Jakarta Sans', sans-serif", 
-                              color: '#714B67', 
+                              color: '#FC787D', 
                               fontWeight: '700',
-                              backgroundColor: isSelected ? 'rgba(113, 75, 103, 0.1)' : '#F9F5F8',
-                              border: isSelected ? '1px solid #E3D4DF' : '1px solid #E2E8F0',
+                              backgroundColor: isSelected ? 'rgba(252, 120, 125, 0.1)' : '#FFF1F2',
+                              border: isSelected ? '1px solid #FED7D9' : '1px solid #E2E8F0',
                               padding: '3px 8px',
                               borderRadius: '6px'
                             }}
@@ -589,7 +589,7 @@ export default function HelpPage({ onOpenExpertModal }) {
                         </p>
                       </div>
 
-                      <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.8rem', fontWeight: '700', color: isSelected ? '#714B67' : '#94A3B8', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                      <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.8rem', fontWeight: '700', color: isSelected ? '#FC787D' : '#94A3B8', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                         <span>{isSelected ? 'Active Selection' : 'Select category'}</span>
                         <ArrowRight size={13} />
                       </div>
@@ -614,7 +614,7 @@ export default function HelpPage({ onOpenExpertModal }) {
                 }}
               >
                 <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#1E293B', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.6rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                  <div style={{ width: '32px', height: '32px', borderRadius: '8px', backgroundColor: 'rgba(113, 75, 103, 0.08)', color: '#714B67', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ width: '32px', height: '32px', borderRadius: '8px', backgroundColor: 'rgba(252, 120, 125, 0.08)', color: '#FC787D', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <Headphones size={18} />
                   </div>
                   Support &amp; Emergency Lines
@@ -624,14 +624,14 @@ export default function HelpPage({ onOpenExpertModal }) {
                   
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.9rem' }}>
                     <span style={{ color: '#64748B', fontWeight: '500' }}>Direct Helpline</span>
-                    <a href="tel:+919657363967" style={{ color: '#714B67', fontWeight: '700', textDecoration: 'none' }} className="contact-link">
+                    <a href="tel:+919657363967" style={{ color: '#FC787D', fontWeight: '700', textDecoration: 'none' }} className="contact-link">
                       +91 9657363967
                     </a>
                   </div>
 
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.9rem' }}>
                     <span style={{ color: '#64748B', fontWeight: '500' }}>Technical Desk</span>
-                    <a href="mailto:gmarksoftware@gmail.com" style={{ color: '#714B67', fontWeight: '700', textDecoration: 'none' }} className="contact-link">
+                    <a href="mailto:gmarksoftware@gmail.com" style={{ color: '#FC787D', fontWeight: '700', textDecoration: 'none' }} className="contact-link">
                       gmarksoftware@gmail.com
                     </a>
                   </div>
@@ -652,7 +652,7 @@ export default function HelpPage({ onOpenExpertModal }) {
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontSize: '0.85rem', color: '#4B5563', backgroundColor: '#F8FAFC', padding: '0.85rem 1rem', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
-                  <MapPin size={18} style={{ color: '#714B67', flexShrink: 0, marginTop: '2px' }} />
+                  <MapPin size={18} style={{ color: '#FC787D', flexShrink: 0, marginTop: '2px' }} />
                   <div>
                     <strong style={{ color: '#1E293B', display: 'block' }}>G Mark Software Private Limited</strong>
                     <div style={{ color: '#64748B' }}>Moshi, Pune, Maharashtra, India - 412105</div>
@@ -681,9 +681,9 @@ export default function HelpPage({ onOpenExpertModal }) {
                 <span 
                   className="text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full mb-3 inline-block"
                   style={{
-                    backgroundColor: '#F9F5F8',
-                    color: '#714B67',
-                    border: '1px solid #E3D4DF',
+                    backgroundColor: '#FFF1F2',
+                    color: '#FC787D',
+                    border: '1px solid #FED7D9',
                     fontFamily: "'Plus Jakarta Sans', sans-serif"
                   }}
                 >
@@ -696,7 +696,7 @@ export default function HelpPage({ onOpenExpertModal }) {
                     {activeTab === 'partner' && 'Inquire About Partner & FPO '}
                     {activeTab === 'bug' && 'Submit an Engineering Support '}
                   </span>
-                  <span style={{ color: '#714B67' }}>
+                  <span style={{ color: '#FC787D' }}>
                     {activeTab === 'advisor' && 'Advisor'}
                     {activeTab === 'developments' && 'Development'}
                     {activeTab === 'partner' && 'Programs'}
@@ -711,12 +711,12 @@ export default function HelpPage({ onOpenExpertModal }) {
 
               {submitted ? (
                 <div style={{ textAlign: 'center', padding: '3rem 1rem', animation: 'fadeInUp 0.5s ease-out' }}>
-                  <div style={{ width: '60px', height: '60px', borderRadius: '50%', backgroundColor: 'rgba(113, 75, 103, 0.12)', color: '#714B67', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem', boxShadow: '0 6px 18px rgba(113, 75, 103, 0.2)' }}>
+                  <div style={{ width: '60px', height: '60px', borderRadius: '50%', backgroundColor: 'rgba(252, 120, 125, 0.12)', color: '#FC787D', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem', boxShadow: '0 6px 18px rgba(252, 120, 125, 0.2)' }}>
                     <CheckCircle2 size={36} />
                   </div>
                   <h4 style={{ fontSize: '1.45rem', fontWeight: '800', color: '#1E293B', marginBottom: '0.5rem', fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: '-0.02em' }}>
                     <span>Inquiry Dispatched </span>
-                    <span style={{ color: '#714B67' }}>Successfully!</span>
+                    <span style={{ color: '#FC787D' }}>Successfully!</span>
                   </h4>
                   <p style={{ color: '#4B5563', maxWidth: '460px', margin: '0 auto', lineHeight: '1.6', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                     A G-Mark systems specialist will review your ticket and connect with you within 2-4 business hours.
@@ -728,8 +728,8 @@ export default function HelpPage({ onOpenExpertModal }) {
                     <div style={{
                       padding: '0.85rem 1.15rem',
                       borderRadius: '10px',
-                      backgroundColor: '#FEF2F2',
-                      border: '1.5px solid #FCA5A5',
+                      backgroundColor: '#FFF1F2',
+                      border: '1.5px solid #FDB4B7',
                       color: '#991B1B',
                       fontSize: '0.9rem',
                       display: 'flex',
@@ -870,7 +870,7 @@ export default function HelpPage({ onOpenExpertModal }) {
 
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '0.5rem', flexWrap: 'wrap', gap: '1rem' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.82rem', color: '#64748B', fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: '500' }}>
-                      <ShieldCheck size={18} style={{ color: '#714B67' }} />
+                      <ShieldCheck size={18} style={{ color: '#FC787D' }} />
                       <span>Protected by G-Mark Enterprise NDA standards</span>
                     </div>
 
@@ -879,7 +879,7 @@ export default function HelpPage({ onOpenExpertModal }) {
                       disabled={submitting}
                       className="inline-flex items-center justify-center gap-2 text-white font-bold transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md active:scale-[0.98] select-none"
                       style={{
-                        backgroundColor: '#714B67',
+                        backgroundColor: '#FC787D',
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
                         padding: '0.85rem 2.2rem',
                         fontSize: '0.98rem',
@@ -887,10 +887,10 @@ export default function HelpPage({ onOpenExpertModal }) {
                         border: 'none',
                         opacity: submitting ? 0.75 : 1,
                         cursor: submitting ? 'not-allowed' : 'pointer',
-                        boxShadow: '0 2px 6px rgba(113, 75, 103, 0.25)'
+                        boxShadow: '0 2px 6px rgba(252, 120, 125, 0.25)'
                       }}
-                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#5E3E55'}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#714B67'}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#E86368'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FC787D'}
                     >
                       {submitting ? (
                         <>
@@ -920,34 +920,34 @@ export default function HelpPage({ onOpenExpertModal }) {
         @keyframes pulseDot {
           0% {
             transform: scale(0.95);
-            box-shadow: 0 0 0 0 rgba(113, 75, 103, 0.5);
+            box-shadow: 0 0 0 0 rgba(252, 120, 125, 0.5);
           }
           70% {
             transform: scale(1.05);
-            box-shadow: 0 0 0 7px rgba(113, 75, 103, 0);
+            box-shadow: 0 0 0 7px rgba(252, 120, 125, 0);
           }
           100% {
             transform: scale(0.95);
-            box-shadow: 0 0 0 0 rgba(113, 75, 103, 0);
+            box-shadow: 0 0 0 0 rgba(252, 120, 125, 0);
           }
         }
 
         .help-search-input-box:focus-within {
-          border-color: #714B67 !important;
-          box-shadow: 0 0 0 3px rgba(113, 75, 103, 0.12), 0 4px 16px rgba(113, 75, 103, 0.08) !important;
+          border-color: #FC787D !important;
+          box-shadow: 0 0 0 3px rgba(252, 120, 125, 0.12), 0 4px 16px rgba(252, 120, 125, 0.08) !important;
         }
 
         .support-pill:hover {
           transform: translateY(-2px);
           background-color: #FFFFFF !important;
           border-color: #CBD5E1 !important;
-          box-shadow: 0 6px 18px rgba(113, 75, 103, 0.08);
+          box-shadow: 0 6px 18px rgba(252, 120, 125, 0.08);
         }
 
         .help-select-card:hover {
           transform: translateY(-4px);
-          box-shadow: 0 14px 30px -6px rgba(113, 75, 103, 0.16) !important;
-          border-color: #714B67 !important;
+          box-shadow: 0 14px 30px -6px rgba(252, 120, 125, 0.16) !important;
+          border-color: #FC787D !important;
         }
 
         .help-select-card:hover .card-icon-box {
@@ -955,17 +955,17 @@ export default function HelpPage({ onOpenExpertModal }) {
         }
 
         .emergency-lines-box:hover {
-          border-color: #E3D4DF !important;
-          box-shadow: 0 12px 28px -6px rgba(113, 75, 103, 0.08) !important;
+          border-color: #FED7D9 !important;
+          box-shadow: 0 12px 28px -6px rgba(252, 120, 125, 0.08) !important;
         }
 
         .form-control-input:focus {
-          border-color: #714B67 !important;
-          box-shadow: 0 0 0 3px rgba(113, 75, 103, 0.12) !important;
+          border-color: #FC787D !important;
+          box-shadow: 0 0 0 3px rgba(252, 120, 125, 0.12) !important;
         }
 
         .contact-link:hover {
-          color: #5E3E55 !important;
+          color: #E86368 !important;
           text-decoration: underline !important;
         }
 

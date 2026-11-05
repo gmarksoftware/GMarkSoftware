@@ -183,7 +183,7 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
     {
       title: 'Contra Voucher',
       badge: 'Internal Transfers',
-      badgeColor: 'bg-purple-50 text-purple-700 border-purple-200',
+      badgeColor: 'bg-red-50 text-red-600 border-red-200',
       icon: RefreshCw,
       desc: 'Records internal monetary movements between company bank accounts and cash registers.',
       flow: 'Debit: Destination Bank/Cash → Credit: Source Bank/Cash',
@@ -247,7 +247,7 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
   ];
 
   return (
-    <div className="w-full bg-[#FCFCFD] text-slate-900 font-['Plus_Jakarta_Sans',sans-serif] overflow-x-hidden selection:bg-purple-100 selection:text-purple-900">
+    <div className="w-full bg-[#FCFCFD] text-slate-900 font-['Plus_Jakarta_Sans',sans-serif] overflow-x-hidden selection:bg-red-100 selection:text-[#FC787D]">
       
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (High-End SaaS Minimalist Atmosphere Inspired by Image 1)  */}
@@ -255,7 +255,7 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
       <section className="relative pt-10 sm:pt-16 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-white via-[#FCFCFD] to-slate-50/70 border-b border-slate-100">
         
         {/* Soft Ambient Radial Background Glows */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[360px] bg-gradient-to-b from-purple-100/40 via-rose-50/30 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[360px] bg-gradient-to-b from-red-100/40 via-rose-50/30 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
         <div className="absolute -top-12 right-10 w-96 h-96 bg-sky-50/60 rounded-full blur-3xl pointer-events-none -z-10" />
         
         {/* Subtle grid pattern */}
@@ -274,10 +274,10 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-xs mb-6"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF1F2] border border-[#FED7D9] shadow-xs mb-6"
           >
             <span className="w-2 h-2 rounded-full bg-[#FC787D] animate-pulse" />
-            <span className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-widest">
+            <span className="text-[11px] sm:text-xs font-bold text-[#FC787D] uppercase tracking-widest">
               Enterprise Resource Planning &amp; Automation
             </span>
           </motion.div>
@@ -290,13 +290,13 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
             className="relative inline-block mb-5 sm:mb-6"
           >
             <h1 
-              className="text-slate-900 tracking-tight text-3xl sm:text-5xl lg:text-[62px] font-bold leading-[1.16]"
-              style={{ fontFamily: "'Lora', serif" }}
+              className="text-slate-900 tracking-tight text-3xl sm:text-5xl lg:text-[62px] font-extrabold leading-[1.12]"
+              style={{ fontFamily: 'var(--font-sans)', letterSpacing: '-0.025em' }}
             >
               <span>Enterprise Resource </span>
               <br className="hidden sm:inline" />
               <span className="relative inline-block whitespace-nowrap">
-                <span className="relative z-10 font-bold" style={{ color: '#FC787D' }}>
+                <span className="relative z-10 font-extrabold" style={{ color: '#FC787D' }}>
                   Planning
                 </span>
                 {/* Hand-drawn marker brush stroke highlight matching hero */}
@@ -309,8 +309,8 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
                 >
                   <path
                     d="M 4,14 Q 130,5 256,12 Q 130,20 6,17"
-                    fill="#00A3FF"
-                    opacity="0.8"
+                    fill="#FC787D"
+                    fillOpacity="0.25"
                   />
                 </svg>
               </span>
@@ -320,7 +320,7 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
             {/* Playful Hand-drawn curved arrow & Floating App Logo Card */}
             <div className="hidden md:flex absolute -right-28 lg:-right-36 bottom-2 items-end z-20 pointer-events-none">
               <svg
-                className="w-14 h-10 lg:w-16 lg:h-12 pointer-events-none overflow-visible -mr-1 mb-2 text-[#7B5872]"
+                className="w-14 h-10 lg:w-16 lg:h-12 pointer-events-none overflow-visible -mr-1 mb-2 text-[#FC787D]"
                 viewBox="0 0 80 50"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -362,7 +362,7 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
             Unified business operations platform for agricultural trading, industrial manufacturing, and procurement. Seamlessly connect customers, suppliers, inventory, tax compliance, and double-entry financial ledgers in one real-time cloud system.
           </motion.p>
 
-          {/* Action Buttons (High-End SaaS Pill Buttons) */}
+          {/* Action Buttons (High-End SaaS Square-Curved Buttons) */}
           <motion.div 
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -372,7 +372,7 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
             <button
               type="button"
               onClick={onOpenExpertModal}
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-semibold text-white bg-[#7B5872] hover:bg-[#684760] shadow-lg shadow-purple-900/15 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-md text-sm font-semibold text-white bg-[#FC787D] hover:bg-[#E86368] shadow-lg shadow-[#FC787D]/20 hover:shadow-xl transition-all duration-200 cursor-pointer"
             >
               <span>Request ERP Platform Demo</span>
               <ArrowRight size={16} />
@@ -382,7 +382,7 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
               <button
                 type="button"
                 onClick={onBack}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-xs hover:shadow-sm transition-all duration-200 cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-xs hover:shadow-sm transition-all duration-200 cursor-pointer"
               >
                 <ArrowLeft size={16} />
                 <span>Back to Solutions</span>
@@ -427,7 +427,7 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-1 rounded-md text-[11px] font-bold bg-[#7B5872]/10 text-[#7B5872] border border-[#7B5872]/20">
+                  <span className="px-2.5 py-1 rounded-md text-[11px] font-bold bg-[#FC787D]/10 text-[#FC787D] border border-[#FC787D]/20">
                     Unified Cloud ERP
                   </span>
                 </div>
@@ -440,7 +440,7 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
                   { step: '02', title: 'Order Booking', sub: 'SO / PO Lock', color: 'border-slate-200 bg-white' },
                   { step: '03', title: 'Warehouse Dispatch', sub: 'Challan / GRN', color: 'border-slate-200 bg-white' },
                   { step: '04', title: 'Tax Invoice', sub: 'Auto CGST/SGST/IGST', color: 'border-slate-200 bg-white' },
-                  { step: '05', title: 'Settlement', sub: 'Receipt / Payment', color: 'border-purple-200 bg-purple-50/60' }
+                  { step: '05', title: 'Settlement', sub: 'Receipt / Payment', color: 'border-red-200 bg-red-50/60' }
                 ].map((s, idx) => (
                   <div key={idx} className={`p-2.5 rounded-xl border ${s.color} shadow-2xs text-left`}>
                     <div className="flex items-center justify-between mb-1">
@@ -513,11 +513,11 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
               </div>
               
               <h2 
-                className="text-slate-900 tracking-tight text-2xl sm:text-4xl font-bold leading-tight mb-4"
-                style={{ fontFamily: "'Lora', serif" }}
+                className="text-slate-900 tracking-tight text-2xl sm:text-4xl font-extrabold leading-tight mb-4"
+                style={{ fontFamily: 'var(--font-sans)', letterSpacing: '-0.025em' }}
               >
                 Customer Orders, <br className="hidden sm:inline" />
-                <span className="text-[#0B3A70]">Challans &amp; Invoices</span>
+                <span className="text-[#FC787D]">Challans &amp; Invoices</span>
               </h2>
 
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
@@ -779,11 +779,11 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
               </div>
               
               <h2 
-                className="text-slate-900 tracking-tight text-2xl sm:text-4xl font-bold leading-tight mb-4"
-                style={{ fontFamily: "'Lora', serif" }}
+                className="text-slate-900 tracking-tight text-2xl sm:text-4xl font-extrabold leading-tight mb-4"
+                style={{ fontFamily: 'var(--font-sans)', letterSpacing: '-0.025em' }}
               >
                 Purchase Orders, <br className="hidden sm:inline" />
-                <span className="text-[#0B3A70]">GRNs &amp; Inward Stock</span>
+                <span className="text-[#FC787D]">GRNs &amp; Inward Stock</span>
               </h2>
 
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
@@ -837,8 +837,8 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
               FINANCIAL CORE &amp; TAX ENGINE
             </span>
             <h2 
-              className="text-slate-900 tracking-tight text-2xl sm:text-4xl lg:text-[42px] font-bold leading-tight mb-4"
-              style={{ fontFamily: "'Lora', serif" }}
+              className="text-slate-900 tracking-tight text-2xl sm:text-4xl lg:text-[42px] font-extrabold leading-tight mb-4"
+              style={{ fontFamily: 'var(--font-sans)', letterSpacing: '-0.025em' }}
             >
               Double-Entry Accounting &amp; Automated GST Engine
             </h2>
@@ -968,14 +968,14 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
               transition={{ duration: 0.6 }}
               className="lg:col-span-5 flex flex-col justify-center"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200/70 text-purple-800 text-xs font-bold uppercase tracking-wider mb-4 w-fit">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200/70 text-[#FC787D] text-xs font-bold uppercase tracking-wider mb-4 w-fit">
                 <BarChart3 size={15} className="text-[#0B3A70]" />
                 <span>FINANCIAL REPORTING</span>
               </div>
 
               <h2 
-                className="text-slate-900 tracking-tight text-2xl sm:text-4xl font-bold leading-tight mb-4"
-                style={{ fontFamily: "'Lora', serif" }}
+                className="text-slate-900 tracking-tight text-2xl sm:text-4xl font-extrabold leading-tight mb-4"
+                style={{ fontFamily: 'var(--font-sans)', letterSpacing: '-0.025em' }}
               >
                 Profit &amp; Loss Report
               </h2>
@@ -994,7 +994,7 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
                   'Export reports for accounting, financial review, and business analysis.'
                 ].map((feature, idx) => (
                   <div key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-700 leading-snug">
-                    <div className="w-5 h-5 rounded-full bg-purple-50 text-[#7B5872] border border-purple-200 flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-5 h-5 rounded-full bg-red-50 text-[#FC787D] border border-red-200 flex items-center justify-center shrink-0 mt-0.5">
                       <Check size={12} strokeWidth={2.5} />
                     </div>
                     <span>{feature}</span>
@@ -1132,8 +1132,8 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
               </div>
 
               <h2 
-                className="text-slate-900 tracking-tight text-2xl sm:text-4xl font-bold leading-tight mb-4"
-                style={{ fontFamily: "'Lora', serif" }}
+                className="text-slate-900 tracking-tight text-2xl sm:text-4xl font-extrabold leading-tight mb-4"
+                style={{ fontFamily: 'var(--font-sans)', letterSpacing: '-0.025em' }}
               >
                 Masters — Your ERP Data Foundation
               </h2>
@@ -1192,8 +1192,8 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
               SYSTEM MASTERS &amp; SECURITY
             </span>
             <h2 
-              className="text-slate-900 tracking-tight text-2xl sm:text-4xl lg:text-[42px] font-bold leading-tight"
-              style={{ fontFamily: "'Lora', serif" }}
+              className="text-slate-900 tracking-tight text-2xl sm:text-4xl lg:text-[42px] font-extrabold leading-tight"
+              style={{ fontFamily: 'var(--font-sans)', letterSpacing: '-0.025em' }}
             >
               Master Data Hierarchy &amp; Role-Based Access (RBAC)
             </h2>
@@ -1285,8 +1285,8 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
               ARCHITECTURE &amp; INFRASTRUCTURE
             </span>
             <h2 
-              className="text-slate-900 tracking-tight text-2xl sm:text-4xl lg:text-[42px] font-bold leading-tight"
-              style={{ fontFamily: "'Lora', serif" }}
+              className="text-slate-900 tracking-tight text-2xl sm:text-4xl lg:text-[42px] font-extrabold leading-tight"
+              style={{ fontFamily: 'var(--font-sans)', letterSpacing: '-0.025em' }}
             >
               Enterprise Full-Stack Technology Architecture
             </h2>
@@ -1333,7 +1333,7 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="rounded-3xl p-6 sm:p-8 bg-gradient-to-r from-blue-50/80 via-sky-50/60 to-purple-50/40 border border-blue-200/80 shadow-sm flex items-start gap-4 sm:gap-5"
+            className="rounded-3xl p-6 sm:p-8 bg-gradient-to-r from-blue-50/80 via-sky-50/60 to-red-50/40 border border-blue-200/80 shadow-sm flex items-start gap-4 sm:gap-5"
           >
             <div className="w-10 h-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-blue-500/20">
               <Zap size={20} />
@@ -1363,8 +1363,8 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
               INTEGRATED ECOSYSTEM
             </span>
             <h2 
-              className="text-slate-900 tracking-tight text-2xl sm:text-4xl lg:text-[42px] font-bold leading-tight mb-3"
-              style={{ fontFamily: "'Lora', serif" }}
+              className="text-slate-900 tracking-tight text-2xl sm:text-4xl lg:text-[42px] font-extrabold leading-tight mb-3"
+              style={{ fontFamily: 'var(--font-sans)', letterSpacing: '-0.025em' }}
             >
               Connected Enterprise Platforms
             </h2>
@@ -1425,7 +1425,7 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
       <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white text-center relative overflow-hidden">
         
         {/* Soft Radial Ambient Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r from-purple-100/40 via-sky-50/40 to-rose-50/40 rounded-full blur-3xl pointer-events-none -z-10" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r from-red-100/40 via-sky-50/40 to-rose-50/40 rounded-full blur-3xl pointer-events-none -z-10" />
 
         <div className="max-w-3xl mx-auto relative z-10">
           
@@ -1441,12 +1441,12 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
           </div>
 
           <h2 
-            className="text-slate-900 tracking-tight text-3xl sm:text-5xl font-bold leading-tight mb-4"
-            style={{ fontFamily: "'Lora', serif" }}
+            className="text-slate-900 tracking-tight text-3xl sm:text-5xl font-extrabold leading-tight mb-4"
+            style={{ fontFamily: 'var(--font-sans)', letterSpacing: '-0.025em' }}
           >
             <span>Transform Your Enterprise Operations with </span>
             <span className="relative inline-block whitespace-nowrap">
-              <span className="relative z-10 text-slate-900">
+              <span className="relative z-10 text-[#FC787D]">
                 G Mark ERP
               </span>
               {/* Hand-drawn marker brush stroke highlight */}
@@ -1459,8 +1459,8 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
               >
                 <path
                   d="M 4,14 Q 130,5 256,12 Q 130,20 6,17"
-                  fill="#00A3FF"
-                  opacity="0.8"
+                  fill="#FC787D"
+                  fillOpacity="0.25"
                 />
               </svg>
             </span>
@@ -1474,7 +1474,7 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
             <button
               type="button"
               onClick={onOpenExpertModal}
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-semibold text-white bg-[#7B5872] hover:bg-[#684760] shadow-lg shadow-purple-900/15 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-md text-sm font-semibold text-white bg-[#FC787D] hover:bg-[#E86368] shadow-lg shadow-[#FC787D]/20 hover:shadow-xl transition-all duration-200 cursor-pointer"
             >
               <span>Schedule Enterprise Consultation</span>
               <ArrowRight size={16} />
@@ -1483,7 +1483,7 @@ export default function ErpAppDetailPage({ app, onBack, onOpenExpertModal, onSel
               <button
                 type="button"
                 onClick={onBack}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-xs hover:shadow-sm transition-all duration-200 cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-xs hover:shadow-sm transition-all duration-200 cursor-pointer"
               >
                 <ArrowLeft size={16} />
                 <span>Back to Solutions</span>

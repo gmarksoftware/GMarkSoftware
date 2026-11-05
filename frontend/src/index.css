@@ -2,6 +2,11 @@
 @import "tailwindcss";
 
 :root {
+  --theme-coral: #FC787D;
+  --theme-coral-hover: #E86368;
+  --theme-coral-light: #FFF1F2;
+  --theme-coral-border: #FED7D9;
+  
   --sky-400: #38bdf8;
   --sky-500: #0ea5e9;
   /* Color Palette - Enterprise White & Deep Blue */
@@ -79,6 +84,8 @@ html {
   background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   line-height: 1.5;
   overflow-x: hidden;
   max-width: 100%;
@@ -92,6 +99,15 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  background-color: #ffffff;
 }
 
 .font-geist {
@@ -158,32 +174,42 @@ body {
 /* Marquee Animations */
 @keyframes marquee {
   0% {
-    transform: translateX(0%);
+    transform: translate3d(0%, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 @keyframes marquee-reverse {
   0% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
   100% {
-    transform: translateX(0%);
+    transform: translate3d(0%, 0, 0);
   }
 }
 
 .animate-marquee {
   display: flex;
   width: max-content;
+  will-change: transform;
   animation: marquee var(--duration, 30s) linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
 
 .animate-marquee-reverse {
   display: flex;
   width: max-content;
+  will-change: transform;
   animation: marquee-reverse var(--duration, 30s) linear infinite;
+}
+
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
 }
 
 /* Technical Blueprint Grid Pattern */
@@ -231,20 +257,20 @@ body {
 }
 
 .section-headline {
-  font-family: 'Lora', serif;
+  font-family: var(--font-sans);
   font-size: clamp(1.35rem, 3.2vw, 2.6rem);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.15;
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
 }
 
 .section-subheadline {
-  font-family: 'Lora', serif;
+  font-family: var(--font-sans);
   font-size: clamp(1.2rem, 2.3vw, 1.9rem);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.2;
-  letter-spacing: 0;
+  letter-spacing: -0.015em;
   color: var(--text-primary);
 }
 

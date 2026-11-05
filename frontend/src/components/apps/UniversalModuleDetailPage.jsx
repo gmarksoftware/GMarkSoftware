@@ -33,7 +33,7 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
   const parentSectionLabel = isTechnology ? 'Technology' : 'Solutions';
 
   return (
-    <div style={{ backgroundColor: '#e8e8e8', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ backgroundColor: '#F8FAFC', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
       {/* ========================================================================= */}
       {/* 1. HERO HEADER */}
       {/* ========================================================================= */}
@@ -41,16 +41,23 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
         style={{ 
           backgroundColor: '#FFFFFF', 
           textAlign: 'center', 
-          paddingTop: 'clamp(1.25rem, 2.5vw, 2rem)', 
-          paddingBottom: 'clamp(2.5rem, 4vw, 3.75rem)', 
+          paddingTop: 'clamp(1.5rem, 3vw, 2.5rem)', 
+          paddingBottom: 'clamp(2.5rem, 4vw, 4rem)', 
           paddingLeft: '1.5rem', 
           paddingRight: '1.5rem',
           borderRadius: '0 0 1.5rem 1.5rem',
-          boxShadow: '0 4px 20px -2px rgba(0,0,0,0.04)',
-          position: 'relative'
+          boxShadow: '0 4px 20px -2px rgba(0,0,0,0.03)',
+          position: 'relative',
+          overflow: 'hidden'
         }}
       >
-        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+        {/* Ambient top radial gradient glow */}
+        <div 
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[360px] bg-gradient-to-b from-red-100/40 via-rose-50/20 to-transparent rounded-full blur-3xl pointer-events-none -z-0" 
+          aria-hidden="true"
+        />
+
+        <div style={{ maxWidth: '1000px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
           {/* Eyebrow Category & Badge Pill */}
           <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
             <span style={{
@@ -61,14 +68,14 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
               fontWeight: 600,
               textTransform: 'uppercase',
               letterSpacing: '0.06em',
-              padding: '4px 12px',
+              padding: '6px 14px',
               borderRadius: '9999px',
-              backgroundColor: '#F8FAFC',
-              color: '#475569',
-              border: '1px solid #E2E8F0',
-              boxShadow: '0 1px 3px rgba(15, 23, 42, 0.04)'
+              backgroundColor: '#FFF1F2',
+              color: '#FC787D',
+              border: '1px solid #FED7D9',
+              boxShadow: '0 1px 3px rgba(252, 120, 125, 0.04)'
             }}>
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#64748B' }}></span>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#FC787D' }}></span>
               {module.category} • {module.badge || 'ENTERPRISE MODULE'}
             </span>
           </div>
@@ -79,12 +86,12 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             style={{ 
-              fontFamily: "'Lora', serif", 
+              fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", 
               fontSize: 'clamp(2rem, 4vw, 3.87rem)', 
-              fontWeight: 600, 
+              fontWeight: 800, 
               color: '#0F172A', 
-              letterSpacing: '-0.01em',
-              lineHeight: 1.18,
+              letterSpacing: '-0.025em',
+              lineHeight: 1.15,
               marginBottom: '1rem'
             }}
           >
@@ -111,9 +118,9 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
               margin: '0 auto 2.5rem'
             }}>
               {module.metrics.map((m, idx) => (
-                <div key={idx} style={{ backgroundColor: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: '16px', padding: '1rem', textAlign: 'center', boxShadow: '0 4px 14px rgba(0,0,0,0.04)' }}>
+                <div key={idx} style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '1rem', textAlign: 'center', boxShadow: '0 4px 14px rgba(0,0,0,0.03)' }}>
                   <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748B', textTransform: 'uppercase' }}>{m.label}</div>
-                  <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#7B5872', marginTop: '0.25rem' }}>{m.val}</div>
+                  <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#FC787D', marginTop: '0.25rem' }}>{m.val}</div>
                   <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>{m.sub}</div>
                 </div>
               ))}
@@ -121,24 +128,24 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
           )}
 
           {/* Action Buttons */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
             <button
               onClick={onOpenExpertModal}
               style={{
-                backgroundColor: '#7B5872',
+                backgroundColor: '#FC787D',
                 color: '#FFFFFF',
-                padding: '0.8rem 1.85rem',
-                borderRadius: '9999px',
-                fontWeight: 500,
-                fontSize: '0.95rem',
+                padding: '0.75rem 1.75rem',
+                borderRadius: '6px',
+                fontWeight: 600,
+                fontSize: '0.9rem',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+                boxShadow: '0 4px 16px rgba(252, 120, 125, 0.25)'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-[#E86368] active:scale-[0.98] transition-all"
             >
               <span>Schedule Architecture Review</span>
               <ArrowRight size={16} />
@@ -148,14 +155,14 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
               style={{
                 backgroundColor: '#FFFFFF',
                 color: '#334155',
-                padding: '0.8rem 1.5rem',
-                borderRadius: '9999px',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '6px',
                 fontWeight: 500,
-                fontSize: '0.95rem',
+                fontSize: '0.9rem',
                 border: '1px solid #CBD5E1',
                 cursor: 'pointer'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-slate-50 hover:text-slate-900 transition-colors"
             >
               Explore Sibling Modules
             </button>
@@ -180,12 +187,12 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
                 fontSize: '0.75rem',
                 fontWeight: 700,
                 textTransform: 'uppercase',
-                color: '#7B5872',
+                color: '#FC787D',
                 letterSpacing: '0.05em'
               }}>
                 Strategic Capabilities & System Architecture
               </span>
-              <h2 style={{ fontFamily: "'Lora', serif", fontSize: '1.75rem', fontWeight: 600, color: '#111827', margin: '0.5rem 0 0.75rem' }}>
+              <h2 style={{ fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontSize: '1.75rem', fontWeight: 700, color: '#111827', margin: '0.5rem 0 0.75rem', letterSpacing: '-0.02em' }}>
                 Key Technical & Operational Pillars
               </h2>
               <p style={{ color: '#6B7280', fontSize: '0.95rem', margin: 0, lineHeight: 1.6 }}>
@@ -225,7 +232,7 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
                       }}>
                         {pillar.badge || `Pillar ${idx + 1}`}
                       </span>
-                      <CheckCircle2 size={16} color="#7B5872" />
+                      <CheckCircle2 size={16} color="#FC787D" />
                     </div>
 
                     <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#111827', marginBottom: '0.5rem' }}>
@@ -260,12 +267,12 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
                 fontSize: '0.75rem',
                 fontWeight: 700,
                 textTransform: 'uppercase',
-                color: '#7B5872',
+                color: '#FC787D',
                 letterSpacing: '0.05em'
               }}>
                 Execution Sequence
               </span>
-              <h2 style={{ fontFamily: "'Lora', serif", fontSize: '1.75rem', fontWeight: 600, color: '#111827', margin: '0.5rem 0 0.75rem' }}>
+              <h2 style={{ fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontSize: '1.75rem', fontWeight: 700, color: '#111827', margin: '0.5rem 0 0.75rem', letterSpacing: '-0.02em' }}>
                 Operational & Data Flow Pipeline
               </h2>
               <p style={{ color: '#6B7280', fontSize: '0.95rem', margin: 0, lineHeight: 1.6 }}>
@@ -292,7 +299,7 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
                   <div style={{
                     fontSize: '1.5rem',
                     fontWeight: 800,
-                    color: '#7B5872',
+                    color: '#FC787D',
                     marginBottom: '0.5rem',
                     display: 'flex',
                     alignItems: 'center',
@@ -328,7 +335,7 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
               <div>
-                <h3 style={{ fontFamily: "'Lora', serif", fontSize: '1.5rem', fontWeight: 600, color: '#111827', margin: 0 }}>
+                <h3 style={{ fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontSize: '1.5rem', fontWeight: 700, color: '#111827', margin: 0, letterSpacing: '-0.02em' }}>
                   Technical Specifications & Compliance Standards
                 </h3>
                 <p style={{ color: '#6B7280', fontSize: '0.875rem', marginTop: '0.25rem', margin: 0 }}>
@@ -340,14 +347,15 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                backgroundColor: '#F3F4F6',
+                backgroundColor: '#FFF1F2',
                 borderRadius: '9999px',
                 padding: '0.35rem 0.85rem',
                 fontSize: '0.75rem',
                 fontWeight: 600,
-                color: '#4B5563'
+                color: '#FC787D',
+                border: '1px solid #FED7D9'
               }}>
-                <ShieldCheck size={14} color="#059669" />
+                <ShieldCheck size={14} color="#FC787D" />
                 <span>Production Verified Specifications</span>
               </div>
             </div>
@@ -390,7 +398,7 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
           textAlign: 'center',
           boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.25)'
         }}>
-          <h2 style={{ fontFamily: "'Lora', serif", fontSize: '2rem', fontWeight: 600, marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", fontSize: '2rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.02em' }}>
             Ready to Deploy {module.name}?
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.05rem', maxWidth: '650px', margin: '0 auto 2rem', lineHeight: 1.6 }}>
@@ -400,17 +408,17 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
             <button
               onClick={onOpenExpertModal}
               style={{
-                backgroundColor: '#7B5872',
+                backgroundColor: '#FC787D',
                 color: '#FFFFFF',
                 fontWeight: 600,
                 padding: '0.85rem 2rem',
-                borderRadius: '9999px',
+                borderRadius: '6px',
                 border: 'none',
                 cursor: 'pointer',
                 fontSize: '0.95rem',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+                boxShadow: '0 4px 16px rgba(252, 120, 125, 0.35)'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-[#E86368] active:scale-[0.98] transition-all"
             >
               Consult a Specialist
             </button>
@@ -421,12 +429,12 @@ export default function UniversalModuleDetailPage({ module, onBack, onOpenExpert
                 color: '#FFFFFF',
                 fontWeight: 500,
                 padding: '0.85rem 1.75rem',
-                borderRadius: '9999px',
+                borderRadius: '6px',
                 border: '1px solid rgba(255,255,255,0.3)',
                 cursor: 'pointer',
                 fontSize: '0.95rem'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-white/10 active:scale-[0.98] transition-all"
             >
               Return to {parentSectionLabel}
             </button>

@@ -56,7 +56,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       key: 'man',
       badge: 'MAN',
       title: 'Workforce & Roles',
-      color: '#7B5872',
+      color: '#FC787D',
       bgColor: '#F1F5F9',
       icon: Users,
       desc: 'Governance of operational personnel, shift technicians, and emergency responders across multi-facility operations.',
@@ -136,7 +136,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       category: 'SAFETY',
       title: 'Fire Fighting & Hydrant Panel',
       badgeColor: '#DC2626',
-      badgeBg: '#FEE2E2',
+      badgeBg: '#FEE7E8',
       summary: 'Mission-critical life-safety surveillance panel tracking Jockey Pump, Main Electric Hydrant Pump, and Diesel Standby Engine. Features real-time annunciator window alarms, battery voltage monitoring, engine cranking status, fuel tank level indicators, and NFPA/NBC compliant pressure threshold logging.',
       tags: ['Diesel Cranking Status', 'Jockey Pump Cycling', 'Header Bar Alert'],
       telemetry: [
@@ -268,7 +268,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
   ];
 
   return (
-    <div style={{ backgroundColor: '#e8e8e8', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ backgroundColor: '#F8FAFC', minHeight: '100vh', overflowX: 'hidden', fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)" }}>
       
       {/* 1. HERO SECTION (WHITE WITH GREY CURVATURE ARC) */}
       <section 
@@ -292,14 +292,11 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
           }}
         />
 
-        {/* Horizon Curvature Arc in Grey (#e8e8e8) */}
-        <div
-          className="absolute left-1/2 top-[calc(100%-110px)] sm:top-[calc(100%-130px)] md:top-[calc(100%-150px)] lg:top-[calc(100%-170px)] 
-          h-[480px] w-[700px] md:h-[550px] md:w-[1100px] lg:h-[750px] lg:w-[140%] 
-          -translate-x-1/2 rounded-[100%] border-t border-slate-300/40 bg-[#e8e8e8] 
-          shadow-[0_-20px_50px_rgba(0,0,0,0.06)] pointer-events-none z-0"
+        {/* Ambient Top Glow */}
+        <div 
+          className="pointer-events-none absolute inset-x-0 top-0 h-96 z-0"
           style={{
-            backgroundColor: '#e8e8e8'
+            background: 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(252, 120, 125, 0.08) 0%, rgba(255, 255, 255, 0) 70%)'
           }}
         />
 
@@ -307,28 +304,28 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
           
 
 
-          {/* Headline matching Lora handwriting font style and #00A3FF brush underline */}
+          {/* Headline matching modern bold font style with plum highlight */}
           <div className="relative inline-block">
             <h1 
               className="text-balance text-slate-900"
               style={{ 
-                fontFamily: "'Lora', serif",
+                fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)",
                 fontSize: 'clamp(1.75rem, 4.5vw, 3.87rem)',
                 lineHeight: '1.15',
-                letterSpacing: '-0.01em',
+                letterSpacing: '-0.025em',
                 paddingTop: '0.25rem',
                 paddingBottom: '0.75rem',
                 display: 'inline-block',
                 position: 'relative',
                 zIndex: 1,
-                fontWeight: 600
+                fontWeight: 800
               }}
             >
               <span>Intelligent Facility </span>
               <br className="hidden sm:inline" />
               <span>Automation & </span>
               <span className="relative inline-block whitespace-nowrap">
-                <span className="relative z-10 font-semibold" style={{ color: '#FC787D' }}>
+                <span className="relative z-10 font-extrabold" style={{ color: '#FC787D' }}>
                   Industrial IoT
                 </span>
                 <svg
@@ -340,7 +337,8 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 >
                   <path
                     d="M 4,14 Q 130,5 256,12 Q 130,20 6,17"
-                    fill="#00A3FF"
+                    fill="#FC787D"
+                    fillOpacity="0.2"
                   />
                 </svg>
               </span>
@@ -358,7 +356,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 {/* Curved arc from logo towards the text */}
                 <path
                   d="M 76 38 C 55 46, 24 38, 8 14"
-                  stroke="#7B5872"
+                  stroke="#FC787D"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   fill="none"
@@ -366,7 +364,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 {/* Arrowhead */}
                 <path
                   d="M 6 24 L 8 12 L 20 16"
-                  stroke="#7B5872"
+                  stroke="#FC787D"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -415,25 +413,26 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
             A unified cloud-native platform providing sub-second G-Nova visualization, predictive fault alarms, and complete 4M (Man, Machine, Material, Method) asset governance for commercial towers, residential townships, and industrial facilities.
           </p>
 
-          {/* Action Button */}
+          {/* Action Button styled in #FC787D with matching enterprise radius */}
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '2.5rem', position: 'relative', zIndex: 1 }}>
             <button
               onClick={onOpenExpertModal}
               style={{
-                padding: '0.8rem 1.85rem',
-                borderRadius: '9999px',
+                padding: '0.85rem 2.15rem',
+                borderRadius: '6px',
                 fontSize: '0.95rem',
-                fontWeight: '500',
-                backgroundColor: '#7B5872',
+                fontWeight: '600',
+                backgroundColor: '#FC787D',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+                boxShadow: '0 4px 14px rgba(252, 120, 125, 0.25)',
+                transition: 'all 0.2s ease'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-[#E86368] hover:shadow-lg transition-all"
             >
               <span>Schedule Live G-Nova Demo</span>
               <ArrowRight size={16} />
@@ -464,7 +463,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                     boxShadow: '0 2px 6px rgba(15, 23, 42, 0.04)'
                   }}
                 >
-                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.4rem', color: '#7B5872' }}>
+                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.4rem', color: '#FC787D' }}>
                     <IconComp size={20} />
                   </div>
                   <div style={{ fontSize: '1.35rem', fontWeight: '600', color: '#0F172A', letterSpacing: '-0.02em' }}>
@@ -484,22 +483,22 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       {/* 2. EXECUTIVE SUMMARY & ARCHITECTURE FLOW */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
+          backgroundColor: '#F8FAFC', 
           borderBottom: '1px solid #CBD5E1', 
           padding: '3rem 0 4.5rem' 
         }}
       >
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               EXECUTIVE OVERVIEW
             </span>
             <h2 style={{ 
-              fontFamily: "'Lora', serif",
+              fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)",
               fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
-              fontWeight: 600, 
+              fontWeight: 800, 
               color: '#0F172A',
-              letterSpacing: '0',
+              letterSpacing: '-0.025em',
               display: 'block',
               marginTop: '4px'
             }}>
@@ -635,7 +634,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       {/* 3. THE CORE 4M OPERATIONAL FRAMEWORK */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
+          backgroundColor: '#F8FAFC', 
           borderBottom: '1px solid #CBD5E1', 
           padding: '3.5rem 0 4.5rem' 
         }}
@@ -643,15 +642,15 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               PROVEN INDUSTRIAL METHODOLOGY
             </span>
             <h2 style={{ 
-              fontFamily: "'Lora', serif",
+              fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)",
               fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
-              fontWeight: 600, 
+              fontWeight: 800, 
               color: '#0F172A',
-              letterSpacing: '0',
+              letterSpacing: '-0.025em',
               display: 'block',
               marginTop: '4px'
             }}>
@@ -737,7 +736,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       {/* ========================================================================= */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
+          backgroundColor: '#F8FAFC', 
           borderBottom: '1px solid #CBD5E1', 
           padding: '4.5rem 0 5.5rem' 
         }}
@@ -779,7 +778,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                         boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
                       }}
                     >
-                      <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#7B5872', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>
+                      <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#FC787D', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>
                         <span style={{ fontSize: '13px' }}>⚡</span>
                       </div>
                       <div style={{ textAlign: 'left' }}>
@@ -797,11 +796,11 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
 
               {/* Main Headline */}
               <h2 style={{ 
-                fontFamily: "'Lora', serif",
+                fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)",
                 fontSize: 'clamp(1.4rem, 3.5vw, 2.82rem)', 
-                fontWeight: 700, 
+                fontWeight: 800, 
                 color: '#0F172A',
-                letterSpacing: '0',
+                letterSpacing: '-0.025em',
                 lineHeight: 1.2,
                 margin: 0,
                 display: 'inline-flex',
@@ -810,7 +809,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 justifyContent: 'center',
                 gap: '0.35em'
               }}>
-                {/* "Level up" with coral/salmon highlighter brush background */}
+                {/* "Level up" with plum highlighter brush background */}
                 <span className="relative inline-block px-3 py-0.5 my-1">
                   <span 
                     className="absolute inset-0 rounded-md"
@@ -946,7 +945,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                   width: '26px',
                   height: '26px',
                   borderRadius: '50%',
-                  backgroundColor: '#FEE2E2',
+                  backgroundColor: '#FEE7E8',
                   border: '2px solid #EF4444',
                   color: '#DC2626',
                   display: 'inline-flex',
@@ -960,11 +959,11 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 ✕
               </span>
               <h2 style={{ 
-                fontFamily: "'Lora', serif",
+                fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)",
                 fontSize: 'clamp(1.25rem, 3.34vw, 2.55rem)', 
-                fontWeight: 600, 
+                fontWeight: 800, 
                 color: '#0F172A',
-                letterSpacing: '0',
+                letterSpacing: '-0.025em',
                 lineHeight: 1.1,
                 margin: 0
               }}>
@@ -972,9 +971,9 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
               </h2>
             </div>
 
-            {/* Wavy blue brush stroke */}
+            {/* Wavy plum brush stroke */}
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '-4px', marginBottom: '4px' }}>
-              <svg className="w-56 h-3 text-[#00A3FF]" viewBox="0 0 200 12" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
+              <svg className="w-56 h-3 text-[#FC787D]" viewBox="0 0 200 12" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
                 <path d="M 4,6 Q 28,1 54,6 T 104,6 T 154,6 T 196,6" />
               </svg>
             </div>
@@ -982,11 +981,11 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
             {/* Line 2: Just zero-fault automation */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
               <h2 style={{ 
-                fontFamily: "'Lora', serif",
+                fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)",
                 fontSize: 'clamp(1.25rem, 3.34vw, 2.55rem)', 
-                fontWeight: 600, 
+                fontWeight: 800, 
                 color: '#0F172A',
-                letterSpacing: '0',
+                letterSpacing: '-0.025em',
                 lineHeight: 1.1,
                 margin: 0
               }}>
@@ -1021,7 +1020,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
           {/* Overlapping Dual-Card Layout with Hand-Drawn Curved Arrow (Exact Odoo Reference 2) */}
           <div className="relative w-full max-w-5xl mx-auto mt-8">
             
-            {/* Prominent Curved Hand-Drawn Arrow in Berry Plum (#7B5872) pointing from floating card to main fire panel */}
+            {/* Prominent Curved Hand-Drawn Arrow in Berry Plum (#FC787D) pointing from floating card to main fire panel */}
             <div className="hidden lg:block absolute top-6 right-64 z-30 pointer-events-none">
               <svg 
                 width="90" 
@@ -1032,14 +1031,14 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
               >
                 <path 
                   d="M 75,5 C 25,10 15,55 35,70" 
-                  stroke="#7B5872" 
+                  stroke="#FC787D" 
                   strokeWidth="3.5" 
                   strokeLinecap="round" 
                   fill="none"
                 />
                 <path 
                   d="M 23,60 L 35,70 L 40,55" 
-                  stroke="#7B5872" 
+                  stroke="#FC787D" 
                   strokeWidth="3.5" 
                   strokeLinecap="round" 
                   strokeLinejoin="round" 
@@ -1063,7 +1062,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
-                <span style={{ fontSize: '0.7rem', fontWeight: '700', color: '#DC2626', backgroundColor: '#FEE2E2', padding: '2px 8px', borderRadius: '100px' }}>
+                <span style={{ fontSize: '0.7rem', fontWeight: '700', color: '#DC2626', backgroundColor: '#FEE7E8', padding: '2px 8px', borderRadius: '100px' }}>
                   LIFE SAFETY G-NOVA
                 </span>
                 <span style={{ fontSize: '0.7rem', color: '#16A34A', fontWeight: '700' }}>
@@ -1160,7 +1159,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       {/* 6. TELEMETRY SENSOR & PARAMETER MATRIX (FULL TABLE) */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
+          backgroundColor: '#F8FAFC', 
           borderBottom: '1px solid #CBD5E1', 
           padding: '3.5rem 0 4.5rem' 
         }}
@@ -1168,15 +1167,15 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               INSTRUMENTATION MATRIX
             </span>
             <h2 style={{ 
-              fontFamily: "'Lora', serif",
+              fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)",
               fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
-              fontWeight: 600, 
+              fontWeight: 800, 
               color: '#0F172A',
-              letterSpacing: '0',
+              letterSpacing: '-0.025em',
               display: 'block',
               marginTop: '4px'
             }}>
@@ -1245,7 +1244,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       {/* 6. ENTERPRISE GOVERNANCE, TENANCY & ALERTS */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
+          backgroundColor: '#F8FAFC', 
           borderBottom: '1px solid #CBD5E1', 
           padding: '3.5rem 0 4.5rem' 
         }}
@@ -1253,15 +1252,15 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               GOVERNANCE & SECURITY
             </span>
             <h2 style={{ 
-              fontFamily: "'Lora', serif",
+              fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)",
               fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
-              fontWeight: 600, 
+              fontWeight: 800, 
               color: '#0F172A',
-              letterSpacing: '0',
+              letterSpacing: '-0.025em',
               display: 'block',
               marginTop: '4px'
             }}>
@@ -1310,7 +1309,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                   boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
                 }}
               >
-                <div style={{ fontSize: '0.78rem', fontWeight: '700', color: '#7B5872', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '6px' }}>
+                <div style={{ fontSize: '0.78rem', fontWeight: '700', color: '#FC787D', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '6px' }}>
                   TIER LEVEL 0{idx + 1}
                 </div>
                 <h3 style={{ fontSize: '1.1rem', fontWeight: '500', color: '#0F172A', margin: 0, marginBottom: '8px' }}>
@@ -1409,7 +1408,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       {/* 7. ROLE-BASED ACCESS CONTROL (RBAC) */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
+          backgroundColor: '#F8FAFC', 
           borderBottom: '1px solid #CBD5E1', 
           padding: '3.5rem 0 4.5rem' 
         }}
@@ -1417,15 +1416,15 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               ACCESS DELEGATION
             </span>
             <h2 style={{ 
-              fontFamily: "'Lora', serif",
+              fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)",
               fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
-              fontWeight: 600, 
+              fontWeight: 800, 
               color: '#0F172A',
-              letterSpacing: '0',
+              letterSpacing: '-0.025em',
               display: 'block',
               marginTop: '4px'
             }}>
@@ -1464,7 +1463,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                   boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
                 }}
               >
-                <div style={{ fontSize: '0.75rem', fontWeight: '600', color: '#7B5872', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '4px' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: '600', color: '#FC787D', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '4px' }}>
                   {r.scope}
                 </div>
                 <h3 style={{ fontSize: '1.15rem', fontWeight: '500', color: '#0F172A', margin: 0, marginBottom: '6px' }}>
@@ -1494,7 +1493,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       {/* 8. PLATFORM TECHNICAL SPECIFICATIONS */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
+          backgroundColor: '#F8FAFC', 
           borderBottom: '1px solid #CBD5E1', 
           padding: '3.5rem 0 4.5rem' 
         }}
@@ -1502,15 +1501,15 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '2.5rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               TECHNICAL ARCHITECTURE
             </span>
             <h2 style={{ 
-              fontFamily: "'Lora', serif",
+              fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)",
               fontSize: 'clamp(1.35rem, 3.5vw, 2.16rem)', 
-              fontWeight: 600, 
+              fontWeight: 800, 
               color: '#0F172A',
-              letterSpacing: '0',
+              letterSpacing: '-0.025em',
               display: 'block',
               marginTop: '4px'
             }}>
@@ -1607,10 +1606,10 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
           {/* Connected Ecosystem Applications */}
           <div style={{ marginTop: '3.5rem', paddingTop: '3rem', borderTop: '1px solid #CBD5E1' }}>
             <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-              <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+              <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
                 INTEGRATED PLATFORM ARCHITECTURE
               </span>
-              <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 2.64vw, 1.98rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+              <h2 style={{ fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)", fontSize: 'clamp(1.35rem, 2.64vw, 1.98rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.025em', marginTop: '4px' }}>
                 Seamlessly Connected to the G Mark Ecosystem
               </h2>
             </div>
@@ -1719,8 +1718,8 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
           <span 
             style={{ 
               fontSize: '0.78rem', 
-              color: '#7B5872', 
-              fontWeight: '400', 
+              color: '#FC787D', 
+              fontWeight: '700', 
               letterSpacing: '0.12em', 
               textTransform: 'uppercase',
               display: 'inline-block',
@@ -1732,11 +1731,11 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
 
           <h2 
             style={{ 
-              fontFamily: "'Lora', serif",
+              fontFamily: "var(--font-sans, 'Plus Jakarta Sans', sans-serif)",
               fontSize: 'clamp(1.5rem, 3.17vw, 2.24rem)', 
-              fontWeight: 600, 
+              fontWeight: 800, 
               color: '#0F172A', 
-              letterSpacing: '0',
+              letterSpacing: '-0.025em',
               margin: '0 0 1rem' 
             }}
           >
@@ -1759,20 +1758,21 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
             <button
               onClick={onOpenExpertModal}
               style={{
-                padding: '0.5rem 1.25rem',
-                borderRadius: '9999px',
-                fontSize: '0.85rem',
-                fontWeight: '500',
-                backgroundColor: '#7B5872',
+                padding: '0.75rem 1.6rem',
+                borderRadius: '6px',
+                fontSize: '0.9rem',
+                fontWeight: '600',
+                backgroundColor: '#FC787D',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px',
-                boxShadow: '0 2px 10px rgba(123, 88, 114, 0.28)'
+                gap: '8px',
+                boxShadow: '0 4px 14px rgba(252, 120, 125, 0.25)',
+                transition: 'all 0.2s ease'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-[#E86368] hover:shadow-lg transition-all"
             >
               <span>Schedule Live G-Nova Demo</span>
               <ArrowRight size={14} />
@@ -1780,9 +1780,9 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
             <button
               onClick={onBack}
               style={{
-                padding: '0.5rem 1.15rem',
-                borderRadius: '9999px',
-                fontSize: '0.85rem',
+                padding: '0.75rem 1.4rem',
+                borderRadius: '6px',
+                fontSize: '0.9rem',
                 fontWeight: '500',
                 backgroundColor: '#F1F5F9',
                 color: '#334155',
@@ -1790,7 +1790,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px'
+                gap: '8px'
               }}
               className="hover:bg-slate-100 hover:text-slate-900 transition-colors"
             >

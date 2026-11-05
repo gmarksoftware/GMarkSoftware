@@ -27,8 +27,8 @@ export function Marquee({
       <div 
         className="relative flex w-full max-w-full overflow-hidden py-2"
         style={{
-          WebkitMaskImage: "linear-gradient(to right, transparent 0px, black 24px, black calc(100% - 24px), transparent 100%)",
-          maskImage: "linear-gradient(to right, transparent 0px, black 24px, black calc(100% - 24px), transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to right, transparent 0px, black 40px, black calc(100% - 40px), transparent 100%)",
+          maskImage: "linear-gradient(to right, transparent 0px, black 40px, black calc(100% - 40px), transparent 100%)",
         }}
       >
         <div

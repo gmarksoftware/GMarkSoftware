@@ -181,7 +181,7 @@ function TelemetryDashboardCard({ isMobile = false }) {
       <div className="mb-3 sm:mb-4 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-50/80 border border-slate-100">
         <div className="flex items-center justify-between mb-1">
           <span className="text-[10.5px] sm:text-[11px] font-bold text-slate-700 flex items-center gap-1.5">
-            <Activity className="w-3.5 h-3.5 text-[#ff5c6c]" />
+            <Activity className="w-3.5 h-3.5 text-[#FC787D]" />
             Data Decision Index
           </span>
           <span className="text-[10px] sm:text-[10.5px] font-bold text-emerald-600">+18.4% Efficiency</span>
@@ -191,8 +191,8 @@ function TelemetryDashboardCard({ isMobile = false }) {
           <svg className="w-full h-full overflow-visible" viewBox="0 0 300 70" fill="none" preserveAspectRatio="none">
             <defs>
               <linearGradient id={isMobile ? "areaGradientMobile" : "areaGradientOdoo"} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#ff5c6c" stopOpacity="0.25" />
-                <stop offset="100%" stopColor="#ff5c6c" stopOpacity="0.0" />
+                <stop offset="0%" stopColor="#FC787D" stopOpacity="0.22" />
+                <stop offset="100%" stopColor="#FC787D" stopOpacity="0.0" />
               </linearGradient>
             </defs>
             <path
@@ -201,13 +201,13 @@ function TelemetryDashboardCard({ isMobile = false }) {
             />
             <path
               d="M 0 55 Q 35 48, 70 35 T 140 38 T 210 20 T 280 12 L 300 15"
-              stroke="#ff5c6c"
+              stroke="#FC787D"
               strokeWidth="2.5"
               strokeLinecap="round"
               fill="none"
             />
-            <circle cx="210" cy="20" r="3.5" fill="#ff5c6c" />
-            <circle cx="280" cy="12" r="4.5" fill="#ffffff" stroke="#ff5c6c" strokeWidth="2.5" />
+            <circle cx="210" cy="20" r="3.5" fill="#FC787D" />
+            <circle cx="280" cy="12" r="4.5" fill="#ffffff" stroke="#FC787D" strokeWidth="2.5" />
           </svg>
         </div>
       </div>
@@ -268,7 +268,7 @@ function SecurityFeatureCard({ activeFeature, isMobile = false }) {
           <span className="text-sm sm:text-base lg:text-lg font-bold text-slate-900">
             {activeFeature.mockup.headline}
           </span>
-          <span className="text-xs sm:text-sm font-extrabold text-[#ff5c6c]">
+          <span className="text-xs sm:text-sm font-extrabold text-[#FC787D]">
             {activeFeature.mockup.metricValue}
           </span>
         </div>
@@ -305,20 +305,25 @@ export default function DataVisionSection() {
   return (
     <section 
       id="data-vision-section"
-      className="relative w-full bg-[#fbfcfd] py-8 sm:py-10 lg:py-14 font-['Inter',sans-serif] overflow-hidden"
-      style={{ backgroundColor: '#fbfcfd' }}
+      className="relative w-full bg-white py-14 sm:py-18 lg:py-20 overflow-hidden"
+      style={{ 
+        backgroundColor: '#FFFFFF',
+        fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+      }}
     >
-      {/* Subtle Background Radial Ambient Glows */}
+      {/* Subtle Background Radial Ambient Glows matching Official Theme */}
       <div 
-        className="absolute top-1/4 right-0 w-[350px] sm:w-[550px] h-[350px] sm:h-[550px] bg-rose-100/30 rounded-full blur-3xl pointer-events-none -z-10" 
+        className="absolute top-1/4 right-0 w-[450px] sm:w-[650px] h-[450px] sm:h-[650px] rounded-full blur-3xl pointer-events-none -z-10" 
+        style={{
+          background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(252, 120, 125, 0.04) 0%, transparent 80%)'
+        }}
         aria-hidden="true"
       />
       <div 
-        className="absolute bottom-10 right-1/4 w-[320px] sm:w-[500px] h-[320px] sm:h-[500px] bg-amber-100/25 rounded-full blur-3xl pointer-events-none -z-10" 
-        aria-hidden="true"
-      />
-      <div 
-        className="absolute top-16 left-4 sm:left-8 w-[280px] sm:w-[400px] h-[280px] sm:h-[400px] bg-sky-100/25 rounded-full blur-3xl pointer-events-none -z-10" 
+        className="absolute bottom-10 left-0 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] rounded-full blur-3xl pointer-events-none -z-10" 
+        style={{
+          background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(15, 118, 110, 0.03) 0%, transparent 80%)'
+        }}
         aria-hidden="true"
       />
 
@@ -339,36 +344,31 @@ export default function DataVisionSection() {
             className="lg:col-span-5 xl:col-span-6 flex flex-col justify-center text-left"
           >
             
-            {/* Eyebrow Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white border border-slate-200/90 shadow-2xs mb-3.5 sm:mb-5 w-fit">
-              <span className="w-2 h-2 rounded-full bg-[#ff5c6c] animate-pulse" />
-              <span className="text-[10.5px] sm:text-[11px] font-bold text-slate-700 uppercase tracking-widest">
+            {/* Eyebrow Pill Badge: Official Odoo Signature Style */}
+            <div 
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-3.5 sm:mb-5 w-fit shadow-2xs select-none"
+              style={{
+                backgroundColor: '#FFF1F2',
+                color: '#FC787D',
+                border: '1px solid #FED7D9'
+              }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FC787D]" />
+              <span className="text-[11px] font-bold uppercase tracking-wider">
                 Data Vision &amp; Intelligence
               </span>
             </div>
 
-            {/* Fancy High-Impact Headline - Fluid Mobile Scaling */}
+            {/* Authentic Enterprise Official Headline */}
             <h2
-              className="text-slate-900 tracking-tight text-[26px] sm:text-4xl md:text-[42px] lg:text-[48px] font-bold leading-[1.22] sm:leading-[1.18]"
+              className="text-slate-900 tracking-tight text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] font-extrabold leading-[1.2] sm:leading-[1.18]"
               style={{
-                fontFamily: "'Lora', serif",
+                color: '#0F172A',
+                fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
               }}
             >
               Let Your Data Take Your Business to{' '}
-              <span className="text-[#ff5c6c] relative inline-block whitespace-nowrap">
-                Higher Grounds
-                {/* Organic curved underline accent */}
-                <svg
-                  className="absolute -bottom-1 sm:-bottom-1.5 left-0 w-full h-2.5 pointer-events-none text-[#ff5c6c]/40"
-                  viewBox="0 0 200 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <path d="M 3 8 Q 100 2 197 7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-                </svg>
-              </span>
+              <span style={{ color: '#FC787D' }}>Higher Grounds.</span>
             </h2>
 
             {/* Subtitle / Paragraphs (100% Exact Content Preserved) */}
@@ -417,7 +417,7 @@ export default function DataVisionSection() {
                 
                 {/* Zero-Trust Security Element (Centered, balanced & prominently visible) */}
                 <div className="inline-flex items-center justify-center gap-2 py-2 px-4 rounded-xl bg-white border border-slate-200/90 shadow-xs text-xs font-bold text-slate-900 select-none">
-                  <Lock className="w-3.5 h-3.5 text-[#ff5c6c]" />
+                  <Lock className="w-3.5 h-3.5 text-[#FC787D]" />
                   <span>Zero-Trust Security</span>
                 </div>
 
@@ -544,7 +544,7 @@ export default function DataVisionSection() {
                   }}
                   className={`group relative rounded-2xl p-4 sm:p-4.5 border transition-all duration-300 cursor-pointer flex flex-col justify-between select-none ${
                     isActive
-                      ? 'bg-white border-slate-300 ring-2 ring-slate-900/10 shadow-lg -translate-y-1'
+                      ? 'bg-white border-[#FC787D]/40 ring-2 ring-[#FC787D]/15 shadow-lg -translate-y-1'
                       : 'bg-white border-slate-200/90 shadow-xs hover:shadow-md hover:-translate-y-1 hover:border-slate-300/90'
                   }`}
                 >
@@ -564,7 +564,7 @@ export default function DataVisionSection() {
                     </div>
 
                     {/* Feature Title (100% Exact Text) */}
-                    <h3 className="text-slate-900 font-bold text-[14.5px] sm:text-[15.5px] tracking-tight leading-snug mb-1.5 group-hover:text-slate-950 transition-colors">
+                    <h3 className="text-slate-900 font-bold text-[14.5px] sm:text-[15.5px] tracking-tight leading-snug mb-1.5 group-hover:text-[#FC787D] transition-colors">
                       {item.title}
                     </h3>
 
@@ -577,22 +577,25 @@ export default function DataVisionSection() {
                   {/* Interactive Status Indicator at Bottom of Card */}
                   <div className="pt-2.5 sm:pt-3 border-t border-slate-100 flex items-center justify-between text-[10.5px] sm:text-[11px] font-semibold">
                     <span className={`flex items-center gap-1.5 transition-colors ${
-                      isActive ? 'text-slate-900 font-bold' : 'text-slate-400 group-hover:text-slate-700'
+                      isActive ? 'text-[#FC787D] font-bold' : 'text-slate-400 group-hover:text-slate-700'
                     }`}>
                       {isActive ? (
                         <>
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#FC787D] animate-pulse" />
                           <span>Active in Showcase</span>
                         </>
                       ) : (
                         <span>Inspect in Showcase</span>
                       )}
                     </span>
-                    <span className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 ${
-                      isActive 
-                        ? 'bg-slate-900 text-white shadow-xs' 
-                        : 'bg-slate-100 text-slate-400 group-hover:bg-slate-900 group-hover:text-white'
-                    }`}>
+                    <span 
+                      className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 ${
+                        isActive 
+                          ? 'text-white shadow-xs' 
+                          : 'bg-slate-100 text-slate-400 group-hover:bg-[#FC787D] group-hover:text-white'
+                      }`}
+                      style={isActive ? { backgroundColor: '#FC787D' } : undefined}
+                    >
                       <ArrowUpRight className={`w-3.5 h-3.5 transition-transform duration-200 ${
                         isActive ? 'translate-x-0.5 -translate-y-0.5' : 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5'
                       }`} />

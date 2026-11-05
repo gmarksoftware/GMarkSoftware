@@ -241,16 +241,16 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
       icon: Truck
     }
   ];
-
   return (
-    <div style={{ backgroundColor: '#e8e8e8', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ backgroundColor: '#F8FAFC', minHeight: '100vh', overflowX: 'hidden', fontFamily: 'var(--font-sans)' }}>
       
       {/* ========================================================================= */}
-      {/* 1. HERO HEADER (WHITE WITH GREY CURVATURE ARC) */}
+      {/* 1. HERO HEADER (WHITE WITH SAAS AMBIENT GLOW & CURVATURE ARC) */}
       {/* ========================================================================= */}
       <section 
         style={{ 
           backgroundColor: '#FFFFFF', 
+          backgroundImage: 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(252, 120, 125, 0.08) 0%, rgba(255, 255, 255, 0) 70%)',
           textAlign: 'center', 
           paddingTop: 'clamp(1.25rem, 2.5vw, 2rem)', 
           paddingBottom: 'clamp(2.5rem, 4vw, 3.75rem)', 
@@ -269,43 +269,41 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
           }}
         />
 
-        {/* Horizon Curvature Arc in Grey (#e8e8e8) */}
+        {/* Horizon Curvature Arc in SaaS background */}
         <div
           className="absolute left-1/2 top-[calc(100%-140px)] sm:top-[calc(100%-165px)] md:top-[calc(100%-190px)] lg:top-[calc(100%-210px)] 
           h-[480px] w-[700px] md:h-[550px] md:w-[1100px] lg:h-[750px] lg:w-[140%] 
-          -translate-x-1/2 rounded-[100%] border-t border-slate-300/40 bg-[#e8e8e8] 
-          shadow-[0_-20px_50px_rgba(0,0,0,0.06)] pointer-events-none z-0"
+          -translate-x-1/2 rounded-[100%] border-t border-slate-200/80 bg-[#F8FAFC] 
+          shadow-[0_-20px_50px_rgba(0,0,0,0.03)] pointer-events-none z-0"
           style={{
-            backgroundColor: '#e8e8e8'
+            backgroundColor: '#F8FAFC'
           }}
         />
 
         <div style={{ maxWidth: '880px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
-          
 
-
-          {/* Headline matching Lora handwriting font style and #00A3FF brush underline */}
+          {/* Headline matching Plus Jakarta Sans font style and #FC787D brush underline */}
           <div className="relative inline-block">
             <h1 
               className="text-balance text-slate-900"
               style={{ 
-                fontFamily: "'Lora', serif",
-                fontSize: 'clamp(1.75rem, 4.5vw, 3.87rem)',
-                lineHeight: '1.18',
-                letterSpacing: '-0.01em',
+                fontFamily: 'var(--font-sans)',
+                fontSize: 'clamp(2rem, 5vw, 4rem)',
+                lineHeight: '1.15',
+                letterSpacing: '-0.025em',
                 paddingTop: '0.25rem',
                 paddingBottom: '0.75rem',
                 display: 'inline-block',
                 position: 'relative',
                 zIndex: 1,
-                fontWeight: 600
+                fontWeight: 800
               }}
             >
               <span>Middle-Mile & Hub Fleet </span>
               <br className="hidden sm:inline" />
               <span>Logistics of </span>
               <span className="relative inline-block whitespace-nowrap">
-                <span className="relative z-10 font-semibold" style={{ color: '#FC787D' }}>
+                <span className="relative z-10 font-extrabold" style={{ color: '#FC787D' }}>
                   Transporter
                 </span>
                 {/* Hand-drawn marker brush stroke highlight */}
@@ -318,11 +316,12 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                 >
                   <path
                     d="M 4,14 Q 130,5 256,12 Q 130,20 6,17"
-                    fill="#00A3FF"
+                    fill="#FC787D"
+                    fillOpacity="0.25"
                   />
                 </svg>
               </span>
-              <span className="text-slate-900 font-semibold"> Network</span>
+              <span className="text-slate-900 font-extrabold"> Network</span>
             </h1>
 
             {/* Floating App Logo Square Card with Hand-drawn Curved Arrow */}
@@ -335,14 +334,14 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
               >
                 <path
                   d="M 76 26 C 52 40, 24 34, 8 16"
-                  stroke="#7B5872"
+                  stroke="#FC787D"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   fill="none"
                 />
                 <path
                   d="M 20 10 L 8 16 L 16 28"
-                  stroke="#7B5872"
+                  stroke="#FC787D"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -402,19 +401,19 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
               onClick={onOpenExpertModal}
               style={{
                 padding: '0.85rem 2rem',
-                borderRadius: '9999px',
+                borderRadius: '6px',
                 fontSize: '0.95rem',
-                fontWeight: '500',
-                backgroundColor: '#7B5872',
+                fontWeight: '600',
+                backgroundColor: '#FC787D',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+                boxShadow: '0 4px 16px rgba(252, 120, 125, 0.35)'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-[#E86368] transition-colors"
             >
               <span>Schedule Fleet Demo</span>
               <ArrowRight size={16} />
@@ -476,7 +475,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
       {/* ========================================================================= */}
       <section 
         style={{ 
-          backgroundColor: '#e8e8e8', 
+          backgroundColor: '#F8FAFC', 
           borderTop: '1px solid #CBD5E1',
           borderBottom: '1px solid #CBD5E1', 
           padding: '4.5rem 0 5.5rem' 
@@ -517,7 +516,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                         boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
                       }}
                     >
-                      <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#7B5872', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>
+                      <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#FC787D', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>
                         <span style={{ fontSize: '13px' }}>🚛</span>
                       </div>
                       <div style={{ textAlign: 'left' }}>
@@ -535,11 +534,11 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
 
               {/* Main Headline */}
               <h2 style={{ 
-                fontFamily: "'Lora', serif",
-                fontSize: 'clamp(1.94rem, 3.7vw, 2.82rem)', 
-                fontWeight: 700, 
+                fontFamily: 'var(--font-sans)',
+                fontSize: 'clamp(2rem, 3.7vw, 2.82rem)', 
+                fontWeight: 800, 
                 color: '#0F172A',
-                letterSpacing: '0',
+                letterSpacing: '-0.025em',
                 lineHeight: 1.2,
                 margin: 0,
                 display: 'inline-flex',
@@ -886,7 +885,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                   width: '26px',
                   height: '26px',
                   borderRadius: '50%',
-                  backgroundColor: '#FEE2E2',
+                  backgroundColor: '#FEE7E8',
                   border: '2px solid #EF4444',
                   color: '#EF4444',
                   display: 'flex',
@@ -900,11 +899,11 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                 ✕
               </span>
               <span style={{
-                fontFamily: "'Lora', serif",
+                fontFamily: 'var(--font-sans)',
                 fontSize: 'clamp(1.5rem, 2.82vw, 2.07rem)',
-                fontWeight: 700,
+                fontWeight: 800,
                 color: '#EF4444',
-                letterSpacing: '0',
+                letterSpacing: '-0.025em',
                 lineHeight: 1.2
               }}>
                 No manual paper manifests or untracked delays!
@@ -932,11 +931,11 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                 ✓
               </span>
               <span style={{
-                fontFamily: "'Lora', serif",
+                fontFamily: 'var(--font-sans)',
                 fontSize: 'clamp(1.58rem, 2.99vw, 2.2rem)',
-                fontWeight: 700,
+                fontWeight: 800,
                 color: '#0F172A',
-                letterSpacing: '0',
+                letterSpacing: '-0.025em',
                 lineHeight: 1.2
               }}>
                 Just sub-second QR scans, live GPS telemetry & damage logs!
@@ -1090,13 +1089,13 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
       {/* ========================================================================= */}
       {/* 3. PROBLEM & SOLUTION STATEMENT (PDF SECTIONS 1, 2, 3, 4, 5) */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#e8e8e8', padding: '5.5rem 0', borderTop: '1px solid #CBD5E1', borderBottom: '1px solid #CBD5E1' }}>
+      <section style={{ backgroundColor: '#F8FAFC', padding: '5.5rem 0', borderTop: '1px solid #CBD5E1', borderBottom: '1px solid #CBD5E1' }}>
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 mb-20 lg:mb-24">
             {/* Problem Statement Card */}
             <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: '20px', padding: '2.25rem', boxShadow: '0 4px 16px rgba(0,0,0,0.03)' }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '4px 12px', borderRadius: '100px', backgroundColor: '#FEE2E2', color: '#DC2626', fontSize: '0.78rem', fontWeight: '700', marginBottom: '1rem' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '4px 12px', borderRadius: '100px', backgroundColor: '#FEE7E8', color: '#DC2626', fontSize: '0.78rem', fontWeight: '700', marginBottom: '1rem' }}>
                 <span>1. PROBLEM STATEMENT</span>
               </div>
               <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#0F172A', marginBottom: '0.75rem' }}>
@@ -1187,7 +1186,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
             <span style={{ fontSize: '0.78rem', color: '#0284C7', fontWeight: '600', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
               SECTION 6 • GUIDING PRINCIPLES
             </span>
-            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.8rem, 3.17vw, 2.42rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.8rem, 3.17vw, 2.42rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.025em', marginTop: '4px' }}>
               Our Core Operating Values
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '650px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -1236,7 +1235,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
       <section 
         id="phase-1-section"
         style={{ 
-          backgroundColor: '#e8e8e8', 
+          backgroundColor: '#F8FAFC', 
           padding: '3rem 0 3.5rem',
           position: 'relative',
           overflow: 'hidden',
@@ -1259,7 +1258,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
         >
           {/* White Curved Background shape */}
           <div 
-            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 right-0 left-0 bg-white rounded-l-[24px] sm:rounded-l-[90px] md:rounded-l-[150px] lg:rounded-l-[180px] border-l border-y border-slate-300/70 shadow-[0_12px_44px_rgba(0,0,0,0.04)] pointer-events-none z-0"
+            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 right-0 left-0 bg-white rounded-l-[24px] sm:rounded-l-[90px] md:rounded-l-[150px] lg:rounded-l-[180px] border-l border-y border-slate-200/80 shadow-[0_12px_44px_rgba(0,0,0,0.03)] pointer-events-none z-0"
             style={{ right: 0 }}
           />
 
@@ -1280,7 +1279,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
             {/* LEFT: Phase 1 Info */}
             <div className="w-full lg:max-w-[370px] flex flex-col gap-[0.85rem] shrink-0">
               <div>
-                <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.07rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.25', marginTop: '2px', marginBottom: '0.75rem' }}>
+                <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.35rem, 3.5vw, 2.07rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.025em', lineHeight: '1.2', marginTop: '2px', marginBottom: '0.75rem' }}>
                   Village Node Pickup <br className="hidden sm:inline" />
                   & GMU Hub Intake
                 </h2>
@@ -1438,7 +1437,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
       <section 
         id="phase-2-section"
         style={{ 
-          backgroundColor: '#e8e8e8', 
+          backgroundColor: '#F8FAFC', 
           padding: '3rem 0 4rem',
           position: 'relative',
           overflow: 'hidden',
@@ -1461,7 +1460,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
         >
           {/* White Curved Background shape */}
           <div 
-            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 left-0 right-0 bg-white rounded-r-[24px] sm:rounded-r-[90px] md:rounded-r-[150px] lg:rounded-r-[180px] border-r border-y border-slate-300/70 shadow-[0_12px_44px_rgba(0,0,0,0.04)] pointer-events-none z-0"
+            className="absolute -top-4 sm:-top-6 md:-top-8 -bottom-4 sm:-bottom-6 md:-bottom-8 left-0 right-0 bg-white rounded-r-[24px] sm:rounded-r-[90px] md:rounded-r-[150px] lg:rounded-r-[180px] border-r border-y border-slate-200/80 shadow-[0_12px_44px_rgba(0,0,0,0.03)] pointer-events-none z-0"
             style={{ left: 0 }}
           />
 
@@ -1603,7 +1602,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
             {/* RIGHT: Phase 2 Info */}
             <div className="w-full lg:max-w-[380px] flex flex-col gap-[0.85rem] shrink-0 order-2">
               <div>
-                <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 2.07rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.25', marginTop: '2px', marginBottom: '0.75rem' }}>
+                <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.35rem, 3.5vw, 2.07rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.025em', lineHeight: '1.2', marginTop: '2px', marginBottom: '0.75rem' }}>
                   Hub Outbound Dispatch <br className="hidden sm:inline" />
                   & Destination SHG Drop-off
                 </h2>
@@ -1644,7 +1643,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
             <span style={{ fontSize: '0.78rem', color: '#0284C7', fontWeight: '600', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
               SECTION 8 • PLATFORM ECOSYSTEM
             </span>
-            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.8rem, 3.17vw, 2.42rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.8rem, 3.17vw, 2.42rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.025em', marginTop: '4px' }}>
               The GramUnnati Rural Supply Chain Architecture
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '650px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -1699,10 +1698,10 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '1.75rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#7B5872', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.78rem', color: '#FC787D', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               INTEGRATED ECOSYSTEM
             </span>
-            <h2 style={{ fontFamily: "'Lora', serif", fontSize: 'clamp(1.35rem, 3.5vw, 1.98rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px', lineHeight: '1.25' }}>
+            <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.35rem, 3.5vw, 1.98rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.025em', marginTop: '4px', lineHeight: '1.25' }}>
               Connected GMU Logistics Applications
             </h2>
           </div>
@@ -1799,20 +1798,20 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
             <button
               onClick={onOpenExpertModal}
               style={{
-                padding: '0.5rem 1.25rem',
-                borderRadius: '9999px',
-                fontSize: '0.85rem',
-                fontWeight: '500',
-                backgroundColor: '#7B5872',
+                padding: '0.65rem 1.5rem',
+                borderRadius: '6px',
+                fontSize: '0.88rem',
+                fontWeight: '600',
+                backgroundColor: '#FC787D',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
-                boxShadow: '0 2px 10px rgba(123, 88, 114, 0.28)'
+                boxShadow: '0 4px 16px rgba(252, 120, 125, 0.35)'
               }}
-              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="hover:bg-[#E86368] transition-colors"
             >
               <span>Schedule Fleet Consultation</span>
               <ArrowRight size={14} />
@@ -1820,11 +1819,11 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
             <button
               onClick={onBack}
               style={{
-                padding: '0.5rem 1.15rem',
-                borderRadius: '9999px',
-                fontSize: '0.85rem',
+                padding: '0.65rem 1.35rem',
+                borderRadius: '6px',
+                fontSize: '0.88rem',
                 fontWeight: '500',
-                backgroundColor: '#F1F5F9',
+                backgroundColor: '#FFFFFF',
                 color: '#334155',
                 border: '1px solid #CBD5E1',
                 cursor: 'pointer',
@@ -1832,7 +1831,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                 alignItems: 'center',
                 gap: '6px'
               }}
-              className="hover:bg-slate-100 hover:text-slate-900 transition-colors"
+              className="hover:bg-slate-50 transition-colors"
             >
               <ArrowLeft size={14} />
               <span>Back to Solutions</span>
