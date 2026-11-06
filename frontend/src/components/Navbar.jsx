@@ -48,7 +48,8 @@ import {
   SlidersHorizontal,
   Edit3,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  ChevronRight
 } from 'lucide-react';
 import { APPLICATIONS, findAppOrModule } from './ApplicationsGridSection';
 import { getModuleById } from '../data/modulesRegistry';
@@ -708,7 +709,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
 
             {/* 1. SOLUTIONS MEGA-MENU (ODOO STYLE MINIMALIST 8-CATEGORY DIRECTORY FOR MARKG APPS) */}
             {activeMenu === 'solutions' && (
-              <div className="mega-menu-content-fade solutions-mega-menu-wrapper" style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid #F1F5F9', borderBottom: '1px solid #E2E8F0' }}>
+              <div className="mega-menu-content-fade solutions-mega-menu-wrapper w-full max-w-full overflow-x-hidden box-border" style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid #F1F5F9', borderBottom: '1px solid #E2E8F0' }}>
                 {/* Mobile Navigation Header Bar */}
                 <div className="mega-menu-mobile-nav-bar lg:hidden">
                   <button 
@@ -733,7 +734,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
                   </div>
                 </div>
 
-                <div className="solutions-mega-menu-inner" style={{ maxWidth: '1240px', margin: '0 auto', backgroundColor: '#FFFFFF' }}>
+                <div className="solutions-mega-menu-inner w-full box-border" style={{ maxWidth: '1240px', margin: '0 auto', backgroundColor: '#FFFFFF' }}>
                   
                   {/* Desktop Directory Header */}
                   <div className="hidden lg:flex items-center justify-between pb-3.5 mb-4 border-b border-slate-100">
@@ -756,8 +757,8 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
                     </button>
                   </div>
 
-                  {/* Flat Clean Minimalist Grid Layout - 2 columns on mobile (4 rows of 2 sections), responsive on sm/lg */}
-                  <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-2 xs:gap-x-3 sm:gap-x-8 gap-y-3.5 sm:gap-y-8 lg:gap-x-10 lg:gap-y-9 py-1 sm:py-2">
+                  {/* Desktop/Laptop Clean Minimalist 4-Column Directory Grid (Original Desktop Layout) */}
+                  <div className="solutions-directory-grid hidden lg:grid lg:grid-cols-4 gap-x-8 gap-y-8 lg:gap-x-10 lg:gap-y-9 py-2">
                     {SOLUTION_CATEGORIES.map((cat, catIdx) => {
                       const config = SOLUTION_CATEGORY_CONFIG[cat.title] || {
                         icon: Layers,
@@ -772,16 +773,16 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
                           className="flex flex-col group/category min-w-0"
                         >
                           {/* Category Header */}
-                          <div className="flex items-center justify-between pb-1 sm:pb-2.5 mb-1 sm:mb-2 border-b border-slate-200/70 gap-1">
-                            <div className="flex items-center gap-1 sm:gap-2.5 min-w-0 flex-1">
-                              <div className={`w-[18px] h-[18px] xs:w-[20px] xs:h-[20px] sm:w-7 sm:h-7 rounded-md sm:rounded-lg flex items-center justify-center shrink-0 border ${config.bg} ${config.color} transition-transform group-hover/category:scale-105 duration-200`}>
-                                <CatIcon className="w-2.5 h-2.5 xs:w-3 xs:h-3 sm:w-[15px] sm:h-[15px]" />
+                          <div className="flex items-center justify-between pb-2.5 mb-2 border-b border-slate-200/70 gap-1">
+                            <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 border ${config.bg} ${config.color} transition-transform group-hover/category:scale-105 duration-200`}>
+                                <CatIcon className="w-[15px] h-[15px]" />
                               </div>
-                              <h3 className="text-[9px] xs:text-[10px] sm:text-[13px] font-bold tracking-tight sm:tracking-wider text-slate-900 uppercase truncate font-sans">
+                              <h3 className="text-[13px] font-bold tracking-wider text-slate-900 uppercase truncate font-sans">
                                 {cat.title}
                               </h3>
                             </div>
-                            <span className="text-[7.5px] xs:text-[8.5px] sm:text-[11px] font-semibold text-slate-500 bg-slate-100/90 border border-slate-200/70 px-1 py-0.2 sm:px-2 sm:py-0.5 rounded-full shrink-0">
+                            <span className="text-[11px] font-semibold text-slate-500 bg-slate-100/90 border border-slate-200/70 px-2 py-0.5 rounded-full shrink-0">
                               {cat.items.length} Apps
                             </span>
                           </div>
@@ -798,12 +799,12 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
                                     handleAppItemClick(item.appId, 'solutions');
                                   }
                                 }}
-                                className="group/item flex items-center gap-1 sm:gap-2 px-0.5 sm:px-2 py-0.5 sm:py-1.5 rounded-md sm:rounded-lg cursor-pointer select-none transition-colors duration-150 hover:bg-slate-50 active:bg-slate-100 min-w-0"
+                                className="group/item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer select-none transition-colors duration-150 hover:bg-slate-50 active:bg-slate-100 min-w-0"
                                 role="button"
                                 tabIndex={0}
                               >
-                                <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-slate-300 group-hover/item:bg-blue-600 transition-colors shrink-0" />
-                                <span className="text-[10px] xs:text-[11px] sm:text-[13px] font-medium text-slate-700 group-hover/item:text-slate-950 truncate transition-colors leading-tight">
+                                <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover/item:bg-[#EF3A3E] transition-colors shrink-0" />
+                                <span className="text-[13px] font-medium text-slate-700 group-hover/item:text-[#EF3A3E] truncate transition-colors leading-tight">
                                   {item.name}
                                 </span>
                               </div>
@@ -814,28 +815,165 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
                     })}
                   </div>
 
+                  {/* Mobile Interactive Category Accordion (Targeted for mobile screens) */}
+                  <div className="lg:hidden category-accordion-container w-full max-w-full min-w-0 box-border flex flex-col gap-2.5 sm:gap-3 py-1 sm:py-2">
+                    {SOLUTION_CATEGORIES.map((cat, catIdx) => {
+                      const isExpanded = activeCategoryIndex === catIdx;
+                      const config = SOLUTION_CATEGORY_CONFIG[cat.title] || {
+                        icon: Layers,
+                        color: 'text-[#EF3A3E]',
+                        bg: 'bg-red-50 border-red-200/70',
+                        badgeText: `${cat.items.length} Apps`
+                      };
+                      const CatIcon = config.icon;
+
+                      return (
+                        <div 
+                          key={catIdx} 
+                          className={`category-accordion-card w-full max-w-full min-w-0 box-border rounded-xl border transition-all duration-200 overflow-hidden ${
+                            isExpanded 
+                              ? 'border-[#EF3A3E]/50 bg-white shadow-md shadow-[#EF3A3E]/5 ring-1 ring-[#EF3A3E]/20' 
+                              : 'border-slate-200/80 bg-white hover:border-slate-300 hover:shadow-xs'
+                          }`}
+                        >
+                          {/* Clickable Category Header Trigger */}
+                          <button
+                            type="button"
+                            onClick={() => setActiveCategoryIndex(isExpanded ? null : catIdx)}
+                            className={`w-full max-w-full min-w-0 box-border flex items-center justify-between px-3.5 py-3 sm:px-5 sm:py-3.5 text-left cursor-pointer transition-colors select-none ${
+                              isExpanded ? 'bg-gradient-to-r from-[#FFF5F5] via-white to-white' : 'bg-white hover:bg-slate-50/70'
+                            }`}
+                            aria-expanded={isExpanded}
+                            aria-controls={`solutions-cat-panel-${catIdx}`}
+                          >
+                            <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0 flex-1 overflow-hidden">
+                              <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center shrink-0 border ${config.bg} ${config.color} transition-transform duration-200 ${isExpanded ? 'scale-105' : ''}`}>
+                                <CatIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                              </div>
+                              <div className="flex flex-col min-w-0 flex-1 overflow-hidden">
+                                <span className={`text-[12px] sm:text-[13.5px] font-bold tracking-wide uppercase transition-colors truncate block ${
+                                  isExpanded ? 'text-[#EF3A3E]' : 'text-slate-900'
+                                }`}>
+                                  {cat.title}
+                                </span>
+                                <span className="text-[10px] sm:text-[11px] text-slate-500 font-normal truncate block mt-0.5">
+                                  {cat.title === 'CORE ERP & FINANCE' 
+                                    ? 'Enterprise Resource Planning, Accounting & Financial Operations' 
+                                    : `${cat.items.length} integrated modules & features`}
+                                </span>
+                              </div>
+                            </div>
+
+                            <div className="flex items-center gap-2 sm:gap-3 shrink-0 ml-2">
+                              <span className={`text-[10px] sm:text-[11.5px] font-semibold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border transition-colors ${
+                                isExpanded 
+                                  ? 'bg-[#EF3A3E] text-white border-[#EF3A3E]' 
+                                  : 'bg-slate-100/80 text-slate-600 border-slate-200/80'
+                              }`}>
+                                {cat.items.length} Apps
+                              </span>
+                              <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-transform duration-200 ${
+                                isExpanded ? 'rotate-180 text-[#EF3A3E] bg-[#FFF5F5]' : 'text-slate-400 bg-slate-50'
+                              }`}>
+                                <ChevronDown size={16} />
+                              </div>
+                            </div>
+                          </button>
+
+                          {/* Expanded 6-Module Display Layout */}
+                          {isExpanded && (
+                            <div 
+                              id={`solutions-cat-panel-${catIdx}`}
+                              className="w-full max-w-full min-w-0 box-border p-3 sm:p-4 bg-slate-50/60 border-t border-slate-100 animate-fadeIn"
+                            >
+                              {/* Subtitle / Description header inside expanded view */}
+                              <div className="flex items-center justify-between gap-2 pb-2.5 mb-3 border-b border-slate-200/60 min-w-0">
+                                <span className="text-[11px] sm:text-[12px] font-semibold text-slate-600 tracking-wide uppercase truncate min-w-0 flex-1">
+                                  {cat.title === 'CORE ERP & FINANCE' ? 'Core ERP & Finance Modules (6 Applications)' : `${cat.title} Applications`}
+                                </span>
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setActiveCategoryIndex(null);
+                                  }}
+                                  className="inline-flex items-center gap-1 text-[11px] font-medium text-slate-400 hover:text-[#EF3A3E] transition-colors px-2 py-0.5 rounded hover:bg-slate-200/50 cursor-pointer shrink-0"
+                                >
+                                  <span>Collapse</span>
+                                  <X size={12} />
+                                </button>
+                              </div>
+
+                              {/* Responsive Grid/List of the 6 Sub-Modules */}
+                              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-2.5 w-full max-w-full box-border">
+                                {cat.items.map((item, idx) => (
+                                  <div 
+                                    key={idx} 
+                                    onClick={() => handleAppItemClick(item.appId, 'solutions')}
+                                    onKeyDown={(e) => {
+                                      if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        handleAppItemClick(item.appId, 'solutions');
+                                      }
+                                    }}
+                                    className="group/item flex items-center justify-between p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200/90 hover:border-[#EF3A3E]/60 hover:bg-[#FFF5F5]/50 active:bg-[#FFF5F5] active:border-[#EF3A3E] hover:shadow-xs transition-all duration-150 cursor-pointer select-none active:scale-[0.99] min-w-0 box-border w-full"
+                                    role="button"
+                                    tabIndex={0}
+                                  >
+                                    <div className="flex items-center gap-2.5 min-w-0 flex-1 overflow-hidden">
+                                      <span className="w-2 h-2 rounded-full bg-[#EF3A3E]/40 group-hover/item:bg-[#EF3A3E] group-hover/item:scale-125 transition-all shrink-0" />
+                                      <span className="text-[12.5px] sm:text-[13px] font-medium text-slate-800 group-hover/item:text-[#EF3A3E] transition-colors truncate">
+                                        {item.name}
+                                      </span>
+                                    </div>
+                                    <ChevronRight size={14} className="text-slate-300 group-hover/item:text-[#EF3A3E] group-hover/item:translate-x-0.5 transition-all shrink-0 ml-2" />
+                                  </div>
+                                ))}
+                              </div>
+
+                              {/* Footer Action */}
+                              <div className="mt-3 pt-2.5 border-t border-slate-200/60 flex justify-end">
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setActiveCategoryIndex(null);
+                                  }}
+                                  className="inline-flex items-center gap-1.5 text-[11px] sm:text-[12px] font-semibold text-slate-500 hover:text-[#EF3A3E] transition-colors cursor-pointer py-1 px-2 rounded hover:bg-white"
+                                >
+                                  <ChevronUp size={14} />
+                                  <span>Collapse Section</span>
+                                </button>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+
                   {/* Bottom Utility Row (Exact Odoo Style for MarkG) */}
-                  <div className="solutions-bottom-utility stagger-bottom">
+                  <div className="solutions-bottom-utility stagger-bottom w-full max-w-full min-w-0 box-border">
                     <div 
                       onClick={() => { closeMenu(); handleSolutionNav('solutions'); }}
-                      className="solutions-utility-link hover:text-slate-900 transition-colors"
+                      className="solutions-utility-link hover:text-slate-900 transition-colors min-w-0 box-border"
                     >
-                      <Package size={16} className="solutions-utility-icon" />
-                      <span className="solutions-utility-text">Connected Ecosystem Apps</span>
+                      <Package size={16} className="solutions-utility-icon shrink-0" />
+                      <span className="solutions-utility-text truncate">Connected Ecosystem Apps</span>
                     </div>
                     <div 
                       onClick={() => { closeMenu(); onOpenExpertModal?.(); }}
-                      className="solutions-utility-link hover:text-slate-900 transition-colors"
+                      className="solutions-utility-link hover:text-slate-900 transition-colors min-w-0 box-border"
                     >
-                      <Edit3 size={16} className="solutions-utility-icon" />
-                      <span className="solutions-utility-text">G Mark Studio & Custom ERP</span>
+                      <Edit3 size={16} className="solutions-utility-icon shrink-0" />
+                      <span className="solutions-utility-text truncate">G Mark Studio & Custom ERP</span>
                     </div>
                     <div 
                       onClick={() => { closeMenu(); handleSolutionNav('solutions'); }}
-                      className="solutions-utility-link hover:text-slate-900 transition-colors"
+                      className="solutions-utility-link hover:text-slate-900 transition-colors min-w-0 box-border"
                     >
-                      <Cloud size={16} className="solutions-utility-icon" />
-                      <span className="solutions-utility-text">G Mark Edge & Cloud Platform</span>
+                      <Cloud size={16} className="solutions-utility-icon shrink-0" />
+                      <span className="solutions-utility-text truncate">G Mark Edge & Cloud Platform</span>
                     </div>
                   </div>
 
@@ -1199,6 +1337,11 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
         /* Smooth Slow Luxury Curtain Expansion */
         .mega-menu-wrapper {
           display: grid;
+          width: 100% !important;
+          max-width: 100vw !important;
+          min-width: 0 !important;
+          box-sizing: border-box !important;
+          overflow: hidden !important;
           transition: 
             grid-template-rows 0.58s cubic-bezier(0.22, 1, 0.36, 1),
             opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
@@ -1219,6 +1362,10 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
 
         .mega-menu-inner {
           min-height: 0;
+          min-width: 0 !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
         }
 
         .mega-menu-content-fade {
@@ -1350,7 +1497,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
 
         .mobile-nav-link-active {
           font-weight: 700;
-          color: #0B3A70;
+          color: #EF3A3E;
           background-color: #F1F5F9;
         }
 
@@ -1360,7 +1507,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
           padding: 1.5px 7px;
           border-radius: 9999px;
           background-color: #EBF3FC;
-          color: #0B3A70;
+          color: #EF3A3E;
           flex-shrink: 0;
         }
 
@@ -1522,7 +1669,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
 
         .category-accordion-chevron-open {
           transform: rotate(180deg);
-          color: #0B3A70;
+          color: #EF3A3E;
         }
 
         .category-accordion-body {
@@ -1622,7 +1769,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
         }
 
         .category-item-simple-row:hover .category-item-simple-name {
-          color: #0B3A70;
+          color: #EF3A3E;
         }
 
         .category-item-simple-arrow {
@@ -1633,7 +1780,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
         }
 
         .category-item-simple-row:hover .category-item-simple-arrow {
-          color: #0B3A70;
+          color: #EF3A3E;
           transform: translateX(2px);
         }
 
@@ -1672,7 +1819,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
         }
 
         .category-item-detailed-row:hover .category-item-detailed-label {
-          color: #0B3A70;
+          color: #EF3A3E;
         }
 
         .category-item-detailed-desc {
@@ -1720,7 +1867,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
 
         /* Mega menu links hover effect */
         .mega-menu-link:hover div:first-child {
-          color: #0B3A70 !important;
+          color: #EF3A3E !important;
           transform: translateX(4px);
         }
         .mega-menu-link div:first-child {
@@ -1785,7 +1932,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
           .mega-menu-nav-badge {
             font-size: 0.72rem;
             font-weight: 600;
-            color: #0B3A70;
+            color: #EF3A3E;
             background-color: #F0F6FF;
             border: 1px solid #DBEAFE;
             padding: 3px 10px;
@@ -1823,22 +1970,44 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
         .solutions-mega-menu-wrapper,
         .technology-mega-menu-wrapper,
         .industries-mega-menu-wrapper {
-          width: 100%;
+          width: 100% !important;
+          max-width: 100vw !important;
+          min-width: 0 !important;
+          box-sizing: border-box !important;
+          overflow-x: hidden !important;
           background-color: #FFFFFF;
         }
 
         .solutions-mega-menu-inner,
         .technology-mega-menu-inner,
         .industries-mega-menu-inner {
-          width: 100%;
-          box-sizing: border-box;
+          width: 100% !important;
+          max-width: 1240px !important;
+          min-width: 0 !important;
+          box-sizing: border-box !important;
+        }
+
+        .category-accordion-container {
+          width: 100% !important;
+          max-width: 100% !important;
+          min-width: 0 !important;
+          box-sizing: border-box !important;
+        }
+
+        .category-accordion-card {
+          width: 100% !important;
+          max-width: 100% !important;
+          min-width: 0 !important;
+          box-sizing: border-box !important;
         }
 
         .solutions-bottom-utility,
         .technology-bottom-utility,
         .industries-bottom-utility {
-          box-sizing: border-box;
-          width: 100%;
+          box-sizing: border-box !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          min-width: 0 !important;
         }
 
         .solutions-utility-link,
@@ -1903,9 +2072,12 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
             max-width: 1240px !important;
           }
 
+          .solutions-directory-grid {
+            display: grid !important;
+          }
+
           .category-accordion-container {
-            gap: 0.65rem;
-            padding: 0;
+            display: none !important;
           }
 
           .category-accordion-card {
@@ -2025,6 +2197,13 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
 
         /* Tablet Breakpoint (640px to 1023px) */
         @media (min-width: 640px) and (max-width: 1023px) {
+          .solutions-directory-grid {
+            display: none !important;
+          }
+
+          .category-accordion-container {
+            display: flex !important;
+          }
           .solutions-mega-menu-wrapper,
           .technology-mega-menu-wrapper,
           .industries-mega-menu-wrapper {
@@ -2076,6 +2255,13 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
 
         /* Mobile (< 640px) */
         @media (max-width: 639px) {
+          .solutions-directory-grid {
+            display: none !important;
+          }
+
+          .category-accordion-container {
+            display: flex !important;
+          }
           .solutions-mega-menu-wrapper,
           .technology-mega-menu-wrapper,
           .industries-mega-menu-wrapper {
@@ -2107,6 +2293,22 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
           .technology-mega-menu-inner,
           .industries-mega-menu-inner {
             padding: 0.65rem 0.6rem 1.5rem;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+          }
+
+          .category-accordion-container {
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            gap: 0.55rem;
+          }
+
+          .category-accordion-card {
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
           }
 
           .category-accordion-container {
@@ -2168,7 +2370,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
           .solutions-utility-icon,
           .technology-utility-icon,
           .industries-utility-icon {
-            color: #0B3A70;
+            color: #EF3A3E;
           }
         }
 
