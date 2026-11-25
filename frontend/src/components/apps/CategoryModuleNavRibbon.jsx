@@ -1,0 +1,91 @@
+import React from 'react';
+import { getModulesByCategory } from '../../data/modulesRegistry';
+
+export default function CategoryModuleNavRibbon({ currentModule, onSelectApp }) {
+  if (!currentModule || !currentModule.categorySlug) return null;
+
+  const siblingModules = getModulesByCategory(currentModule.categorySlug);
+  if (!siblingModules || siblingModules.length <= 1) return null;
+
+  return (
+    <div 
+      className="sticky-subnav-ribbon sticky top-[54px] sm:top-[58px] lg:top-[64px] z-35 w-full bg-white border-b border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)]"
+      style={{
+        padding: '0.65rem 1rem'
+      }}
+    >
+      <div 
+        style={{
+          maxWidth: '1240px',
+          margin: '0 auto',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+          overflowX: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none'
+        }}
+        className="no-scrollbar"
+      >
+        <span 
+          style={{
+            fontSize: '0.72rem',
+            fontWeight: 700,
+            color: '#475569',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em',
+            paddingRight: '0.65rem',
+            borderRight: '1px solid #E2E8F0',
+            whiteSpace: 'nowrap',
+            flexShrink: 0
+          }}
+        >
+          {currentModule.category}
+        </span>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexShrink: 0 }}>
+          {siblingModules.map((mod) => {
+            const isActive = mod.id === currentModule.id;
+            return (
+              <button
+                key={mod.id}
+                type="button"
+                onClick={() => onSelectApp && onSelectApp(mod)}
+                style={{
+                  fontSize: '0.78rem',
+                  fontWeight: isActive ? 700 : 500,
+                  color: isActive ? '#FFFFFF' : '#475569',
+                  backgroundColor: isActive ? '#FC787D' : '#FFFFFF',
+                  padding: '0.32rem 0.8rem',
+                  borderRadius: '6px',
+                  border: isActive ? '1px solid #FC787D' : '1px solid #E2E8F0',
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                  transition: 'all 0.2s ease',
+                  flexShrink: 0
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.backgroundColor = '#FFF1F2';
+                    e.currentTarget.style.color = '#FC787D';
+                    e.currentTarget.style.borderColor = '#FED7D9';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.backgroundColor = '#FFFFFF';
+                    e.currentTarget.style.color = '#475569';
+                    e.currentTarget.style.borderColor = '#E2E8F0';
+                  }
+                }}
+              >
+                {mod.name}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
