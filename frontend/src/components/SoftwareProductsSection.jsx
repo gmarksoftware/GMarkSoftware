@@ -98,7 +98,7 @@ export default function SoftwareProductsSection({ onSelectApp }) {
   return (
     <div className="w-full bg-[#FAF8FC]/40 py-12 sm:py-16 relative overflow-hidden">
       {/* Subtle ambient radial background glow */}
-      <div 
+      <div
         className="absolute inset-0 pointer-events-none -z-10"
         style={{
           background: 'radial-gradient(ellipse 70% 50% at 50% 30%, rgba(252, 120, 125, 0.06) 0%, rgba(255, 255, 255, 0) 75%)'
@@ -107,42 +107,42 @@ export default function SoftwareProductsSection({ onSelectApp }) {
       />
 
       {/* Decorative framing curves & node dots on left and right sides */}
-      <svg 
-        className="absolute inset-0 w-full h-full pointer-events-none -z-10" 
-        viewBox="0 0 1440 600" 
-        fill="none" 
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none -z-10"
+        viewBox="0 0 1440 600"
+        fill="none"
         preserveAspectRatio="xMidYMid slice"
         aria-hidden="true"
       >
         {/* Left Side Curved Lines */}
-        <path 
-          d="M -40 50 C 130 90, 160 260, 40 420" 
-          stroke="rgba(252, 120, 125, 0.28)" 
-          strokeWidth="1.2" 
-          fill="none" 
+        <path
+          d="M -40 50 C 130 90, 160 260, 40 420"
+          stroke="rgba(252, 120, 125, 0.28)"
+          strokeWidth="1.2"
+          fill="none"
         />
-        <path 
-          d="M -10 10 C 200 60, 230 280, 80 460" 
-          stroke="rgba(252, 120, 125, 0.20)" 
-          strokeWidth="1.2" 
-          fill="none" 
+        <path
+          d="M -10 10 C 200 60, 230 280, 80 460"
+          stroke="rgba(252, 120, 125, 0.20)"
+          strokeWidth="1.2"
+          fill="none"
         />
         {/* Left Side Pink Dots */}
         <circle cx="58" cy="170" r="3.5" fill="#FC787D" />
         <circle cx="98" cy="290" r="3.5" fill="#FC787D" />
 
         {/* Right Side Curved Lines */}
-        <path 
-          d="M 1480 50 C 1310 90, 1280 260, 1400 420" 
-          stroke="rgba(252, 120, 125, 0.28)" 
-          strokeWidth="1.2" 
-          fill="none" 
+        <path
+          d="M 1480 50 C 1310 90, 1280 260, 1400 420"
+          stroke="rgba(252, 120, 125, 0.28)"
+          strokeWidth="1.2"
+          fill="none"
         />
-        <path 
-          d="M 1450 10 C 1240 60, 1210 280, 1360 460" 
-          stroke="rgba(252, 120, 125, 0.20)" 
-          strokeWidth="1.2" 
-          fill="none" 
+        <path
+          d="M 1450 10 C 1240 60, 1210 280, 1360 460"
+          stroke="rgba(252, 120, 125, 0.20)"
+          strokeWidth="1.2"
+          fill="none"
         />
         {/* Right Side Pink Dots */}
         <circle cx="1378" cy="150" r="3.5" fill="#FC787D" />
@@ -150,9 +150,9 @@ export default function SoftwareProductsSection({ onSelectApp }) {
       </svg>
 
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6">
-        
+
         {/* Centered Section Header */}
-        <motion.div 
+        <motion.div
           initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -168,7 +168,7 @@ export default function SoftwareProductsSection({ onSelectApp }) {
         </motion.div>
 
         {/* 4-Column x 2-Row Compact Grid of Apps */}
-        <div 
+        <div
           className="grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-4 lg:gap-5"
           onMouseLeave={() => setActiveAppId(null)}
         >
@@ -181,30 +181,28 @@ export default function SoftwareProductsSection({ onSelectApp }) {
                 initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 35 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
-                transition={{ 
-                  duration: 0.85, 
-                  delay: (index % 4) * 0.06, 
-                  ease: SMOOTH_SLOW_EASING 
+                transition={{
+                  duration: 0.85,
+                  delay: (index % 4) * 0.06,
+                  ease: SMOOTH_SLOW_EASING
                 }}
                 onClick={() => handleAppClick(app)}
                 onMouseEnter={() => setActiveAppId(app.id)}
                 onMouseLeave={() => setActiveAppId(null)}
                 role="button"
                 tabIndex={0}
-                className={`group relative bg-white rounded-2xl flex flex-col items-center justify-center transition-all duration-300 ease-out cursor-pointer overflow-hidden text-center focus-visible:outline-2 focus-visible:outline-[#FC787D] ${
-                  isActive
+                className={`group relative bg-white rounded-2xl flex flex-col items-center justify-center transition-all duration-300 ease-out cursor-pointer overflow-hidden text-center focus-visible:outline-2 focus-visible:outline-[#FC787D] ${isActive
                     ? 'border-[1.5px] border-[#FC787D] shadow-[0_12px_28px_-6px_rgba(252,120,125,0.22)] -translate-y-1'
                     : 'border border-slate-200/70 shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_28px_-6px_rgba(252,120,125,0.22)] hover:border-[#FC787D] hover:border-[1.5px] hover:-translate-y-1'
-                }`}
+                  }`}
                 style={{
                   height: '155px'
                 }}
               >
                 {/* Hover / Active Soft Coral-Pink Gradient Wash */}
-                <div 
-                  className={`absolute inset-0 transition-opacity duration-300 pointer-events-none rounded-2xl ${
-                    isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                  }`}
+                <div
+                  className={`absolute inset-0 transition-opacity duration-300 pointer-events-none rounded-2xl ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                    }`}
                   style={{
                     background: 'linear-gradient(180deg, #FFFFFF 0%, #FFF5F6 50%, #FFE8EA 100%)'
                   }}
@@ -212,75 +210,67 @@ export default function SoftwareProductsSection({ onSelectApp }) {
                 />
 
                 {/* Default State: Soft Brand Accent Corner Waves in Bottom-Right */}
-                <div className={`absolute inset-0 overflow-hidden rounded-2xl pointer-events-none transition-opacity duration-300 ${
-                  isActive ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'
-                }`}>
-                  <svg 
-                    className="absolute -bottom-1 -right-1 w-32 h-24 pointer-events-none" 
-                    viewBox="0 0 160 120" 
-                    fill="none" 
+                <div className={`absolute inset-0 overflow-hidden rounded-2xl pointer-events-none transition-opacity duration-300 ${isActive ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'
+                  }`}>
+                  <svg
+                    className="absolute -bottom-1 -right-1 w-32 h-24 pointer-events-none"
+                    viewBox="0 0 160 120"
+                    fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     {/* Outer gentle wave */}
-                    <path 
-                      d="M 40 120 C 68 80, 102 55, 160 28 L 160 120 Z" 
-                      fill={app.waveLight} 
+                    <path
+                      d="M 40 120 C 68 80, 102 55, 160 28 L 160 120 Z"
+                      fill={app.waveLight}
                     />
                     {/* Inner subtle wave */}
-                    <path 
-                      d="M 80 120 C 102 90, 128 75, 160 58 L 160 120 Z" 
-                      fill={app.waveDark} 
+                    <path
+                      d="M 80 120 C 102 90, 128 75, 160 58 L 160 120 Z"
+                      fill={app.waveDark}
                     />
                   </svg>
                 </div>
 
                 {/* Hover / Active State: Coral-Pink Ambient Waves at Bottom */}
-                <div className={`absolute inset-0 overflow-hidden rounded-2xl pointer-events-none transition-opacity duration-300 ${
-                  isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                }`}>
-                  <svg 
-                    className="absolute bottom-0 inset-x-0 w-full h-18 pointer-events-none" 
-                    viewBox="0 0 280 90" 
-                    fill="none" 
+                <div className={`absolute inset-0 overflow-hidden rounded-2xl pointer-events-none transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                  }`}>
+                  <svg
+                    className="absolute bottom-0 inset-x-0 w-full h-18 pointer-events-none"
+                    viewBox="0 0 280 90"
+                    fill="none"
                     preserveAspectRatio="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     {/* Left rising wave */}
-                    <path 
-                      d="M 0 52 C 45 38, 85 52, 130 74 C 160 88, 220 90, 280 62 L 280 90 L 0 90 Z" 
-                      fill="rgba(252, 120, 125, 0.12)" 
+                    <path
+                      d="M 0 52 C 45 38, 85 52, 130 74 C 160 88, 220 90, 280 62 L 280 90 L 0 90 Z"
+                      fill="rgba(252, 120, 125, 0.12)"
                     />
                     {/* Right rising wave */}
-                    <path 
-                      d="M 0 74 C 60 70, 120 84, 180 62 C 220 48, 255 56, 280 48 L 280 90 L 0 90 Z" 
-                      fill="rgba(252, 120, 125, 0.18)" 
+                    <path
+                      d="M 0 74 C 60 70, 120 84, 180 62 C 220 48, 255 56, 280 48 L 280 90 L 0 90 Z"
+                      fill="rgba(252, 120, 125, 0.18)"
                     />
                   </svg>
                 </div>
 
                 {/* Centered Logo Stage (Transitions upwards on hover/active) */}
-                <div className={`w-full flex flex-col items-center justify-center gap-1 relative z-10 px-4 transition-transform duration-300 ease-out pointer-events-none ${
-                  isActive ? '-translate-y-9' : 'group-hover:-translate-y-9'
-                }`}>
-                  <img 
-                    src={app.image} 
-                    alt={app.name} 
-                    className="h-10 sm:h-11 w-auto max-w-[78%] object-contain select-none transition-transform duration-300 ease-out group-hover:scale-90 filter drop-shadow-xs" 
+                <div className={`w-full flex items-center justify-center relative z-10 px-4 transition-transform duration-300 ease-out pointer-events-none ${isActive ? '-translate-y-9' : 'group-hover:-translate-y-9'
+                  }`}>
+                  <img
+                    src={app.image}
+                    alt={app.name}
+                    className={`w-auto max-w-[78%] object-contain select-none transition-transform duration-300 ease-out group-hover:scale-90 filter drop-shadow-xs ${app.id === 'gram-unnati' ? 'h-16 sm:h-18' : 'h-10 sm:h-11'
+                      }`}
                     loading="lazy"
                   />
-                  {app.id === 'gram-unnati' && (
-                    <span className="font-bold text-slate-900 text-[13px] sm:text-sm tracking-tight leading-none select-none">
-                      GramUnnati
-                    </span>
-                  )}
                 </div>
 
                 {/* Hover / Active Reveal Card Panel (Divider + Title + Subtitle + Pink Circle Arrow Button) */}
-                <div className={`absolute bottom-2 sm:bottom-2.5 inset-x-0 flex flex-col items-center justify-center px-3 z-20 transition-all duration-300 ease-out pointer-events-none ${
-                  isActive 
-                    ? 'opacity-100 translate-y-0' 
+                <div className={`absolute bottom-2 sm:bottom-2.5 inset-x-0 flex flex-col items-center justify-center px-3 z-20 transition-all duration-300 ease-out pointer-events-none ${isActive
+                    ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0'
-                }`}>
+                  }`}>
                   {/* Subtle hairline glow divider */}
                   <div className="w-14 h-[1px] bg-gradient-to-r from-transparent via-[#FC787D]/40 to-transparent mb-1" />
 
